@@ -1,0 +1,52 @@
+# 主网接入教程
+
+### 1. 初始化节点  
+```
+./lambda init [your-moniker] --chain-id lambda-chain-1
+```
+
+### 2. 覆盖genesis.json   
+```
+\cp -rf ./genesis.json ~/.lambda/config/genesis.json
+```
+
+### 3. 配置节点  
+```
+./lambdacli config node tcp://0.0.0.0:26657
+./lambdacli config chain-id lambda-chain-1
+./lambdacli config trust-node true
+```
+
+### 4. 配置种子节点  
+```
+vim ~/.lambda/config/config.toml
+seeds = "dd3360f3a4334432af394a835662a2b21bf406e2@seednodes.oneweb.one:26656"
+```
+
+### 5. 启动节点  
+```
+nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:26657 >> /tmp/lambda.log 2>&1 &
+```
+
+### 6. 添加账号  
+```
+./lambdacli keys add [your-account-name]
+```
+
+### 7. 通知我们往账号中充值  
+```
+./lambdacli tx send [your-account-address] 333333333utbb --from [Name] --broadcast-mode block
+```
+
+### 8. 创建 Validator  
+```
+./lambdacli tx staking create-validator \
+  --amount 333333333utbb \
+  --pubkey $(./lambda tendermint show-validator) \
+  --moniker "[your-moniker]" \
+  --commission-rate 0.1 \
+  --commission-max-rate 0.20 \
+  --commission-max-change-rate 0.01 \
+  --from [your-account-name] --broadcast-mode block 
+```
+提示：
