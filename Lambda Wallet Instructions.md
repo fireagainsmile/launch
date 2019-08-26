@@ -10,24 +10,27 @@ Download ：[https://github.com/LambdaIM/launch/releases/tag/0.1.10](https://git
 
 ![avatar](img/wallethome@2x.png)
 
-* [Switch language](#Switch language)
-* [Create an account](#Create an account)
-* [Mnemonic into the validator program](#Mnemonic into the validator program)
-* [signatures and add an address to pledge system](#signatures and add an address to pledge system)
-* [Import account](#Import account)
-* [Wallet home page description](#Wallet home page description)
-* [Transfer](#Transfer)
-* [Export account profile](#Export account profile)
-* [Replace the Validator node used in the wallet](#Replace the Validator node used in the wallet)
-* [Use LAMB for TBB](#Use LAMB for TBB)
-* [View Validator info and pledges](#View Validator info and pledges)
-* [View Partner Information and Pledge](#View Partner Information and Pledge)
-* [Withdrawal reward](#Withdrawal reward)
 
+* [Switch language](#1)
+* [Create an account](#2)
+* [Mnemonic into the validator program](#3)
+* [signatures and add an address to pledge system](#4)
+* [Import account](#5)
+* [Wallet home page description](#6)
+* [Transfer](#7)
+* [Export account profile](#8)
+* [Replace the Validator node used in the wallet](#9)
+* [Use LAMB for TBB](#10)
+* [View Validator info and pledges](#11)
+* [View Partner Information and Pledge](#12)
+* [Withdrawal reward](#13)
 
+#1  
 ## Switch language
 
 ![avatar](img/lang@2x.png)
+#2
+
 ## Create an account
 Click Create Wallet to go to the page where you created your wallet.
 
@@ -56,7 +59,7 @@ Click Export Keystore File to back up your wallet.
 Import the wallet again via lambda**********.keyinfo
 
 Create an account with your wallet to complete this
-
+#3
 
 ## Mnemonic into the validator program
 
@@ -82,7 +85,7 @@ If the address of the output account is consistent with the wallet, the import i
 
 **tips**
 note that the mnemonic combination in the example is just a use case account
-
+#4
 ## signatures and add an address to pledge system
 ![avatar](img/sin@2x.png)
 input some world, and then copy the data to the signature pledge system(https://validator.lambdastorage.com/#/)
@@ -94,6 +97,7 @@ Click to add the address in the address list page pledge system
 ![avatar](img/sin3.png)
 
 to add an address to pledge system
+#5
 
 ## Import account
 
@@ -114,7 +118,7 @@ Enter the password when creating the wallet, enter the name of the new wallet, a
 According to the mnemonic word import account, fill in the mnemonic word and set the password.
 
 
-
+#6
 
 ## Wallet home page description
 Newly created account with a balance of 0 and no transaction history
@@ -129,7 +133,7 @@ The account has a transaction record
 
 ![avatar](img/home@2x.png)
 
-
+#7
 ## Transfer
 Click the Transfer button on the home page to bring up the Transfer dialog box and fill in the transfer address and amount.
 
@@ -149,11 +153,13 @@ Click View Detail to view transfer details
 
 ![avatar](img/view@2x.png)
 
+#8
 ## Export account profile
 
 Click Keystore File Backup on the settings page to view the account backup file.
 
 ![avatar](img/set@2x.png)
+#9
 
 ## Replace the Validator node used in the wallet
 Click Switch Validator on the settings page to go to the page to view the Validator information.
@@ -164,7 +170,7 @@ Change the IP address of the node in the input box, click Submit, and the prompt
 
 ![avatar](img/ok2@2x.png)
 
-
+#10
 ## Use LAMB for TBB.
 
 TBB can be used for pledge
@@ -173,7 +179,7 @@ TBB can be used for pledge
 
 ![avatar](img/duihuan2@2x.png)
 
-
+#11
 ## View Validator info and pledges
 ![avatar](img/valist@2x.png)
 First column of my pledge list 
@@ -191,6 +197,7 @@ Click to view the validation node details
 Click on the pledge button to pledge
 
 ![avatar](img/zhiyainfo@2x.png)
+#12
 
 ## View Partner Information and Pledge
 The first column, my pledge
@@ -210,6 +217,8 @@ Click to view partner details
 Click on the pledge button to pledge
 
 ![avatar](img/zhiya2@2x.png)
+
+#13
 
 ## Withdrawal reward
 
