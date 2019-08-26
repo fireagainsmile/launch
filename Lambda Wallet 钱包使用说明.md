@@ -18,9 +18,10 @@
 * [转账](#转账)
 * [导出账号配置文件](#导出账号配置文件)
 * [更换钱包链接的Validator节点](#更换钱包链接的Validator节点)
+* [LAMB兑换TBB](#LAMB兑换TBB)
 * [查看验证节点和质押](#查看验证节点和质押)
 * [查看合伙人和质押](#查看合伙人和质押)
-
+* [提取奖励](#提取奖励)
 
 ## 切换语言
 
@@ -150,6 +151,17 @@ Repeat the passphrase:
 ![avatar](img/ok2@2x.png)
 
 
+## LAMB兑换TBB
+
+TBB可用于质押
+
+![avatar](img/duihuan1@2x.png)
+
+![avatar](img/duihuan2@2x.png)
+
+
+
+
 ## 查看验证节点和质押
 ![avatar](img/valist@2x.png)
 第一列 我的质押列表
@@ -170,5 +182,10 @@ Repeat the passphrase:
 ![avatar](img/pinfo@2x.png)
 点击质押按钮可以进行质押
 ![avatar](img/zhiya2@2x.png)
+
+## 提取奖励
+
+![avatar](img/wi@2x.png)
+![avatar](img/wi1@2x.png)
 
 
