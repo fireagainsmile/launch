@@ -1,5 +1,12 @@
 # Lambda Wallet 钱包使用说明
-版本 0.1.1 一个钱包支持一个账号，新建账号之前的账号配置文件会被覆盖，请注意备份账号配置文件，避免账号信息丢失
+版本 0.1.10 
+
+一个钱包支持创建和管理多个账户，支持语言有中文和英文。
+
+
+下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/0.1.10](https://github.com/LambdaIM/launch/releases/tag/0.1.10)
+
+
 
 ![avatar](img/wallethome@2x.png)
 
@@ -48,7 +55,9 @@
 通过lambda**********.keyinfo可以再次导入钱包
 
 通过钱包创建账号到此完成
+
 ##助记词倒入到节点的验证程序
+
 创建账号后，保存好助记次，助记次支持导入到验证节点程序中
 助记词导入到节点
 
