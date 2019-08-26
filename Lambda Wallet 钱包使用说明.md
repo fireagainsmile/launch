@@ -56,7 +56,7 @@
 
 通过钱包创建账号到此完成
 
-##助记词倒入到节点的验证程序
+## 助记词倒入到节点的验证程序
 
 创建账号后，保存好助记次，助记次支持导入到验证节点程序中
 助记词导入到节点
@@ -81,7 +81,7 @@ Repeat the passphrase:
 **tips**
 注意，示例里面的助记词组合只是一个用例账户
 
-##签名和添加地址到质押系统
+## 签名和添加地址到质押系统
 ![avatar](img/sin@2x.png)
 输入签名，然后复制签名数据到质押系统(https://validator.lambdastorage.com/#/)
 ![avatar](img/sin2@2x.png)
@@ -160,7 +160,7 @@ Repeat the passphrase:
 ![avatar](img/vainfo@2x.png)
 点击质押按钮进行质押
 ![avatar](img/zhiyainfo@2x.png)
-##查看合伙人和质押
+## 查看合伙人和质押
 第一列 我的质押
 第二列 合伙人列表
 ![avatar](img/plist@2x.png)
