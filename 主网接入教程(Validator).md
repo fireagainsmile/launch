@@ -20,12 +20,11 @@ tar zxvf lambda-0.2.0-release.tar.gz && cd lambda-0.2.0-release
 ```
 ./lambda init [your-moniker] --chain-id lambda-chain-1
 ```
-如果初始化报错，可能是由于有老版本的数据，可以通过下面的命令清除错误数据
+如果初始化报错，可能是由于有老版本的测试网配置数据导致，可以通过下面的命令清除错误数据
 ```
-rm ~/.lambda/config/config.toml
+rm ~/.lambda/config/config.toml ~/.lambda/config/genesis.json
 ./lambda unsafe-reset-all
 ```
-
 
 ### 3. 覆盖genesis.json文件
 ```
