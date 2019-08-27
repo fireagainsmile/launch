@@ -27,9 +27,9 @@ tar zxvf lambda-0.2.0-release.tar.gz
 ```
 
 ### 4. 配置节点
-`要确保机器已开启端口26656, 26657`
+`要确保连接的节点机器机器已开启端口26657`
 ```
-./lambdacli config node tcp://0.0.0.0:26657
+./lambdacli config node tcp://[nodeip]:26657
 ./lambdacli config chain-id lambda-chain-1
 ./lambdacli config trust-node true
 ```
