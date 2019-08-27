@@ -22,6 +22,7 @@ tar zxvf lambda-0.2.0-release.tar.gz && cd lambda-0.2.0-release
 ```
 如果初始化报错，可能是由于有老版本的数据，可以通过下面的命令清除错误数据
 ```
+rm ~/.lambda/config/config.toml
 ./lambda unsafe-reset-all
 ```
 
