@@ -25,6 +25,11 @@ tar zxvf lambda-0.2.0-release.tar.gz
 ```
 \cp -rf ./genesis.json ~/.lambda/config/genesis.json
 ```
+如果初始化报错，可能是由于有老版本的测试网配置数据导致，可以通过下面的命令清除错误数据
+```
+rm ~/.lambda/config/config.toml ~/.lambda/config/genesis.json
+./lambda unsafe-reset-all
+```
 
 ### 4. 配置节点
 `要确保连接的节点机器机器已开启端口26657，如果服务启动是开启了其他端口，请向节点询问`
