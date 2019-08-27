@@ -27,12 +27,20 @@ tar zxvf lambda-0.2.0-release.tar.gz
 ```
 
 ### 4. 配置节点
-`要确保连接的节点机器机器已开启端口26657`
+`要确保连接的节点机器机器已开启端口26657，如果服务启动是开启了其他端口，请向节点询问`
 ```
 ./lambdacli config node tcp://[nodeip]:26657
 ./lambdacli config chain-id lambda-chain-1
 ./lambdacli config trust-node true
 ```
+
+**注意**  
+当前提供的可连接的ip地址为以下，后续在节点接入成功后会逐步退出，为保证
+服务可达，请向节点询问他们的节点ip和端口
+
+1. 39.107.247.86
+2. 47.93.225.51
+3. 39.106.18.60
 
 ### 5. 添加账户  
 `将[your-account-name]替换成您自定义的账户名称，需要设置您的账户密码，不用加中括号`
