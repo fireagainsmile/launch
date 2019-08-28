@@ -18,7 +18,7 @@ tar zxvf lambda-0.2.0-release.tar.gz && cd lambda-0.2.0-release
 ### 2. 初始化节点  
 `将下面命令中的[your-moniker]替换成您自定义的节点名称，不用加中括号`
 ```
-./lambda init [your-moniker] --chain-id lambda-chain-1
+./lambda init [your-moniker] --chain-id lambda-chain-2
 ```
 如果初始化报错，可能是由于有老版本的测试网配置数据导致，可以通过下面的命令清除错误数据
 ```

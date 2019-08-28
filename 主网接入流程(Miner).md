@@ -35,7 +35,7 @@ rm ~/.lambda/config/config.toml ~/.lambda/config/genesis.json
 `要确保连接的节点机器机器已开启端口26657，如果服务启动是开启了其他端口，请向节点询问`
 ```
 ./lambdacli config node tcp://[nodeip]:26657
-./lambdacli config chain-id lambda-chain-1
+./lambdacli config chain-id lambda-chain-2
 ./lambdacli config trust-node true
 ```
 
