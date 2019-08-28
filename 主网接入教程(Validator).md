@@ -35,7 +35,7 @@ rm ~/.lambda/config/config.toml ~/.lambda/config/genesis.json
 `要确保机器已开启端口26656, 26657`
 ```
 ./lambdacli config node tcp://0.0.0.0:26657
-./lambdacli config chain-id lambda-chain-1
+./lambdacli config chain-id lambda-chain-2
 ./lambdacli config trust-node true
 ```
 

@@ -18,7 +18,7 @@ tar zxvf lambda-0.2.0-release.tar.gz
 ### 2. 初始化节点  
 `将下面命令中的[your-moniker]替换成您自定义的节点名称，不用加中括号`
 ```
-./lambda init [your-moniker] --chain-id lambda-chain-1
+./lambda init [your-moniker] --chain-id lambda-chain-2
 ```
 
 ### 3. 覆盖genesis.json文件
