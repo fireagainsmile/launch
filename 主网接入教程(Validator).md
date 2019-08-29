@@ -7,12 +7,12 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 `下载安装包`
 ```
-wget https://github.com/LambdaIM/launch/releases/download/v0.2.0/lambda-0.2.0-release.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/v0.2.1/lambda-0.2.1-release.tar.gz
 ```
 
 `解压安装包`
 ```
-tar zxvf lambda-0.2.0-release.tar.gz && cd lambda-0.2.0-release
+tar zxvf lambda-0.2.1-release.tar.gz && cd lambda-0.2.1-release
 ```
 
 ### 2. 初始化节点  
