@@ -79,9 +79,6 @@ nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:2
   --amount 333333333utbb \
   --pubkey $(./lambda tendermint show-validator) \
   --moniker "[your-moniker]" \
-  --commission-rate 0.1 \
-  --commission-max-rate 0.20 \
-  --commission-max-change-rate 0.01 \
   --from [your-account-name] --broadcast-mode block 
 ```
 说明：commission相关参数数值可自行指定，0.1指节点对质押者收取10%的佣金。可使用lambdacli修改节点设置。
