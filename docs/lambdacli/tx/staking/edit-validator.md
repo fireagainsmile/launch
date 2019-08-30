@@ -14,6 +14,9 @@ Print help messages:
 lambdacli tx staking edit-validator --help
 ```
 
+**tips**  
+
+`commission-rate` is not support to change currently
 
 ## Unique Flags
 
