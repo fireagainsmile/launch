@@ -4,7 +4,7 @@
 一个钱包支持创建和管理多个账户，支持语言有中文和英文。
 
 
-下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/0.1.10](https://github.com/LambdaIM/launch/releases/tag/0.1.10)
+下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/0.1.11](https://github.com/LambdaIM/launch/releases/tag/0.1.11)
 
 
 
@@ -33,11 +33,11 @@
 
 ![avatar](img/create@2x.png)
 
-点击 Create按钮后，进入助记次页面
+点击 Create按钮后，进入助记词页面
 
 
 请妥善保管助记词，以便以后恢复钱包，点击Next Step进入下一页
-最好在纸片上记录下助记次，助记词也可以导入到节点程序中。
+最好在纸片上记录下助记词，助记词也可以导入到节点程序中。
 
 ![avatar](img/word@2x.png)
 
@@ -59,8 +59,11 @@
 
 ## 助记词导入到节点的程序包
 
-创建账号后，保存好助记次，助记次支持导入到验证节点程序中
-助记词导入到节点
+验证节点和矿工可以将钱包中的账号导入到挖矿程序包中(lambda chain)，运行挖矿程序
+
+创建账号后，保存好助记词，助记词支持导入到验证节点和矿工的程序中
+
+例如 助记词导入到节点的程序包
 
 使用lambdacli调用命令行
 
@@ -83,8 +86,10 @@ Repeat the passphrase:
 注意，示例里面的助记词组合只是一个用例账户
 
 ## 签名和添加地址到质押系统
+通过在钱包中签名，然后添加到质押系统中，可以确保这个地址是属于你的，而不是别人的。
+
 ![avatar](img/sin@2x.png)
-输入签名，然后复制签名数据到质押系统(https://validator.lambdastorage.com/#/)
+输入内容例如输入签名2个字，然后复制签名数据到质押系统(https://validator.lambdastorage.com/#/)
 ![avatar](img/sin2@2x.png)
 在质押系统地址列表页面点击 添加地址
 ![avatar](img/sin3.png)
