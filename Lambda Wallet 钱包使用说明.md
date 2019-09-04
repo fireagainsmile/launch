@@ -1,26 +1,27 @@
 # Lambda Wallet 钱包使用说明
-版本 0.1.10 
+版本 0.1.11 
 
 一个钱包支持创建和管理多个账户，支持语言有中文和英文。
 
 
-下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/0.1.10](https://github.com/LambdaIM/launch/releases/tag/0.1.10)
+下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/0.1.11](https://github.com/LambdaIM/launch/releases/tag/0.1.11)
 
 
 
 ![avatar](img/wallethome@2x.png)
 
 * [创建账号](#创建账号)
-* [助记词倒入到节点的验证程序](#助记词倒入到节点的验证程序)
+* [助记词导入到节点的程序包](#助记词导入到节点的程序包)
 * [签名和添加地址到质押系统](#签名和添加地址到质押系统)
 * [导入账号](#导入账号)
 * [钱包首页说明](#钱包首页说明)
 * [转账](#转账)
 * [导出账号配置文件](#导出账号配置文件)
 * [更换钱包链接的Validator节点](#更换钱包链接的Validator节点)
+* [LAMB兑换TBB](#LAMB兑换TBB)
 * [查看验证节点和质押](#查看验证节点和质押)
 * [查看合伙人和质押](#查看合伙人和质押)
-
+* [提取奖励](#提取奖励)
 
 ## 切换语言
 
@@ -32,11 +33,11 @@
 
 ![avatar](img/create@2x.png)
 
-点击 Create按钮后，进入助记次页面
+点击 Create按钮后，进入助记词页面
 
 
 请妥善保管助记词，以便以后恢复钱包，点击Next Step进入下一页
-最好在纸片上记录下助记次，助记词也可以导入到节点程序中。
+最好在纸片上记录下助记词，助记词也可以导入到节点程序中。
 
 ![avatar](img/word@2x.png)
 
@@ -56,10 +57,13 @@
 
 通过钱包创建账号到此完成
 
-##助记词倒入到节点的验证程序
+## 助记词导入到节点的程序包
 
-创建账号后，保存好助记次，助记次支持导入到验证节点程序中
-助记词导入到节点
+验证节点和矿工可以将钱包中的账号导入到挖矿程序包中(lambda chain)，运行挖矿程序
+
+创建账号后，保存好助记词，助记词支持导入到验证节点和矿工的程序中
+
+例如 助记词导入到节点的程序包
 
 使用lambdacli调用命令行
 
@@ -81,9 +85,11 @@ Repeat the passphrase:
 **tips**
 注意，示例里面的助记词组合只是一个用例账户
 
-##签名和添加地址到质押系统
+## 签名和添加地址到质押系统
+通过在钱包中签名，然后添加到质押系统中，可以确保这个地址是属于你的，而不是别人的。
+
 ![avatar](img/sin@2x.png)
-输入签名，然后复制签名数据到质押系统(https://validator.lambdastorage.com/#/)
+输入内容例如输入签名2个字，然后复制签名数据到质押系统(https://validator.lambdastorage.com/#/)
 ![avatar](img/sin2@2x.png)
 在质押系统地址列表页面点击 添加地址
 ![avatar](img/sin3.png)
@@ -150,6 +156,17 @@ Repeat the passphrase:
 ![avatar](img/ok2@2x.png)
 
 
+## LAMB兑换TBB
+
+TBB可用于质押
+
+![avatar](img/duihuan1@2x.png)
+
+![avatar](img/duihuan2@2x.png)
+
+
+
+
 ## 查看验证节点和质押
 ![avatar](img/valist@2x.png)
 第一列 我的质押列表
@@ -160,7 +177,7 @@ Repeat the passphrase:
 ![avatar](img/vainfo@2x.png)
 点击质押按钮进行质押
 ![avatar](img/zhiyainfo@2x.png)
-##查看合伙人和质押
+## 查看合伙人和质押
 第一列 我的质押
 第二列 合伙人列表
 ![avatar](img/plist@2x.png)
@@ -170,5 +187,10 @@ Repeat the passphrase:
 ![avatar](img/pinfo@2x.png)
 点击质押按钮可以进行质押
 ![avatar](img/zhiya2@2x.png)
+
+## 提取奖励
+
+![avatar](img/wi@2x.png)
+![avatar](img/wi1@2x.png)
 
 
