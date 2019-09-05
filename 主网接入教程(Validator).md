@@ -77,7 +77,7 @@ nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:2
 ```
 ./lambdacli tx staking create-validator \
   --amount 333333333utbb \
-  --pubkey $(./lambda tendermint show-validator) \
+  --pubkey lambdavalconspub1zcjduepq3lrk424psmywfasefnz97w7fwnv7zsth7ukvr8sfc4h0w75mmq5s2s4nat \
   --moniker "[your-moniker]" \
   --from [your-account-name] --broadcast-mode block 
 ```
