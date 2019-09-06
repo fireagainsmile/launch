@@ -33,7 +33,7 @@ lambdacli tx staking create-validator --help
 
 ```
 lambdacli tx staking create-validator \
-    --amount 333333333utbb \
+    --amount 666666666utbb \
     --broadcast-mode block \
     --from vestor1 \
     --moniker val2 \
@@ -42,7 +42,7 @@ lambdacli tx staking create-validator \
 
 Sample Output:
 ```txt
-{"chain_id":"testing","account_number":"2","sequence":"0","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgCreateValidator","value":{"description":{"moniker":"val2","identity":"","website":"","details":""},"commission":{"rate":"0.250000000000000000","max_rate":"0.250000000000000000","max_change_rate":"0.010000000000000000"},"min_self_delegation":"333333333","delegator_address":"lambda188xynycq7hq94ftntmv99m3jltqt5tkk709uzn","validator_address":"lambdavaloper188xynycq7hq94ftntmv99m3jltqt5tkkgtvhc8","pubkey":"lambdavalconspub1zcjduepq8qu9rg2srwxq9ze202pk6u8594e55mz909kuup3czr0mqvlfjjlslea3cn","value":{"denom":"utbb","amount":"333333333"},"validator_type":1}}],"memo":""}
+{"chain_id":"testing","account_number":"2","sequence":"0","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgCreateValidator","value":{"description":{"moniker":"val2","identity":"","website":"","details":""},"commission":{"rate":"0.250000000000000000","max_rate":"0.250000000000000000","max_change_rate":"0.010000000000000000"},"min_self_delegation":"666666666","delegator_address":"lambda188xynycq7hq94ftntmv99m3jltqt5tkk709uzn","validator_address":"lambdavaloper188xynycq7hq94ftntmv99m3jltqt5tkkgtvhc8","pubkey":"lambdavalconspub1zcjduepq8qu9rg2srwxq9ze202pk6u8594e55mz909kuup3czr0mqvlfjjlslea3cn","value":{"denom":"utbb","amount":"666666666"},"validator_type":1}}],"memo":""}
 
 confirm transaction before signing and broadcasting [Y/n]: y
 Password to sign with 'vestor1':
@@ -101,13 +101,13 @@ Response:
 						"max_rate": "0.250000000000000000",
 						"max_change_rate": "0.010000000000000000"
 					},
-					"min_self_delegation": "333333333",
+					"min_self_delegation": "666666666",
 					"delegator_address": "lambda188xynycq7hq94ftntmv99m3jltqt5tkk709uzn",
 					"validator_address": "lambdavaloper188xynycq7hq94ftntmv99m3jltqt5tkkgtvhc8",
 					"pubkey": "lambdavalconspub1zcjduepq8qu9rg2srwxq9ze202pk6u8594e55mz909kuup3czr0mqvlfjjlslea3cn",
 					"value": {
 						"denom": "utbb",
-						"amount": "333333333"
+						"amount": "666666666"
 					},
 					"validator_type": 1
 				}
