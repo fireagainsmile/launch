@@ -14,7 +14,7 @@ The `chain_id` is a unique identifier for your chain. You can also modify this t
 
 
 ```json
-"chain_id": "lambda-chain-2",
+"chain_id": "lambda-chain-2.3",
 ```
 
 ## Consensus Parameters
@@ -137,7 +137,7 @@ The `staking` module contains two different proof-of-stake logics.
       "lambda_staking": {
         "params": {
           "supply_denom": "ulamb",
-          "consensus_validator_min_self_delegation": "333333333",
+          "consensus_validator_min_self_delegation": "666666666",
           "partner_validator_min_self_delegation": "33333333",
           "consensus_validator_min_delegation": "1000000",
           "partner_validator_min_delegation": "100000",
