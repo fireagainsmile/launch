@@ -13,9 +13,9 @@ The document shows how to deploy your own lambda testnet
 ./lambdacli keys add master
 
 # Add that key into the genesis.app_state.accounts array in the genesis file
-# At least 333333333utbb to become a valid validator
+# At least 666666666utbb to become a valid validator
 # Make sure to add sufficient ulamb token to ensure inflating ulamb
-./lambda add-genesis-account $(./lambdacli keys show master -a) 333333333utbb,1000000000000ulamb
+./lambda add-genesis-account $(./lambdacli keys show master -a) 666666666utbb,1000000000000ulamb
 
 # Generate the transaction that creates your validator
 ./lambda gentx --name master
@@ -51,11 +51,11 @@ Prepare two nodes, we name the first one as Node A, the second one as Node B
 ./lambdacli keys add nodeB
 
 # Add that key into the genesis.app_state.accounts array in the genesis file
-# At least 333333333utbb to become a valid validator
+# At least 666666666utbb to become a valid validator
 # Make sure to add sufficient ulamb token to ensure inflating ulamb
 #Node A
-./lambda add-genesis-account $(./lambdacli keys show nodeA -a) 333333333utbb,1000000000000ulamb
-./lambda add-genesis-account $(./lambdacli keys show nodeB -a) 333333333utbb,1000000000000ulamb
+./lambda add-genesis-account $(./lambdacli keys show nodeA -a) 666666666utbb,1000000000000ulamb
+./lambda add-genesis-account $(./lambdacli keys show nodeB -a) 666666666utbb,1000000000000ulamb
 
 # Generate the transaction that creates your validator
 #Node A
