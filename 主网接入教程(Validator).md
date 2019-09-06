@@ -7,18 +7,18 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 `下载安装包`
 ```
-wget https://github.com/LambdaIM/launch/releases/download/v0.2.2/lambda-0.2.2-release.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/v0.2.3/lambda-0.2.3-release.tar.gz
 ```
 
 `解压安装包`
 ```
-tar zxvf lambda-0.2.2-release.tar.gz && cd lambda-0.2.2-release
+tar zxvf lambda-0.2.3-release.tar.gz && cd lambda-0.2.3-release
 ```
 
 ### 2. 初始化节点  
 `将下面命令中的[your-moniker]替换成您自定义的节点名称，不用加中括号`
 ```
-./lambda init [your-moniker] --chain-id lambda-chain-2
+./lambda init [your-moniker] --chain-id lambda-chain-2.3
 ```
 如果初始化报错，可能是由于有老版本的测试网配置数据导致，可以通过下面的命令清除错误数据
 ```
@@ -35,7 +35,7 @@ rm ~/.lambda/config/config.toml ~/.lambda/config/genesis.json
 `要确保机器已开启端口26656, 26657`
 ```
 ./lambdacli config node tcp://0.0.0.0:26657
-./lambdacli config chain-id lambda-chain-2
+./lambdacli config chain-id lambda-chain-2.3
 ./lambdacli config trust-node true
 ```
 
@@ -76,7 +76,7 @@ nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:2
 `获取上述信息后，填充如下命令并执行（过程中会提示输入账号密码），即可创建Validator, 注意：所有参数不需要中括号`
 ```
 ./lambdacli tx staking create-validator \
-  --amount 333333333utbb \
+  --amount 666666666utbb \
   --pubkey [your-cons-pubkey] \
   --moniker "[your-moniker]" \
   --from [your-account-name] --broadcast-mode block 
