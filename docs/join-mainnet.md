@@ -2,7 +2,7 @@
 
 ## Download Latest Release Pack
 
-Currently the latest release version is v0.2.2. You could click [here](https://github.com/LambdaIM/launch/releases/download/v0.2.2/lambda-0.2.2-release.tar.gz) to download
+Currently the latest release version is v0.2.3. You could click [here](https://github.com/LambdaIM/launch/releases/download/v0.2.3/lambda-0.2.3-release.tar.gz) to download
 
 ## Setting Up a New Node
 
@@ -100,7 +100,7 @@ To create the validator, just use the following command:
 
 ```bash
 ./lambda tx staking create-validator \
-  --amount=999999999999ulamb|333333333utbb \
+  --amount=1999999998000ulamb|666666666utbb \
   --pubkey=$(./lambda tendermint show-validator) \
   --moniker="choose a moniker" \
   --gas-prices="0.25ulamb" \
