@@ -45,6 +45,10 @@ rm ~/.lambda/config/config.toml ~/.lambda/config/genesis.json
 vim ~/.lambda/config/config.toml
 seeds = "dd3360f3a4334432af394a835662a2b21bf406e2@seednodes.oneweb.one:26656"
 ```
+或
+```
+seeds = "91fa14e2c8da164ff7969f2bbc0ba5c6e206da8a@101.201.65.116:26656"
+```
 
 ### 6. 启动节点  
 ```
