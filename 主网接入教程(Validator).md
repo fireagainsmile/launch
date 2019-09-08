@@ -111,7 +111,8 @@ Validator 的操作地址也可通过命令获取
 # FAQ
 ### 查询账户不存在？
 
-出现如下错误提示, 可能是由于您刚刚启动 lambda 还没有同步到最新块高，可以通过日志 `/tmp/lambda.log` 查看块高情况
+出现如下错误提示, 可能是由于您刚刚启动 lambda 还没有同步到最新块高
+可以通过日志(`/tmp/lambda.log`)查看块高情况
 ```
 [root@zh]# ./lambdacli query account lambda1z66gxs2wlhmkhh3rljtkzk96fqkk7809zb123
 ERROR: {"codespace":"sdk","code":9,"message":"account lambda1z66gxs2wlhmkhh3rljtkzk96fqkkl7809zb123 does not exist"}
