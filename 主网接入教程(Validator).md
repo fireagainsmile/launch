@@ -16,7 +16,8 @@ tar zxvf lambda-0.2.3-release.tar.gz && cd lambda-0.2.3-release
 ```
 
 ### 2. 初始化节点  
-`将下面命令中的[your-moniker]替换成您自定义的节点名称，不用加中括号`
+`将下面命令中的[your-moniker]替换成您自定义的节点名称，不用加中括号`  
+`注意：这里的 your-moniker 必须使用英文，用于P2P网络`
 ```
 ./lambda init [your-moniker] --chain-id lambda-chain-2.3
 ```
@@ -76,7 +77,8 @@ nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:2
 ### 9. 创建 Validator  
 `创建Validator需要如下信息`
 * pubkey -- 通过命令`./lambda tendermint show-validator` 获取
-* moniker -- 您在第2步中自定义的 moniker 名字
+* moniker -- 这里的`moniker`名称是您的`Validator`名称，可以使用中文(与第2步的moniker可以不同),
+             如果您已经创建，后面的FAQ中也有修改该名称的命令介绍
 * your-account-name -- 您在第7步中设置的账户名称
 
 `获取上述信息后，填充如下命令并执行（过程中会提示输入账号密码），即可创建Validator, 注意：所有参数不需要中括号`
@@ -148,5 +150,7 @@ ERROR: {"codespace":"sdk","code":9,"message":"account lambda1z66gxs2wlhmkhh3rljt
 ERROR: ABCIQuery: Post xxx connect: connection refused
 ```
 
-
-
+### 如何修改 Validator 名称
+```
+./lambdacli tx staking edit-validator --moniker "your-custom-name" --from [your-account-name] --broadcast-mode block -y
+```
