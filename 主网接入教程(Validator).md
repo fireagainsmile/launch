@@ -122,7 +122,8 @@ Validator 的操作地址也可通过命令获取
 
 被移出的节点需要做如下操作重新加入共识网络
 
-1. 如果不足validator的最低质押要求, 需要发起质押补足扣除的utbb，命令示例参考  
+1. 如果不满足validator的最低质押要求`666,666,666utbb`, 需要发起质押补足扣除的utbb，可进入浏览器——验证节点——节点详情——投票权——查看代币数量 即为当前已质押代币数量
+命令示例参考  
 ```
 ./lambdacli tx staking delegate [validator-address] [amount-of-utbb] --from [your-account-name]
 ```
@@ -131,7 +132,7 @@ Validator 的操作地址也可通过命令获取
 被`jail`之后的节点需要等待10分钟的惩罚来发起`unjail`命令
 
 ```
-lambdacli tx slashing unjail --from [your-account-name]
+./lambdacli tx slashing unjail --from [your-account-name]
 ```
 
 # FAQ
