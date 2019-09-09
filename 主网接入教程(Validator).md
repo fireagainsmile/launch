@@ -118,6 +118,28 @@ Validator 的操作地址也可通过命令获取
 ./lambdacli keys show [your-account-name] --bech val
 ```
 
+**注意**
+
+当前已经成为validator的节点，在以下情况下会被惩罚，共识网络会扣除节点质押的utbb，并且把  
+节点移出validator集合
+
+1. 对块进行双签
+2. 在最近的10000个块中对少于500个块签名
+
+被移出的节点需要做如下操作重新加入共识网络
+
+1. 如果不足validator的最低质押要求, 需要发起质押补足扣除的utbb，命令示例参考  
+```
+./lambdacli tx staking delegate [validator-address] [amount-of-utbb] --from [your-account-name]
+```
+
+2. 发起`unjail`消息来重新加入共识网络
+被`jail`之后的节点需要等待10分钟的惩罚来发起`unjail`命令
+
+```
+lambdacli tx slashing unjail --from [your-account-name]
+```
+
 # FAQ
 ### 查询账户不存在？
 
