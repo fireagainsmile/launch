@@ -1,10 +1,10 @@
 # Lambda Wallet 钱包使用说明
-版本 0.1.11 
+版本 0.2.11 
 
 一个钱包支持创建和管理多个账户，支持语言有中文和英文。
 
 
-下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/0.1.11](https://github.com/LambdaIM/launch/releases/tag/0.1.11)
+下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.2.11](https://github.com/LambdaIM/launch/releases/tag/Wallet0.2.11)
 
 
 
