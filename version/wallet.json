@@ -1,8 +1,8 @@
 {
     "version":"0.2.11",
-    "url":"https://github.com/LambdaIM/launch/releases/tag/wallet0.2.11",
+    "url":"https://github.com/LambdaIM/launch/releases/tag/Wallet0.2.11",
     "brief":{
-        "en":"1 Fixed a Socket hang up error when sending a transaction, but the transaction was sent successfully.2 Optimize the transaction list to support the display of multiple transfers in a transaction3 Optimize the footer. After logging in, click the node name of the footer to jump to the page to switch to the verification node.",
-        "zh":"1 修复发送交易时候报Socket hang up的错误，但交易却发送成功了2 优化交易列表，支持展示一笔交易中有多个转账3 优化页脚，登录后点击页脚的节点名称可以跳转到切换到验证节点页面"
+        "en":"1 Fixed a Socket hang up error when sending a transaction, but the transaction was sent successfully./n2 Optimize the transaction list to support the display of multiple transfers in a transaction/n3 Optimize the footer. After logging in, click the node name of the footer to jump to the page to switch to the verification node.",
+        "zh":"1 修复发送交易时候报Socket hang up的错误，但交易却发送成功了/n2 优化交易列表，支持展示一笔交易中有多个转账/n3 优化页脚，登录后点击页脚的节点名称可以跳转到切换到验证节点页面"
     }
 }
