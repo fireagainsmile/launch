@@ -136,7 +136,7 @@ Validator 的操作地址也可通过命令获取
 
 被移出的节点需要做如下操作重新加入共识网络
 
-1. 如果不满足validator的最低质押要求`666,666,666utbb`, 需要发起质押补足扣除的utbb，可进入浏览器——验证节点——节点详情——投票权——查看代币数量 即为当前已质押代币数量
+1. 如果不满足validator的最低质押要求`666,666,666utbb`, 需要发起质押补足扣除的utbb，可进入浏览器——验证节点——节点详情——质押列表——查看当前节点账户地址质押代币数量 即为当前已质押代币数量
 命令示例参考  
 ```
 ./lambdacli tx staking delegate [validator-address] [amount-of-utbb] --from [your-account-name]
