@@ -3,9 +3,10 @@
 ### 1. 下载安装包并解压
 `创建目录并进入`
 ```
-mkdir -p ~/LambdaIM && cd ~/LambdaIM
-如已有~/LambdaIM目录则直接进入目录：`cd ~/LambdaIM`   
+mkdir -p ~/LambdaIM && cd ~/LambdaIM  
 ```
+如已有~/LambdaIM目录则直接进入目录：`cd ~/LambdaIM` 
+
 `下载安装包`
 ```
 wget https://github.com/LambdaIM/launch/releases/download/v0.2.4/lambda-0.2.4-release.tar.gz
