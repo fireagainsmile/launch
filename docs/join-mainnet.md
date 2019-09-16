@@ -2,7 +2,7 @@
 
 ## Download Latest Release Pack
 
-Currently the latest release version is v0.2.3. You could click [here](https://github.com/LambdaIM/launch/releases/download/v0.2.3/lambda-0.2.3-release.tar.gz) to download
+Currently the latest release version is v0.2.5. You could click [here](https://github.com/LambdaIM/launch/releases/download/v0.2.3/lambda-0.2.3-release.tar.gz) to download
 
 ## Setting Up a New Node
 
