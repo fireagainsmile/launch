@@ -1,9 +1,9 @@
 # Launch
 
 ## English
-- [Join the mainnet](./en/join-mainnet.md) of the Lambda Chain.
+- [Join the mainnet](./docs/join-mainnet.md) of the Lambda Chain.
 - [Lambda cli toturail](./docs/lambdacli/README.md)
-- [Start your own `lambda` testnet](./en/deploy-testnet.md).
+- [Start your own `lambda` testnet](./docs/deploy-testnet.md).
 
 
 ## 中文
