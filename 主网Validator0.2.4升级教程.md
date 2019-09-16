@@ -4,6 +4,7 @@
 `创建目录并进入`
 ```
 mkdir -p ~/LambdaIM && cd ~/LambdaIM
+如已有~/LambdaIM目录则直接进入目录：`cd ~/LambdaIM`   
 ```
 `下载安装包`
 ```
