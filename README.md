@@ -8,7 +8,7 @@
 
 
 ## 中文
-- [Validator主网接入教程](./主网接入教程(Validator).md)
+- [Validator 主网接入教程](./主网接入教程(Validator).md)
 - [Miner 主网接入教程](./主网接入流程(Miner).md)
 - [Lambda 钱包使用教程](./Lambda钱包使用说明.md)
 - [Lambda cli 使用教程](./docs/lambdacli/README.md)
