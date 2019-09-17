@@ -1,4 +1,32 @@
 # FAQ
+
+### 程序版本不对
+检查是否是最新版本程序
+```
+incompitable: Peer is on a different network. Got lambda-chain-xx, expected lambda-chain-xx.
+```
+
+### 已经Lambda程序在运行
+先停止已经在运行的程序，再重新运行
+```
+ERROR: couldn't create db: Error initializing DB: resource temporarily unavailable.
+```
+
+### 重新升级报错
+重新升级时，使用unsafe-reset-all清除历史区块数据  
+重新启动仍然报以下错误，则检查data目录文件是否清除干净 
+```
+panic Tendermint stat.AppHash does not match AppHash after replay. Got xxxxxxxxxxxxxx, expected xxxxxxxxxx.
+```
+
+ls -l  ~/.lambda/data  
+保留priv_validator_state.json，删除application.db文件.
+```
+drwxr-xr-x  11 xxxxxx  staff  352 Sep 15 08:57 application.db
+-rw-------   1 xxxxxx  staff   48 Sep  8 23:23 priv_validator_state.json
+```
+
+
 ### 查询账户不存在？
 
 出现如下错误提示, 可能是由于您刚刚启动 lambda 还没有同步到最新块高
