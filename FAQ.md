@@ -30,8 +30,8 @@ drwxr-xr-x  11 xxxxxx  staff  352 Sep 15 08:57 application.db
 当节点对块进行双签，在最近的10000个块中对少于500个块签名会被jail.
 
 ##### 重新加入共识网络
-如果不满足validator的最低质押要求666,666,666utbb, 需要发起质押补足扣除的utbb
-发起unjail消息来重新加入共识网络 被jail之后的节点需要等待10分钟的惩罚来发起unjail命令
+如果不满足validator的最低质押要求666,666,666utbb, 需要发起质押补足扣除的utbb  
+发起unjail消息来重新加入共识网络 被jail之后的节点需要等待10分钟的惩罚来发起unjail命令  
 ./lambdacli tx slashing unjail --from [your-account-name]
 
 
