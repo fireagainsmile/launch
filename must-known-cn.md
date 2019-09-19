@@ -1,9 +1,9 @@
 ## 注意事项
 - 禁止用rm -fr  
 - 严格按指导说明操作  
-- 生成帐户的助记词备份  
-- ~/.lambda/config 备份  
-- ~/.lambdacli 备份  
+- 备份 生成帐户的助记词  
+- 备份 ~/.lambda/config/node_key.json  
+- 备份 ~/.lambda/config/priv_validator_key.json  
 
 ## 如何自查
 - 查询[FAQ](FAQ.md)使用文档  
