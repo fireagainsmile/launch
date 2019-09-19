@@ -1,5 +1,5 @@
 ## 注意事项
-- 禁止用rm -fr  
+- 禁止用rm -fr ~/.lambda ~/.lambdacli
 - 严格按指导说明操作  
 - 备份 生成帐户的助记词  
 - 备份 ~/.lambda/config/node_key.json  
