@@ -1,10 +1,10 @@
 # Lambda钱包使用说明
-版本 0.2.11 
+版本 0.3.11 
 
 一个钱包支持创建和管理多个账户，支持语言有中文和英文。
 
 
-下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.2.11](https://github.com/LambdaIM/launch/releases/tag/Wallet0.2.11)
+下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.11](https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.11)
 
 
 
@@ -216,20 +216,20 @@ TBB可用于质押
 ![avatar](img/wi1@2x.png)
 
 
-##提取节点收益
+## 提取节点收益
 在首页点击提取下来菜单中的提取节点收益菜单
 ![avatar](img/wv1@2x.png)
 即可打开提取节点收益的窗口
 ![avatar](img/wv2@2x.png)
 
 
-##查看资产和交易资产
+## 查看资产和交易资产
 在钱包首页点击资产标签，可以查看当前账户下有哪些资产
 ![avatar](img/asset1@2x.png)
 点击交易按钮可以打开交易资产的窗口
 ![avatar](img/asset2@2x.png)
 
-##提案与存入押金和投票
+## 提案与存入押金和投票
 点击顶部的导航菜单中的提案，即可进入提案列表页面
 ![avatar](img/t1@2x.png)
 点击提案的的文字描述部分进入提案详情页面
