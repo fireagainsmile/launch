@@ -1,10 +1,10 @@
 # Lambda Wallet Wallet Instructions
-Version 0.2.11
+Version 0.3.11
 
 A wallet supports the creation and management of multiple accounts in Chinese and English.
 
 
-Download ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.2.11](https://github.com/LambdaIM/launch/releases/tag/Wallet0.2.11)
+Download ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.11](https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.11)
 
 
 
@@ -23,8 +23,11 @@ Download ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.2.11](https
 * Use LAMB for TBB
 * View Validator info and pledges
 * View Partner Information and Pledge
+* Transferred pledge
 * Withdrawal reward
-
+* Withdrawal  Validator Profit
+* View assets and trading assets
+* Proposals and deposits and votes
  
 ## Switch language
 
@@ -217,12 +220,57 @@ Click on the pledge button to pledge
 
 ![avatar](img/zhiya2@2x.png)
 
+## Transferred pledge
+Click on the Transfer Pledge button on the details page of the node
+![avatar](img/WXrv1@2x.png)
+Click to open the pledge window
+
+Fill in the number of TBB  that need to be re-pledged and select a new node.
+
+(If we want to transfer all tbbs, we may fail. It is suggested that the total amount of pledge - 0.1 TBB is easier to be transferred successfully.)
+
+
+![avatar](img/WXr2@2x.png)
 
 
 ## Withdrawal reward
 
 ![avatar](img/wi@2x.png)
 ![avatar](img/wi1@2x.png)
+## Withdrawal  Validator Profit
+On the home page, click on the Extract Node Revenue Menu in the Extract Menu
+
+![avatar](img/wv1@2x.png)
+
+You can open a window to extract the benefits of the node.
+
+![avatar](img/wv2@2x.png)
+
+## View assets and trading assets
+
+Click on the asset label on the front page of your wallet to see what assets are in your current account.
+![avatar](img/asset1@2x.png)
+Click on the trade button to open the window for trading assets
+![avatar](img/asset2@2x.png)
+
+## Proposals and deposits and votes
+Click on the proposal in the navigation menu at the top to enter the proposal list page.
+![avatar](img/t1@2x.png)
+Click on the text description section of the proposal to enter the proposal details page.
+![avatar](img/t2@2x.png)
+
+When the status of the proposal is deposited, the proposal can be deposited in the deposit.
+Click the deposit button to open the deposit dialog box
+![avatar](img/t3@2x.png)
+When the deposit meets the requirement, the proposal will enter the voting status and click the voting button to open the voting dialog box.
+
+![avatar](img/t4@2x.png)
+Voting may choose to agree, oppose, strongly oppose or abstain.
+If the first ballot is wrong, it doesn't matter that the second ballot will cover the result of the first ticket.
+The weight of voting is equal to the amount of pledge, which is valid in both node pledge and partner pledge.
+If there is no pledge, the voting is invalid.
+
+
 
 
 
