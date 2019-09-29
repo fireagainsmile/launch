@@ -7,7 +7,7 @@
 
 ## 如何自查
 - 查询[FAQ](FAQ.md)使用文档  
-- 查询[Lambda cli 使用手册](./docs/lambdacli/README.md)
+- 查询[Lambda cli 使用手册](./docs/lambdacli)
 - 检查节点程序是否在运行  
 - 检查日志是否正常出块  
 - 检查自己是否同步至最新块高  
