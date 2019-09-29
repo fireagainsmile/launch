@@ -182,7 +182,7 @@ TBB可用于质押
 点击质押按钮进行质押
 ![avatar](img/zhiyainfo@2x.png)
 
-##转质押
+## 转质押
 在节点的详情页面点击转质押按钮
 ![avatar](img/WXrv1@2x.png)
 点击即可打开转质押窗口
