@@ -55,3 +55,8 @@ ERROR: ABCIQuery: Post xxx connect: connection refused
 ```
 ./lambdacli tx staking edit-validator --moniker "your-custom-name" --from [your-account-name] --broadcast-mode block -y
 ```
+
+###  使用的0.1.10版本的旧钱包
+因为0.1.10版本的钱包和之后的钱包同样的助记次生成地址不一样，所以不能继续使用0.1.10版本的钱包生成的地址
+使用的是0.1.10 版本的钱包，而且账户上有lamb和tbb，需要先用最新的钱包生成一个账号，然后在旧版本上把lamb和tbb 转移到新的账户上，
+再用新版本钱包质押即可
