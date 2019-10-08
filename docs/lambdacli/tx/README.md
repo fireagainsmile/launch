@@ -28,4 +28,4 @@ lambdacli tx --help
 | [staking](./staking/README.md)   | Staking transaction subcommands                                           |
 | [slashing](./slashing/unjail.md)                   | Slashing transactions subcommands                                           |
 | [asset](asset.md)                             |  Asset transactions subcommands                                            |
-| [gov](gov.md)                             |  Gov transactions subcommands                                            |
+| [gov](./gov/README.md)                        |  Gov transactions subcommands                                            |
