@@ -28,6 +28,7 @@ lambdacli tx staking unbond lambdavaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj
 ```
 
 Output:
+```
 Response:
   Height: 8
   TxHash: 9CB78B22D10192561AD77ACBBBED38F2CB6213FFC03B4B767ED6133DC0CDA9B1
@@ -41,3 +42,4 @@ Response:
     - delegator = lambda1sg93x27wvmmtx2s3qr62enpyudkaj2tsd0hv9n
     - source-validator = lambdavaloper1sg93x27wvmmtx2s3qr62enpyudkaj2tsmt78l8
     - end-time = 2019-10-06T07:13:33Z
+```
