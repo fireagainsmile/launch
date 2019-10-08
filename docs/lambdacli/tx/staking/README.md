@@ -26,4 +26,6 @@ lambdacli tx staking --help
 | [delegate](delegate.md)                                       | Delegate liquid tokens to an validator                                                        |
 | [delegate-partner](delegate-partner.md)                                       | delegate liquid tokens to a partner validator                                                        |
 | [redelegate](redelegate.md)                                   | Redelegate illiquid tokens from one validator to another                                      |
+| [unbond](unbond.md)                                   | Unbond illiquid tokens from a validator                                    |
+| [unbond-partner](unbond-partner.md)                                   | Unbond illiquid tokens from a partner validator                                     |
 
