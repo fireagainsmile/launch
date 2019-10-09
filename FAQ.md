@@ -26,13 +26,13 @@ drwxr-xr-x  11 xxxxxx  staff  352 Sep 15 08:57 application.db
 -rw-------   1 xxxxxx  staff   48 Sep  8 23:23 priv_validator_state.json
 ```
 
-### 查询验证节点签名公钥
+### 查询验证节点公钥
 
 ```
 ./lambdacli query tendermint-validator-set | grep Pubkey | grep `./lambda tendermint show-validator`
 ```
 
-### 查询当前节点同步块高
+### 查询节点同步块高
 ```
 ./lambdacli status | grep --color latest_block_height
 ```
