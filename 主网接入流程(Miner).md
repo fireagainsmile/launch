@@ -16,7 +16,8 @@ tar zxvf lambda-0.3.0-release.tar.gz
 ```
 
 ### 2. 初始化节点  
-`将下面命令中的[your-moniker]替换成您自定义的节点名称，不用加中括号`
+`将下面命令中的[your-moniker]替换成您自定义的节点名称，不用加中括号`  
+`注意：这里的 your-moniker 必须使用英文，用于P2P网络`
 ```
 ./lambda init [your-moniker] --chain-id lambda-chain-3.0
 ```
@@ -65,7 +66,7 @@ rm ~/.lambda/config/config.toml ~/.lambda/config/genesis.json
 
 ### 7. 创建 Miner
 下面命令中   
-`[validator-address]` 可通过浏览器查找 http://explorer.lambdastorage.com/#/validator  或者询问节点
+`[validator-address]` 可通过浏览器查找 http://explorer.lambdastorage.com/#/validator 或询问节点  
 `[your-account-name]` 是您在第5步创建的账户名称
 ```
 ./lambdacli tx staking delegate [validator-address] 1000000000utbb --from [your-account-name] --broadcast-mode block

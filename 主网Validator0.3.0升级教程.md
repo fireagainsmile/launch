@@ -21,6 +21,7 @@ tar zxvf lambda-0.3.0-release.tar.gz && cd lambda-0.3.0-release
 ```
 kill -9 `ps aux | grep lambda |grep -v grep| awk '{print $2}'`
 ```
+备注：如果无法停止，请使用`ps aux|grep lamb`命令查看进程号，然后 `kill -9 进程号`
 
 ### 3. 覆盖genesis.json文件
 ```
