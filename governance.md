@@ -34,12 +34,12 @@ Lambda Chain 是去中心化的网络，因此对网络的治理由社区成员�
 - 投票数少于全网 40% 质押量
 - 大于 33.4% 的 no_with_veto 票
 
-### 命令行操作演示
+## 命令行操作演示
 - [提交提案](./docs/lambdacli/tx/gov/submit-proposal.md)
 - [存入押金](./docs/lambdacli/tx/gov/deposit.md)
 - [投票](./docs/lambdacli/tx/gov/vote.md)
 
-### 钱包众筹与投票操作演示
+## 钱包众筹与投票操作演示
 
 点击顶部的导航菜单中的提案，即可进入提案列表页面
 ![proposal_list](./proposal_list.png)
