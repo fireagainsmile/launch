@@ -2,6 +2,8 @@
 
 The document shows how to deploy your own lambda testnet
 
+**tips** make sure you have installed or downloaded latest version of `lambda` successfully, if not please check [here](./installation.md)
+
 ## Single-node
 
 ```bash

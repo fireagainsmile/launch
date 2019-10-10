@@ -27,5 +27,5 @@ lambdacli query --help
 | [staking](./staking/README.md)   |  Querying commands for the staking module                                          |
 | [minting](./minting/README.md)   |  Querying commands for the minting module                                         |
 | [slashing](./slashing/README.md)                   | Querying commands for the slashing module                                           |
-| [asset](asset.md)                             |  Querying commands for the asset module                                            |
+| [asset](asset/README.md)                             |  Querying commands for the asset module                                            |
 

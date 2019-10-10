@@ -1,5 +1,9 @@
 # Lambda Documentation
 
+## Installation
+
+- [Install](./installation.md) `lambda` and `lambdacli`
+
 ## Lambda Chain 
 
 - [Join the mainnet](./join-mainnet.md) of the Lambda Chain.
@@ -21,4 +25,13 @@
 
 - [Lambda Light Client](./light-client.md) List all restful APIs
 
+## Software Upgrade
+
+- [Software Upgrade](./software-upgrade.md) The document explains how to proceed software upgrade
+
+## Languages
+
+The Lambda Chain is currently written in [Golang](https://golang.org/), though the
+framework could be implemented similarly in other languages.
+Contact us for information about funding an implementation in another language.
 

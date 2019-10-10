@@ -27,5 +27,5 @@ lambdacli tx --help
 | [distr](./distr/README.md)             | Distribution transactions subcommands                                     |
 | [staking](./staking/README.md)   | Staking transaction subcommands                                           |
 | [slashing](./slashing/unjail.md)                   | Slashing transactions subcommands                                           |
-| [asset](asset.md)                             |  Asset transactions subcommands                                            |
-| [gov](./gov/README.md)                        |  Gov transactions subcommands                                            |
+| [asset](asset/README.md)                             |  Asset transactions subcommands                                            |
+| [gov](./gov/README.md)                        |  Gov transactions subcommands

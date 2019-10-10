@@ -136,3 +136,11 @@ Here we just list all APIs and introduce their functionality briefly.
     - `GET /asset/pairs/{asset}`: Get exchange pairs by the given asset
     - `POST /asset/pledge`: Pledge token to get asset
     - `POST /asset/drop`: Drop asset to get token
+
+8. Gov module APIs
+
+    - `POST /gov/proposals/software_upgrade`: Submit software upgrade proposal
+
+9. Upgrade module APIs
+
+    - `GET /upgrade/info`: Get current software version and upgrade info in progress

@@ -141,6 +141,8 @@ The `staking` module contains two different proof-of-stake logics.
           "partner_validator_min_self_delegation": "33333333",
           "consensus_validator_min_delegation": "1000000",
           "partner_validator_min_delegation": "100000",
+          "consensus_validator_fixed_commission_rate": "0.250000000000000000",
+          "partner_validator_fixed_commission_rate": "0.250000000000000000"
         },
         "supply_pool": {
           "not_bonded_tokens": "10000000000000000",
