@@ -15,5 +15,6 @@
 - [Miner 主网接入教程](./主网接入流程(Miner).md)
 - [Lambda 钱包使用教程](./Lambda钱包使用说明.md)
 - [Lambda cli 使用教程](./docs/lambdacli/README.md)
+- [资产管理引导手册](./资产管理引导手册.md)
 - [社区治理教程](./governance.md)
 - [主网接入常见问题](FAQ.md)
