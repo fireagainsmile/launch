@@ -7,19 +7,19 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 `下载安装包`
 ```
-wget https://github.com/LambdaIM/launch/releases/download/v0.2.5/lambda-0.2.5-release.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/v0.3.0/lambda-0.3.0-release.tar.gz
 ```
 
 `解压安装包`
 ```
-tar zxvf lambda-0.2.5-release.tar.gz && cd lambda-0.2.5-release
+tar zxvf lambda-0.3.0-release.tar.gz && cd lambda-0.3.0-release
 ```
 
 ### 2. 初始化节点  
 `将下面命令中的[your-moniker]替换成您自定义的节点名称，不用加中括号`  
 `注意：这里的 your-moniker 必须使用英文，用于P2P网络`
 ```
-./lambda init [your-moniker] --chain-id lambda-chain-2.5
+./lambda init [your-moniker] --chain-id lambda-chain-3.0
 ```
 如果初始化报错，可能是由于有老版本的测试网配置数据导致，可以通过下面的命令清除错误数据
 ```
@@ -41,7 +41,7 @@ rm ~/.lambda/config/config.toml ~/.lambda/config/genesis.json
 `要确保机器已开启端口26656, 26657`
 ```
 ./lambdacli config node tcp://0.0.0.0:26657
-./lambdacli config chain-id lambda-chain-2.5
+./lambdacli config chain-id lambda-chain-3.0
 ./lambdacli config trust-node true
 ```
 

@@ -7,18 +7,19 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 `下载安装包`
 ```
-wget https://github.com/LambdaIM/launch/releases/download/v0.2.5/lambda-0.2.5-release.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/v0.3.0/lambda-0.3.0-release.tar.gz
 ```
 
 `解压安装包`
 ```
-tar zxvf lambda-0.2.3-release.tar.gz
+tar zxvf lambda-0.3.0-release.tar.gz
 ```
 
 ### 2. 初始化节点  
-`将下面命令中的[your-moniker]替换成您自定义的节点名称，不用加中括号`
+`将下面命令中的[your-moniker]替换成您自定义的节点名称，不用加中括号`  
+`注意：这里的 your-moniker 必须使用英文，用于P2P网络`
 ```
-./lambda init [your-moniker] --chain-id lambda-chain-2.5
+./lambda init [your-moniker] --chain-id lambda-chain-3.0
 ```
 
 ### 3. 覆盖genesis.json文件
@@ -35,7 +36,7 @@ rm ~/.lambda/config/config.toml ~/.lambda/config/genesis.json
 `要确保连接的节点机器机器已开启端口26657，如果服务启动是开启了其他端口，请向节点询问`
 ```
 ./lambdacli config node tcp://[nodeip]:26657
-./lambdacli config chain-id lambda-chain-2.3
+./lambdacli config chain-id lambda-chain-3.0
 ./lambdacli config trust-node true
 ```
 
@@ -65,7 +66,7 @@ rm ~/.lambda/config/config.toml ~/.lambda/config/genesis.json
 
 ### 7. 创建 Miner
 下面命令中   
-`[validator-address]` 可通过浏览器查找 http://explorer.lambdastorage.com/#/validator  或者询问节点
+`[validator-address]` 可通过浏览器查找 http://explorer.lambdastorage.com/#/validator 或询问节点  
 `[your-account-name]` 是您在第5步创建的账户名称
 ```
 ./lambdacli tx staking delegate [validator-address] 1000000000utbb --from [your-account-name] --broadcast-mode block
