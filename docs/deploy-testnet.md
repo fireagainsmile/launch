@@ -9,7 +9,7 @@ The document shows how to deploy your own lambda testnet
 ```bash
 
 # Initialize the genesis.json file that will help you to bootstrap the network
-./lambdacli init [moniker] --chain-id=[personal-chain-id]
+./lambda init [moniker] --chain-id=[personal-chain-id]
 
 # Create a key to hold your validator account
 ./lambdacli keys add master
@@ -42,10 +42,10 @@ Prepare two nodes, we name the first one as Node A, the second one as Node B
 
 # Initialize the genesis.json file that will help you to bootstrap the network
 #Node A
-./lambdacli init [moniker] --chain-id=[personal-chain-id]
+./lambda init [moniker] --chain-id=[personal-chain-id]
 
 #Node B
-./lambdacli init [moniker]
+./lambda init [moniker]
 
 # Create a key to hold your validator account
 #Node A
