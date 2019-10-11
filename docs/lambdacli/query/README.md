@@ -28,4 +28,5 @@ lambdacli query --help
 | [minting](./minting/README.md)   |  Querying commands for the minting module                                         |
 | [slashing](./slashing/README.md)                   | Querying commands for the slashing module                                           |
 | [asset](asset/README.md)                             |  Querying commands for the asset module                                            |
+| [gov](./gov/README.md)                             |  Querying commands for the gov module                                            |
 
