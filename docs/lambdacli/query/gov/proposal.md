@@ -1,4 +1,4 @@
-# lambdacli query staking validator
+# lambdacli query proposal
 
 ## Description
 
