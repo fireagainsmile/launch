@@ -21,6 +21,8 @@ Print help messages:
 lambdacli query gov proposal 1
 ```
 
+output:
+
 ```txt
 Proposal 1:
   Title:              Burn coins proposal
