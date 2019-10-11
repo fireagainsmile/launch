@@ -38,6 +38,7 @@ Lambda Chain 是去中心化的网络，因此对网络的治理由社区成员�
 - [提交提案](./docs/lambdacli/tx/gov/submit-proposal.md)
 - [存入押金](./docs/lambdacli/tx/gov/deposit.md)
 - [投票](./docs/lambdacli/tx/gov/vote.md)
+- [相关查询操作](./docs/lambdacli/query/gov/README.md)
 
 ## 钱包众筹与投票操作演示
 
