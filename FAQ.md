@@ -26,7 +26,7 @@ drwxr-xr-x  11 xxxxxx  staff  352 Sep 15 08:57 application.db
 -rw-------   1 xxxxxx  staff   48 Sep  8 23:23 priv_validator_state.json
 ```
 
-### 查询验证节点公钥
+### 查询验证节点公钥是否丢失
 
 ```
 ./lambdacli query tendermint-validator-set | grep Pubkey | grep `./lambda tendermint show-validator`
@@ -37,7 +37,7 @@ drwxr-xr-x  11 xxxxxx  staff  352 Sep 15 08:57 application.db
 ./lambdacli status | grep --color latest_block_height
 ```
 
-### 节点被jail
+### 节点成为无效节点(被jail)
 当节点对块进行双签，在最近的10000个块中对少于500个块签名会被jail.
 
 ##### 重新加入共识网络
