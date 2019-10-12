@@ -27,8 +27,8 @@ Download ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.12](https
 * [Cancel-Pledge](#Cancel-Pledge)
 * [Withdraw-Rewards](#Withdraw-Rewards)
 * [Withdraw-Validator-Profit](#Withdraw-Validator-Profit)
-* [Assets-View-&-Trading](#Assets-View&Trading)
-* [Proposal-Deposit-&-Vote](#Proposal-Deposit&Vote)
+* [Assets-View&Trading](#Assets-View&Trading)
+* [Proposal-Deposit&Vote](#Proposal-Deposit&Vote)
  
 ## Switch-Language
 
