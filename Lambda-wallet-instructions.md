@@ -14,7 +14,7 @@ Download ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.12](https
 * [Switch-Language](#Switch-Language)
 * [Create-Account](#Create-Account)
 * [Use-Mnemonic-Import-Account-Into-Lambda-Program](#Use-Mnemonic-Import-Account-Into-Lambda-Program)
-* [Signatures&Add-address-To-Pledge-System](#Signatures&Add-address-To-Pledge-System)
+* [Signatures&Add-address-To-Pledge-System](#Signatures-And-Add-address-To-Pledge-System)
 * [Import-Account](#Import-Account)
 * [Home-Page-Description](#Home-Page-Description)
 * [Transfer](#Transfer)
@@ -27,8 +27,8 @@ Download ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.12](https
 * [Cancel-Pledge](#Cancel-Pledge)
 * [Withdraw-Rewards](#Withdraw-Rewards)
 * [Withdraw-Validator-Profit](#Withdraw-Validator-Profit)
-* [Assets-View&Trading](#Assets-View&Trading)
-* [Proposal-Deposit&Vote](#Proposal-Deposit&Vote)
+* [Assets View&Trading](#Assets-View-And-Trading)
+* [Proposal Deposit&Vote](#Proposal-Deposit-And-Vote)
  
 ## Switch-Language
 
@@ -88,7 +88,7 @@ If the address of the output account is consistent with the wallet, the import i
 **tips**
 Please note the mnemonic words showed in picture is just an example. 
 
-## Signatures&Add-address-To-Pledge-System
+## Signatures-And-Add-address-To-Pledge-System
 ![avatar](img/sin@2x.png)
 input some word, and then copy the signature data to the Pledge System(https://validator.lambdastorage.com/#/)
 
@@ -253,14 +253,14 @@ You can open a window to withdraw the benefits of the node.
 
 ![avatar](img/wv2@2x.png)
 
-## Assets-View&Trading
+## Assets-View-And-Trading
 
 Click on the asset label on the front page of your wallet to see all assets in your current account.
 ![avatar](img/asset1@2x.png)
 Click on the trade button to open the window for trading assets.
 ![avatar](img/asset2@2x.png)
 
-## Proposal-Deposit&Vote
+## Proposal-Deposit-And-Vote
 Click on the proposal in the navigation menu at the top to enter the proposal list page.
 ![avatar](img/t1@2x.png)
 Click on the text description section of the proposal to enter the proposal details page.
