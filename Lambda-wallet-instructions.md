@@ -1,10 +1,10 @@
 # Lambda Wallet Wallet Instructions
-Version 0.3.11
+Version 0.3.12
 
 A wallet supports the creation and management of multiple accounts in Chinese and English.
 
 
-Download ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.11](https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.11)
+Download ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.12](https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.12)
 
 
 
@@ -24,6 +24,7 @@ Download ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.11](https
 * View Validator info and pledges
 * View Partner Information and Pledge
 * Transferred pledge
+* Cancel pledge
 * Withdrawal reward
 * Withdrawal  Validator Profit
 * View assets and trading assets
@@ -231,6 +232,15 @@ Fill in the number of TBB  that need to be re-pledged and select a new node.
 
 
 ![avatar](img/WXr2@2x.png)
+
+## Cancel pledge
+Click the Cancel pledge button on the node's details page.
+![avatar](img/cancel1@2x.png)
+Click to open the cancel pledge window
+![avatar](img/cancel2@2x.png)
+Fill in the number of tbbs that need to be plucked
+
+(If you want to cancel all tbb, it may fail, it is recommended that the total amount of pledge -0.1 tbb to pledge is easier to succeed)
 
 
 ## Withdrawal reward
