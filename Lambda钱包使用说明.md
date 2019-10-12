@@ -1,10 +1,10 @@
 # Lambda钱包使用说明
-版本 0.3.11 
+版本 0.3.12 
 
 一个钱包支持创建和管理多个账户，支持语言有中文和英文。
 
 
-下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.11](https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.11)
+下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.12](https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.12)
 
 
 
@@ -21,6 +21,7 @@
 * [LAMB兑换TBB](#LAMB兑换TBB)
 * [查看验证节点和质押](#查看验证节点和质押)
 * [转质押](#转质押)
+* [取消质押](#取消质押)
 * [查看合伙人和质押](#查看合伙人和质押)
 * [提取奖励](#提取奖励)
 * [提取节点收益](#提取节点收益)
@@ -192,7 +193,14 @@ TBB可用于质押
 （如果要转全部tbb，可能会失败，建议质押总量-0.1 个tbb 转质押比较容易成功）
 
 ![avatar](img/WXr2@2x.png)
+## 取消质押
+在节点的详情页面点击取消质押按钮
+![avatar](img/cancel1@2x.png)
+点击即可打开取消质押窗口
+![avatar](img/cancel2@2x.png)
+填写需要取消质押多少tbb
 
+（如果要取消全部tbb，可能会失败，建议质押总量-0.1 个tbb 取消质押比较容易成功）
 
 
 

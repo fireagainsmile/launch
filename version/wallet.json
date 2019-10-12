@@ -1,8 +1,8 @@
 {
-    "version":"0.3.11",
-    "url":"https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.11",
+    "version":"0.3.12",
+    "url":"https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.12",
     "brief":{
-        "en":"1. Supporting extracting node revenue, 2. Supporting miners to pledge, 3. Supporting proposals and voting",
-        "zh":"1 支持提取节点收益，2支持矿工转质押，3支持提案和投票"
+        "en":"New feature point：Cancel pledge",
+        "zh":"新增功能点：取消质押"
     }
 }
