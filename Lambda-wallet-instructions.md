@@ -11,7 +11,7 @@ Download ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.12](https
 ![avatar](img/wallethome@2x.png)
 
 
-* [Switch Language](#Switch Language)
+* [Switch Language](#Switch&#32;Language)
 * [Create Account](#Create Account)
 * [Use Mnemonic Import Account Into Lambda Program](#Use Mnemonic Import Account Into Lambda Program)
 * [Signatures & Add address To Pledge System](#Signatures & Add address To Pledge System)
@@ -272,10 +272,10 @@ Click the deposit button to open the deposit dialog box
 When the deposit meets the requirement, the proposal will enter the VotingPeriod and click the voting button to open the voting dialog box.
 
 ![avatar](img/t4@2x.png)
-Voting may choose to Yes, No, No with Veto or Abstain.
-If the first vote is incorrect, it doesn't matter that the second vote will cover the result of the first.
-The weight of voting is equal to the amount of pledge, which is valid in both node pledge and partner pledge.
-If there is no pledge, the voting is invalid.
+Voting may choose to Yes, No, No with Veto or Abstain.  
+If the first vote is incorrect, it doesn't matter that the second vote will cover the result of the first.  
+The weight of voting is equal to the amount of pledge, which is valid in both node pledge and partner pledge.  
+If there is no pledge, the voting is invalid.  
 
 
 
