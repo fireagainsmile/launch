@@ -12,7 +12,7 @@ Download ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.12](https
 
 
 * [Switch Language](#Switch&#32;Language)
-* [Create Account](#Create Account)
+* [Create Account](#Create%20Account)
 * [Use Mnemonic Import Account Into Lambda Program](#Use Mnemonic Import Account Into Lambda Program)
 * [Signatures & Add address To Pledge System](#Signatures & Add address To Pledge System)
 * [Import Account](#Import Account)
