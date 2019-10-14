@@ -43,7 +43,7 @@ drwxr-xr-x  11 xxxxxx  staff  352 Sep 15 08:57 application.db
 ##### 重新加入共识网络
 发起unjail消息来重新加入共识网络 被jail之后的节点需要等待10分钟的惩罚来发起unjail命令  
 ```
-./lambdacli tx slashing unjail --from [your-account-name]
+./lambdacli tx slashing unjail --from [your-account-name] --broadcast-mode block
 ```
 
 ##### 自抵押不足
