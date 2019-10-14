@@ -7,7 +7,7 @@ Delegate tokens to a partner-validator
 ## Usage
 
 ```
-lambdacli tx staking delegate <partner-validator-address> 1000000utbb --from peter [flags]
+lambdacli tx staking delegate-partner <partner-validator-address> 1000000utbb --from peter [flags]
 ```
 
 Print help messages:
