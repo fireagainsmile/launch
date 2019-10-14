@@ -17,4 +17,5 @@
 - [Lambda cli 使用教程](./docs/lambdacli/README.md)
 - [资产管理引导手册](./资产管理引导手册.md)
 - [社区治理教程](./governance.md)
+- [质押相关操作手册](./质押相关操作手册.md)
 - [主网接入常见问题](FAQ.md)
