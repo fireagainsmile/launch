@@ -2,7 +2,7 @@
     "version":"0.3.13",
     "url":"https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.13",
     "brief":{
-        "en":"New feature point：Cancel pledge",
-        "zh":"新增功能点：取消质押"
+        "en":"Failure of pledge and transaction TBB with lamb balance of 0 handling fee of 0",
+        "zh":"lamb余额为0 手续费为0 质押失败和交易tbb失败的问题"
     }
 }
