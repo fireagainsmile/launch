@@ -1,10 +1,10 @@
 # Lambda Wallet Wallet Instructions
-Version 0.3.12
+Version 0.3.13
 
 A wallet supports the creation and management of multiple accounts in Chinese and English.
 
 
-Download ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.12](https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.12)
+Download ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.13](https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.13)
 
 
 
