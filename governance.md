@@ -34,6 +34,12 @@ Lambda Chain 是去中心化的网络，因此对网络的治理由社区成员�
 - 投票数少于全网 40% 质押量
 - 大于 33.4% 的 no_with_veto 票
 
+### 注意！！！
+可能会造成众筹的押金被没收的情况：
+- 存入押金（deposit）阶段结束的时候（14天），提案仍然没有存够 10000 Lamb
+- 投票阶段结束的时候，投票数少于全网 40% 质押量
+- 投票阶段结束的时候，大于 33.4% 的 no_with_veto 票
+
 ## 命令行操作演示
 - [提交提案](./docs/lambdacli/tx/gov/submit-proposal.md)
 - [存入押金](./docs/lambdacli/tx/gov/deposit.md)
