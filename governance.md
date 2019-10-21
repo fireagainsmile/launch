@@ -6,7 +6,7 @@ Lambda Chain 是去中心化的网络，因此对网络的治理由社区成员�
 ## 社区治理流程
 ### 提案（proposal）
 社区治理的方案载体，任何人对于 Lambda Chain 的治理建议，都可以通过提交提案来进行公示和民意表决。目前支持的提案类型有以下几种：
-文字类型提案（text）、社区账号转账提案（community-pool-spend）、 修改系统参数提案（param-change）、烧币提案（burn-coins）、系统升级提案（software-upgrade）。
+文字类型提案（text）、社区账号转账提案（community-pool-spend）、 修改系统参数提案（param-change）、销毁币提案（burn-coins）、系统升级提案（software-upgrade）。
 - 文字类型提案（text）：以文字描述来表达自己的治理建议，不会对系统产生直观的修改。
 - 社区账号转账提案（community-pool-spend）：社区账号余额的主要来源为块奖励的社区税收部分，可以发起对社区账号余额进行转账的操作，来奖励一些对于社区发展有重大贡献的个人。
 - 修改系统参数提案（param-change）：对一些系统的全局参数进行修改，例如代币增发的速率、反质押的周期等。
