@@ -48,10 +48,14 @@ tar zxvf lambda-debugtool.tar.gz
 ./lambdadg show --pubkey `./lambda tendermint show-validator`
 
 ```
-2. 查询最新出块api投票
+2. 查询最新出块高度
+```
+curl http://localhost:26657/status
+```
+3. 查询最新出块api投票
 在当前接口的返回json，precommits内是否包含节点的原始签名私钥
 ```
-curl http://localhost:26657/block?height
+curl http://localhost:26657/block?height=区块高度
 ```
 
 ### 节点成为无效节点(被jail)
