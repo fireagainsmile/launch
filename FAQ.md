@@ -37,6 +37,22 @@ drwxr-xr-x  11 xxxxxx  staff  352 Sep 15 08:57 application.db
 ./lambdacli status | grep --color latest_block_height
 ```
 
+### 查询节是否正常参与投票
+下载lambda-debugtool
+```
+wget https://github.com/LambdaIM/lambda-debugtool/releases/download/v0.0.1/lambda-debugtool.tar.gz
+tar zxvf lambda-debugtool.tar.gz
+```
+1. 查询原始签名公钥
+```
+./lambdadg show --pubkey `./lambda tendermint show-validator`
+
+```
+2. 查询最新的出块接品中是否参与出块
+```
+curl http://localhost:26657/block?height | grep EE69BD22F13CF9F9CE0C08B06D734926DE5EBE1F
+```
+
 ### 节点成为无效节点(被jail)
 当节点对块进行双签，在最近的10000个块中对少于500个块签名会被jail，并扣除少量tbb.
 
