@@ -295,9 +295,17 @@ TBB可用于质押
 
 例如创建设备的命令
 
-<code>
-echo 12345678| ./lambdacli tx market create-machine --dht-id HL4oGXqDQDMHyKpRWwxF9UmcnVvhxueDnghWu7zuMKMH --name machine1 --peer-id 3830e6d38b9e03ae6653 --pub-key 1624de64201c233b87da4a2d27210ecb923e45ad0b8343352b0ab22ee9d5abbe9bdededd9b --from test1 --broadcast-mode block -y
-<code>
+
+ ./lambdacli tx market create-machine 
+ 
+ --dht-id HL4oGXqDQDMHyKpRWwxF9UmcnVvhxueDnghWu7zuMKMH 
+ 
+ --name machine1 --peer-id 3830e6d38b9e03ae6653 
+ 
+ --pub-key 1624de64201c233b87da4a2d27210ecb923e45ad0b8343352b0ab22ee9d5abbe9bdededd9b --from test1 
+ 
+ --broadcast-mode block -y
+
 
 在弹出的对话框中选择设备，填写要卖的空间大小（一个设备如果已经挂一个卖单，就不能挂第二个买单了）
 
