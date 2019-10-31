@@ -348,7 +348,10 @@ TBB可用于质押
 
 ![avatar](img/WXmk14@2x.png)
 
-在登录页面输入订单详情页面的 accesskey  和 secretkey 
+在登录页面输入：
+
+钱包中提示的的lambda storage 控制台登录信息:密钥：lambda， 私钥：12345678
+
 完成登录
 
 ![avatar](img/WXs32@2x.png)

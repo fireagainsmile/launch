@@ -369,7 +369,9 @@ Click to open the console button, pop-up window authorization dialog, you can co
 
 ![avatar](img/WXmk14@2x.png)
 
-Enter the accesskey and secretkey on the order details page on the login page.
+On the login page, enter:
+
+Lambda Storage Console login information prompted in wallet: access-key: lambda, secret-key: 12345678
 Complete login
 
 ![avatar](img/WXs32@2x.png)
