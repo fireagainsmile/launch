@@ -29,6 +29,7 @@
 * [提案与存入押金和投票](#提案与存入押金和投票)
 * [市场与买卖空间](#市场与买卖空间)
 * [打开lambdaS3控制台](#打开lambdaS3控制台)
+* [主网和测试网的切换](#主网和测试网的切换)
 
 ## 切换语言
 
@@ -296,13 +297,15 @@ TBB可用于质押
 例如创建设备的命令
 
 
- ./lambdacli tx market create-machine 
+ ./lambdacli tx market create-machine \
  
- --dht-id HL4oGXqDQDMHyKpRWwxF9UmcnVvhxueDnghWu7zuMKMH 
+ --dht-id HL4oGXqDQDMHyKpRWwxF9UmcnVvhxueDnghWu7zuMKMH  \ 
  
- --name machine1 --peer-id 3830e6d38b9e03ae6653 
+ --name machine1 --peer-id 3830e6d38b9e03ae6653 \
  
- --pub-key 1624de64201c233b87da4a2d27210ecb923e45ad0b8343352b0ab22ee9d5abbe9bdededd9b --from test1 
+ --pub-key 1624de64201c233b87da4a2d27210ecb923e45ad0b8343352b0ab22ee9d5abbe9bdededd9b  \
+ 
+ --from test1  \ 
  
  --broadcast-mode block -y
 
@@ -353,6 +356,20 @@ TBB可用于质押
 就可以上传文件了，江文件拖拽到文件列表区域即可上传文件
 
 ![avatar](img/WXs31@2x.png)
+
+## 主网和测试网的切换
+
+
+登录钱包后 点击页脚左侧的网络类型，进入节点选择页面
+
+![avatar](img/WXqh@2x.png)
+
+点击默认主网ip 再点击提交 切换到主网
+
+点击默认测试网ip 再点击提交  切换到测试网
+
+
+
 
 
 

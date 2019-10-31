@@ -31,6 +31,7 @@ Download ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.13](https
 * [Proposal Deposit&Vote](#Proposal-Deposit-And-Vote)
 * [Market and trading space](#Market-and-trading-space)
 * [Open the lambdaS3 console](#Open-the-lambdaS3-console)
+* [Switch between main network and test network](#Switch-between-main-network-and-test-network)
  
 ## Switch-Language
 
@@ -316,11 +317,18 @@ After creating a storage device in the mining program, you can place a sell orde
 For example, the command to create a device
 
 
-./lambdacli tx market create-machine 
---dht-id HL4oGXqDQDMHyKpRWwxF9UmcnVvhxueDnghWu7zuMKMH 
---name machine1 --peer-id 3830e6d38b9e03ae6653 
---pub-key 1624de64201c233b87da4a2d27210ecb923e45ad0b8343352b0ab22ee9d5abbe9bdededd9b 
---from test1 
+./lambdacli tx market create-machine  \
+
+--dht-id HL4oGXqDQDMHyKpRWwxF9UmcnVvhxueDnghWu7zuMKMH \
+  
+--name machine1  \
+
+--peer-id 3830e6d38b9e03ae6653 \ 
+ 
+--pub-key 1624de64201c233b87da4a2d27210ecb923e45ad0b8343352b0ab22ee9d5abbe9bdededd9b \
+
+--from test1 \
+ 
 --broadcast-mode block -y
 
 In the pop-up dialog box, select the device and fill in the size of the space to be sold. If a device has already placed a sell order, you cannot place a second buy order.
@@ -369,6 +377,16 @@ Complete login
 You can upload the file, and drag the file to the file list area to upload the file.
 
 ![avatar](img/WXs31@2x.png)
+
+## Switch-between-main-network-and-test-network
+
+After logging in the wallet, click the network type on the left side of the footer to enter the node selection page
+
+![avatar](img/WXqh@2x.png)
+
+Click the default main network IP and then click submit to switch to the main network.
+
+Click the default test network IP and then click submit to switch to the test network
 
 
 
