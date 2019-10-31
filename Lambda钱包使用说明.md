@@ -1,10 +1,10 @@
 # Lambda钱包使用说明
-版本 0.3.13 
+版本 0.4.15 
 
 一个钱包支持创建和管理多个账户，支持语言有中文和英文。
 
 
-下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.13](https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.13)
+下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.15](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.15)
 
 
 
@@ -28,6 +28,7 @@
 * [查看资产和交易资产](#查看资产和交易资产)
 * [提案与存入押金和投票](#提案与存入押金和投票)
 * [市场与买卖空间](#市场与买卖空间)
+* [打开lambdaS3控制台](#打开lambdaS3控制台)
 
 ## 切换语言
 
@@ -283,7 +284,7 @@ TBB可用于质押
 
 购买矿工的优质买单需要先选择一个矿工，查看订单的最低购买空间大小、最短时长、最长时长是否满足自己的需求， 如果满足，在填写空间大小和时长购买即可购买
 
-【暂时缺少配图】
+![avatar](img/WXmk15@2x.png)
 
 
 #### 出售空间
@@ -324,16 +325,17 @@ echo 12345678| ./lambdacli tx market create-machine --dht-id HL4oGXqDQDMHyKpRWwx
  
 ![avatar](img/WXmk4@2x.png)
 
-买单的详情页面
-买单详情页有打开lambda storage 相关按钮
 
-![avatar](img/WXmk10@2x.png)
+## 打开lambdaS3控制台
+购买订单后，可以通过lambdaS3控制台来进行文件的上传下载，使用存储空间
+
+![avatar](img/WXmk12@2x.png)
 
 如果需要使用这个订单的空间，可以在lambda storage中上传文件到空间和删除空间中的文件
 
-点击在lambda storage 中查看订单，弹窗授权对话框，即可完成对这个订单的授权
+点击打开控制台按钮， 弹窗授权对话框，即可完成对这个订单的授权
 
-![avatar](img/WXmk11@2x.png)
+![avatar](img/WXmk14@2x.png)
 
 在登录页面输入订单详情页面的 accesskey  和 secretkey 
 完成登录
