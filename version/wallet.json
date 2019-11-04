@@ -1,8 +1,8 @@
 {
-    "version":"0.3.13",
-    "url":"https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.13",
+    "version":"0.4.15",
+    "url":"支持市场模块，挂买卖单，支持切换主网和测试网，优化提案列表页面（这个版本主要用于测试网存储挖矿）",
     "brief":{
         "en":"Failure of pledge and transaction TBB with lamb balance of 0 handling fee of 0",
-        "zh":"lamb余额为0 手续费为0 质押失败和交易tbb失败的问题"
+        "zh":"支持市场模块，挂买卖单，支持切换主网和测试网，优化提案列表页面（这个版本主要用于测试网存储挖矿）"
     }
 }

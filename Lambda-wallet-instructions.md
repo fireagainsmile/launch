@@ -312,9 +312,9 @@ To buy a miner's premium purchase order, you need to select a miner to check whe
 The account is a miner's account and a list of sell orders for this account in the market will be listed here.
  
 ![avatar](img/WXmk3@2x.png)
-After creating a storage device in the mining program, you can place a sell order for the device in your wallet.
+After creating a Storage node in the mining program, you can place a sell order for the Storage node in your wallet.
 
-For example, the command to create a device
+For example, the command to create a Storage node
 
 
 ./lambdacli tx market create-machine  \
@@ -331,7 +331,7 @@ For example, the command to create a device
  
 --broadcast-mode block -y
 
-In the pop-up dialog box, select the device and fill in the size of the space to be sold. If a device has already placed a sell order, you cannot place a second buy order.
+In the pop-up dialog box, select the Storage node and fill in the size of the space to be sold. （Only one sales order can be attached to a storage node. It is recommended to sell all the space at one time）.
 
 Odds, unit price There are also restrictions on the user's purchase conditions, the minimum purchase space, the shortest time, the longest time
 
