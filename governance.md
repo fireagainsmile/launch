@@ -49,15 +49,15 @@ Lambda Chain 是去中心化的网络，因此对网络的治理由社区成员�
 ## 钱包众筹与投票操作演示
 
 点击顶部的导航菜单中的提案，即可进入提案列表页面
-![proposal_list](./proposal_list.png)
+![proposal_list](./business_img/proposal_list.png)
 
 点击提案的的文字描述部分进入提案详情页面
-![proposal_detail](./proposal_detail.png)
+![proposal_detail](./business_img/proposal_detail.png)
  
 在提案的状态为【存入押金】状态时候，可以给提案存入押金 点击存入押金按钮打开存入押金对话框
-![deposit](./deposit.png)
+![deposit](./business_img/deposit.png)
   
 当押金满足要求后，提案会进入投票状态，点击投票按钮打开投票对话框
-![vote](./vote.png)
+![vote](./business_img/vote.png)
 投票可以选择 同意 、反对、强烈反对、弃权.如果第一次投票投错了，没关系第二次投票会覆盖第一次投票的结果.  
 投票的权重等于质押量，在节点质押和在合伙人质押都是有效质押。如果没有质押过，投票无效。
