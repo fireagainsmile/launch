@@ -1,10 +1,10 @@
 # Lambda Wallet Wallet Instructions
-Version 0.3.13
+Version 0.4.15
 
 A wallet supports the creation and management of multiple accounts in Chinese and English.
 
 
-Download ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.13](https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.13)
+Download ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.15](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.15)
 
 
 
@@ -29,6 +29,9 @@ Download ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.13](https
 * [Withdraw-Validator-Profit](#Withdraw-Validator-Profit)
 * [Assets View&Trading](#Assets-View-And-Trading)
 * [Proposal Deposit&Vote](#Proposal-Deposit-And-Vote)
+* [Market and trading space](#Market-and-trading-space)
+* [Open the lambdaS3 console](#Open-the-lambdaS3-console)
+* [Switch between main network and test network](#Switch-between-main-network-and-test-network)
  
 ## Switch-Language
 
@@ -276,6 +279,119 @@ Voting may choose to Yes, No, No with Veto or Abstain.
 If the first vote is incorrect, it doesn't matter that the second vote will cover the result of the first.  
 The weight of voting is equal to the amount of pledge, which is valid in both node pledge and partner pledge.  
 If there is no pledge, the voting is invalid.  
+## Market-and-trading-space
+
+
+Click the market link in the navigation bar to enter the market page.
+
+
+#### My order list The order list contains buy and sell orders
+
+![avatar](img/WXmk1@2x.png)
+
+Purchase space
+
+There are two ways to buy space. One is to automatically match the purchase, and the other is to choose a miner to buy the premium.
+
+The automatic match purchase is for a sell order with an odds price of 5 lamb.
+
+The selected high-quality sell order is a sell order with an odds of more than 3 and a unit price greater than 5lamb.
+
+![avatar](img/WXmk2@2x.png)
+
+Automatically match the purchase space only needs to fill in the size and duration of the space, such as buying 2gb 3 months space
+
+![avatar](img/WXmk7@2x.png)
+
+To buy a miner's premium purchase order, you need to select a miner to check whether the minimum purchase space, the shortest time, and the longest time of the order meet your needs. If you meet the requirements, you can purchase it by filling in the space and duration.
+
+![avatar](img/WXmk15@2x.png)
+
+
+#### Space for sale
+The account is a miner's account and a list of sell orders for this account in the market will be listed here.
+ 
+![avatar](img/WXmk3@2x.png)
+After creating a storage device in the mining program, you can place a sell order for the device in your wallet.
+
+For example, the command to create a device
+
+
+./lambdacli tx market create-machine  \
+
+--dht-id HL4oGXqDQDMHyKpRWwxF9UmcnVvhxueDnghWu7zuMKMH \
+  
+--name machine1  \
+
+--peer-id 3830e6d38b9e03ae6653 \ 
+ 
+--pub-key 1624de64201c233b87da4a2d27210ecb923e45ad0b8343352b0ab22ee9d5abbe9bdededd9b \
+
+--from test1 \
+ 
+--broadcast-mode block -y
+
+In the pop-up dialog box, select the device and fill in the size of the space to be sold. If a device has already placed a sell order, you cannot place a second buy order.
+
+Odds, unit price There are also restrictions on the user's purchase conditions, the minimum purchase space, the shortest time, the longest time
+
+About odds
+Odds = 1 can not specify the price, can only be 5LAMB/G/month
+
+Odds >=3 requires a specified price, price >=5LAMB/G/month
+
+Odds = 1 for regular sell orders, odds >= 3 for premium sell orders
+
+Only high-quality sell orders will appear in the market list for users to choose, ordinary buy orders can only be automatically matched
+
+
+![avatar](img/WXmk8@2x.png)
+
+
+
+
+Click on the order list page to view the details page of the order.
+ 
+  Selling order details page
+ 
+![avatar](img/WXmk4@2x.png)
+
+## Open-the-lambdaS3-console
+
+
+
+After purchasing the order, you can use the lambdaS3 console to upload and download files and use the storage space.
+
+![avatar](img/WXmk12@2x.png)
+If you need to use the space of this order, you can upload files to space and delete files in the lambda storage.
+
+Click to open the console button, pop-up window authorization dialog, you can complete the authorization of this order
+
+![avatar](img/WXmk14@2x.png)
+
+On the login page, enter:
+
+Lambda Storage Console login information prompted in wallet: access-key: lambda, secret-key: 12345678
+Complete login
+
+![avatar](img/WXs32@2x.png)
+
+You can upload the file, and drag the file to the file list area to upload the file.
+
+![avatar](img/WXs31@2x.png)
+
+## Switch-between-main-network-and-test-network
+
+After logging in the wallet, click the network type on the left side of the footer to enter the node selection page
+
+![avatar](img/WXqh@2x.png)
+
+Click the default main network IP and then click submit to switch to the main network.
+
+Click the default test network IP and then click submit to switch to the test network
+
+
+
 
 
 

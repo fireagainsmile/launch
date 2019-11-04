@@ -1,10 +1,10 @@
 # Lambda钱包使用说明
-版本 0.3.13 
+版本 0.4.15 
 
 一个钱包支持创建和管理多个账户，支持语言有中文和英文。
 
 
-下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.13](https://github.com/LambdaIM/launch/releases/tag/Wallet0.3.13)
+下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.15](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.15)
 
 
 
@@ -27,6 +27,9 @@
 * [提取节点收益](#提取节点收益)
 * [查看资产和交易资产](#查看资产和交易资产)
 * [提案与存入押金和投票](#提案与存入押金和投票)
+* [市场与买卖空间](#市场与买卖空间)
+* [打开lambdaS3控制台](#打开lambdaS3控制台)
+* [主网和测试网的切换](#主网和测试网的切换)
 
 ## 切换语言
 
@@ -256,5 +259,129 @@ TBB可用于质押
 投票的权重等于质押量，在节点质押和在合伙人质押都是有效质押
 
 如果没有质押过，投票无效
+
+## 市场与买卖空间
+
+点击导航栏的市场链接进入市场页面
+
+
+#### 我的订单列表 订单列表包含买单和卖单
+
+![avatar](img/WXmk1@2x.png)
+
+购买空间 
+
+购买空间有两种方式：一种是自动匹配购买，一种是选择某一个矿工优质卖单购买。
+
+自动匹配购买的是赔率为1单价为5lamb的卖单。
+
+优质卖单是赔率大于3单价大于5lamb的卖单，可指定购买。
+
+![avatar](img/WXmk2@2x.png)
+
+自动匹配购买空间只需要填写空间的大小和时长，例如购买3个月 2GB的空间
+
+![avatar](img/WXmk7@2x.png)
+
+购买矿工的优质买单需要先选择一个矿工，查看订单的最低购买空间大小、最短购买时长、最长时长是否满足自己的需求， 如果满足，填写空间大小和时长即可购买
+
+![avatar](img/WXmk15@2x.png)
+
+
+#### 出售空间
+ 如当前账户是矿工账户，这里会列出这个账户在市场中挂的卖单列表
+ 
+![avatar](img/WXmk3@2x.png)
+在挖矿程序中创建存储设备后，可以在钱包中挂设备的卖单
+
+例如创建设备的命令
+
+
+ ./lambdacli tx market create-machine \
+ 
+ --dht-id HL4oGXqDQDMHyKpRWwxF9UmcnVvhxueDnghWu7zuMKMH  \ 
+ 
+ --name machine1 --peer-id 3830e6d38b9e03ae6653 \
+ 
+ --pub-key 1624de64201c233b87da4a2d27210ecb923e45ad0b8343352b0ab22ee9d5abbe9bdededd9b  \
+ 
+ --from test1  \ 
+ 
+ --broadcast-mode block -y
+
+
+在弹出的对话框中选择设备，填写要卖的空间大小（一个设备如果已经挂一个卖单，就不能挂第二个卖单了）
+
+、赔率、单价 还有限制用户购买的条件，最小购买的空间大小、最短时长、最长时长 即可
+
+关于赔率
+赔率=1不能指定价格，只能是5LAMB/G/month
+
+赔率>=3需要指定价格,价格>=5LAMB/G/month
+
+赔率=1为普通卖单,赔率>=3为优质卖单
+
+只有优质卖单会出现在市场的列表里面，供用户选择，普通卖单只能进行自动匹配
+
+
+![avatar](img/WXmk8@2x.png)
+
+
+
+
+
+ 在订单列表页面点击 查看详情进入订单的详情页面
+ 
+ 卖单的详情页面
+ 
+![avatar](img/WXmk4@2x.png)
+
+
+## 打开lambdaS3控制台
+购买订单后，可以通过lambdaS3控制台来进行文件的上传下载，使用存储空间
+
+![avatar](img/WXmk12@2x.png)
+
+如果需要使用这个订单的空间，可以在lambda storage中上传文件到空间和删除空间中的文件
+
+点击打开控制台按钮， 弹窗授权对话框，即可完成对这个订单的授权
+
+![avatar](img/WXmk14@2x.png)
+
+在登录页面输入：
+
+钱包中提示的的lambda storage 控制台登录信息:密钥：lambda， 私钥：12345678
+
+完成登录
+
+![avatar](img/WXs32@2x.png)
+
+就可以上传文件了，将文件拖拽到文件列表区域即可上传文件
+
+![avatar](img/WXs31@2x.png)
+
+## 主网和测试网的切换
+
+
+登录钱包后 点击页脚左侧的网络类型，进入节点选择页面
+
+![avatar](img/WXqh@2x.png)
+
+点击默认主网ip 再点击提交 可切换到主网
+
+点击默认测试网ip 再点击提交  可切换到测试网
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
