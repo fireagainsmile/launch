@@ -1,4 +1,4 @@
-# Launch
+# Lambda 主网教程
 
 ## [使用必知](must-known-cn.md)
 
