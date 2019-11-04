@@ -1,8 +1,8 @@
 # Join the mainnet
 
-## Download Latest Release Pack
-
-Currently the latest release version is v0.3.0. You could click [here](https://github.com/LambdaIM/launch/releases/download/v0.3.0/lambda-0.3.0-release.tar.gz) to download
+::: tips
+**You need to [install lambda](./installation.md) before you move forward**
+:::
 
 ## Setting Up a New Node
 
@@ -100,7 +100,7 @@ To create the validator, just use the following command:
 
 ```bash
 ./lambda tx staking create-validator \
-  --amount=1999999998000ulamb|666666666utbb \
+  --amount=1999999999998ulamb|666666666utbb \
   --pubkey=$(./lambda tendermint show-validator) \
   --moniker="choose a moniker" \
   --gas-prices="0.25ulamb" \

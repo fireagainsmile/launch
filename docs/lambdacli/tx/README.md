@@ -29,3 +29,4 @@ lambdacli tx --help
 | [slashing](./slashing/unjail.md)                   | Slashing transactions subcommands                                           |
 | [asset](asset/README.md)                             |  Asset transactions subcommands                                            |
 | [gov](./gov/README.md)                        |  Gov transactions subcommands
+| [market](market/README.md)                             |  market transactions subcommands                                            |

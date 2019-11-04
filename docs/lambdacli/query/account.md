@@ -26,16 +26,14 @@ This command is used for querying balance information of certain address.
 ### Query your account, you can use `lambdacli keys list` find your account address
 
 ```
-./lambdacli keys list
  NAME:   TYPE:   ADDRESS:                                        PUBKEY:
  master  local   lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6k7cv9   lambdapub1addwnpepq0xqh3fs7lfw88gum0qx5h6ezh2n8pqk8xkw36lvkx7675dyztwdww453lm
  partner1        local   lambda1h7pnxzejqtzlfcad89hkn0ersjqmfsj89re3ks   lambdapub1addwnpepq2x8m074dguyvhrqw99u2dz4vrhe7k4q775gzyurtpeh78h3628xqquww0s
 
 ```
 
-After that, use the address query you will get the detail info for the account.
+After that, you will get the detail info for the account.
 ```
-./lambdacli query account lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6k7cv9
 Account:
   Address:       lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6k7cv9
   Pubkey:        lambdapub1addwnpepq0xqh3fs7lfw88gum0qx5h6ezh2n8pqk8xkw36lvkx7675dyztwdww453lm

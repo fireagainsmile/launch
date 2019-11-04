@@ -42,10 +42,10 @@ Prepare two nodes, we name the first one as Node A, the second one as Node B
 
 # Initialize the genesis.json file that will help you to bootstrap the network
 #Node A
-./lambda init [moniker] --chain-id=[personal-chain-id]
+./lambdacli init [moniker] --chain-id=[personal-chain-id]
 
 #Node B
-./lambda init [moniker]
+./lambdacli init [moniker]
 
 # Create a key to hold your validator account
 #Node A

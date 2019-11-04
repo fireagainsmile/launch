@@ -94,15 +94,15 @@ Generate a genesis tx carrying a self delegation
 
 Name, shorthand | Default | Description | Required
 :- | :- | :- | :-
---amount | 666666666utbb | Amount of coins to bond | 
+--amount | 666666666utbb | Amount of coins to bond |
 --commission-max-change-rate | 0.010000000000000000 | The maximum commission change rate percentage (per day) |
---commission-max-rate | 0.250000000000000000 | The maximum commission rate percentage | 
---commission-rate | 0.250000000000000000 | The initial commission rate percentage | 
+--commission-max-rate | 0.200000000000000000 | The maximum commission rate percentage | 
+--commission-rate | 0.100000000000000000 | The initial commission rate percentage | 
 --details | | The validator's (optional) details | 
 --home-client | $Home/.lambdacli | Directory to store initialization data for the testnet | 
 --identity | | The (optional) identity signature | 
 --ip | 192.168.1.20 | The node's public IP | 
---min-self-delegation | 666666666utbb | The minimum self delegation required on the validator | 
+--min-self-delegation | 666666666utbb | The minimum self delegation required on the validator |
 --name | | name of private key with which to sign the gentx | true
 --node-id | | The node's NodeID | 
 --output-document | | write the genesis transaction JSON document to the given file instead of the default location | 
