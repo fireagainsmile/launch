@@ -16,7 +16,7 @@
 - [Lambda 钱包使用教程](./Lambda钱包使用说明.md)
 - [Lambda cli 使用教程](./docs/lambdacli/README.md)
 - [测试网0.4.0Miner接入教程](测试网0.4.0Miner接入教程.md)
-- [测试网0.4.0 Storagenode接入教程](测试网0.4.0 Storagenode接入教程.md)
+- [测试网0.4.0Storagenode接入教程](./测试网0.4.0Storagenode接入教程.md)
 - [资产管理引导手册](./资产管理引导手册.md)
 - [社区治理教程](./governance.md)
 - [质押相关操作手册](./质押相关操作手册.md)
