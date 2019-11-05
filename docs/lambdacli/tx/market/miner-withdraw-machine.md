@@ -6,7 +6,7 @@ Send transaction to withdraw a machine reward by miner
 
 ## Usage
 
-``
+```
 lambdacli tx market miner-withdraw-machine [machine-name] [flags]
 
 ```
@@ -25,7 +25,7 @@ lambdacli tx market miner-withdraw-machine --help
 ## Examples
 
 ```
- lambdacli tx market miner-withdraw-machine machineOne --from miner
+ ./lambdacli tx market miner-withdraw-machine machineOne --from miner
 
 ```
 

@@ -6,7 +6,7 @@ Send transaction to withdraw a match order reward by miner
 
 ## Usage
 
-``
+```
 lambdacli tx market withdraw-miner [matchOrder-id] [flags]
 ```
 
@@ -24,7 +24,7 @@ lambdacli tx market withdraw-miner --help
 ## Examples
 
 ```
- lambdacli tx market withdraw-miner D27AB3075CB3B9A0D9D37D207E8B5127B065F973 --from miner
+ ./lambdacli tx market withdraw-miner D27AB3075CB3B9A0D9D37D207E8B5127B065F973 --from miner
 
 ```
 
