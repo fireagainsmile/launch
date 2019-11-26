@@ -6,4 +6,4 @@
 s3 客户端优化  
 获取打开s3的命令行  
 
-下载地址：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.17](https://github.com/LambdaIM/launch/releases/tag/v0.1.1)
+下载地址：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.17](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.17)
