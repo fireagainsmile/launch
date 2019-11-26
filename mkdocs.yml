@@ -2,7 +2,6 @@ site_name: Lambda文档
 repo_url: https://github.com/LambdaIM/launch
 repo_name: GitHub
 edit_uri: blob/master/
-docs_dir: .
 site_description: Lambda文档
 site_author: Lambda Team
 nav:
