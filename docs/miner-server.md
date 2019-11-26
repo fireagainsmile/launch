@@ -13,6 +13,19 @@ Assuming we have set `lambdacli` config properly(`trust-node`, `node`, `chain-id
 ./lambdacli miner-server --from [miner]
 ```
 
+Run miner-server daemonize (--daemonize ) and put the log in ./minerserver.log  (--log.file=[path])
+
+```bash
+./lambdacli miner-server --from [miner] --daemonize --log.file=./minerserver.log
+```
+
+Stop miner-server daemon
+
+```bash
+./lambdacli miner-server --stop
+```
+
+
 ## Flags
 
 Name, shorthand | Default | Description | Required
@@ -32,6 +45,10 @@ Name, shorthand | Default | Description | Required
 --gas | | gas limit to set per-transaction; set to "auto" to calculate required gas automatically (default 200000) (default "200000") |
 --gas-prices | |  Gas prices to determine the transaction fee (e.g. 1.0ulamb) |
 --query-interval | | The miner query task interval(second), minimum query interval is 5s (default 15) |
+--daemonize | | run miner server daemon  |
+--stop | | stop miner server daemon |
+--status | | get miner server daemon status |
+--log.file | | miner-server daemon log file path |
 
 ## REST APIs
 

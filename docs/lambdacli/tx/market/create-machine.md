@@ -21,7 +21,6 @@ lambdacli tx market create-machine --help
 | ----------------------------  | -----  | --------| -------- | ------------------------------------------------------------------- |
 | --name                        | string | true    | ""       | machine name | 
 | --dht-id                      | string | true    | ""       | machine dht id |
-| --peer-id                     | string | true    | ""       | machine peer id |
 | --pub-key                     | string | true    | ""       | machine pub key | 
 | --from                        | string | true    | ""       | Name or address of private key with which to sign |
 
@@ -29,8 +28,7 @@ lambdacli tx market create-machine --help
 
 ```
  lambdacli tx market create-machine --dht-id FqtQvNFpxtmUgZvGHMgUrNE5xXobEDvXBHC5Ko8cf1E7 \
- --name SLL04 --peer-id abcdefghijklmnopqrst \
- --pub-key 1624de642023c3fa106d3a76ebbf7cfd0c97bb6d9923f733ff97e7707be95d1371b84cc184\
+ --name SLL04 --pub-key 1624de642023c3fa106d3a76ebbf7cfd0c97bb6d9923f733ff97e7707be95d1371b84cc184\
   --from miner
 
 ```
