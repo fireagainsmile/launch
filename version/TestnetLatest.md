@@ -1,4 +1,4 @@
-# 测试网最新版本
+# 测试网lambda v0.4.0-storage v0.1.1
 
 lambda testnet v0.4.0 - storage v0.1.1
 
@@ -9,4 +9,4 @@ lambda testnet v0.4.0 - storage v0.1.1
 5. 命令行启动local gateway也会 token sync
 6. miner服务增加后台启动方式
 
-下载地址：https://github.com/LambdaIM/launch/releases/tag/v0.1.1
+下载地址：[https://github.com/LambdaIM/launch/releases/tag/v0.1.1](https://github.com/LambdaIM/launch/releases/tag/v0.1.1)

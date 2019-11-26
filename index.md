@@ -1,4 +1,3 @@
-# Lambda文档索引
 
 - [使用必知](must-known-cn.md)
 
