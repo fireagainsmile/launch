@@ -1,3 +1,9 @@
+# storage0.1.2升级
+
+* [清除历史数据](#清除历史数据)
+* [初始化storagenode](#初始化storagenode)
+* [重启storagenode](#重启storagenode)
+
 ### 清除历史数据
 
 ```
