@@ -36,7 +36,7 @@ directory填写数据存储目录，默认/root/.lamborage。
 启动storagenode server:  
 ./storagenode server --daemonize --log.file storage-server.log
 
-启动storagenode gateway
+启动storagenode gateway:
 ./storagenode gateway --daemonize  --debug --log.file storage-gateway.log
 
 ```
