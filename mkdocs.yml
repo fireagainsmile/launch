@@ -1,0 +1,38 @@
+site_name: Lambda文档
+repo_url: https://github.com/LambdaIM/launch
+repo_name: GitHub
+site_description: Lambda文档
+site_author: Lambda Team
+nav:
+    - 首页: index.md
+    - 使用必知: must-known-cn.md
+    - 主网接入:
+        - 节点接入: 主网接入教程(Validator).md
+        - 矿工接入: 主网接入流程(Miner).md
+        - 0.3.0节点升级: 主网Validator0.3.0升级教程.md
+        - 主网接入帮助: FAQ.md
+        - 主网稳定版本: version/MainnetStable.md
+        - 主网最新版本: Version/MainnetStable.md
+    - 测试网接入:
+        - 矿工接入: 测试网0.4.0Miner接入教程.md
+        - 存储节点接入: 测试网0.4.0 Storagenode接入教程.md
+        - 测试网最新版本: version/TestnetLatest.md
+    - 钱包:
+        - 使用文档: Lambda钱包使用说明.md
+        - 稳定版本: version/WalletStable.md
+        - 最新版本: version/WalletStable.md
+    - 使用文档:
+        - 质押操作手册: 质押相关操作手册.md
+        - 资产管理: 资产管理引导手册.md
+        - 社区治理: governance.md
+        - 命令行使用:
+            - lambdacli参数: docs/lambdacli/README.md
+            - status: docs/lambdacli/status/README.md
+            - query: docs/lambdacli/query/README.md
+            - tx: docs/lambdacli/tx/README.md
+            - keys: docs/lambdacli/keys/README.md
+            - version: docs/lambdacli/version/README.md
+    - 浏览器:
+        - 主网浏览器: http://explorer.lambda.im/#/
+        - 测试网浏览器: http://testbrowser.lambda.im/#/
+theme: readthedocs
