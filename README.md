@@ -13,6 +13,7 @@
 ## 中文
 - [Validator 主网接入教程](./主网接入教程(Validator).md)
 - [Miner 主网接入教程](./主网接入流程(Miner).md)
+- [主网同步节点教程](./主网同步节点教程.md)
 - [Lambda 钱包使用教程](./Lambda钱包使用说明.md)
 - [Lambda cli 使用教程](./docs/lambdacli/README.md)
 - [测试网0.4.0Miner接入教程](测试网0.4.0Miner接入教程.md)
