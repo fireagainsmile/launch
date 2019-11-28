@@ -48,7 +48,8 @@ rm ~/.lambda/config/config.toml ~/.lambda/config/genesis.json
 ### 5. 配置种子节点  
 `编辑~/.lambda/config/config.toml文件，将文件中的seeds字段的值替换如下`
 ```
-dd3360f3a4334432af394a835662a2b21bf406e2@seednodes.oneweb.one:26656
+72e1dd22f2c3effc4e6ff842035f109480a997ae@seednodes1.oneweb.one:26656
+
 ```
 
 如果上面节点连接有问题，可以使用下面的任一种子节点
@@ -58,6 +59,7 @@ dd3360f3a4334432af394a835662a2b21bf406e2@seednodes.oneweb.one:26656
 vim ~/.lambda/config/config.toml
 
 节点列表
+72e1dd22f2c3effc4e6ff842035f109480a997ae@seednodes1.oneweb.one:26656
 d3440b0b7a0ccf419f506a1242431813cf8a699c@39.104.97.255:26656
 98a0a749080b367d218f68b628b2db3d8d175af9@39.100.6.247:26656
 91fa14e2c8da164ff7969f2bbc0ba5c6e206da8a@101.201.65.116:26656 
@@ -68,7 +70,7 @@ d3440b0b7a0ccf419f506a1242431813cf8a699c@39.104.97.255:26656
 vim ~/.lambda/config/config.toml
 
 节点列表
-72e1dd22f2c3effc4e6ff842035f109480a997ae@seednodes1.oneweb.one:26656
+dd3360f3a4334432af394a835662a2b21bf406e2@seednodes.oneweb.one:26656
 ```
 
 **注意**
