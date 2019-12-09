@@ -127,8 +127,11 @@ Repeat the passphrase:
 跳转到 
 [http://faucet.lambda.im/](http://faucet.lambda.im/)
 ![avatar](img/WXceshicoin.png)
-输入 创建的lambda主网地址，例如 lambda163q4m634nq8les4nuvdvz49tk6aeh926t0**** <br/>
+输入 创建的lambda主网地址，例如 lambda163q4m634nq8les4nuvdvz49tk6aeh926t0**** 
+
 现在支持 领取测试网的LAMB和TBB,用以进行存储挖矿测试
+
+领取规则：一个ip每天可以领取
 
 
 
