@@ -21,13 +21,12 @@ lambdacli tx market edit-machine --help
 | ----------------- | -----  | -------- | -------- | ------------------------------------------------------------------- |
 | --name            | string | true     | ""       | machine name  | 
 | --dht-id          | string | false    | ""       | modify dht id value |
-| --peer-id         | string | false    | ""       | modify peer id value |
 | --from            | string | true     | ""       | Name or address of private key with which to sign |
 
 ## Examples
 
 ```
-lambdacli tx market edit-machine --name SLL04 --peer-id lambdakjinah1nczjeka --from miner
+lambdacli tx market edit-machine --name SLL04 --dht-id lambdakjinah1nczjeka --from miner
 
 ```
 
@@ -47,7 +46,7 @@ Response:
     Tags: 
       - action = editMachine
       - address = lambda1h29mncmlezu2jsrsyvsg7vmd9zq8nt75mmqffw
-      - peerId = lambdakjinah1nczjeka
+      - dhtId = lambdakjinah1nczjeka
       
     "timestamp": "2019-10-29T03:55:33Z"
 ```
