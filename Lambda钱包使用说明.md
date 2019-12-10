@@ -1,10 +1,10 @@
 # Lambda钱包使用说明
-版本 0.4.15 
+版本 0.4.18 
 
 一个钱包支持创建和管理多个账户，支持语言有中文和英文。
 
 
-下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.15](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.15)
+下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.18](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.18)
 
 
 
@@ -12,9 +12,9 @@
 
 * [创建账号](#创建账号)
 * [助记词导入到节点的程序包](#助记词导入到节点的程序包)
-* [签名和添加地址到质押系统](#签名和添加地址到质押系统)
 * [导入账号](#导入账号)
 * [钱包首页说明](#钱包首页说明)
+* [领取测试网测试币](#领取测试网测试币)
 * [转账](#转账)
 * [导出账号配置文件](#导出账号配置文件)
 * [更换钱包链接的Validator节点](#更换钱包链接的Validator节点)
@@ -93,15 +93,7 @@ Repeat the passphrase:
 **tips**
 注意，示例里面的助记词组合只是一个用例账户
 
-## 签名和添加地址到质押系统
-通过在钱包中签名，然后添加到质押系统中，可以确保这个地址是属于你的，而不是别人的。
 
-![avatar](img/sin@2x.png)
-输入内容例如输入签名2个字，然后复制签名数据到质押系统(https://validator.lambdastorage.com/#/)
-![avatar](img/sin2@2x.png)
-在质押系统地址列表页面点击 添加地址
-![avatar](img/sin3.png)
-即可添加地址到质押系统
 
 ## 导入账号
 
@@ -127,6 +119,26 @@ Repeat the passphrase:
 账号有了交易记录的效果图
 
 ![avatar](img/home@2x.png)
+
+## 领取测试网测试币
+
+登录钱包账户后，点击首页的活动链接
+![avatar](img/WXac@2x.png)
+跳转到 
+[http://faucet.lambda.im/](http://faucet.lambda.im/)
+![avatar](img/WXceshicoin1.png)
+输入 创建的lambda主网地址，例如 lambda163q4m634nq8les4nuvdvz49tk6aeh926t0**** 
+
+现在支持 领取测试网的LAMB和TBB,用以进行存储挖矿测试
+
+领取规则：  
+一个ip每天可以领取3000个LAMB,1个TBB；  
+一个lambda主网地址，可以分别领取一次LAMB和TBB
+
+
+
+
+
 
 
 ## 转账
