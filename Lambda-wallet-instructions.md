@@ -1,5 +1,5 @@
 # Lambda Wallet Wallet Instructions
-Version 0.4.118
+Version 0.4.18
 
 A wallet supports the creation and management of multiple accounts in Chinese and English.
 
