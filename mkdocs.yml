@@ -17,6 +17,7 @@ nav:
     - 测试网接入:
         - 矿工接入: 测试网0.4.0Miner接入教程.md
         - 存储节点接入: 测试网0.4.0Storagenode接入教程.md
+        - 存储节点0.1.2升级: storage0.1.2升级.md
         - 测试网最新版本: version/TestnetLatest.md
     - 钱包:
         - 使用手册: Lambda钱包使用说明.md
