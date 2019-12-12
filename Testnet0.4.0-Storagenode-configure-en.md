@@ -1,4 +1,4 @@
-# 配置 storagenode 
+# Storagenode Deployment
 * [Storagenode Initialization](#Storagenode-Initialization)
 * [Modify Configuration](#Modify-Configuration)
 * [Start Storagenode](#Start-Storagenode)
