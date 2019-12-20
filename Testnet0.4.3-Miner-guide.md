@@ -9,7 +9,7 @@
 * [3. 添加矿工账户](#3添加矿工账户)
 * [4. 创建miner](#4创建miner)
 * [5. 初始化storagenode](#5初始化storagenode)
-* [6. storagenode配置](#6storagenode配置)
+* [6. storagenode配置和启动](#6storagenode配置和启动)
 * [7. 矿工创建卖单](#6矿工创建卖单)
 * [8. 创建买单](#7创建买单)
 ---
@@ -188,7 +188,7 @@ root_seed = "yah"
 [path/to/subminer.json] 为第三步添加矿工及子账户中生成的json文件完整路径，如/home/test/test_miner_key.json
 [log_file_path] 指定矿工日志完整路径
 ```
-./minernode run --daemonize --key-file [path/to/subminer.json] --log.file [log_file_path]
+./minernode run --query-interval 5 --daemonize --key-file [path/to/subminer.json] --log.file [log_file_path]
 ```
 
 
@@ -218,7 +218,7 @@ root_seed = "yah"
 ```
 生成存储节点配置文件~/.lambda_storage/config/config.toml，参考如下第6步进行配置
 
-## 6storagenode配置
+## 6storagenode配置和启动
 [storagenode配置启动参考](./%E6%B5%8B%E8%AF%95%E7%BD%910.4.0Storagenode%E6%8E%A5%E5%85%A5%E6%95%99%E7%A8%8B.md)
 
 ## 7矿工创建卖单
