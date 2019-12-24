@@ -20,11 +20,7 @@
 * [4. 挖矿收益](#4挖矿收益)
 ---
 * [提取订单收益](#提取订单收益)
-* [测试网络连通](#测试网络联通)
-* [1. 测试dht连通](#1测试dht连通)
-* [2. 测试miner服务](#2测试miner服务)
-* [3. 测试storagenode服务](#3测试storagenode服务)
-* [4. 测试validatornode服务](#4测试validatornode服务)
+
 
 
 # 存储业务架构图
@@ -87,15 +83,6 @@ cd lambda-storage-0.2.0-testnet
 ```
 输入命令后按照提示输入密码和助记词即可
 
-### 查看矿工子账户地址
-```
-cat [your-account-name]_miner_key.json
-返回如下结果：
-{"privateKey":"730a6c61bd956017142f8d4deac747cf78ea7eddf69cd0de2ade5bec522ee4e5","publicKey":"02f91239071b0355abfee795809ee8dd8e2b314aa58fe310e58d6f78e7dbb28e8c","masterAddress":"lambda1npfque9u42nqkn443t8r6zmzan55kj4sfnh26c","address":"lambda1g0lhxnq65uy6mnuf5jauc5tym9sgr97gvcrjud"}
-
-其中masterAddress是矿工账户地址
-其中address是矿工子账户地址
-```
 
 ### 仅生成矿工子账户
 ```
@@ -132,7 +119,7 @@ private_address = "192.168.10.10:13001"
 debug_log_traffic = "false"
 
 [kad]
-# DHT接入节点地址，存储网络提供，以 47.94.129.97:12000 为例
+# DHT接入节点地址，存储网络提供，可填写多个，以 47.94.129.97:12000 为例
 bootstrap_addr = ["47.94.129.97:12000"]
 # time you would wait to connect dht seed node
 bootstrap_backoff_max = "30s"
@@ -147,6 +134,10 @@ alpha = 3
 bucket_size = 20
 replacement_cache_size = 5
 
+[api_key]
+#root access key，不能为空
+root_secret_seed = "yah"
+
 [log]
 level = "info"
 output_file = "stdout"
@@ -154,7 +145,7 @@ output_file = "stdout"
 [db]
 # db config
 lru_cache = "131072"
-keep_log_file_num = "1000"
+keep_log_file_num = "100"
 write_buffer_size = "134217728"
 recycle_log_file_num = "0"
 target_file_size_base = "268435456"
@@ -168,47 +159,60 @@ level_0_slowdown_writes_trigger = "17"
 level_0_file_num_compaction_trigger = "8"
 level_compaction_dynamic_level_bytes = "0"
 compaction_algorithm = "0"
-
-[api_key]
-# 颁发的apikey的配置，不能为空
-key_name = "key"
-location = "localhost"
-# 目前只用关心这个字段就行
-root_seed = "yah"
+rate_bytes_per_sec = "10240"
+data_backup_path = ""
+data_backup_interval = "300000000000"
 ```
+
+### 查看矿工子账户地址
+将第三步生成的[your-account-name]_miner_key.json文件重命名为`default_miner_key.json`并移动到`~/.lambda_miner/config/`:
+`mv [your-account-name]_miner_key.json ~/.lambda_miner/config/default_miner_key.json`
+
+查询矿工子账户地址：
+```
+./minernode show-address 
+返回如下结果：
+Master Address: lambda1fzeqzcemyye2qx2338clwss7nx3ukr7rx88snz //矿工账户地址
+Miner Address: lambda1wgdcvew36nqwm2d5gj6yxraayjvnhfpf5rrfww  //矿工子账户地址
+```
+
 
 ### 创建矿工
 [miner-name] 是您在第3步创建的账户名称, 矿工配置这里使用[miner-name]代称。  
-[miningAddr] 使用第3步查看的矿工子账户地址。
+[miningAddr] 为矿工子账户地址。
 [dht-id] 使用`./minernode info`查询
 ```
 ./lambdacli tx market create-miner --dht-id [dht-id] --mining-address [miningAddr] --from [miner-name] --broadcast-mode block -y
 ```
 ### 启动矿工服务
-[path/to/subminer.json] 为第三步添加矿工及子账户中生成的json文件完整路径，如/home/test/test_miner_key.json
+
+
 [log_file_path] 指定矿工日志完整路径
 ```
-./minernode run --query-interval 5 --daemonize --key-file [path/to/subminer.json] --log.file [log_file_path]
+./minernode run --query-interval 5 --daemonize --log.file [log_file_path]
+
+如[your-account-name]_miner_key.json没有移动到~/.lambda_miner/config/default_miner_key.json，则加上--key-file参数启动：
+./minernode run --query-interval 5 --daemonize --log.file [log_file_path] --key-file [filepath/your-account-name]_miner_key.json
+
 ```
 
 
 ### 查看矿工服务进程
 ```
-./minernode --status
+./minernode run --status
 ```
 ```
 返回结果如下即进程在运行中：
-2019/11/27 08:37:39 miner server is running as daemon, pid is 19678
+minernode.pid is running, pid is 19276
 ```
 
 ### 停止矿工服务
 ```
-./minernode --stop
+./minernode run --stop
 ```
 ```
 返回结果如下即停止矿工服务成功：
-2019/11/27 08:38:51 miner server stoped
-2019/11/27 08:38:51 miner server pid file /root/.lambdacli/daemon/miner_server.pid removed
+stop daemon process from minernode.pid:19276 successfully
 ```
 
 ## 5初始化storagenode
@@ -219,7 +223,7 @@ root_seed = "yah"
 生成存储节点配置文件~/.lambda_storage/config/config.toml，参考如下第6步进行配置
 
 ## 6storagenode配置和启动
-[storagenode配置启动参考](./%E6%B5%8B%E8%AF%95%E7%BD%910.4.0Storagenode%E6%8E%A5%E5%85%A5%E6%95%99%E7%A8%8B.md)
+[storagenode配置启动参考](./Testnet0.4.3-Storagenode-configure.md)
 
 ## 7矿工创建卖单
 
@@ -323,6 +327,7 @@ size为需要购买的空间，不小于对应卖单指定的最小购买空间�
 --from [your-account-name] --duration [buy-duration]month \
 --market-name LambdaMarket --size [size]GB --broadcast-mode block -y
 ```
+
 ### 查询匹配订单
 
 ```
@@ -375,7 +380,6 @@ MatchOrder
 dht_gateway_addr = "39.105.148.217:13000"  ## 可选dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000
 # validator_addr为验证节点IP和端口
 validator_addr = "39.105.148.217:13659"   ## 可选地址：39.105.148.217:13659/47.94.129.97:13659/47.93.196.236:13659
-extra_key_file = " "
 
 [gateway]
 # local listen address
@@ -399,9 +403,6 @@ account-name 为发起买单账户名称
 - orderId为匹配单orderID;
 - account-name为发起买单账户名称；
 
-- 用内网上传文件使用下面两个参数：
-- - provider_storage_address为配置文件~/.lamborage/config/node.toml里的gateway.address，下面示例中9000端口自行修改为配置里的端口
-- - provider_node_address为配置文件~/.lamborage/config/node.toml里的server.address，下面示例中13000端口自行修改为配置里的端口
 
 
 ### 上传文件
@@ -409,15 +410,13 @@ account-name 为发起买单账户名称
 ```
 LAMBDA_ORDER_ID=[orderId] ./storagecli cp [account-name] [srcPath] lamb://[bucket-name]/ 
 
-匹配订单ID为内网存储节点：
-LAMBDA_ORDER_ID=[orderId] ./storagecli cp [account-name] [srcPath] lamb:// --provider_node_address [存储节点内网IP]:13000 --provider_storage_address [存储节点内网IP]:9000
 ```
 
 
 ### 查看上传文件列表
 
 ```
-LAMBDA_ORDER_ID=[orderId] ./storagecli ls [account-name] lamb:// 
+LAMBDA_ORDER_ID=[orderId] ./storagecli ls lamb:// 
 ```
 
 ## 3矿工挖矿
@@ -439,33 +438,7 @@ LAMBDA_ORDER_ID=[orderId] ./storagecli ls [account-name] lamb://
 ```
 
 # 提取订单收益
-[按匹配订单提取卖单收益](./docs/lambdacli/tx/market/withdraw-miner.md)  
-[按存储节点提取卖单收益](./docs/lambdacli/tx/market/miner-withdraw-machine.md)
+[提取单个匹配订单收益](./docs/lambdacli/tx/market/withdraw-miner.md)  
+[批量提取匹配订单收益](./docs/lambdacli/tx/market/miner-withdraw-machine.md)
 
-## 测试网络连通
 
-当启动dht、miner、storage node、validator上传文件时有报错，请开启debug进行排查。
-### 1测试dht连通
-
-```
-./storagecli debug dht --address [dht.external_address]
-```
-### 2测试miner服务
-
-```
-./storagecli debug miner --address [miner server address]
-
-```
-### 3测试storagenode服务
-注意：
-使用storagecli debug order命令测试上传文件，则gateway需要kill掉 再用最新安装包启动时加上--debug参数：
-`nohup ./storagenode gateway --debug >> sgateway.log 2>&1 &`
-
-```
-./storagecli debug order --provider_node_address [dht.external_address] --provider_storage_address [gateway.external_address]
-```
-### 4测试validatornode服务
-
-```
-./storagecli debug validator --address [validator address]
-```
