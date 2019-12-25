@@ -51,13 +51,13 @@ cd lambda-storage-0.2.0-testnet
 ## 2配置lambdacli
 
 ```
-./lambdacli config node tcp://182.92.66.63:26657
+./lambdacli config node tcp://47.93.196.236:26657
 
 可选节点IP如下:
-182.92.66.63
 47.93.196.236
 47.94.129.97
 39.105.148.217
+182.92.66.63
 ```
 
 ```
@@ -106,6 +106,7 @@ cd lambda-storage-0.2.0-testnet
 lambdavaloper1prrcl9674j4aqrgrzmys5e28lkcxmntxuvjpcl
 lambdavaloper1thj5fv8d0dsh3aealhpxm9mvgxjfh87suwuj2h
 lambdavaloper1a83p8s9gs5hua09xn5ktmahepst3vzg9u2l20d
+lambdavaloper1r340rrv9fs95gqy5087e2mtz82vvwrglt6amx3
 ```
 
 ### 初始化矿工及配置
@@ -125,11 +126,12 @@ debug_log_traffic = "false"
 
 [kad]
 # DHT接入节点地址，存储网络提供，可填写多个，以 47.94.129.97:12000 为例
+# 可选dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000/182.92.66.63:13000
 bootstrap_addr = ["47.94.129.97:12000"]
 # time you would wait to connect dht seed node
 bootstrap_backoff_max = "30s"
 bootstrap_backoff_base = "1s"
-db_path = "/Users/gavin/.lambda_miner/kademlia"
+db_path = "/root/.lambda_miner/kademlia"
 # this should listen at Public IP
 ## 对外暴露的提供服务的地址
 external_address = "200.200.200.100:13000"
@@ -248,7 +250,7 @@ stop daemon process from minernode.pid:19276 successfully
 
 加上--normal参数（赔付比率rate为0.5）的是普通卖单，价格只能等于5000000ulamb；
 不加--normal参数（赔付比率等于1）的为优质卖单，优质卖单可指定大于等于5000000ulamb的任意价格。  
-设置指定storagenode的machine-name需要卖出的空间大小size；   
+设置需要卖出的空间大小size；   
 最小购买空间min-size不能小于1GB;  
 最小购买时长min-buy-duration不能小于1month;  
 最大购买时长max-buy-duration不能大于60month。
@@ -300,7 +302,7 @@ SellOrder
   OrderId:            54F82FBD979BE150C8B3246D82DDF60F043129EE  //卖单ID，取消卖单或创建优质买单时需要用到此ID
   Address:            lambdamineroper1k6rxrmly7hz0ewh7gth2dj48mv3xs9yznx96fn
   Price:              5000000
-  Rate:               3.000000000000000000  //rate大于等于3，则该卖单为优质卖单
+  Rate:               1.000000000000000000  //rate等于1，则该卖单为优质卖单
   Amount:
   SellSize:           400
   UnUseSize:          0
@@ -396,9 +398,11 @@ MatchOrder
 ```
 [broker]
 # dht_gateway_addr为验证节点的dht服务 IP和端口；
-dht_gateway_addr = "39.105.148.217:13000"  ## 可选dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000
+# 可选dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000/182.92.66.63:13000
+dht_gateway_addr = "39.105.148.217:13000" 
 # validator_addr为验证节点IP和端口
-validator_addr = "39.105.148.217:13659"   ## 可选地址：39.105.148.217:13659/47.94.129.97:13659/47.93.196.236:13659
+# 可选地址：39.105.148.217:13659/47.94.129.97:13659/47.93.196.236:13659
+validator_addr = "39.105.148.217:13659"   
 
 [gateway]
 # local listen address
@@ -421,11 +425,10 @@ account-name 为发起买单账户名称
 
 - orderId为匹配单orderID;
 - account-name为发起买单账户名称；
-
-
+- bucket-name 可设置为长度大于等于3的任意字符，一个订单下可以有多个bucket
 
 ### 上传文件
-[bucket-name] 可设置为长度大于等于3的任意字符
+
 ```
 创建bucket：
 LAMBDA_ORDER_ID=[orderId] ./storagecli mb [account-name] lamb://[bucket-name]/
