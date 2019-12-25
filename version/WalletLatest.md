@@ -8,4 +8,4 @@
 2. 新增提取存储挖矿奖励功能
 3. 矿工初始化功能更新
 
-下载地址：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.19](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.39)
+下载地址：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.39](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.39)
