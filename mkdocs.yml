@@ -17,6 +17,7 @@ nav:
     - 测试网接入:
         - 矿工接入: Testnet0.4.3-Miner-guide.md
         - 存储节点接入: Testnet0.4.3-Storagenode-configure.md
+        - 同步节点: Testnet0.4.3-Sync-Node.md
         - 测试网最新版本: version/TestnetLatest.md
     - 钱包:
         - 使用手册: Lambda钱包使用说明.md
