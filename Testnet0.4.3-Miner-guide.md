@@ -48,7 +48,7 @@ tar zxvf lambda-storage-0.2.0-testnet.tar.gz
 cd lambda-storage-0.2.0-testnet
 ```
 
-## 2配置miner
+## 2配置lambdacli
 
 ```
 ./lambdacli config node tcp://182.92.66.63:26657
@@ -68,7 +68,10 @@ cd lambda-storage-0.2.0-testnet
 ./lambdacli config trust-node true
 ```
 ## 3添加矿工账户
-将[your-account-name]替换成您自定义的账户名称，需要设置您的账户密码，不用加中括号
+将[your-account-name]替换成您自定义的矿工账户名称，需要设置您的账户密码，不用加中括号  
+矿工子账户用来提交挖矿声明和挖矿证明，每笔交易需要一定的手续费，需要保证矿工子账户余额大于1000LAMB
+
+提示：也可以使用钱包进行添加矿工账户、导入/导出矿工子账户、转账、质押等操作
 
 ### 添加矿工账户及矿工子账户
 ```
@@ -84,10 +87,12 @@ cd lambda-storage-0.2.0-testnet
 输入命令后按照提示输入密码和助记词即可
 
 
-### 仅生成矿工子账户
+### （本地已有矿工账户时）仅生成矿工子账户
 ```
 ./lambdacli keys create-miner [your-account-name] 
 ```
+输入命令后按照提示输入助记词即可
+
 
 ## 4创建miner
 质押到节点。
@@ -166,7 +171,9 @@ data_backup_interval = "300000000000"
 
 ### 查看矿工子账户地址
 将第三步生成的[your-account-name]_miner_key.json文件重命名为`default_miner_key.json`并移动到`~/.lambda_miner/config/`:
-`mv [your-account-name]_miner_key.json ~/.lambda_miner/config/default_miner_key.json`
+```
+mv [your-account-name]_miner_key.json ~/.lambda_miner/config/default_miner_key.json
+```
 
 查询矿工子账户地址：
 ```
@@ -176,17 +183,29 @@ Master Address: lambda1fzeqzcemyye2qx2338clwss7nx3ukr7rx88snz //矿工账户地�
 Miner Address: lambda1wgdcvew36nqwm2d5gj6yxraayjvnhfpf5rrfww  //矿工子账户地址
 ```
 
+### 给子账户转账
+[miningAddr] 为上面查询到的矿工子账户地址
+```
+./lambdacli tx send [miningAddr] 1000000000ulamb --from [your-account-name] --broadcast-mode block -y
+```
 
 ### 创建矿工
-[miner-name] 是您在第3步创建的账户名称, 矿工配置这里使用[miner-name]代称。  
+[miner-name] 是您在第3步创建的矿工账户名称。  
 [miningAddr] 为矿工子账户地址。
 [dht-id] 使用`./minernode info`查询
 ```
+./minernode info
+返回结果：
+                dht id: CdZsGtfsXVjMgt51EnaGAqr78YmgFxYsCAn4ubR1Dpgo //创建矿工时会用到此dht-id
+        server.address: 0.0.0.0:14000
+  kad.external_address: 182.92.242.59:14000
+    kad.bootstrap_addr: [182.92.242.59:13000]
+server.private_address: 127.0.0.1:14001
+
+创建矿工命令：
 ./lambdacli tx market create-miner --dht-id [dht-id] --mining-address [miningAddr] --from [miner-name] --broadcast-mode block -y
 ```
 ### 启动矿工服务
-
-
 [log_file_path] 指定矿工日志完整路径
 ```
 ./minernode run --query-interval 5 --daemonize --log.file [log_file_path]
@@ -408,6 +427,10 @@ account-name 为发起买单账户名称
 ### 上传文件
 [bucket-name] 可设置为长度大于等于3的任意字符
 ```
+创建bucket：
+LAMBDA_ORDER_ID=[orderId] ./storagecli mb [account-name] lamb://[bucket-name]/
+
+上传文件：
 LAMBDA_ORDER_ID=[orderId] ./storagecli cp [account-name] [srcPath] lamb://[bucket-name]/ 
 
 ```
@@ -416,7 +439,7 @@ LAMBDA_ORDER_ID=[orderId] ./storagecli cp [account-name] [srcPath] lamb://[bucke
 ### 查看上传文件列表
 
 ```
-LAMBDA_ORDER_ID=[orderId] ./storagecli ls lamb:// 
+LAMBDA_ORDER_ID=[orderId] ./storagecli ls lamb://[bucket-name]/ 
 ```
 
 ## 3矿工挖矿
