@@ -406,7 +406,7 @@ account-name 为发起买单账户名称
 
 
 ### 上传文件
-[bucket-name] 可设置为任意字符串
+[bucket-name] 可设置为长度大于等于3的任意字符
 ```
 LAMBDA_ORDER_ID=[orderId] ./storagecli cp [account-name] [srcPath] lamb://[bucket-name]/ 
 
