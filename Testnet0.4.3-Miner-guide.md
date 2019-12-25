@@ -125,9 +125,9 @@ private_address = "192.168.10.10:13001"
 debug_log_traffic = "false"
 
 [kad]
-# DHT接入节点地址，存储网络提供，可填写多个，以 47.94.129.97:12000 为例
+# DHT接入节点地址，存储网络提供，可填写多个，以 47.94.129.97:13000 为例
 # 可选dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000/182.92.66.63:13000
-bootstrap_addr = ["47.94.129.97:12000"]
+bootstrap_addr = ["47.94.129.97:13000"]
 # time you would wait to connect dht seed node
 bootstrap_backoff_max = "30s"
 bootstrap_backoff_base = "1s"

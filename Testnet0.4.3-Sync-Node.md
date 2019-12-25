@@ -66,7 +66,8 @@ output_file = "stdout"
 # 服务需要监听的地址
 # 以本机内网IP为 192.168.10.30，端口映射的外网IP为 200.200.200.300 为例
 [server]
-address = "0.0.0.0:13000"
+# 对外提供服务的地址，推荐配置为内网地址做端口映射到外网IP
+address = "192.168.10.30:13000"
 private_address = "127.0.0.1:13001"
 debug_log_traffic = "false"
 
