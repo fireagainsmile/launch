@@ -4,7 +4,7 @@
 一个钱包支持创建和管理多个账户，支持语言有中文和英文。
 
 
-下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.18](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.18)
+下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.39](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.39)
 
 
 
@@ -350,13 +350,14 @@ TBB可用于质押
 ## 打开lambdaS3控制台
 购买订单后，可以通过lambdaS3控制台来进行文件的上传下载，使用存储空间
 
-![avatar](img/WXmk12@2x.png)
+![avatar](img/markets2.png)
+这里可以修改登录s3 需要的用户名和密码
 
 如果需要使用这个订单的空间，可以在lambda storage中上传文件到空间和删除空间中的文件
 
-点击打开控制台按钮， 弹窗授权对话框，即可完成对这个订单的授权
+在订单 详情页面 ，点击查看订单空间， 弹窗授权对话框，即可完成对这个订单的授权
 
-![avatar](img/WXmk14@2x.png)
+![avatar](img/markets1.png)
 
 在登录页面输入：
 
