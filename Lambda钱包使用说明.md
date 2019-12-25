@@ -4,7 +4,7 @@
 一个钱包支持创建和管理多个账户，支持语言有中文和英文。
 
 
-下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.18](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.18)
+下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.39](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.39)
 
 
 
@@ -30,6 +30,8 @@
 * [市场与买卖空间](#市场与买卖空间)
 * [打开lambdaS3控制台](#打开lambdaS3控制台)
 * [主网和测试网的切换](#主网和测试网的切换)
+* [挖矿子账户创建导出导入](#挖矿子账户创建导出导入)
+* [创建矿工](#创建矿工)
 
 ## 切换语言
 
@@ -281,9 +283,9 @@ TBB可用于质押
 
 购买空间有两种方式：一种是自动匹配购买，一种是选择某一个矿工优质卖单购买。
 
-自动匹配购买的是赔率为1单价为5lamb的卖单。
+自动匹配购买的是赔率为0.5单价为5lamb的普通卖单。
 
-优质卖单是赔率大于3单价大于5lamb的卖单，可指定购买。
+优质卖单是赔率为1单价大于5lamb的卖单，可指定购买。
 
 ![avatar](img/WXmk2@2x.png)
 
@@ -300,22 +302,7 @@ TBB可用于质押
  如当前账户是矿工账户，这里会列出这个账户在市场中挂的卖单列表
  
 ![avatar](img/WXmk3@2x.png)
-在挖矿程序中创建存储节点后，可以在钱包中挂存储节点的卖单
-
-例如创建存储节点的命令
-
-
- ./lambdacli tx market create-machine \
- 
- --dht-id HL4oGXqDQDMHyKpRWwxF9UmcnVvhxueDnghWu7zuMKMH  \ 
- 
- --name machine1 --peer-id 3830e6d38b9e03ae6653 \
- 
- --pub-key 1624de64201c233b87da4a2d27210ecb923e45ad0b8343352b0ab22ee9d5abbe9bdededd9b  \
- 
- --from test1  \ 
- 
- --broadcast-mode block -y
+在矿工管理程序中完成矿工和存储节点的启动后，可以在钱包中挂存储节点的卖单
 
 
 在弹出的对话框中选择存储节点，填写要卖的空间大小（一个存储节点只能挂一个卖单，建议一次出售全部空间）
@@ -323,16 +310,16 @@ TBB可用于质押
 、赔率、单价 还有限制用户购买的条件，最小购买的空间大小、最短时长、最长时长 即可
 
 关于赔率
-赔率=1不能指定价格，只能是5LAMB/G/month
+赔率=0.5不能指定价格，只能是5LAMB/G/month
 
-赔率>=3需要指定价格,价格>=5LAMB/G/month
+赔率=1需要指定价格,价格>=5LAMB/G/month
 
-赔率=1为普通卖单,赔率>=3为优质卖单
+赔率=0.5为普通卖单,赔率>=1为优质卖单
 
 只有优质卖单会出现在市场的列表里面，供用户选择，普通卖单只能进行自动匹配
 
 
-![avatar](img/WXmk8@2x.png)
+![avatar](img/marketd4.png)
 
 
 
@@ -348,13 +335,14 @@ TBB可用于质押
 ## 打开lambdaS3控制台
 购买订单后，可以通过lambdaS3控制台来进行文件的上传下载，使用存储空间
 
-![avatar](img/WXmk12@2x.png)
+![avatar](img/markets2.png)
+这里可以修改登录s3 需要的用户名和密码
 
 如果需要使用这个订单的空间，可以在lambda storage中上传文件到空间和删除空间中的文件
 
-点击打开控制台按钮， 弹窗授权对话框，即可完成对这个订单的授权
+在订单 详情页面 ，点击查看订单空间， 弹窗授权对话框，即可完成对这个订单的授权
 
-![avatar](img/WXmk14@2x.png)
+![avatar](img/markets1.png)
 
 在登录页面输入：
 
@@ -379,9 +367,53 @@ TBB可用于质押
 
 点击默认测试网ip 再点击提交  可切换到测试网
 
+## 挖矿子账户创建导出导入
+
+在钱包首页点击子账户链接，切换到子账户标签页
+
+![avatar](img/sonaccount.png)
+
+可以看到创建矿工和导入按钮
+
+点击创建子账户按钮，打开创建子账户弹窗
+
+![avatar](img/sonaccountd1.png)
+
+创建矿工子账户需要输入当前钱包的助记词和密码，输入备注方便记忆
+
+也可以导入钱包或区块链程序导出的子账户
+
+点击导入按钮，打开导入子账户弹窗
+
+![avatar](img/sonaccountd2.png)
+
+导入子账户需要选择子账户的json文件和当前钱包的密码
+
+如果需要在矿工管理程序或区块链程序中使用挖矿子账户，可以导出子账户
+
+![avatar](img/sonaccountd3.png)
+
+导出子账户需要输入当前钱包的密码
+
+例如 在矿工管理程序中选择钱包导出的子账户
+![avatar](img/sonaccountd5.png)
+
+## 创建矿工
 
 
+点击钱包的市场页面，再点击我出售的空间面板，可与你看到矿工初始化按钮
 
+![avatar](img/marketd1.png)
+
+点击矿工初始化按钮，打开创建矿工弹窗
+
+![avatar](img/marketd2.png)
+
+创建矿工需要选择钱包中的子账户和部署矿工服务器的dhtid
+可以在 矿工管理程序中获取一个矿工服务的 dhtid
+例如
+
+![avatar](img/marketd3.png)
 
 
 
