@@ -283,9 +283,9 @@ TBB可用于质押
 
 购买空间有两种方式：一种是自动匹配购买，一种是选择某一个矿工优质卖单购买。
 
-自动匹配购买的是赔率为1单价为5lamb的卖单。
+自动匹配购买的是赔率为0.5单价为5lamb的普通卖单。
 
-优质卖单是赔率大于3单价大于5lamb的卖单，可指定购买。
+优质卖单是赔率为1单价大于5lamb的卖单，可指定购买。
 
 ![avatar](img/WXmk2@2x.png)
 
@@ -302,22 +302,7 @@ TBB可用于质押
  如当前账户是矿工账户，这里会列出这个账户在市场中挂的卖单列表
  
 ![avatar](img/WXmk3@2x.png)
-在挖矿程序中创建存储节点后，可以在钱包中挂存储节点的卖单
-
-例如创建存储节点的命令
-
-
- ./lambdacli tx market create-machine \
- 
- --dht-id HL4oGXqDQDMHyKpRWwxF9UmcnVvhxueDnghWu7zuMKMH  \ 
- 
- --name machine1 --peer-id 3830e6d38b9e03ae6653 \
- 
- --pub-key 1624de64201c233b87da4a2d27210ecb923e45ad0b8343352b0ab22ee9d5abbe9bdededd9b  \
- 
- --from test1  \ 
- 
- --broadcast-mode block -y
+在矿工管理程序中完成矿工和存储节点的启动后，可以在钱包中挂存储节点的卖单
 
 
 在弹出的对话框中选择存储节点，填写要卖的空间大小（一个存储节点只能挂一个卖单，建议一次出售全部空间）
@@ -325,16 +310,16 @@ TBB可用于质押
 、赔率、单价 还有限制用户购买的条件，最小购买的空间大小、最短时长、最长时长 即可
 
 关于赔率
-赔率=1不能指定价格，只能是5LAMB/G/month
+赔率=0.5不能指定价格，只能是5LAMB/G/month
 
-赔率>=3需要指定价格,价格>=5LAMB/G/month
+赔率=1需要指定价格,价格>=5LAMB/G/month
 
-赔率=1为普通卖单,赔率>=3为优质卖单
+赔率=0.5为普通卖单,赔率>=1为优质卖单
 
 只有优质卖单会出现在市场的列表里面，供用户选择，普通卖单只能进行自动匹配
 
 
-![avatar](img/WXmk8@2x.png)
+![avatar](img/marketd4.png)
 
 
 
