@@ -2,7 +2,7 @@
 
 1个miner对应多个storagenode   
 
-
+* [清除历史数据](#清除历史数据)
 * [配置miner：](#配置miner节点)
 * [1. 下载安装包并解压](#1下载安装包并解压)
 * [2. 配置miner](#2配置miner)
@@ -25,6 +25,15 @@
 
 # 存储业务架构图
 ![avatar](arch_img/lamborage_arch.jpg)
+
+# 清除历史数据
+
+清除storagecli和storagenode的数据列表
+```
+rm -rf ~/.lamborage
+```
+**注：**
+如果~/.lamborage/config/node.toml的data_dir和 mining_dir配置有改动，需清除掉配置的目录下的数据
 
 # 配置miner节点
 
