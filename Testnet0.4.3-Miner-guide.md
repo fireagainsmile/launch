@@ -46,7 +46,7 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 下载安装包
 ```
-wget https://github.com/LambdaIM/launch/releases/download/0.2.1/lambda-storage-0.2.1-testnet.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/Storage0.2.1/lambda-storage-0.2.1-testnet.tar.gz
 ```
 解压安装包
 ```
