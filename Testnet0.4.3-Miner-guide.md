@@ -465,6 +465,6 @@ LAMBDA_ORDER_ID=[orderId] ./storagecli ls lamb://[bucket-name]/
 
 # 提取订单收益
 [提取单个匹配订单收益](./docs/lambdacli/tx/market/withdraw-miner.md)  
-[批量提取匹配订单收益](./docs/lambdacli/tx/market/miner-withdraw-machine.md)
+[批量提取匹配订单收益](./docs/lambdacli/tx/market/miner-withdraw-count.md)
 
 
