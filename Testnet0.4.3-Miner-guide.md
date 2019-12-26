@@ -22,10 +22,6 @@
 * [提取订单收益](#提取订单收益)
 
 
-
-# 存储业务架构图
-![avatar](arch_img/lamborage_arch.jpg)
-
 # 清除历史数据
 
 清除storagecli和storagenode的数据列表
