@@ -1,7 +1,7 @@
 
 
 1个miner对应多个storagenode   
-测试网矿工和存储节点接入教程操作演示：[https://pan.baidu.com/s/1j-defxC0y2gT_vKupwGcVA](https://pan.baidu.com/s/1j-defxC0y2gT_vKupwGcVA)
+
 
 * [配置miner：](#配置miner节点)
 * [1. 下载安装包并解压](#1下载安装包并解压)
