@@ -13,7 +13,7 @@
 ```
 
 ### 修改配置文件
-初始化storagenode后，默认生成配置文件~/.lambda_storage/config/config.config.toml
+初始化storagenode后，默认生成配置文件~/.lambda_storage/config/config.toml
 
 
 ```
