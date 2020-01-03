@@ -69,32 +69,32 @@
 # 3添加矿工节点服务器
 点击 StorageManager 打开管理程序
 
-![图片](https://uploader.shimo.im/f/UsdCXWQKTmkqiCI5.png!thumbnail)
+![avatar](img/storagemanager/icon.png)
 
 这是管理程序的首页
 
-![图片](https://uploader.shimo.im/f/P3Cj4MiVOSIBB99I.png!thumbnail)
+![avatar](img/storagemanager/index.png)
 
 矿工管理程序 点击 【添加节点】 ，选择【通过密码添加节点】或【通过私钥添加节点】
 
-![图片](https://uploader.shimo.im/f/Ik5ATX9eNvgWWGLd.png!thumbnail)
+![avatar](img/storagemanager/addserver.png)
 
 1 通过用户名和密码添加 
 
-![图片](https://uploader.shimo.im/f/KO24v3FdJncpJPMW.png!thumbnail)
+![avatar](img/storagemanager/addserver_pwd.png)
 
 2 通过私钥添加
 
-![图片](https://uploader.shimo.im/f/bYRHXEV3d3EyhUif.png!thumbnail)
+![avatar](img/storagemanager/addserver_pem.png)
 
 添加成功后可以看到相关操作
 
-![图片](https://uploader.shimo.im/f/CJ4oW9spwJQ0gCML.png!thumbnail)
+![avatar](img/storagemanager/miner_opr.png)
 
 # 4矿工初始化
 点击【初始化】按钮打开初始化界面
 
-![图片](https://uploader.shimo.im/f/RnAchczcOTAGlqp5.png!thumbnail)
+![avatar](img/storagemanager/miner_init.png)
 
 初始化需要填写的信息注意事项
 
@@ -111,7 +111,7 @@
 
 4. 安装文件包，需要先将需要安装的挖矿程序包下载到管理程序指定的文件夹中，点击提交的时候会自动上传安装包。
 
-![图片](https://uploader.shimo.im/f/ISFyCtr10PoFvz4M.png!thumbnail)
+![avatar](img/storagemanager/upload_package.png)
 
 # 5钱包初始化矿工
 
@@ -134,7 +134,7 @@
 # 6配置矿工节点
 点击【配置节点】按钮打开配置界面
 
-![图片](https://uploader.shimo.im/f/30euDM6ET8gEMMH2.png!thumbnail)
+![avatar](img/storagemanager/miner_config.png)
 
 矿工节点配置分5个模块 分别是api_key,db,kad,log,server
 
@@ -210,18 +210,18 @@ data_backup_interval = "300000000000"
 ```
 配置完成后可以点击启动按钮，启动矿工服务，成功后状态会变成绿色的☑️
 
-![图片](https://uploader.shimo.im/f/zmffho7Ly40IQhyE.png!thumbnail)
+![avatar](img/storagemanager/miner_status.png)
 
 如果启动后状态没有变化 可以点击打开远程日志按钮，查看日志
 
 一般如果是缺少配置导致的失败，日志里面会列出必填的配置项是哪些
 
-![图片](https://uploader.shimo.im/f/94q81R6xm0cshGqr.png!thumbnail)
+![avatar](img/storagemanager/miner_log.png)
 
 # 7添加存储节点
 点击服务器名称进入矿工详情页面
 
-![图片](https://uploader.shimo.im/f/cDkJUYFdL8cpXPfD.png!thumbnail)
+![avatar](img/storagemanager/miner_detail.png)
 
 添加存储节点服务器的方式和添加矿工的方式类似
 
@@ -233,7 +233,7 @@ data_backup_interval = "300000000000"
 点击提交按钮即可成功初始化
 
 # 9配置存储节点
-![图片](https://uploader.shimo.im/f/FxTCo22Hr2MVimU8.png!thumbnail)
+![avatar](img/storagemanager/storage_config.png)
 
 存储节点必填配置如下：
 
@@ -305,13 +305,13 @@ mining_dir = [ "/root/.lambda_storage/mining"]
 
 勾选框 选中存储节点，然后点击【启动】
 
-![图片](https://uploader.shimo.im/f/vPR3VcvxbrYnGP3k.png!thumbnail)
+![avatar](img/storagemanager/storage_start.png)
 
 如果启动后状态没有变化 可以点击打开远程日志按钮，查看日志
 
 一般如果是缺少配置导致的失败，日志里面会列出必填的配置项是哪些
 
-![图片](https://uploader.shimo.im/f/ZhdUEQERXdMIAGWk.png!thumbnail)
+![avatar](img/storagemanager/storage_log.png)
 
 
 
