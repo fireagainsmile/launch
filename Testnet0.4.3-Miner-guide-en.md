@@ -1,7 +1,6 @@
-# The guide of Testnet 0.4.0 version for Miner 
+# The guide of Testnet 0.4.3 version for Miner 
 
 Miner are associated with multiple storagenode 
-The video guide of Testnet 0.4.0 version for Miner and Storagenode ：[https://pan.baidu.com/s/1j-defxC0y2gT_vKupwGcVA](https://pan.baidu.com/s/1j-defxC0y2gT_vKupwGcVA)
 
 
 * [Clear History Data](#Clear-History-Data)
