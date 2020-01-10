@@ -9,5 +9,6 @@
 - [测试网0.4.3Storagenode接入教程](./Testnet0.4.3-Storagenode-configure.md)
 - [矿工管理程序(StorageManager)使用教程](./StorageManager-Guide0.1.11.md)
 - [质押相关操作手册](./质押相关操作手册.md)
-- [钱包调用接口文档](./Lambda-Wallet-Interface.md)
+- [钱包API接入文档](./Lambda-Wallet-Interface.md)
+- [矿工和存储节点文件备份](./StorageFile-Backup.md)
 - [主网接入常见问题](FAQ.md)

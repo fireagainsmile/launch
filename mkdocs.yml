@@ -18,10 +18,11 @@ nav:
         - 矿工接入: Testnet0.4.3-Miner-guide.md
         - 存储节点接入: Testnet0.4.3-Storagenode-configure.md
         - 同步节点: Testnet0.4.3-Sync-Node.md
+        - 矿工和存储节点文件备份: StorageFile-Backup.md
         - 测试网最新版本: version/TestnetLatest.md
     - 钱包:
         - 桌面钱包使用手册: Lambda钱包使用说明.md
-        - 调用接口文档: Lambda-Wallet-Interface.md
+        - 钱包API接入文档: Lambda-Wallet-Interface.md
         - 桌面钱包稳定版本: version/WalletStable.md
         - 桌面钱包最新版本: version/WalletLatest.md
         - 手机钱包稳定版本: version/MobileWalletStable.md

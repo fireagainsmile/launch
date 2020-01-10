@@ -23,5 +23,6 @@
 - [资产管理引导手册](./资产管理引导手册.md)
 - [社区治理教程](./governance.md)
 - [质押相关操作手册](./质押相关操作手册.md)
-- [钱包调用接口文档](./Lambda-Wallet-Interface.md) 
+- [钱包API接入文档](./Lambda-Wallet-Interface.md) 
+- [矿工和存储节点文件备份](./StorageFile-Backup.md)
 - [主网接入常见问题](FAQ.md)
