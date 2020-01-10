@@ -61,7 +61,7 @@ exports.getKeysFromMnemonic = function getKeysFromMnemonic(mnemonic, path =
 
 
 
-生成地址对生成的公钥 进行sha256 加密后，  
+生成地址 对生成的公钥 进行sha256 加密后，  
 再用Ripemd160 处理   
 再用bech32 添加 lambda 前缀  
 例如
@@ -258,7 +258,7 @@ function sign(bytes, privateKey) {
 
 
 # 4转账业务和交易详情
- 发送接口
+ 发送交易接口
 
 ```
 `${cosmosRESTURL}/txs`   
@@ -346,7 +346,7 @@ function sign(bytes, privateKey) {
 `/txs/${hash}`
 ```
 
-# 5各种交易模拟获取gas(post)
+# 5各种交易模拟获取gas(post)的接口
 钱包里面默认的gas的价格为 2.5e-6
 
 交易的费用为 gas * gas的价格
