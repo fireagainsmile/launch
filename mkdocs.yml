@@ -20,9 +20,12 @@ nav:
         - 同步节点: Testnet0.4.3-Sync-Node.md
         - 测试网最新版本: version/TestnetLatest.md
     - 钱包:
-        - 使用手册: Lambda钱包使用说明.md
-        - 稳定版本: version/WalletStable.md
-        - 最新版本: version/WalletLatest.md
+        - 桌面钱包使用手册: Lambda钱包使用说明.md
+        - 调用接口文档: Lambda-Wallet-Interface.md
+        - 桌面钱包稳定版本: version/WalletStable.md
+        - 桌面钱包最新版本: version/WalletLatest.md
+        - 手机钱包稳定版本: version/MobileWalletStable.md
+        - 手机钱包最新版本: version/MobileWalletLatest.md
     - 矿工管理程序:
         - 使用手册: StorageManager-Guide0.1.11.md 
         - 稳定版本: version/StorageManagerStable.md
