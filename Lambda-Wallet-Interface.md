@@ -119,6 +119,7 @@ function sign(bytes, privateKey) {
 ```
 
 # 3读取余额和用户信息和节点区块信息
+## 账户信息
 ### 账户信息
 ```
  /auth/accounts/${address}
@@ -157,8 +158,11 @@ function sign(bytes, privateKey) {
   }
 }
 ```
-### 获取最新的区块信息 接口  `/blocks/latest`
-### 获取链接的节点的 节点信息接口  `/node_info`
+## 节点区块信息接口
+### 获取最新的区块信息 接口  
+`/blocks/latest`
+### 获取链接的节点的 节点信息接口  
+`/node_info`
 ```
 {
   "protocol_version": {
@@ -467,6 +471,7 @@ unbonded是反质押完成 或 被禁的节点过了21天还没解禁
   }
 ]
 ```
+## 质押相关接口
 ### 查询个人质押信息的接口
 `/staking/delegators/${addr}/delegations`
 ```
@@ -569,7 +574,7 @@ shares/delegator_shares*tokens
 ```
 
 
-质押模拟接口【详细信息见获取gas部分】
+### 质押模拟接口【详细信息见获取gas部分】
 
 ```
 /staking/delegators/${senderAddress}/delegations
@@ -644,7 +649,7 @@ shares/delegator_shares*tokens
 ```
 
 
-### 转质押接口和数据结构
+## 转质押接口和数据结构
 接口同交易接口
 
 转质押的签名数据结构
@@ -714,7 +719,7 @@ shares/delegator_shares*tokens
   "mode": "block"
 }
 ```
-### 取消质押接口和数据结构
+## 取消质押接口和数据结构
 接口同交易接口
 
 签名的数据结构
@@ -783,10 +788,7 @@ shares/delegator_shares*tokens
 ```
 
 
-
-
-
-合伙人部分
+## 合伙人相关接口
 
 获取合伙人列表
 
@@ -803,6 +805,7 @@ shares/delegator_shares*tokens
 
 
 # 6提案与投票业务
+## 提案接口
 ### 提案列表
 接口 `/gov/proposals`
 
@@ -1034,6 +1037,7 @@ SoftwareUpgradeProposal  软件升级
   "mode": "block"
 }
 ```
+## 提案查询接口
 ### 获取我的存钱
 `/gov/proposals/${proposalId}/deposits/${address}`
 

@@ -2,7 +2,7 @@
 # 矿工和存储节点文件备份
  
 以文件备份到`~/lambda_bak`目录为例  
-## 创建目录：
+## 创建目录
 ```
 mkdir -p ~/lambda_bak/{lambdacli,minernode,storagenode}
 ```
@@ -30,7 +30,7 @@ cp ~/.lambda_storage/config/config.toml ~/lambda_bak/storagenode/
 cp -r ~/.lambda_storage/identity ~/lambda_bak/storagenode/
 ```
 
-## 压缩备份文件：
+## 压缩备份文件
 ```
 cd ~
 tar -zcf lambda_bak.tar.gz ./lambda_bak/
