@@ -43,7 +43,7 @@ cd lambda-storage-0.2.2-testnet
 ### 重启minernode
 [log_file_path] 指定矿工日志完整路径
 
-1. 停止minernode：
+1.停止minernode：
 ```
 ./minernode run --stop
 ```
@@ -55,7 +55,7 @@ stop daemon process from minernode.pid:22937 successfully
 ```
 kill -9 `ps aux | grep 'minernode' |grep -v grep| awk '{print $2}'`
 ```
-2. 启动minernode：
+2.启动minernode：
 ```
 ./minernode run --query-interval 5 --daemonize --log.file [log_file_path]
 ```
@@ -68,7 +68,7 @@ kill -9 `ps aux | grep 'minernode' |grep -v grep| awk '{print $2}'`
 ### 重启storagenode
 [log_file_path] 指定storagenode运行日志路径
 
-1. 停止storagenode：
+1.停止storagenode：
 ```
 ./storagenode run --stop
 ```
@@ -81,7 +81,7 @@ stop daemon process from storagenode.pid:22937 successfully
 kill -9 `ps aux | grep 'storagenode' |grep -v grep| awk '{print $2}'`
 ```
 
-2. 启动storagenode：
+2.启动storagenode：
 ```
 ./storagenode run --daemonize --log.file [log_file_path]
 ```
