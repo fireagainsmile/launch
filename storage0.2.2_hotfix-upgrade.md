@@ -6,7 +6,7 @@
 * [minernode重启](#minernode重启)
 * [storagenode重启](#storagenode重启)
 
-以下为lambda-storage-0.2.2-testnet 升级到 lambda-storage-0.2.2_hotfix-testnet 步骤
+以下为lambda-storage-0.2.2_hotfix-testnet 升级到 lambda-storage-0.2.2_hotfix-testnet 步骤
 
 ### 下载安装包并解压
 
