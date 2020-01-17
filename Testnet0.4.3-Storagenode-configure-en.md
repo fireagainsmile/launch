@@ -17,6 +17,10 @@ After initializing "storagenode", a default configuration file `~/.lambda_storag
 
 
 ```
+version = "0.2.2_hotfix"
+commit = "df27600a6fc5a8c27c635d55b3ef4a51c2993715"
+mode = "release"
+
 # Binding Addresses required for service startup
 # For example when intranet IP is 192.168.10.20，public IP 200.200.200.200 
 [server]
