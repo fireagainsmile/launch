@@ -43,15 +43,15 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 下载安装包
 ```
-wget https://github.com/LambdaIM/launch/releases/download/Storage0.2.2/lambda-storage-0.2.2-testnet.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/storage0.2.2_hotfix/lambda-storage-0.2.2_hotfix-testnet.tar.gz
 ```
 解压安装包
 ```
-tar zxvf lambda-storage-0.2.2-testnet.tar.gz
+tar zxvf lambda-storage-0.2.2_hotfix-testnet.tar.gz
 ```
 进入解压后的目录
 ```
-cd lambda-storage-0.2.2-testnet
+cd lambda-storage-0.2.2_hotfix-testnet
 ```
 
 ## 2配置lambdacli
@@ -121,8 +121,8 @@ lambdavaloper1r340rrv9fs95gqy5087e2mtz82vvwrglt6amx3
 ```
 会生成矿工配置文件~/.lambda_miner/config/config.toml，参考如下说明进行配置
 ```
-version = "0.2.2"
-commit = "df27600a6fc5a8c27c635d55b3ef4a51c2993715"
+version = "0.2.2_hotfix"
+commit = "34453f30e9aa2f281c827d9b4883b0b677eb170f"
 mode = "release"
 
 # ensure_level=0会多占用磁盘1/6空间，ensure_level=1会多占用1/3空间
@@ -211,7 +211,7 @@ Miner Address: lambda1wgdcvew36nqwm2d5gj6yxraayjvnhfpf5rrfww  //矿工子账户�
 ```
 ./minernode info
 返回结果：
-               version: 0.2.2
+               version: 0.2.2_hotfix
                 dht id: G4xW3UHMfFnTmaRMZUJ7PKcfvr9YTTFyekcsRxKDZZD9  //创建矿工时会用到此dht-id
 server.private_address: 172.17.159.130:15001
         server.address: 0.0.0.0:26654
@@ -491,7 +491,7 @@ LAMBDA_ORDER_ID=[orderId] ./storagecli ls lamb://[bucket-name]/
 ```
 ./minernode info --test
 返回结果均为successful即正常：
-               version: 0.2.2
+               version: 0.2.2_hotfix
                 dht id: G4xW3UHMfFnTmaRMZUJ7PKcfvr9YTTFyekcsRxKDZZD9
 server.private_address: 172.17.159.130:15001   successful
         server.address: 0.0.0.0:26654    successful
@@ -505,7 +505,7 @@ server.private_address: 172.17.159.130:15001   successful
 ./storagenode info network --test
 
 返回结果均为successful即正常：
-               version: 0.2.2
+               version: 0.2.2_hotfix
                 dht id: 3mta4YEgHB43RHYE83aWBouvFNNCtSc832siEwmcTUsZ
   storage.storage_name: sn1
  storage.miner_address: 172.17.159.130:15001   successful
@@ -519,7 +519,7 @@ server.private_address: 172.17.159.130:16001   successful
 ## 查看存储节点磁盘空间
 ```
 ./storagenode info disk
-               version:  0.2.2
+               version:  0.2.2_hotfix
   storage.storage_name:  sn1
       storage.data_dir:  [/lambda/data/xvdd/store /lambda/data/xvde/store /lambda/data/xvdc/中文test/store /lambda/.1lambda_storage/store]
 
