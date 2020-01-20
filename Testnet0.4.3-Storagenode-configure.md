@@ -17,7 +17,7 @@
 
 
 ```
-version = "0.2.2_hotfix"
+version = "0.2.2_hotfix2"
 commit = "df27600a6fc5a8c27c635d55b3ef4a51c2993715"
 mode = "release"
 
