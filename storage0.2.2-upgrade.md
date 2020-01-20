@@ -1,4 +1,4 @@
-# storage0.2.2_hotfix升级
+# storage0.2.2_hotfix2升级
 
 * [下载安装包并解压](#下载安装包并解压)
 * [minernode升级配置文件](#minernode升级配置文件)
@@ -6,7 +6,7 @@
 * [minernode重启](#minernode重启)
 * [storagenode重启](#storagenode重启)
 
-以下为lambda-storage-0.2.1-testnet 和 lambda-storage-0.2.2-testnet升级到 lambda-storage-0.2.2_hotfix-testnet 步骤
+以下为lambda-storage-0.2.1-testnet 和 lambda-storage-0.2.2-testnet升级到 lambda-storage-0.2.2_hotfix2-testnet 步骤
 
 ### 下载安装包并解压
 
@@ -17,15 +17,15 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 下载安装包
 ```
-wget https://github.com/LambdaIM/launch/releases/download/storage0.2.2_hotfix/lambda-storage-0.2.2_hotfix-testnet.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/storage0.2.2_hotfix2/lambda-storage-0.2.2_hotfix2-testnet.tar.gz
 ```
 解压安装包
 ```
-tar zxvf lambda-storage-0.2.2_hotfix-testnet.tar.gz
+tar zxvf lambda-storage-0.2.2_hotfix2-testnet.tar.gz
 ```
 进入解压后的目录
 ```
-cd lambda-storage-0.2.2_hotfix-testnet
+cd lambda-storage-0.2.2_hotfix2-testnet
 ```
 
 ### minernode升级
