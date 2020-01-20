@@ -121,7 +121,7 @@ lambdavaloper1r340rrv9fs95gqy5087e2mtz82vvwrglt6amx3
 ```
 会生成矿工配置文件~/.lambda_miner/config/config.toml，参考如下说明进行配置
 ```
-version = "0.2.2_hotfix"
+version = "0.2.2_hotfix2"
 commit = "34453f30e9aa2f281c827d9b4883b0b677eb170f"
 mode = "release"
 
@@ -211,7 +211,7 @@ Miner Address: lambda1wgdcvew36nqwm2d5gj6yxraayjvnhfpf5rrfww  //矿工子账户�
 ```
 ./minernode info
 返回结果：
-               version: 0.2.2_hotfix
+               version: 0.2.2_hotfix2
                 dht id: G4xW3UHMfFnTmaRMZUJ7PKcfvr9YTTFyekcsRxKDZZD9  //创建矿工时会用到此dht-id
 server.private_address: 172.17.159.130:15001
         server.address: 0.0.0.0:26654
