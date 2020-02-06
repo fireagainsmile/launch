@@ -92,3 +92,9 @@ ERROR: ABCIQuery: Post xxx connect: connection refused
 ```
 ./lambdacli tx staking edit-validator --moniker "your-custom-name" --from [your-account-name] --broadcast-mode block -y
 ```
+
+### 执行lambdacli keys 子命令报错
+如果执行lambdacli keys相关子命令报错有以下报错  
+`ERROR: couldn't create db: Error initializing DB: leveldb: manifest corrupted (field 'comparer'): missing [file=MANIFEST-xxxxxx]`
+
+则执行`./lambdacli keys repair`后再执行 lambdacli keys 相关子命令看返回结果是否正常
