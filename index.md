@@ -8,7 +8,6 @@
 - [测试网节点接入教程](Testnet-Validator-Guide.md)
 - [测试网0.4.5Miner接入教程](Testnet0.4.3-Miner-guide.md)
 - [测试网0.4.5Storagenode接入教程](./Testnet0.4.3-Storagenode-configure.md)
-- [storage0.2.3升级](./storage0.2.2-upgrade.md)
 - [挖矿手册](./lambda-store-v0.2.2-store-and-mining.md)
 - [矿工管理程序(StorageManager)使用教程](./StorageManager-Guide.md)
 - [质押相关操作手册](./质押相关操作手册.md)

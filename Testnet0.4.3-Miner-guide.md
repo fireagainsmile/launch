@@ -2,6 +2,7 @@
 
 1个miner对应多个storagenode   
 
+* [备份旧版配置文件](#备份旧版配置文件)
 * [清除历史数据](#清除历史数据)
 * [配置miner：](#配置miner节点)
 * [1. 下载安装包并解压](#1下载安装包并解压)
@@ -22,8 +23,31 @@
 * [提取订单收益](#提取订单收益)
 * [测试网络连通](#测试网络连通)
 
+# 备份旧版配置文件
+``` 
+mkdir -p ~/lambda_bak
+cp ~/.lambda_miner/config/config.toml ~/lambda_bak/miner_config.toml
+cp ~/.lambda_storage/config/config.toml ~/lambda_bak/storage_config.toml
+cp ~/.lambda_storagecli/config/user.toml ~/lambda_bak/
+```
 
-如已部署旧版本，升级参考：[矿工和存储节点升级文档](storage0.2.2-upgrade.md)
+# 清除历史数据
+
+1. 清除旧版miner数据
+```
+rm -rf ~/.lambda_miner
+```
+
+2. 清除旧版storagenode数据
+```
+rm -rf ~/.lambda_storage
+```
+注： 如果~/.lambda_storage/config/config.toml的data_dir和 mining_dir配置有改动，需清除掉配置的目录下的数据
+
+3. 清除旧版storagecli数据
+```
+rm -rf ~/.lambda_storagecli
+```
 
 # 配置miner节点
 
@@ -118,10 +142,22 @@ lambdavaloper1r340rrv9fs95gqy5087e2mtz82vvwrglt6amx3
 ```
 
 ### 初始化矿工及配置
+1. 初始化矿工
 ```
 ./minernode init
 ```
-会生成矿工配置文件~/.lambda_miner/config/config.toml，参考如下说明进行配置
+会生成矿工配置文件~/.lambda_miner/config/config.toml
+
+2. 修改配置文件
+- 如已备份旧版矿工配置文件，可使用旧文件覆盖新的，然后使用`minernode upgrade`命令升级即可
+```
+\cp -rf ~/lambda_bak/miner_config.toml ~/.lambda_miner/config/config.toml
+
+./minernode upgrade
+```
+
+- 如未部署过minernode，需参考如下说明手动修改配置文件  
+`vi ~/.lambda_miner/config/config.toml`
 ```
 version = "0.2.3"
 commit = "34453f30e9aa2f281c827d9b4883b0b677eb170f"
@@ -301,8 +337,6 @@ stop daemon process from minernode.pid:19276 successfully
 --from [miner-name] --broadcast-mode block -y
 ```
 ### 查询卖单
-
-
 ```
 查询账户地址：
 ./lambdacli keys show [miner-name] --address
@@ -410,7 +444,15 @@ MatchOrder
 ```
 ./storagecli init
 ```
-初始化storagecli 后会默认生成配置文件~/.lambda_storagecli/config/user.toml，修改user.toml
+初始化storagecli 后会默认生成配置文件~/.lambda_storagecli/config/user.toml
+
+如已备份旧版storagecli配置文件，可使用旧文件覆盖新的
+```
+\cp -rf ~/lambda_bak/user.toml ~/.lambda_storagecli/config/user.toml
+```
+
+如未部署过storagecli，需参考如下说明手动修改配置文件  
+`vi ~/.lambda_storagecli/config/user.toml`
 
 ```
 [broker]

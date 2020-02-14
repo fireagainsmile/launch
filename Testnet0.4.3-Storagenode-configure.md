@@ -15,6 +15,15 @@
 ### 修改配置文件
 初始化storagenode后，默认生成配置文件~/.lambda_storage/config/config.toml
 
+- 如已备份旧版storagenode配置文件，可使用旧文件覆盖新的，然后使用`storagenode upgrade`命令升级即可
+```
+\cp -rf ~/lambda_bak/storage_config.toml ~/.lambda_storage/config/config.toml
+
+./storagenode upgrade
+```
+
+- 如未部署过storagenode，需参考如下说明手动修改配置文件  
+`vi ~/.lambda_storage/config/config.toml`
 
 ```
 version = "0.2.3"
