@@ -1,7 +1,10 @@
-# 测试网lambda v0.4.4-storage v0.2.2_hotfix2
+# 测试网lambda testnet v0.4.5 - storage v0.2.3
 
-lambda testnet v0.4.4 - storage v0.2.2_hotfix2
+lambda testnet v0.4.5 - storage v0.2.3
 
-1.修复已知bug
+本版本用于测试网，支持接入节点、矿工、存储节点
+1. 修复已知bug；
+2. 优化节点配置及报错提示；
+3. 新增节点状态管理功能；
 
-下载地址：[https://github.com/LambdaIM/launch/releases/tag/storage0.2.2_hotfix2](https://github.com/LambdaIM/launch/releases/tag/storage0.2.2_hotfix2)
+下载地址：[https://github.com/LambdaIM/launch/releases/tag/v0.4.5](https://github.com/LambdaIM/launch/releases/tag/v0.4.5)

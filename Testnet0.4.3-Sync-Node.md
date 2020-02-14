@@ -9,14 +9,14 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 
 `解压安装包`
 ```
-tar zxvf lambda-0.4.3-testnet.tar.gz && cd lambda-0.4.3-testnet
+tar zxvf lambda-0.4.5-testnet.tar.gz && cd lambda-0.4.5-testnet
 ```
 
 ### 2. 初始化节点  
 `将下面命令中的[your-moniker]替换成您自定义的节点名称，不用加中括号`  
 `注意：这里的 your-moniker 必须使用英文，用于P2P网络`
 ```
-./lambda init [your-moniker] --chain-id lambda-chain-test4.3
+./lambda init [your-moniker] --chain-id lambda-chain-test4.5
 ```
 如果初始化报错，可能是由于有老版本的配置数据导致，可以通过下面的命令清除错误数据
 ```
@@ -87,6 +87,12 @@ replacement_cache_size = 5
 
 [discov]
 discovery_interval = "3m0s"
+
+[db]
+app_db = "/root/.lambda/data"
+market_db = "/root/.lambda"
+pdp_db = "/root/.lambda"
+identity_files = "/root/.lambda/identity"
 ```
 
 ### 6. 启动节点  

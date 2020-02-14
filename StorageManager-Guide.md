@@ -4,9 +4,9 @@
 
 矿工管理程序下载地址：[https://github.com/LambdaIM/launch/releases/tag/StorageManager0.1.11](https://github.com/LambdaIM/launch/releases/tag/StorageManager0.1.11)
 
-钱包下载地址：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.39](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.39)
+钱包下载地址：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.40](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.40)
 
-矿工和存储节点安装包：[https://github.com/LambdaIM/launch/releases/tag/Storage0.2.2](https://github.com/LambdaIM/launch/releases/tag/Storage0.2.2)
+矿工和存储节点安装包：[https://github.com/LambdaIM/launch/releases/tag/v0.4.5](https://github.com/LambdaIM/launch/releases/tag/v0.4.5)
 
 使用矿工管理程序配合钱包即可添加配置矿工服务及存储节点服务，非常便利
 

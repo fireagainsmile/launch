@@ -43,15 +43,15 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 下载安装包
 ```
-wget https://github.com/LambdaIM/launch/releases/download/storage0.2.2_hotfix2/lambda-storage-0.2.2_hotfix2-testnet.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/storage0.2.3/lambda-storage-0.2.3-testnet.tar.gz
 ```
 解压安装包
 ```
-tar zxvf lambda-storage-0.2.2_hotfix2-testnet.tar.gz
+tar zxvf lambda-storage-0.2.3-testnet.tar.gz
 ```
 进入解压后的目录
 ```
-cd lambda-storage-0.2.2_hotfix2-testnet
+cd lambda-storage-0.2.3-testnet
 ```
 
 ## 2配置lambdacli
@@ -67,11 +67,20 @@ cd lambda-storage-0.2.2_hotfix2-testnet
 ```
 
 ```
- ./lambdacli config chain-id lambda-chain-test4.3
+./lambdacli config chain-id lambda-chain-test4.5
+```
 ```
 
-```
 ./lambdacli config trust-node true
+```
+```
+./lambdacli config dht-gateway-address 47.93.196.236:13000
+
+可选节点IP如下:
+47.93.196.236
+47.94.129.97
+39.105.148.217
+182.92.66.63
 ```
 ## 3添加矿工账户
 将[your-account-name]替换成您自定义的矿工账户名称，需要设置您的账户密码，不用加中括号  
@@ -121,7 +130,7 @@ lambdavaloper1r340rrv9fs95gqy5087e2mtz82vvwrglt6amx3
 ```
 会生成矿工配置文件~/.lambda_miner/config/config.toml，参考如下说明进行配置
 ```
-version = "0.2.2_hotfix2"
+version = "0.2.3"
 commit = "34453f30e9aa2f281c827d9b4883b0b677eb170f"
 mode = "release"
 
@@ -211,7 +220,7 @@ Miner Address: lambda1wgdcvew36nqwm2d5gj6yxraayjvnhfpf5rrfww  //矿工子账户�
 ```
 ./minernode info
 返回结果：
-               version: 0.2.2_hotfix2
+               version: 0.2.3
                 dht id: G4xW3UHMfFnTmaRMZUJ7PKcfvr9YTTFyekcsRxKDZZD9  //创建矿工时会用到此dht-id
 server.private_address: 172.17.159.130:15001
         server.address: 0.0.0.0:26654
@@ -462,11 +471,11 @@ LAMBDA_ORDER_ID=[orderId] ./storagecli ls lamb://[bucket-name]/
 
 ## 3矿工挖矿
 
-矿工每存储文件1G文件会对应生成一个声明，所有声明有效期为1个月，每个出块周期（大约每6s出一个块）会由共识网络发起挑战，挑战声明成功并提交挖矿证明的矿工就会得到一笔收益。
+矿工每存储文件8G文件会对应生成一个声明，所有声明有效期为1个月，每个出块周期（大约每6s出一个块）会由共识网络发起挑战，挑战声明成功并提交挖矿证明的矿工就会得到一笔收益。
 
 
 1. 有效订单且有效存储文件 >= (1T) 的矿工有挖矿权利；
-2. 矿工已存文件分别为1/3/5G可生成对应1/3/5个声明；
+2. 矿工已存文件每满8G可生成1个声明；
 3. 单个矿工声明越多，该矿工被挑选到的概率越大。
 
 
@@ -491,7 +500,7 @@ LAMBDA_ORDER_ID=[orderId] ./storagecli ls lamb://[bucket-name]/
 ```
 ./minernode info --test
 返回结果均为successful即正常：
-               version: 0.2.2_hotfix2
+               version: 0.2.3
                 dht id: G4xW3UHMfFnTmaRMZUJ7PKcfvr9YTTFyekcsRxKDZZD9
 server.private_address: 172.17.159.130:15001   successful
         server.address: 0.0.0.0:26654    successful
@@ -505,7 +514,7 @@ server.private_address: 172.17.159.130:15001   successful
 ./storagenode info network --test
 
 返回结果均为successful即正常：
-               version: 0.2.2_hotfix2
+               version: 0.2.3
                 dht id: 3mta4YEgHB43RHYE83aWBouvFNNCtSc832siEwmcTUsZ
   storage.storage_name: sn1
  storage.miner_address: 172.17.159.130:15001   successful
@@ -519,7 +528,7 @@ server.private_address: 172.17.159.130:16001   successful
 ## 查看存储节点磁盘空间
 ```
 ./storagenode info disk
-               version:  0.2.2_hotfix2
+               version:  0.2.3
   storage.storage_name:  sn1
       storage.data_dir:  [/lambda/data/xvdd/store /lambda/data/xvde/store /lambda/data/xvdc/中文test/store /lambda/.1lambda_storage/store]
 
