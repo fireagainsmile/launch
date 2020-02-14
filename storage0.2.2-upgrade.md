@@ -34,14 +34,20 @@ cd lambda-storage-0.2.3-testnet
 ### 清除旧版数据
 清除旧版miner数据
 ```
-rm -rf ~/.lambda_miner/var
+rm -rf ~/.lambda_miner/{kademlia,var}
 ```
 
 清除旧版storagenode数据
 ```
-rm -rf ~/.lambda_storage/store ~/.lambda_storage/mining
+rm -rf ~/.lambda_storage/{kademlia,orders.json,statementdb,storagedb}
+rm -rf ~/.lambda_storage/{store,mining} 
 ```
 注： 如果~/.lambda_storage/config/config.toml的data_dir和 mining_dir配置有改动，需清除掉配置的目录下的数据
+
+清除旧版storagecli数据
+```
+rm -rf ~/.lambda_storagecli/localdb
+```
 
 ### minernode升级
 
