@@ -37,13 +37,18 @@ rm ~/.lambda/config/config.toml ~/.lambda/config/genesis.json
 \cp -rf ./genesis.json ~/.lambda/config/genesis.json
 ```
 
-### 4. 配置节点
+### 4. 配置lambdacli
 `要确保机器已开启端口26656, 26657`
 ```
 ./lambdacli config node tcp://0.0.0.0:26657
+```
+```
 ./lambdacli config chain-id lambda-chain-test4.5
+```
+```
 ./lambdacli config trust-node true
-
+```
+```
 ./lambdacli config dht-gateway-address 47.93.196.236:13000
 可选节点IP如下:
 47.93.196.236
@@ -72,12 +77,54 @@ e02882af5bdafa5aec086c32b8398c268d2337f1@47.93.196.236:26656
 当前支持配置多个种子节点，通过`,`隔开  
 切换节点后需要kill掉节点服务并且重启
 
-### 6. 启动节点  
+### 6. 配置lambda.toml
+修改`~/.lambda/config/lambda.toml`文件
+```
+
+minimum-gas-prices = ""
+
+[log]
+level = "info"
+output_file = "stdout"
+
+# 服务需要监听的地址
+# 以本机内网IP为 192.168.10.30，端口映射的外网IP为 200.200.200.300 为例
+[server]
+# 对外提供服务的地址，推荐配置为内网地址做端口映射到外网IP
+address = "192.168.10.30:13000"
+private_address = "127.0.0.1:13001"
+debug_log_traffic = "false"
+
+[kad]
+# DHT接入节点地址，存储网络提供，可填写多个，以 47.94.129.97:13000 为例
+# 可选dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000/182.92.66.63:13000
+bootstrap_addr = "47.94.129.97:13000"
+bootstrap_backoff_max = "30s"
+bootstrap_backoff_base = "1s"
+db_path = "/root/.lambda/kademlia"
+external_address = "200.200.200.300:13000"
+alpha = 3
+
+[kad.routing_table_config]
+bucket_size = 20
+replacement_cache_size = 5
+
+[discov]
+discovery_interval = "3m0s"
+
+[db]
+app_db = "/root/.lambda/data"
+market_db = "/root/.lambda"
+pdp_db = "/root/.lambda"
+identity_files = "/root/.lambda/identity"
+```
+
+### 7. 启动节点  
 ```
 nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:26657 >> /tmp/lambda.log 2>&1 &
 ```
 
-### 7. 添加账户  
+### 8. 添加账户  
 `将[your-account-name]替换成您自定义的账户名称，需要设置您的账户密码，不用加中括号`
 ```
 ./lambdacli keys add [your-account-name]
@@ -90,18 +137,20 @@ nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:2
 输入命令后按照提示输入密码和助记词即可
 
 
-### 8. 领取测试网测试币
+### 9. 领取测试网测试币
 进入[http://faucet.lambda.im/](http://faucet.lambda.im/)
+
 ![avatar](img/WXceshicoinget.png)
-输入 创建的lambda主网地址，例如 lambda163q4m634nq8les4nuvdvz49tk6aeh926t0**** 
+
+输入 创建的lambda地址，例如 lambda163q4m634nq8les4nuvdvz49tk6aeh926t0**** 
 
 现在支持 领取测试网的LAMB和TBB,用以进行节点和存储挖矿测试
 
 领取规则：  
 一个IP每天可以领取50000个LAMB,5个TBB；  
-一个lambda主网地址，可以领取10次LAMB和TBB
+一个lambda地址，可以领取10次LAMB和TBB
 
-### 9. 创建Validator  
+### 10. 创建Validator  
 `创建Validator需要如下信息`
 * pubkey -- 通过命令`./lambda tendermint show-validator` 获取
 * moniker -- 这里的`moniker`名称是您的`Validator`名称，可以使用中文(与第2步的moniker可以不同),

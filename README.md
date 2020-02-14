@@ -17,6 +17,7 @@
 - [主网同步节点教程](./主网同步节点教程.md)
 - [Lambda 钱包使用教程](./Lambda钱包使用说明.md)
 - [Lambda cli 使用教程](./docs/lambdacli/README.md)
+- [测试网节点接入教程](Testnet-Validator-Guide.md)
 - [测试网0.4.5Miner接入教程](Testnet0.4.3-Miner-guide.md)
 - [测试网0.4.5Storagenode接入教程](./Testnet0.4.3-Storagenode-configure.md)
 - [storage0.2.3升级](./storage0.2.2-upgrade.md)
