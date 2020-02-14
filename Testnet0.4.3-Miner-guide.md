@@ -23,14 +23,7 @@
 * [测试网络连通](#测试网络连通)
 
 
-# 清除历史数据
-
-清除storagecli和storagenode的数据列表
-```
-rm -rf ~/.lamborage
-```
-**注：**
-如果~/.lamborage/config/node.toml的data_dir和 mining_dir配置有改动，需清除掉配置的目录下的数据
+如已部署旧版本，升级参考：[矿工和存储节点升级文档](storage0.2.2-upgrade.md)
 
 # 配置miner节点
 
