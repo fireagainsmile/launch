@@ -17,8 +17,8 @@ After initializing "storagenode", a default configuration file `~/.lambda_storag
 
 
 ```
-version = "0.2.2_hotfix2"
-commit = "df27600a6fc5a8c27c635d55b3ef4a51c2993715"
+version = "0.2.3"
+commit = "9280d775e3ba29d2a851dcd457301eea131cbd5d"
 mode = "release"
 
 # Binding Addresses required for service startup
