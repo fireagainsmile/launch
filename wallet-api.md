@@ -1,6 +1,6 @@
 参考钱包版本 [Wallet0.4.39](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.39)
 
-钱包文档 [https://shimo.im/docs/XgDH36TKJjRdRdQY](https://shimo.im/docs/XgDH36TKJjRdRdQY)
+钱包账户信息文档文档 [wallet-hd.md](wallet-hd.md) 《钱包账户信息、签名、配置文件说明》
 
 主网的钱包服务地址39.107.247.86:13659
 
@@ -8,7 +8,7 @@
 
 业务发送说明：：发送交易数据可以采用同步或异步方式，同步方式可以获取因为格式等造成的错误信息    异步为async  同步为 block
 
-[wallet-hd.md](wallet-hd.md) 《钱包账户信息、签名、配置文件说明》
+
 
 # 一 首页模块
 ![图片](https://uploader.shimo.im/f/6BEKWsPCKMgvvyXU.png!thumbnail)
