@@ -1,6 +1,6 @@
-参考钱包版本 [Wallet0.4.40](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.40)
+参考钱包版本： [Wallet0.4.40](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.40)
 
-钱包账户信息文档文档 [wallet-hd.md](wallet-hd.md) 《钱包账户信息、签名、配置文件说明》
+钱包账户信息文档文档： [钱包账户信息、签名、配置文件说明](wallet-hdkey.md) 
 
 主网的钱包服务地址： 39.107.247.86:13659
 
