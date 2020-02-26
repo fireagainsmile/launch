@@ -1,4 +1,5 @@
-# 1 地址 助记词  加密算法相关
+# 钱包账户信息、签名、配置文件说明
+## 1 地址、助记词、加密算法相关
       生成助记词 使用 bip39   钱包和区块链使用长度为256 的24个单词
 
       生成hd钱包 使用bip32  derivePath 为  '44\'/364\'/0\'/0/0'
@@ -89,7 +90,7 @@ Bech32PrefixMarketAddr = lambdamarketoper
 
 Bech32PrefixMarketPub = lambdamarketoperpub
 
-# 2 数据签名相关
+## 2 数据签名相关
   首先对需要签名的数据进行sha256 计算 ，再对 计算结果和私钥 用 secp256k1 进行签名
 
 例如
@@ -106,7 +107,7 @@ function sign(bytes, privateKey) {
   return secp256k1.sign(hash, privateKey).signature;
 }
 ```
-# 3创建矿工子账户
+## 3创建矿工子账户
 挖矿需要先创建矿工子账户，用于挖矿相关的业务处理，子账户的功能主要用于打包pdp相关
 
 提交挖矿证明，是高频交易，以免干扰到用户对于账号的正常交易操作
@@ -117,7 +118,7 @@ function sign(bytes, privateKey) {
 
 矿工子账户 derivePath 为  '44\'/364\'/0\'/0/1'  
 
-# 4钱包配置文件加密解密说明
+## 4钱包配置文件加密解密说明
 以js为例子
 
 ### 加密的过程
