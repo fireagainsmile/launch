@@ -1,12 +1,12 @@
-参考钱包版本 [Wallet0.4.39](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.39)
+参考钱包版本 [Wallet0.4.40](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.40)
 
 钱包账户信息文档文档 [wallet-hd.md](wallet-hd.md) 《钱包账户信息、签名、配置文件说明》
 
-主网的钱包服务地址39.107.247.86:13659
+主网的钱包服务地址： 39.107.247.86:13659
 
-测试网的钱包服务地址 47.93.196.236:13659
+测试网的钱包服务地址： 47.93.196.236:13659
 
-业务发送说明：：发送交易数据可以采用同步或异步方式，同步方式可以获取因为格式等造成的错误信息    异步为async  同步为 block
+业务发送说明：发送交易数据可以采用同步或异步方式，同步方式可以获取因为格式等造成的错误信息；异步为async，同步为 block
 
 
 
@@ -121,7 +121,7 @@ ${delegatorAddr}  为用户的lamb地址
 
 ${validatorAddr} 为验证节点的操作地址 操作地址的前缀为 lambdavaloper
 
-地址之间转换 见[https://shimo.im/docs/XgDH36TKJjRdRdQY](https://shimo.im/docs/XgDH36TKJjRdRdQY)
+地址之间转换 见[钱包账户信息、签名、配置文件说明](wallet-hdkey.md)
 
 
 
@@ -156,7 +156,7 @@ ${validatorAddr} 为验证节点的操作地址 操作地址的前缀为 lambdav
 `/distribution/miners/${MinerAddress}`
 ```
 这里的${MinerAddress} 为矿工操作格式的地址
-地址之间转换 见[wallet-hd.md](wallet-hd.md)
+地址之间转换 见[钱包账户信息、签名、配置文件说明](wallet-hdkey.md)
 
 ![图片](https://uploader.shimo.im/f/DuDGinOIY08Mh4Y7.png!thumbnail)
 
@@ -173,9 +173,10 @@ ${validatorAddr} 为验证节点的操作地址 操作地址的前缀为 lambdav
 
 ### 7 获取用户资产列表
   1 获取用户有哪些资产
-
 ```
-  /auth/accounts/${address}
+/auth/accounts/${address}
+```
+```
 {
 	"type": "auth/Account",
 	"value": {
@@ -358,9 +359,9 @@ chain_id 可以通过 节点信息接口  `/node_info` 获取
 ```
 
 ### 8 提取质押TBB的奖励
-提取奖励   提取奖励不需要传入数值，只需要传入 节点操作地址和质押人地址即可
+提取奖励：提取奖励不需要传入数值，只需要传入 节点操作地址和质押人地址即可
 
-发送交易的接口同交易接口
+发送交易的接口：同交易接口
 
 
 
@@ -548,9 +549,9 @@ chain_id 可以通过 节点信息接口  `/node_info` 获取
 }
 ```
 ### 11 lamb和tbb之前兑换
-规则 规则 ① 3000个lamb 兑换1个tbb 且必须是整数
-
-     ②一账户通过lamb兑换的tbb是可以再兑换为lamb的，但是转账的tbb是不能兑换为lamb
+规则 
+① 3000个lamb 兑换1个tbb 且必须是整数
+②一账户通过lamb兑换的tbb是可以再兑换为lamb的，但是转账的tbb不能兑换为lamb
 
 接口同交易接口
 
@@ -749,7 +750,9 @@ shares*(delegator_shares/tokens)
 /staking/validators?status=bonded      //质押中
 /staking/validators?status=unbonded     //未解禁
 ```
-unbonding是反质押中，或被禁闭中    unbonded是反质押完成 或 被禁的节点过了21天还没解禁
+unbonding是反质押中，或被禁闭中    
+unbonded是反质押完成 或 被禁的节点过了21天还没解禁
+
 获取全网质押总量接口
 
 ```
@@ -767,7 +770,7 @@ unbonding是反质押中，或被禁闭中    unbonded是反质押完成 或 �
 ```
 /staking/delegators/lambda1prrcl9674j4aqrgrzmys5e28lkcxmntx2gm2zt/${addr}
 ```
-      数据
+数据
 ```
 [
   {
@@ -847,6 +850,7 @@ unbonding是反质押中，或被禁闭中    unbonded是反质押完成 或 �
 /staking/delegators/${addr}
 ```
 返回的结果为质押列表，在列表中根据节点地址查找，即可找到在当前节点质押量
+
 当前节点，我的奖励
 
 接口
@@ -1075,7 +1079,10 @@ unbonding是反质押中，或被禁闭中    unbonded是反质押完成 或 �
 ```
 # 三 提案与投票
 ### 提案列表
-接口 /gov/proposals
+接口 
+```
+/gov/proposals
+```
 
 返回结果
 
@@ -1108,7 +1115,10 @@ unbonding是反质押中，或被禁闭中    unbonded是反质押完成 或 �
 ```
 
 ### 提案详情
-接口 /gov/proposals/${proposalId}
+接口 
+```
+/gov/proposals/${proposalId}
+```
 
 返回结果
 
@@ -1345,7 +1355,7 @@ version：'1'
 
 
 ### 获取提案公共参数 
-/gov/parameters/deposit
+`/gov/parameters/deposit`
 
 ```
 {
@@ -1412,7 +1422,7 @@ version：'1'
 
 
 ### 2 订单详情
-接口 /market/matchorder/${Orderid}
+接口 `/market/matchorder/${Orderid}`
 
 [http://47.93.196.236:13659/market/matchorder/05F09566BA4397BC9EB378EC202676D3FFCAF660](http://47.93.196.236:13659/market/matchorder/05F09566BA4397BC9EB378EC202676D3FFCAF660)
 
@@ -1453,11 +1463,11 @@ version：'1'
 ![图片](https://uploader.shimo.im/f/ULV4Sry8SyMtw3TL.png!thumbnail)
 
 ### 3 获取市场的优质卖单
-/market/sellorders/${marketName}/${orderType}/${statusType}/${page}/${limit}
+`/market/sellorders/${marketName}/${orderType}/${statusType}/${page}/${limit}`
 
 例如 [http://47.93.196.236:13659/market/sellorders/LambdaMarket/premium/active/1/10](http://47.93.196.236:13659/market/sellorders/LambdaMarket/premium/active/1/10)
 
-orderType 值为[premium](http://47.93.196.236:13659/market/sellorders/LambdaMarket/premium/1/10) 表示读取优质的卖单  all 为全部卖单
+orderType 值为[premium](http://47.93.196.236:13659/market/sellorders/LambdaMarket/premium/1/10) 表示读取优质的卖单，all 为全部卖单
 
 statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 
@@ -1748,7 +1758,7 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 
 矿工子账户 derivePath 为  '44\'/364\'/0\'/0/1'  
 创建账户见
-[wallet-hd.md](wallet-hd.md) 《钱包账户信息、签名、配置文件说明》
+[钱包账户信息、签名、配置文件说明](wallet-hdkey.md)
 
 ### 2 初始化矿工身份
 在完成矿工服务的安装和配置后，获取矿工服务的dhtid
@@ -2232,8 +2242,6 @@ msg对应的logs success 为true 表示 交易成功 false 表示交易失败
 | lambda/MsgCreateBuyOrder   | /market/create-buyorder   | 
 | lambda/MsgCreateMiner   | /market/create-miner   | 
 | lambda/MsgCreateMachine   | /market/create-machine   | 
-|    |    | 
-|    |    | 
 
 
 如何拼接post数据
@@ -2307,15 +2315,14 @@ msg 中的value 数据 和base_req  合并到一起 就可以了
 
 ```
 {
-  "jsonrpc": "2.0",
-  "id": "",
-  "result": {
-    "response": {
-      "code": 6,
-      "log": "{\"codespace\":\"sdk\",\"code\":6,\"message\":\"unknown query path\"}",
-      "codespace": "sdk"
-    }
-  }
+	"jsonrpc": "2.0",
+	"id": "",
+	"result": {
+		"response": {
+			"value": "",
+			"codespace": "sdk"
+		}
+	}
 }
 ```
 节点设置了价格
