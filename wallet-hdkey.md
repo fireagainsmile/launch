@@ -36,7 +36,7 @@ exports.getKeysFromMnemonic = function getKeysFromMnemonic(mnemonic, path =
 
    生成地址对生成的公钥 进行sha256 加密后，在用Ripemd160 处理， 在用bech32 添加 lambda 对应的前缀
 
-例如  lambda 地址前缀 为lambda   lambda1z4hs23xwjuudm44nhgcde0zxf5y63su8deuqs3
+例如  lambda 地址前缀 为lambda：`lambda1z4hs23xwjuudm44nhgcde0zxf5y63su8deuqs3`
 
 例如
 
@@ -67,13 +67,13 @@ exports.getAddress = function getAddress(publicKey) {
   return bech32.encode(PREFIX, words);
 };
 ```
-lambda  其他角色 前缀
+ lambda  其他角色  前缀  
 
-Bech32PrefixAccAddr = lambda                   lambda 地址前缀
+Bech32PrefixAccAddr = lambda                //lambda 地址前缀
 
-Bech32PrefixAccPub = lambdapub              lambda 公钥前缀
+Bech32PrefixAccPub = lambdapub              //lambda 公钥前缀 
 
-Bech32PrefixValAddr = lambdavaloper        lambda 操作地址前缀
+Bech32PrefixValAddr = lambdavaloper         //lambda 操作地址前缀 
 
 Bech32PrefixValPub = lambdavaloperpub   
 
@@ -81,7 +81,7 @@ Bech32PrefixConsAddr = lambdavalcons
 
 Bech32PrefixConsPub = lambdavalconspub
 
-Bech32PrefixMinerAddr = lambdamineroper      lambda 矿工操作地址前缀
+Bech32PrefixMinerAddr = lambdamineroper      //lambda 矿工操作地址前缀
 
 Bech32PrefixMinerPub = lambdamineroperpub
 
@@ -109,7 +109,7 @@ function sign(bytes, privateKey) {
 # 3创建矿工子账户
 挖矿需要先创建矿工子账户，用于挖矿相关的业务处理，子账户的功能主要用于打包pdp相关
 
-，是高频交易，以免干扰到用户对于账号的正常交易操作
+提交挖矿证明，是高频交易，以免干扰到用户对于账号的正常交易操作
 
 创建矿工子账户和创建账户的助记词一致，
 
@@ -229,7 +229,7 @@ function getBytes(publicKeybech32) {
 	  var publicKeyAmino = Buffer.from(bech32.fromWords(decoded.words));
 	  var publicKey = Amino.unMarshalBinary('tendermint/PubKeySecp256k1', publicKeyAmino);
 	  return publicKey;
-```
-	}
 
+	}
+```
 
