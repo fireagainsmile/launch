@@ -24,7 +24,7 @@ nav:
         - 测试网最新版本: version/TestnetLatest.md
     - 钱包:
         - 桌面钱包使用手册: Lambda钱包使用说明.md
-        - 钱包API接入文档: Lambda-Wallet-Interface.md
+        - 钱包API接入文档: wallet-api.md
         - 桌面钱包稳定版本: version/WalletStable.md
         - 桌面钱包最新版本: version/WalletLatest.md
         - 手机钱包稳定版本: version/MobileWalletStable.md

@@ -11,6 +11,6 @@
 - [挖矿手册](./lambda-store-v0.2.2-store-and-mining.md)
 - [矿工管理程序(StorageManager)使用教程](./StorageManager-Guide.md)
 - [质押相关操作手册](./质押相关操作手册.md)
-- [钱包API接入文档](./Lambda-Wallet-Interface.md)
+- [钱包API接入文档](./wallet-api.md)
 - [矿工和存储节点文件备份](./StorageFile-Backup.md)
 - [主网接入常见问题](FAQ.md)
