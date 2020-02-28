@@ -11,7 +11,7 @@
 
 
 # 一 首页模块
-![图片](https://uploader.shimo.im/f/6BEKWsPCKMgvvyXU.png!thumbnail)
+![图片](img/walletapi1.png)
 
 ### 1 lamb余额的数量
 ```
@@ -158,7 +158,7 @@ ${validatorAddr} 为验证节点的操作地址 操作地址的前缀为 lambdav
 这里的${MinerAddress} 为矿工操作格式的地址
 地址之间转换 见[钱包账户信息、签名、配置文件说明](wallet-hdkey.md)
 
-![图片](https://uploader.shimo.im/f/DuDGinOIY08Mh4Y7.png!thumbnail)
+![图片](img/walletapi2.png)
 
 ### 6 获取最新交易列表、交易详情
 ```
@@ -244,7 +244,7 @@ ${validatorAddr} 为验证节点的操作地址 操作地址的前缀为 lambdav
   }
 ]
 ```
-![图片](https://uploader.shimo.im/f/GPq1c430WVI0hy3l.png!thumbnail)
+![图片](img/walletapi3.png)
 
 ### 7 发起交易lamb和获取gas
    ① 模拟交易获取gas
@@ -696,7 +696,7 @@ tbb转lamb
 ### 12 其他资产的交易 tbb 等
   其他资产交易只需要将交易ulamb改为资产的代码 例如utbb
 
-![图片](https://uploader.shimo.im/f/QTKQ6tNCyzcrs15x.png!thumbnail)
+![图片](img/walletapi4.png)
 
  
 
@@ -706,7 +706,7 @@ tbb转lamb
 获取链接的节点的 节点信息接口  `/node_info`
 
 # 二 我的质押与验证节点模块
-![图片](https://uploader.shimo.im/f/uyc9TmS02ksd80Sx.png!thumbnail)
+![图片](img/walletapi5.png)
 
 ### 1 我的质押列表
   需要的接口有
@@ -810,7 +810,7 @@ unbonded是反质押完成 或 被禁的节点过了21天还没解禁
 }
 ```
 
-![图片](https://uploader.shimo.im/f/h4wvoTh5tEAHUxBN.png!thumbnail)
+![图片](img/walletapi6.png)
 
 
 ### 5 验证节点详情
@@ -1374,7 +1374,7 @@ version：'1'
 }
 ```
 # 四 市场和买卖空间
-![图片](https://uploader.shimo.im/f/4VpO6eOyj78METXS.png!thumbnail)
+![图片](img/walletapi7.png)
 
 ### 需要注意的是 买卖空间的值都是整数 单位为gb
 ### 1  订单列表
@@ -1460,7 +1460,7 @@ version：'1'
 
 
 
-![图片](https://uploader.shimo.im/f/ULV4Sry8SyMtw3TL.png!thumbnail)
+![图片](img/walletapi8.png)
 
 ### 3 获取市场的优质卖单
 `/market/sellorders/${marketName}/${orderType}/${statusType}/${page}/${limit}`
@@ -1579,7 +1579,7 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 
 自动购买空间是在普通卖单的池子里面进行匹配，填写空间大小和时长
 
-![图片](https://uploader.shimo.im/f/4oLMOzFTeP4dIfoY.png!thumbnail)
+![图片](img/walletapi9.png)
 
 签名前的数据结构
 
@@ -1643,7 +1643,7 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 }
 ```
 ### 7 购买优质空间（购买一个卖单中的空间）
-![图片](https://uploader.shimo.im/f/ovSloDyeskIILi24.png!thumbnail)
+![图片](img/walletapi10.png)
 
 发送交易数据的接口同交易接口
 
@@ -1749,7 +1749,7 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 # 五 创建矿工子账户、成为矿工和出售空间
 挖矿需要先创建矿工子账户，用于挖矿相关的业务处理，以免干扰到用户对于账号的正常交易操作
 
-![图片](https://uploader.shimo.im/f/p2Dv9YlAZ08gycrm.png!thumbnail)
+![图片](img/walletapi11.png)
 
 ### 1 创建矿工子账户
 创建矿工子账户和创建账户的助记次一致，
@@ -1763,7 +1763,7 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 ### 2 初始化矿工身份
 在完成矿工服务的安装和配置后，获取矿工服务的dhtid
 
-![图片](https://uploader.shimo.im/f/fMsqhfthg08jZ9dX.png!thumbnail)
+![图片](img/walletapi12.png)
 
 发送交易数据的接口同交易接口
 
@@ -1824,7 +1824,7 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 
 赔率1为优质卖单，优质卖单可以设置价格，优质卖单只能用户选择订单然后购买                           
 
-![图片](https://uploader.shimo.im/f/JCuV7rp0eTAQoulk.png!thumbnail)
+![图片](img/walletapi13.png)
 
 签名前的数据
 
