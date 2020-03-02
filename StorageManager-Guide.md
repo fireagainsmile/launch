@@ -2,7 +2,7 @@
 
 相关资源
 
-矿工管理程序下载地址：[https://github.com/LambdaIM/launch/releases/tag/StorageManager0.1.11](https://github.com/LambdaIM/launch/releases/tag/StorageManager0.1.11)
+矿工管理程序下载地址：[https://github.com/LambdaIM/launch/releases/tag/StorageManager0.1.12](https://github.com/LambdaIM/launch/releases/tag/StorageManager0.1.12)
 
 钱包下载地址：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.40](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.40)
 
