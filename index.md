@@ -5,7 +5,7 @@
 - [Miner 主网接入教程](./Mainnet-Miner-Guide.md)
 - [Lambda 钱包使用教程](./Lambda-Wallet-Guide.md)
 - [Lambdacli 使用教程](./docs/lambdacli/README.md)
-- [测试网节点接入教程](Testnet-Validator-Guide.md)
+- [测试网0.4.5节点接入教程](Testnet-Validator-Guide.md)
 - [测试网0.4.5Miner接入教程](Testnet-Miner-Guide.md)
 - [测试网0.4.5Storagenode接入教程](./Testnet-Storagenode-Configure.md)
 - [挖矿手册](./Lambda-Store-and-Mining.md)

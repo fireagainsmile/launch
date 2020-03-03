@@ -160,7 +160,7 @@ Validator 的操作地址也可通过命令获取
 ./lambdacli tx slashing unjail --from [your-account-name]
 ```
 
-# FAQ
+## FAQ
 ### 查询账户不存在？
 
 出现如下错误提示, 可能是由于您刚刚启动 lambda 还没有同步到最新块高
