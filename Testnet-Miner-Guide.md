@@ -157,12 +157,18 @@ lambdavaloper1r340rrv9fs95gqy5087e2mtz82vvwrglt6amx3
 - 如未部署过minernode，需参考如下说明手动修改配置文件  
 `vi ~/.lambda_miner/config/config.toml`
 ```
+####
+## Not used in v0.2.3, will be removed after v0.2.3
 version = "0.2.3"
-commit = "34453f30e9aa2f281c827d9b4883b0b677eb170f"
+commit = "20b8847d14a32481e64bae8617abbe7b55cac45b"
 mode = "release"
-
-# ensure_level=0会多占用磁盘1/6空间，ensure_level=1会多占用1/3空间
 ensure_level = "0"
+####
+
+[build]
+version = "0.2.3"
+commit = "20b8847d14a32481e64bae8617abbe7b55cac45b"
+mode = "release"
 
 # 服务需要监听的地址
 # 以本机内网IP为 192.168.10.10，端口映射的外网IP为 200.200.200.100 为例
@@ -190,9 +196,18 @@ alpha = 3
 bucket_size = 20
 replacement_cache_size = 5
 
+
+####
+## Not used in v0.2.3, will be removed after v0.2.3
 [api_key]
+root_secret_seed = ""
+####
+
+[miner]
+# ensure_level=0会多占用磁盘1/6空间，ensure_level=1会多占用1/3空间
+ensure_level = "0"
 #root access key，不能为空
-root_secret_seed = "yah"
+root_secret_seed = "aaa"
 
 [log]
 level = "info"

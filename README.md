@@ -6,7 +6,7 @@
 ## English
 - [Join the mainnet](./docs/join-mainnet.md) of the Lambda Chain.
 - [Lambda wallet toturial](./Lambda-Wallet-Guide-en.md)
-- [Lambda cli toturial](./docs/lambdacli/README.md)
+- [Lambdacli toturial](./docs/lambdacli/README.md)
 - [Start your own `lambda` testnet](./docs/deploy-testnet.md).
 - [The guide of Testnet0.4.5 for Miner](./Testnet-Miner-Guide-en.md)
 - [The guide of Testnet0.4.5 for Storagenode](./Testnet-Storagenode-Configure-en.md)
@@ -16,7 +16,7 @@
 - [Miner 主网接入教程](./Mainnet-Miner-Guide.md)
 - [主网同步节点教程](./Mainet-Sync-Node.md)
 - [Lambda 钱包使用教程](./Lambda-Wallet-Guide.md)
-- [Lambda cli 使用教程](./docs/lambdacli/README.md)
+- [Lambdacli 使用教程](./docs/lambdacli/README.md)
 - [测试网0.4.5节点接入教程](Testnet-Validator-Guide.md)
 - [测试网0.4.5Miner接入教程](Testnet-Miner-Guide.md)
 - [测试网0.4.5Storagenode接入教程](./Testnet-Storagenode-Configure.md)

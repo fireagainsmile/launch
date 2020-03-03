@@ -26,8 +26,16 @@
 `vi ~/.lambda_storage/config/config.toml`
 
 ```
+####
+## Not used in v0.2.3, will be removed after v0.2.3
 version = "0.2.3"
-commit = "df27600a6fc5a8c27c635d55b3ef4a51c2993715"
+commit = "20b8847d14a32481e64bae8617abbe7b55cac45b"
+mode = "release"
+####
+
+[build]
+version = "0.2.3"
+commit = "20b8847d14a32481e64bae8617abbe7b55cac45b"
 mode = "release"
 
 # 服务需要监听的地址

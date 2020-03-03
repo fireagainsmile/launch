@@ -137,17 +137,8 @@ nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:2
 输入命令后按照提示输入密码和助记词即可
 
 
-### 9. 领取测试网测试币
-进入[http://faucet.lambda.im/#validator](http://faucet.lambda.im/validator)
-
-![avatar](img/WXceshicoinget.png)
-
-输入 创建的lambda地址，例如 lambda163q4m634nq8les4nuvdvz49tk6aeh926t0**** 
-
-现在支持 领取测试网的LAMB和TBB,用以进行节点测试
-
-领取规则：  
-一个IP或一个lambda地址 只能领取1次`667TBB`
+### 9. 节点领取测试网测试币
+需要领取测试网TBB用以进行节点测试的，可联系Lambda官方客服
 
 ### 10. 创建Validator  
 `创建Validator需要如下信息`
