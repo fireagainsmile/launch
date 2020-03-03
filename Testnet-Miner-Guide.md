@@ -295,7 +295,7 @@ stop daemon process from minernode.pid:19276 successfully
 生成存储节点配置文件~/.lambda_storage/config/config.toml，参考如下第6步进行配置
 
 ## 6storagenode配置和启动
-[storagenode配置启动参考](./Testnet0.4.3-Storagenode-configure.md)
+[storagenode配置启动参考](./Testnet-Storagenode-Configure.md)
 
 ## 7矿工创建卖单
 

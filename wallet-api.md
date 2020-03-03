@@ -1,6 +1,6 @@
 参考钱包版本： [Wallet0.4.40](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.40)
 
-钱包账户信息文档文档： [钱包账户信息、签名、配置文件说明](wallet-hdkey.md) 
+钱包账户信息文档文档： [钱包账户信息、签名、配置文件说明](Wallet-Hdkey.md) 
 
 主网的钱包服务地址： 39.107.247.86:13659
 
@@ -121,7 +121,7 @@ ${delegatorAddr}  为用户的lamb地址
 
 ${validatorAddr} 为验证节点的操作地址 操作地址的前缀为 lambdavaloper
 
-地址之间转换 见[钱包账户信息、签名、配置文件说明](wallet-hdkey.md)
+地址之间转换 见[钱包账户信息、签名、配置文件说明](Wallet-Hdkey.md)
 
 
 
@@ -156,7 +156,7 @@ ${validatorAddr} 为验证节点的操作地址 操作地址的前缀为 lambdav
 `/distribution/miners/${MinerAddress}`
 ```
 这里的${MinerAddress} 为矿工操作格式的地址
-地址之间转换 见[钱包账户信息、签名、配置文件说明](wallet-hdkey.md)
+地址之间转换 见[钱包账户信息、签名、配置文件说明](Wallet-Hdkey.md)
 
 ![图片](img/walletapi2.png)
 
@@ -1758,7 +1758,7 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 
 矿工子账户 derivePath 为  '44\'/364\'/0\'/0/1'  
 创建账户见
-[钱包账户信息、签名、配置文件说明](wallet-hdkey.md)
+[钱包账户信息、签名、配置文件说明](Wallet-Hdkey.md)
 
 ### 2 初始化矿工身份
 在完成矿工服务的安装和配置后，获取矿工服务的dhtid

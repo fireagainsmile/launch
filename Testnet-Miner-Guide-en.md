@@ -262,7 +262,7 @@ Initial storagenode:
 ```
 
 ## 6Configure-Storagenode
-[storagenode deployment activation reference](./Testnet0.4.3-Storagenode-configure-en.md)
+[storagenode deployment activation reference](./Testnet-Storagenode-Configure-en.md)
 
 ## 7Miner-Create-Sellorder
 

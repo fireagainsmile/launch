@@ -8,23 +8,22 @@ nav:
     - 首页: index.md
     - 使用必知: must-known-cn.md
     - 主网接入:
-        - 节点接入: 主网接入教程(Validator).md
-        - 矿工接入: 主网接入流程(Miner).md
-        - 0.3.0节点升级: 主网Validator0.3.0升级教程.md
+        - 节点接入: Mainnet-Validator-Guide.md
+        - 矿工接入: Mainnet-Miner-Guide.md
+        - 0.3.0节点升级: Mainnet-Validator-Upgrade-Guide.md
         - 主网接入帮助: FAQ.md
         - 主网稳定版本: version/MainnetStable.md
         - 主网最新版本: version/MainnetLatest.md
     - 测试网接入:
         - 节点接入: Testnet-Validator-Guide.md
-        - 矿工接入: Testnet0.4.3-Miner-guide.md
-        - 存储节点接入: Testnet0.4.3-Storagenode-configure.md
-        - 同步节点: Testnet0.4.3-Sync-Node.md
-        - 挖矿手册: lambda-store-v0.2.2-store-and-mining.md
+        - 矿工接入: Testnet-Miner-Guide.md
+        - 存储节点接入: Testnet-Storagenode-Configure.md
+        - 同步节点: Testnet-Sync-Node.md
+        - 挖矿手册: Lambda-Store-and-Mining.md
         - 矿工和存储节点文件备份: StorageFile-Backup.md
         - 测试网最新版本: version/TestnetLatest.md
     - 钱包:
-        - 桌面钱包使用手册: Lambda钱包使用说明.md
-        - 钱包API接入文档: wallet-api.md
+        - 桌面钱包使用手册: Lambda-Wallet-Guide.md
         - 桌面钱包稳定版本: version/WalletStable.md
         - 桌面钱包最新版本: version/WalletLatest.md
         - 手机钱包稳定版本: version/MobileWalletStable.md
@@ -32,10 +31,13 @@ nav:
     - 矿工管理程序:
         - 使用手册: StorageManager-Guide.md
         - 稳定版本: version/StorageManagerStable.md
-        - 最新版本: version/StorageManagerLatest.md  
+        - 最新版本: version/StorageManagerLatest.md
+    - API文档:
+        - 钱包API接入文档: Wallet-API.md
+        - S3Gateway API文档: S3-Gateway-API.md
     - 使用文档:
-        - 质押操作手册: 质押相关操作手册.md
-        - 资产管理: 资产管理引导手册.md
+        - 质押操作手册: Delegate-Operation-Guide.md
+        - 资产管理: Asset-Manage-Guide.md
         - 社区治理: governance.md
         - 命令行使用:
             - lambdacli参数: docs/lambdacli/README.md
