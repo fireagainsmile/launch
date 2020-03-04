@@ -97,7 +97,30 @@ identity_files = "/root/.lambda/identity"
 
 ### 6. 启动节点  
 ```
-nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:26657 >> lambda.log 2>&1 &
+./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:26657 --daemonize --log.file /tmp/lambda.log
+```
+说明：  
+--daemonize以后台方式启动   
+--log.file /tmp/lambda.log 日志输出/tmp/lambda.log文件里，可修改为其他目录，不添加参数则无日志输出
+
+#### 停止节点
+如需停掉节点，执行以下命令
+```
+./lambda stop
+
+返回如下结果即为停止成功：
+stop daemon process from lambda.pid:28638 successfully
+```
+
+#### 查看节点状态
+``` 
+./lambda status
+
+返回结果如下，即节点正在运行：
+lambda.pid is running, pid is 28800
+
+返回结果如下，即节点未运行：
+daemon have stoped
 ```
 
 
