@@ -196,7 +196,8 @@ debug_log_traffic = "false"
 
 [kad]
 # DHT接入节点地址，存储网络提供，可填写多个，以 47.94.129.97:13000 为例
-# 可选dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000/182.92.66.63:13000
+# 可填写自己的验证节点配置lambda.toml中的 kad.external_address
+# 可选官方dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000/182.92.66.63:13000
 bootstrap_addr = ["47.94.129.97:13000"]
 # time you would wait to connect dht seed node
 bootstrap_backoff_max = "30s"
