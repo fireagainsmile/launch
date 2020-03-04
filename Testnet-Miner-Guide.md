@@ -130,9 +130,9 @@ cd lambda-storage-0.2.3-testnet
 ### 4创建miner
 
 #### 质押资产到节点
-[validator-address] 矿工质押的节点地址，可使用自己的验证节点地址 或 Lambda官方节点地址，节点地址可通过浏览器查找 http://testbrowser.lambda.im/#/ 或询问节点
-[amount-of-utbb] 为质押到节点的utbb数量
-[your-account-name] 是您在第3步创建的账户名称
+- [validator-address] 矿工质押的节点地址，可使用自己的验证节点地址 或 Lambda官方节点地址，节点地址可通过浏览器查找 http://testbrowser.lambda.im/#/ 或询问节点  
+- [amount-of-utbb] 为质押到节点的utbb数量  
+- [your-account-name] 是您在第3步创建的账户名称  
 ```
 ./lambdacli tx staking delegate [validator-address] [amount-of-utbb] \
 --from [your-account-name] --broadcast-mode block -y
