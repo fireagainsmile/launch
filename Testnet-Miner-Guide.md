@@ -77,7 +77,7 @@ cd lambda-storage-0.2.3-testnet
 ```
 ./lambdacli config node tcp://[nodeip]:26657
 ```
-[nodeip] 为自己质押的的验证节点公网IP
+[nodeip] 为自己质押的验证节点公网IP
 
 可选Lambda官方验证节点IP如下:
 ```
