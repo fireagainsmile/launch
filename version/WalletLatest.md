@@ -7,6 +7,6 @@
 1. 修复已知bug
 2. 优化质押收益率和反质押
 
-下载地址：
+下载地址：  
 [https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.40](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.40)
 [http://download.lambdastorage.com/wallet/0.4.40/](http://download.lambdastorage.com/wallet/0.4.40/)

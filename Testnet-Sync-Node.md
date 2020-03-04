@@ -1,25 +1,26 @@
 # 测试网0.4.5同步节点 接入教程
 
 ### 1. 下载安装包并解压
-`创建目录并进入`
+创建目录并进入
 ```
 mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
-`下载安装包`
+下载安装包
 ```
 wget https://github.com/LambdaIM/launch/releases/download/v0.4.5/lambda-0.4.5-testnet.tar.gz
 
 如下载缓慢可使用下面的链接：
 wget http://download.lambdastorage.com/lambda/0.4.5/lambda-0.4.5-testnet.tar.gz
 ```
-`解压安装包`
+
+解压安装包
 ```
 tar zxvf lambda-0.4.5-testnet.tar.gz && cd lambda-0.4.5-testnet
 ```
 
 ### 2. 初始化节点  
-`将下面命令中的[your-moniker]替换成您自定义的节点名称，不用加中括号`  
-`注意：这里的 your-moniker 必须使用英文，用于P2P网络`
+将下面命令中的[your-moniker]替换成您自定义的节点名称，不用加中括号`  
+`注意：这里的 your-moniker 必须使用英文，用于P2P网络
 ```
 ./lambda init [your-moniker] --chain-id lambda-chain-test4.5
 ```

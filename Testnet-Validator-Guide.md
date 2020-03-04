@@ -1,11 +1,11 @@
 # 测试网节点0.4.5 接入教程
 
 ### 1. 下载安装包并解压
-`创建目录并进入`
+创建目录并进入
 ```
 mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
-`下载安装包`
+下载安装包
 ```
 wget https://github.com/LambdaIM/launch/releases/download/v0.4.5/lambda-0.4.5-testnet.tar.gz
 
@@ -13,14 +13,14 @@ wget https://github.com/LambdaIM/launch/releases/download/v0.4.5/lambda-0.4.5-te
 wget http://download.lambdastorage.com/lambda/0.4.5/lambda-0.4.5-testnet.tar.gz
 ```
 
-`解压安装包`
+解压安装包
 ```
 tar zxvf lambda-0.4.5-testnet.tar.gz && cd lambda-0.4.5-testnet
 ```
 
 ### 2. 初始化节点  
-`将下面命令中的[your-moniker]替换成您自定义的节点名称，不用加中括号`  
-`注意：这里的 your-moniker 必须使用英文，用于P2P网络`
+将下面命令中的[your-moniker]替换成您自定义的节点名称，不用加中括号`  
+`注意：这里的 your-moniker 必须使用英文，用于P2P网络
 ```
 ./lambda init [your-moniker] --chain-id lambda-chain-test4.5
 ```
@@ -41,7 +41,7 @@ rm -rf ~/.lambda/config/config.toml ~/.lambda/config/genesis.json ~/.lambda/iden
 ```
 
 ### 4. 配置lambdacli
-`要确保机器已开启端口26656, 26657`
+要确保机器已开启端口26656, 26657
 ```
 ./lambdacli config node tcp://0.0.0.0:26657
 ```
@@ -151,7 +151,7 @@ daemon have stoped
 ```
 
 ### 8. 添加账户  
-`将[your-account-name]替换成您自定义的账户名称，需要设置您的账户密码，不用加中括号`
+将[your-account-name]替换成您自定义的账户名称，需要设置您的账户密码，不用加中括号
 ```
 ./lambdacli keys add [your-account-name]
 ```
@@ -167,10 +167,9 @@ daemon have stoped
 需要领取测试网TBB用以进行节点测试的，可联系Lambda官方客服
 
 ### 10. 创建Validator  
-创建Validator需要如下信息: 
+创建Validator需要如下信息:   
 * pubkey -- 通过命令`./lambda tendermint show-validator` 获取
-* moniker -- 这里的`moniker`名称是您的`Validator`名称，可以使用中文(与第2步的moniker可以不同),
-             如果您已经创建，后面的FAQ中也有修改该名称的命令介绍
+* moniker -- 这里的`moniker`名称是您的`Validator`名称，可以使用中文(与第2步的moniker可以不同), 如果您已经创建，[FAQ](FAQ.md)中也有修改该名称的命令介绍
 * your-account-name -- 您在第7步中设置的账户名称
 
 获取上述信息后，填充如下命令并执行（过程中会提示输入账号密码），即可创建Validator  
@@ -206,7 +205,7 @@ Validator 的操作地址也可通过命令获取
 
 **注意**
 
-当前已经成为validator的节点，在以下情况下会被惩罚，共识网络会扣除节点质押的utbb，并且把  节点移出validator集合
+当前已经成为validator的节点，在以下情况下会被惩罚，共识网络会扣除节点质押的utbb，并且把节点移出validator集合
 
 1. 对块进行双签
 2. 在最近的10000个块中对少于500个块签名
