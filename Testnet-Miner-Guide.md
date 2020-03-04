@@ -75,9 +75,12 @@ cd lambda-storage-0.2.3-testnet
 ### 2配置lambdacli
 
 ```
-./lambdacli config node tcp://47.93.196.236:26657
+./lambdacli config node tcp://[nodeip]:26657
+```
+[nodeip] 为自己质押的的验证节点公网IP
 
-可选节点IP如下:
+可选Lambda官方验证节点IP如下:
+```
 47.93.196.236
 47.94.129.97
 39.105.148.217
@@ -92,13 +95,16 @@ cd lambda-storage-0.2.3-testnet
 ./lambdacli config trust-node true
 ```
 ```
-./lambdacli config dht-gateway-address 47.93.196.236:13000
+./lambdacli config dht-gateway-address [kad.external_address]
+```
+[kad.external_address] 为验证节点配置lambda.toml中的kad.external_address
 
-可选节点IP如下:
-47.93.196.236
-47.94.129.97
-39.105.148.217
-182.92.66.63
+可选Lambda官方dht-gateway-address如下:
+```
+47.93.196.236:13000
+47.94.129.97:13000
+39.105.148.217:13000
+182.92.66.63:13000
 ```
 ### 3添加矿工账户
 将[your-account-name]替换成您自定义的矿工账户名称，需要设置您的账户密码，不用加中括号  
@@ -196,7 +202,7 @@ debug_log_traffic = "false"
 
 [kad]
 # DHT接入节点地址，存储网络提供，可填写多个，以 47.94.129.97:13000 为例
-# 可填写自己的验证节点配置lambda.toml中的 kad.external_address
+# 可填写自己质押的验证节点配置lambda.toml中的 kad.external_address
 # 可选官方dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000/182.92.66.63:13000
 bootstrap_addr = ["47.94.129.97:13000"]
 # time you would wait to connect dht seed node
@@ -486,10 +492,11 @@ MatchOrder
 ```
 [broker]
 # dht_gateway_addr为验证节点的dht服务 IP和端口；
-# 可选dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000/182.92.66.63:13000
+# 可以是自己质押的验证节点配置的kad.external_address，这里以 47.94.129.97:13000 为例
+# 可选官方dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000/182.92.66.63:13000
 dht_gateway_addr = "39.105.148.217:13000" 
 # validator_addr为验证节点IP和端口
-# 可选地址：39.105.148.217:13659/47.94.129.97:13659/47.93.196.236:13659
+# 可选官方地址：39.105.148.217:13659/47.94.129.97:13659/47.93.196.236:13659
 validator_addr = "39.105.148.217:13659"   
 
 [gateway]

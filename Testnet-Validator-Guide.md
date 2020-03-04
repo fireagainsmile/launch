@@ -51,14 +51,6 @@ rm -rf ~/.lambda/config/config.toml ~/.lambda/config/genesis.json ~/.lambda/iden
 ```
 ./lambdacli config trust-node true
 ```
-```
-./lambdacli config dht-gateway-address 47.93.196.236:13000
-可选节点IP如下:
-47.93.196.236
-47.94.129.97
-39.105.148.217
-182.92.66.63
-```
 
 ### 5. 配置种子节点  
 修改`~/.lambda/config/config.toml`文件，将文件中的seeds字段的值替换如下
