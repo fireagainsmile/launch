@@ -4,8 +4,9 @@
 一个钱包支持创建和管理多个账户，支持语言有中文和英文。
 
 
-下载地址 ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.40](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.40)
-
+下载地址 ：  
+[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.40](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.40)  
+[http://download.lambdastorage.com/wallet/0.4.40/](http://download.lambdastorage.com/wallet/0.4.40/)
 
 
 ![avatar](img/wallethome@2x.png)
