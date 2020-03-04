@@ -41,15 +41,15 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 Download the package 
 ```
-wget https://github.com/LambdaIM/launch/releases/download/storage0.2.2_hotfix2/lambda-storage-0.2.2_hotfix2-testnet.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/v0.4.5/lambda-storage-0.2.3-testnet.tar.gz
 ```
 Extract the installation package 
 ```
-tar zxvf lambda-storage-0.2.2_hotfix2-testnet.tar.gz
+tar zxvf lambda-storage-0.2.3-testnet.tar.gz
 ```
 Enter the content after extracting
 ```
-cd lambda-storage-0.2.2_hotfix2-testnet
+cd lambda-storage-0.2.3-testnet
 ```
 
 ## 2Lambdacli-Deployment
@@ -65,11 +65,17 @@ Select validator IP as below：
 ```
 
 ```
- ./lambdacli config chain-id lambda-chain-test4.3
-```
-
-```
+./lambdacli config chain-id lambda-chain-test4.5
 ./lambdacli config trust-node true
+```
+```
+./lambdacli config dht-gateway-address 39.105.148.217:13000
+
+可选节点IP如下:
+47.93.196.236
+47.94.129.97
+39.105.148.217
+182.92.66.63
 ```
 ## 3Add-Account
 Please replace [your-account-name]  with your custom account name. You need to set up your account and password without brackets. 
@@ -118,7 +124,7 @@ lambdavaloper1r340rrv9fs95gqy5087e2mtz82vvwrglt6amx3
 After initializing "minernode", a default configuration file `~/.lambda_miner/config/config.toml` is generated, and then modified: config.toml
 
 ```
-version = "0.2.2_hotfix2"
+version = "0.2.3"
 commit = "34453f30e9aa2f281c827d9b4883b0b677eb170f"
 mode = "release"
 
@@ -207,7 +213,7 @@ Miner Address: lambda1wgdcvew36nqwm2d5gj6yxraayjvnhfpf5rrfww  //矿工子账户�
 ```
 ./minernode info
 Return Value：
-                version: 0.2.2_hotfix2
+                version: 0.2.3
                 dht id: CdZsGtfsXVjMgt51EnaGAqr78YmgFxYsCAn4ubR1Dpgo //dht-id will be used when create-miner
         server.address: 0.0.0.0:14000
   kad.external_address: 182.92.242.59:14000
@@ -256,7 +262,7 @@ Initial storagenode:
 ```
 
 ## 6Configure-Storagenode
-[storagenode deployment activation reference](./Testnet0.4.3-Storagenode-configure-en.md)
+[storagenode deployment activation reference](./Testnet-Storagenode-Configure-en.md)
 
 ## 7Miner-Create-Sellorder
 

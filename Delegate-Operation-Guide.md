@@ -58,4 +58,3 @@
 
 [unjail命令](./docs/lambdacli/tx/slashing/unjail.md)
 
-[unjail-partner命令](./docs/lambdacli/tx/slashing/unjail-partner.md)

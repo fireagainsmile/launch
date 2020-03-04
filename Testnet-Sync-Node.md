@@ -1,4 +1,4 @@
-# 测试网0.4.3同步节点 接入教程
+# 测试网0.4.5同步节点 接入教程
 
 ### 1. 下载安装包并解压
 `创建目录并进入`
@@ -9,18 +9,18 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 
 `解压安装包`
 ```
-tar zxvf lambda-0.4.3-testnet.tar.gz && cd lambda-0.4.3-testnet
+tar zxvf lambda-0.4.5-testnet.tar.gz && cd lambda-0.4.5-testnet
 ```
 
 ### 2. 初始化节点  
 `将下面命令中的[your-moniker]替换成您自定义的节点名称，不用加中括号`  
 `注意：这里的 your-moniker 必须使用英文，用于P2P网络`
 ```
-./lambda init [your-moniker] --chain-id lambda-chain-test4.3
+./lambda init [your-moniker] --chain-id lambda-chain-test4.5
 ```
 如果初始化报错，可能是由于有老版本的配置数据导致，可以通过下面的命令清除错误数据
 ```
-rm ~/.lambda/config/config.toml ~/.lambda/config/genesis.json
+rm -rf ~/.lambda/config/config.toml ~/.lambda/config/genesis.json ~/.lambda/identity
 ./lambda unsafe-reset-all
 ```
 
@@ -67,8 +67,8 @@ output_file = "stdout"
 # 以本机内网IP为 192.168.10.30，端口映射的外网IP为 200.200.200.300 为例
 [server]
 # 对外提供服务的地址，推荐配置为内网地址做端口映射到外网IP
-address = "192.168.10.30:13000"
-private_address = "127.0.0.1:13001"
+address = "192.168.10.30:12000"
+private_address = "127.0.0.1:12001"
 debug_log_traffic = "false"
 
 [kad]
@@ -78,7 +78,7 @@ bootstrap_addr = "47.94.129.97:13000"
 bootstrap_backoff_max = "30s"
 bootstrap_backoff_base = "1s"
 db_path = "/root/.lambda/kademlia"
-external_address = "200.200.200.300:13000"
+external_address = "200.200.200.300:12000"
 alpha = 3
 
 [kad.routing_table_config]
@@ -87,11 +87,40 @@ replacement_cache_size = 5
 
 [discov]
 discovery_interval = "3m0s"
+
+[db]
+app_db = "/root/.lambda/data"
+market_db = "/root/.lambda"
+pdp_db = "/root/.lambda"
+identity_files = "/root/.lambda/identity"
 ```
 
 ### 6. 启动节点  
 ```
-nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:26657 >> lambda.log 2>&1 &
+./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:26657 --daemonize --log.file /tmp/lambda.log
+```
+说明：  
+--daemonize以后台方式启动   
+--log.file /tmp/lambda.log 日志输出/tmp/lambda.log文件里，可修改为其他目录，不添加参数则无日志输出
+
+#### 停止节点
+如需停掉节点，执行以下命令
+```
+./lambda stop
+
+返回如下结果即为停止成功：
+stop daemon process from lambda.pid:28638 successfully
+```
+
+#### 查看节点状态
+``` 
+./lambda status
+
+返回结果如下，即节点正在运行：
+lambda.pid is running, pid is 28800
+
+返回结果如下，即节点未运行：
+daemon have stoped
 ```
 
 

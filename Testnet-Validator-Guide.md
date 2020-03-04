@@ -1,4 +1,4 @@
-# Validator 接入教程
+# 测试网节点0.4.5 接入教程
 
 ### 1. 下载安装包并解压
 `创建目录并进入`
@@ -7,23 +7,23 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 `下载安装包`
 ```
-wget https://github.com/LambdaIM/launch/releases/download/v0.3.0/lambda-0.3.0-release.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/v0.4.5/lambda-0.4.5-testnet.tar.gz
 ```
 
 `解压安装包`
 ```
-tar zxvf lambda-0.3.0-release.tar.gz && cd lambda-0.3.0-release
+tar zxvf lambda-0.4.5-testnet.tar.gz && cd lambda-0.4.5-testnet
 ```
 
 ### 2. 初始化节点  
 `将下面命令中的[your-moniker]替换成您自定义的节点名称，不用加中括号`  
 `注意：这里的 your-moniker 必须使用英文，用于P2P网络`
 ```
-./lambda init [your-moniker] --chain-id lambda-chain-3.0
+./lambda init [your-moniker] --chain-id lambda-chain-test4.5
 ```
 如果初始化报错，可能是由于有老版本的测试网配置数据导致，可以通过下面的命令清除错误数据
 ```
-rm ~/.lambda/config/config.toml ~/.lambda/config/genesis.json
+rm -rf ~/.lambda/config/config.toml ~/.lambda/config/genesis.json ~/.lambda/identity
 ./lambda unsafe-reset-all
 ```
 
@@ -37,40 +37,39 @@ rm ~/.lambda/config/config.toml ~/.lambda/config/genesis.json
 \cp -rf ./genesis.json ~/.lambda/config/genesis.json
 ```
 
-### 4. 配置节点
+### 4. 配置lambdacli
 `要确保机器已开启端口26656, 26657`
 ```
 ./lambdacli config node tcp://0.0.0.0:26657
-./lambdacli config chain-id lambda-chain-3.0
+```
+```
+./lambdacli config chain-id lambda-chain-test4.5
+```
+```
 ./lambdacli config trust-node true
+```
+```
+./lambdacli config dht-gateway-address 47.93.196.236:13000
+可选节点IP如下:
+47.93.196.236
+47.94.129.97
+39.105.148.217
+182.92.66.63
 ```
 
 ### 5. 配置种子节点  
-`编辑~/.lambda/config/config.toml文件，将文件中的seeds字段的值替换如下`
-```
-72e1dd22f2c3effc4e6ff842035f109480a997ae@seednodes1.oneweb.one:26656
-
-```
-
-如果上面节点连接有问题，可以使用下面的任一种子节点
-
-国内种子节点推荐
+修改`~/.lambda/config/config.toml`文件，将文件中的seeds字段的值替换如下
 ```
 vim ~/.lambda/config/config.toml
-
-节点列表
-72e1dd22f2c3effc4e6ff842035f109480a997ae@seednodes1.oneweb.one:26656
-d3440b0b7a0ccf419f506a1242431813cf8a699c@39.104.97.255:26656
-98a0a749080b367d218f68b628b2db3d8d175af9@39.100.6.247:26656
-91fa14e2c8da164ff7969f2bbc0ba5c6e206da8a@101.201.65.116:26656 
+seeds = "3da3b249f4f1afd0efdd6f4676972fdc7af0ea6b@47.94.129.97:26656"
 ```
 
-国外种子节点推荐
+测试网目前可选种子节点列表：
 ```
-vim ~/.lambda/config/config.toml
-
-节点列表
-dd3360f3a4334432af394a835662a2b21bf406e2@seednodes.oneweb.one:26656
+e02882af5bdafa5aec086c32b8398c268d2337f1@47.93.196.236:26656
+3da3b249f4f1afd0efdd6f4676972fdc7af0ea6b@47.94.129.97:26656
+559f3aeb13b58e611c95fdc6b34446de81cc470d@39.105.148.217:26656
+9162e0c3494d8d32acd6c5bc48d1066f2cb362e6@182.92.66.63:26656
 ```
 
 **注意**
@@ -78,12 +77,77 @@ dd3360f3a4334432af394a835662a2b21bf406e2@seednodes.oneweb.one:26656
 当前支持配置多个种子节点，通过`,`隔开  
 切换节点后需要kill掉节点服务并且重启
 
-### 6. 启动节点  
-```
-nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:26657 >> /tmp/lambda.log 2>&1 &
+### 6. 配置lambda.toml
+修改`~/.lambda/config/lambda.toml`文件
 ```
 
-### 7. 添加账户  
+minimum-gas-prices = ""
+
+[log]
+level = "info"
+output_file = "stdout"
+
+# 服务需要监听的地址
+# 以本机内网IP为 192.168.10.30，端口映射的外网IP为 200.200.200.300 为例
+[server]
+# 对外提供服务的地址，推荐配置为内网地址做端口映射到外网IP
+address = "192.168.10.30:12000"
+private_address = "127.0.0.1:12001"
+debug_log_traffic = "false"
+
+[kad]
+# DHT接入节点地址，存储网络提供，可填写多个，以 47.94.129.97:13000 为例
+# 可选dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000/182.92.66.63:13000
+bootstrap_addr = "47.94.129.97:13000"
+bootstrap_backoff_max = "30s"
+bootstrap_backoff_base = "1s"
+db_path = "/root/.lambda/kademlia"
+external_address = "200.200.200.300:12000"
+alpha = 3
+
+[kad.routing_table_config]
+bucket_size = 20
+replacement_cache_size = 5
+
+[discov]
+discovery_interval = "3m0s"
+
+[db]
+app_db = "/root/.lambda/data"
+market_db = "/root/.lambda"
+pdp_db = "/root/.lambda"
+identity_files = "/root/.lambda/identity"
+```
+
+### 7. 启动节点  
+```
+./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:26657 --daemonize --log.file /tmp/lambda.log
+```
+说明：  
+--daemonize以后台方式启动   
+--log.file /tmp/lambda.log 日志输出/tmp/lambda.log文件里，可修改为其他目录，不添加参数则无日志输出  
+
+#### 停止节点
+如需停掉节点，执行以下命令
+```
+./lambda stop
+
+返回如下结果即为停止成功：
+stop daemon process from lambda.pid:28638 successfully
+```
+
+#### 查看节点状态
+``` 
+./lambda status
+
+返回结果如下，即节点正在运行：
+lambda.pid is running, pid is 28800
+
+返回结果如下，即节点未运行：
+daemon have stoped
+```
+
+### 8. 添加账户  
 `将[your-account-name]替换成您自定义的账户名称，需要设置您的账户密码，不用加中括号`
 ```
 ./lambdacli keys add [your-account-name]
@@ -96,10 +160,10 @@ nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:2
 输入命令后按照提示输入密码和助记词即可
 
 
-### 8. 提交地址
-提交上一步命令中返回的账户地址，用钱包签名并在质押系统内提交，我们会在收到后一定时间内转账
+### 9. 节点领取测试网测试币
+需要领取测试网TBB用以进行节点测试的，可联系Lambda官方客服
 
-### 9. 创建 Validator  
+### 10. 创建Validator  
 `创建Validator需要如下信息`
 * pubkey -- 通过命令`./lambda tendermint show-validator` 获取
 * moniker -- 这里的`moniker`名称是您的`Validator`名称，可以使用中文(与第2步的moniker可以不同),
@@ -114,7 +178,6 @@ nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:2
   --moniker "[your-moniker]" \
   --from [your-account-name] --broadcast-mode block 
 ```
-说明：commission相关参数数值可自行指定，0.1指节点对质押者收取10%的佣金。可使用lambdacli修改节点设置。
 
 执行完上述命令后，会返回类似如下信息，destination-validator 即 Validtor 的操作地址
 ```
@@ -139,8 +202,7 @@ Validator 的操作地址也可通过命令获取
 
 **注意**
 
-当前已经成为validator的节点，在以下情况下会被惩罚，共识网络会扣除节点质押的utbb，并且把  
-节点移出validator集合
+当前已经成为validator的节点，在以下情况下会被惩罚，共识网络会扣除节点质押的utbb，并且把  节点移出validator集合
 
 1. 对块进行双签
 2. 在最近的10000个块中对少于500个块签名
@@ -158,25 +220,4 @@ Validator 的操作地址也可通过命令获取
 
 ```
 ./lambdacli tx slashing unjail --from [your-account-name]
-```
-
-# FAQ
-### 查询账户不存在？
-
-出现如下错误提示, 可能是由于您刚刚启动 lambda 还没有同步到最新块高
-可以通过日志(`/tmp/lambda.log`)查看块高情况
-```
-[root@zh]# ./lambdacli query account lambda1z66gxs2wlhmkhh3rljtkzk96fqkk7809zb123
-ERROR: {"codespace":"sdk","code":9,"message":"account lambda1z66gxs2wlhmkhh3rljtkzk96fqkkl7809zb123 does not exist"}
-```
-
-### ABCI 连接被拒绝？
-出现如下错误提示，可通过`telnet`命令检查您的机器 26656 和 26657 端口是否能通
-```
-ERROR: ABCIQuery: Post xxx connect: connection refused
-```
-
-### 如何修改 Validator 名称
-```
-./lambdacli tx staking edit-validator --moniker "your-custom-name" --from [your-account-name] --broadcast-mode block -y
 ```

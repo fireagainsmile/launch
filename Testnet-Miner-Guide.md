@@ -1,40 +1,55 @@
-
+# 矿工0.2.3接入教程
 
 1个miner对应多个storagenode   
 
+* [备份旧版配置文件](#备份旧版配置文件)
 * [清除历史数据](#清除历史数据)
-* [配置miner：](#配置miner节点)
-* [1. 下载安装包并解压](#1下载安装包并解压)
-* [2. 配置lambdacli](#2配置lambdacli)
-* [3. 添加矿工账户](#3添加矿工账户)
-* [4. 创建miner](#4创建miner)
-* [5. 初始化storagenode](#5初始化storagenode)
-* [6. storagenode配置和启动](#6storagenode配置和启动)
-* [7. 矿工创建卖单](#6矿工创建卖单)
-* [8. 创建买单](#7创建买单)
----
-* [挖矿及文件上传查看：](#挖矿及文件上传查看)
-* [1. 挖矿配置](#1配置)
-* [2. 上传文件](#2上传文件)
-* [3. 矿工挖矿](#3矿工挖矿)
-* [4. 挖矿收益](#4挖矿收益)
+* [配置miner](#配置miner节点)
+* * [1. 下载安装包并解压](#1下载安装包并解压)
+* * [2. 配置lambdacli](#2配置lambdacli)
+* * [3. 添加矿工账户](#3添加矿工账户)
+* * [4. 创建miner](#4创建miner)
+* * [5. 初始化storagenode](#5初始化storagenode)
+* * [6. storagenode配置和启动](#6storagenode配置和启动)
+* * [7. 矿工创建卖单](#6矿工创建卖单)
+* * [8. 创建买单](#7创建买单)
+* [文件上传和查看](#文件上传和查看)
+* * [1. 配置](#1配置)
+* * [2. 上传文件](#2上传文件)
+* [挖矿](#挖矿)
 ---
 * [提取订单收益](#提取订单收益)
 * [测试网络连通](#测试网络连通)
 
-
-# 清除历史数据
-
-清除storagecli和storagenode的数据列表
+## 备份旧版配置文件
+``` 
+mkdir -p ~/lambda_bak
+cp ~/.lambda_miner/config/config.toml ~/lambda_bak/miner_config.toml
+cp ~/.lambda_storage/config/config.toml ~/lambda_bak/storage_config.toml
+cp ~/.lambda_storagecli/config/user.toml ~/lambda_bak/
 ```
-rm -rf ~/.lamborage
+
+## 清除历史数据
+
+1. 清除旧版miner数据
 ```
-**注：**
-如果~/.lamborage/config/node.toml的data_dir和 mining_dir配置有改动，需清除掉配置的目录下的数据
+rm -rf ~/.lambda_miner
+```
 
-# 配置miner节点
+2. 清除旧版storagenode数据
+```
+rm -rf ~/.lambda_storage
+```
+注： 如果~/.lambda_storage/config/config.toml的data_dir和 mining_dir配置有改动，需清除掉配置的目录下的数据
 
-## 1下载安装包并解压
+3. 清除旧版storagecli数据
+```
+rm -rf ~/.lambda_storagecli
+```
+
+## 配置矿工和存储节点
+
+### 1下载安装包并解压
 
 创建目录并进入 
 
@@ -43,18 +58,18 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 下载安装包
 ```
-wget https://github.com/LambdaIM/launch/releases/download/storage0.2.2_hotfix2/lambda-storage-0.2.2_hotfix2-testnet.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/storage0.2.3/lambda-storage-0.2.3-testnet.tar.gz
 ```
 解压安装包
 ```
-tar zxvf lambda-storage-0.2.2_hotfix2-testnet.tar.gz
+tar zxvf lambda-storage-0.2.3-testnet.tar.gz
 ```
 进入解压后的目录
 ```
-cd lambda-storage-0.2.2_hotfix2-testnet
+cd lambda-storage-0.2.3-testnet
 ```
 
-## 2配置lambdacli
+### 2配置lambdacli
 
 ```
 ./lambdacli config node tcp://47.93.196.236:26657
@@ -67,19 +82,28 @@ cd lambda-storage-0.2.2_hotfix2-testnet
 ```
 
 ```
- ./lambdacli config chain-id lambda-chain-test4.3
+./lambdacli config chain-id lambda-chain-test4.5
+```
 ```
 
-```
 ./lambdacli config trust-node true
 ```
-## 3添加矿工账户
+```
+./lambdacli config dht-gateway-address 47.93.196.236:13000
+
+可选节点IP如下:
+47.93.196.236
+47.94.129.97
+39.105.148.217
+182.92.66.63
+```
+### 3添加矿工账户
 将[your-account-name]替换成您自定义的矿工账户名称，需要设置您的账户密码，不用加中括号  
 矿工子账户用来提交挖矿声明和挖矿证明，每笔交易需要一定的手续费，需要保证矿工子账户余额大于1000LAMB
 
 提示：也可以使用钱包进行添加矿工账户、导入/导出矿工子账户、转账、质押等操作
 
-### 添加矿工账户及矿工子账户
+#### 添加矿工账户及矿工子账户
 ```
 ./lambdacli keys add [your-account-name] --generate-miner 
 ```
@@ -93,18 +117,18 @@ cd lambda-storage-0.2.2_hotfix2-testnet
 输入命令后按照提示输入密码和助记词即可
 
 
-### （本地已有矿工账户时）仅生成矿工子账户
+#### （本地已有矿工账户时）仅生成矿工子账户
 ```
 ./lambdacli keys create-miner [your-account-name] 
 ```
 输入命令后按照提示输入助记词即可
 
 
-## 4创建miner
+### 4创建miner
 质押到节点。
 节点地址 可通过浏览器查找 http://testbrowser.lambda.im/#/ 或询问节点，
 [your-account-name] 是您在第3步创建的账户名称
-### 质押资产到节点
+#### 质押资产到节点
 ```
 ./lambdacli tx staking delegate lambdavaloper1prrcl9674j4aqrgrzmys5e28lkcxmntxuvjpcl 20000000utbb \
 --from [your-account-name] --broadcast-mode block -y
@@ -115,18 +139,36 @@ lambdavaloper1a83p8s9gs5hua09xn5ktmahepst3vzg9u2l20d
 lambdavaloper1r340rrv9fs95gqy5087e2mtz82vvwrglt6amx3
 ```
 
-### 初始化矿工及配置
+#### 初始化矿工及配置
+1. 初始化矿工
 ```
 ./minernode init
 ```
-会生成矿工配置文件~/.lambda_miner/config/config.toml，参考如下说明进行配置
-```
-version = "0.2.2_hotfix2"
-commit = "34453f30e9aa2f281c827d9b4883b0b677eb170f"
-mode = "release"
+会生成矿工配置文件~/.lambda_miner/config/config.toml
 
-# ensure_level=0会多占用磁盘1/6空间，ensure_level=1会多占用1/3空间
+2. 修改配置文件
+- 如已备份旧版矿工配置文件，可使用旧文件覆盖新的，然后使用`minernode upgrade`命令升级即可
+```
+\cp -rf ~/lambda_bak/miner_config.toml ~/.lambda_miner/config/config.toml
+
+./minernode upgrade
+```
+
+- 如未部署过minernode，需参考如下说明手动修改配置文件  
+`vi ~/.lambda_miner/config/config.toml`
+```
+####
+## Not used in v0.2.3, will be removed after v0.2.3
+version = "0.2.3"
+commit = "20b8847d14a32481e64bae8617abbe7b55cac45b"
+mode = "release"
 ensure_level = "0"
+####
+
+[build]
+version = "0.2.3"
+commit = "20b8847d14a32481e64bae8617abbe7b55cac45b"
+mode = "release"
 
 # 服务需要监听的地址
 # 以本机内网IP为 192.168.10.10，端口映射的外网IP为 200.200.200.100 为例
@@ -154,9 +196,18 @@ alpha = 3
 bucket_size = 20
 replacement_cache_size = 5
 
+
+####
+## Not used in v0.2.3, will be removed after v0.2.3
 [api_key]
+root_secret_seed = ""
+####
+
+[miner]
+# ensure_level=0会多占用磁盘1/6空间，ensure_level=1会多占用1/3空间
+ensure_level = "0"
 #root access key，不能为空
-root_secret_seed = "yah"
+root_secret_seed = "aaa"
 
 [log]
 level = "info"
@@ -184,7 +235,7 @@ data_backup_path = ""
 data_backup_interval = "300000000000"
 ```
 
-### 查看矿工子账户地址
+#### 查看矿工子账户地址
 将第三步生成的[your-account-name]_miner_key.json文件重命名为`default_miner_key.json`并移动到`~/.lambda_miner/config/`:
 ```
 mv [your-account-name]_miner_key.json ~/.lambda_miner/config/default_miner_key.json
@@ -198,20 +249,20 @@ Master Address: lambda1fzeqzcemyye2qx2338clwss7nx3ukr7rx88snz //矿工账户地�
 Miner Address: lambda1wgdcvew36nqwm2d5gj6yxraayjvnhfpf5rrfww  //矿工子账户地址
 ```
 
-### 给子账户转账
+#### 给子账户转账
 [miningAddr] 为上面查询到的矿工子账户地址
 ```
 ./lambdacli tx send [miningAddr] 1000000000ulamb --from [your-account-name] --broadcast-mode block -y
 ```
 
-### 创建矿工
+#### 创建矿工
 [miner-name] 是您在第3步创建的矿工账户名称。  
 [miningAddr] 为矿工子账户地址。
 [dht-id] 使用`./minernode info`查询
 ```
 ./minernode info
 返回结果：
-               version: 0.2.2_hotfix2
+               version: 0.2.3
                 dht id: G4xW3UHMfFnTmaRMZUJ7PKcfvr9YTTFyekcsRxKDZZD9  //创建矿工时会用到此dht-id
 server.private_address: 172.17.159.130:15001
         server.address: 0.0.0.0:26654
@@ -222,7 +273,7 @@ server.private_address: 172.17.159.130:15001
 创建矿工命令：
 ./lambdacli tx market create-miner --dht-id [dht-id] --mining-address [miningAddr] --from [miner-name] --broadcast-mode block -y
 ```
-### 启动矿工服务
+#### 启动矿工服务
 [log_file_path] 指定矿工日志完整路径
 ```
 ./minernode run --query-interval 5 --daemonize --log.file [log_file_path]
@@ -233,7 +284,7 @@ server.private_address: 172.17.159.130:15001
 ```
 
 
-### 查看矿工服务进程
+#### 查看矿工服务进程
 ```
 ./minernode run --status
 ```
@@ -242,7 +293,7 @@ server.private_address: 172.17.159.130:15001
 minernode.pid is running, pid is 19276
 ```
 
-### 停止矿工服务
+#### 停止矿工服务
 ```
 ./minernode run --stop
 ```
@@ -251,17 +302,17 @@ minernode.pid is running, pid is 19276
 stop daemon process from minernode.pid:19276 successfully
 ```
 
-## 5初始化storagenode
+### 5初始化storagenode
 
 ```
 ./storagenode init
 ```
 生成存储节点配置文件~/.lambda_storage/config/config.toml，参考如下第6步进行配置
 
-## 6storagenode配置和启动
-[storagenode配置启动参考](./Testnet0.4.3-Storagenode-configure.md)
+### 6storagenode配置和启动
+[storagenode配置启动参考](./Testnet-Storagenode-Configure.md)
 
-## 7矿工创建卖单
+### 7矿工创建卖单
 
 加上--normal参数（赔付比率rate为0.5）的是普通卖单，价格只能等于5000000ulamb；
 不加--normal参数（赔付比率等于1）的为优质卖单，优质卖单可指定大于等于5000000ulamb的任意价格。  
@@ -272,7 +323,7 @@ stop daemon process from minernode.pid:19276 successfully
 
 注意：测试网中尽量挂优质卖单（不加--normal参数），这样创建买单时才能指定卖单ID匹配到自己矿工的卖单。
 
-### 创建普通卖单
+#### 创建普通卖单
 
 一个矿工可创建多笔卖单，卖单总空间不能大于质押TBB数量，例如：一个矿工质押了1000000utbb（即1TBB），创建卖单总空间不能超过1TB（即1000GB）
 
@@ -287,7 +338,7 @@ stop daemon process from minernode.pid:19276 successfully
 --from [miner-name] --broadcast-mode block -y
 ```
 
-### 创建优质卖单
+#### 创建优质卖单
 
 ```
 ./lambdacli tx market create-sellorder --price [sellorder-price]  \
@@ -298,9 +349,7 @@ stop daemon process from minernode.pid:19276 successfully
 --max-buy-duration [max-buy-duration]month \
 --from [miner-name] --broadcast-mode block -y
 ```
-### 查询卖单
-
-
+#### 查询卖单
 ```
 查询账户地址：
 ./lambdacli keys show [miner-name] --address
@@ -331,7 +380,7 @@ SellOrder
   MaxDuration:        43200h0m0s
 ```
 
-### 取消卖单
+#### 取消卖单
 
 根据SellOrderID取消卖单
 ```
@@ -339,7 +388,7 @@ SellOrder
 ```
 
 
-## 8创建买单
+### 8创建买单
 矿工不能买自己的卖单，只能换其他账户来挂买单。
 
 创建优质买单需要指定对应优质卖单SellOrderID。
@@ -348,7 +397,7 @@ account-name为当前账户的名称；
 duration为购买时长；
 size为需要购买的空间，不小于对应卖单指定的最小购买空间。
 
-### 创建普通买单
+#### 创建普通买单
 
 ```
  ./lambdacli tx market create-buyorder --from [account-name] \
@@ -356,7 +405,7 @@ size为需要购买的空间，不小于对应卖单指定的最小购买空间�
  --size [size]GB --broadcast-mode block -y
 ```
 
-### 创建优质买单
+#### 创建优质买单
 [orderId] 可指定1个或多个优质卖单ID，指定多个卖单ID时以逗号分隔，例如：58941CFFEEA859AED51172F0F9DF3E77293D2E12,54F82FBD979BE150C8B3246D82DDF60F043129EE
 ```
 ./lambdacli tx market create-buyorder --sellorder-id [orderId] \
@@ -364,7 +413,7 @@ size为需要购买的空间，不小于对应卖单指定的最小购买空间�
 --market-name LambdaMarket --size [size]GB --broadcast-mode block -y
 ```
 
-### 查询匹配订单
+#### 查询匹配订单
 
 ```
 查询账户地址：
@@ -400,15 +449,23 @@ MatchOrder
 ```
 
 
-# 挖矿及文件上传查看
+## 文件上传和查看
 
-## 1配置
+### 1配置
 
 初始化storagecli
 ```
 ./storagecli init
 ```
-初始化storagecli 后会默认生成配置文件~/.lambda_storagecli/config/user.toml，修改user.toml
+初始化storagecli 后会默认生成配置文件~/.lambda_storagecli/config/user.toml
+
+如已备份旧版storagecli配置文件，可使用旧文件覆盖新的
+```
+\cp -rf ~/lambda_bak/user.toml ~/.lambda_storagecli/config/user.toml
+```
+
+如未部署过storagecli，需参考如下说明手动修改配置文件  
+`vi ~/.lambda_storagecli/config/user.toml`
 
 ```
 [broker]
@@ -434,15 +491,15 @@ account-name 为发起买单账户名称
 ```
 
 
-## 2上传文件
+### 2上传文件
 
 文本/图片/视频/音频/可执行文件/压缩包文件可正常上传。上传源文件路径为绝对路径。
 
 - orderId为匹配单orderID;
 - account-name为发起买单账户名称；
-- bucket-name 可设置为长度大于等于3的任意字符，一个订单下可以有多个bucket
+- bucket-name 可设置为长度不小于3且不大于64位的英文大小写，一个订单下可以有多个bucket
 
-### 上传文件
+#### 上传文件
 
 ```
 创建bucket：
@@ -454,23 +511,24 @@ LAMBDA_ORDER_ID=[orderId] ./storagecli cp [account-name] [srcPath] lamb://[bucke
 ```
 
 
-### 查看上传文件列表
+#### 查看上传文件列表
 
 ```
 LAMBDA_ORDER_ID=[orderId] ./storagecli ls lamb://[bucket-name]/ 
 ```
 
-## 3矿工挖矿
+## 挖矿
+- 矿工挖矿
 
-矿工每存储文件1G文件会对应生成一个声明，所有声明有效期为1个月，每个出块周期（大约每6s出一个块）会由共识网络发起挑战，挑战声明成功并提交挖矿证明的矿工就会得到一笔收益。
+矿工每接受文件`8GB`文件会对应生成一个声明，所有声明有效期为1个月，每个出块周期（大约每6s出一个块）会由共识网络发起挑战，挑战声明成功并提交挖矿证明的矿工就会得到一笔收益。
 
 
 1. 有效订单且有效存储文件 >= (1T) 的矿工有挖矿权利；
-2. 矿工已存文件分别为1/3/5G可生成对应1/3/5个声明；
+2. 矿工已存文件每满8G可生成1个声明；
 3. 单个矿工声明越多，该矿工被挑选到的概率越大。
 
 
-## 4挖矿收益
+- 挖矿收益
 矿工收益 = 单个区块增发量 * （43% * 95% / 挖矿的矿工数量） + 单个区块增发量 * （43% * 5% / 挖矿的矿工数量 ）* 矿工质押量在节点质押量的占比 * 75%
 
 ```
@@ -478,7 +536,7 @@ LAMBDA_ORDER_ID=[orderId] ./storagecli ls lamb://[bucket-name]/
 则单个矿工单个区块得到的挖矿奖励为4.085LAMB= 100LAMB * 43% * 95% / 10 + 100LAMB * 43% * 5% / 10 * 1/676 * 75%
 ```
 
-# 提取订单收益
+## 提取订单收益
 [提取单个匹配订单收益](./docs/lambdacli/tx/market/withdraw-miner.md)  
 [批量提取匹配订单收益](./docs/lambdacli/tx/market/miner-withdraw-count.md)
 
@@ -491,7 +549,7 @@ LAMBDA_ORDER_ID=[orderId] ./storagecli ls lamb://[bucket-name]/
 ```
 ./minernode info --test
 返回结果均为successful即正常：
-               version: 0.2.2_hotfix2
+               version: 0.2.3
                 dht id: G4xW3UHMfFnTmaRMZUJ7PKcfvr9YTTFyekcsRxKDZZD9
 server.private_address: 172.17.159.130:15001   successful
         server.address: 0.0.0.0:26654    successful
@@ -505,7 +563,7 @@ server.private_address: 172.17.159.130:15001   successful
 ./storagenode info network --test
 
 返回结果均为successful即正常：
-               version: 0.2.2_hotfix2
+               version: 0.2.3
                 dht id: 3mta4YEgHB43RHYE83aWBouvFNNCtSc832siEwmcTUsZ
   storage.storage_name: sn1
  storage.miner_address: 172.17.159.130:15001   successful
@@ -516,10 +574,10 @@ server.private_address: 172.17.159.130:16001   successful
 
 ```
 
-## 查看存储节点磁盘空间
+### 查看存储节点磁盘空间
 ```
 ./storagenode info disk
-               version:  0.2.2_hotfix2
+               version:  0.2.3
   storage.storage_name:  sn1
       storage.data_dir:  [/lambda/data/xvdd/store /lambda/data/xvde/store /lambda/data/xvdc/中文test/store /lambda/.1lambda_storage/store]
 

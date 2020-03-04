@@ -1,4 +1,4 @@
-# 配置 storagenode 
+# storagenode0.2.3 配置 
 * [storagenode初始化](#storagenode初始化)
 * [修改配置文件](#修改配置文件)
 * [启动storagenode](#启动storagenode)
@@ -15,10 +15,27 @@
 ### 修改配置文件
 初始化storagenode后，默认生成配置文件~/.lambda_storage/config/config.toml
 
+- 如已备份旧版storagenode配置文件，可使用旧文件覆盖新的，然后使用`storagenode upgrade`命令升级即可
+```
+\cp -rf ~/lambda_bak/storage_config.toml ~/.lambda_storage/config/config.toml
+
+./storagenode upgrade
+```
+
+- 如未部署过storagenode，需参考如下说明手动修改配置文件  
+`vi ~/.lambda_storage/config/config.toml`
 
 ```
-version = "0.2.2_hotfix2"
-commit = "df27600a6fc5a8c27c635d55b3ef4a51c2993715"
+####
+## Not used in v0.2.3, will be removed after v0.2.3
+version = "0.2.3"
+commit = "20b8847d14a32481e64bae8617abbe7b55cac45b"
+mode = "release"
+####
+
+[build]
+version = "0.2.3"
+commit = "20b8847d14a32481e64bae8617abbe7b55cac45b"
 mode = "release"
 
 # 服务需要监听的地址
@@ -29,7 +46,6 @@ address = "192.168.10.20:14000"
 # 对内提供服务的地址，主要是给StorageNode使用，推荐配置为内网地址
 private_address = "192.168.10.20:14001"
 debug_log_traffic = "false"
-
 
 [kad]
 # address you want kad to connect with
@@ -55,12 +71,14 @@ output_file = "stdout"
 [storage]
 ## 用于生成apikey的种子内容，不能为空
 root_secret_seed = "fasdf"
-## 存储路径，可填写多个以逗号隔开
-data_dir = [ "/root/.lambda_storage/store"]
-## minernode对内提供服务的地址，即它的server.private_address
-miner_address = "192.168.10.10:13001"
 ## 存储节点的名字，需要在矿池内部唯一，即连接同一矿工的多个storagenode的storage_name不能重复
 storage_name = "machine1"
+## minernode对内提供服务的地址，即它的server.private_address
+miner_address = "192.168.10.10:13001"
+## 记录文件位置的数据库
+db_path = "/root/.lambda_storage/storagedb"
+## 存储路径，可填写多个以逗号隔开
+data_dir = ["/root/.lambda_storage/store"]
 
 [mining]
 ## 挖矿记录的数据文件
