@@ -21,4 +21,9 @@ MD5: 84d0430c68f042f1c61c552f0b6774f6
 3. 优化挖矿逻辑
 
 
-下载地址：[https://github.com/LambdaIM/launch/releases/tag/v0.4.5](https://github.com/LambdaIM/launch/releases/tag/v0.4.5)
+下载地址：
+[https://github.com/LambdaIM/launch/releases/tag/v0.4.5](https://github.com/LambdaIM/launch/releases/tag/v0.4.5)
+
+[http://download.lambdastorage.com/lambda/0.4.5/](http://download.lambdastorage.com/lambda/0.4.5/)
+[http://download.lambdastorage.com/lambda-storage/0.2.3/](http://download.lambdastorage.com/lambda-storage/0.2.3/)
+

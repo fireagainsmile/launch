@@ -8,6 +8,9 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 `下载安装包`
 ```
 wget https://github.com/LambdaIM/launch/releases/download/v0.4.5/lambda-0.4.5-testnet.tar.gz
+
+如下载缓慢可使用下面的链接：
+wget http://download.lambdastorage.com/lambda/0.4.5/lambda-0.4.5-testnet.tar.gz
 ```
 
 `解压安装包`
@@ -164,13 +167,14 @@ daemon have stoped
 需要领取测试网TBB用以进行节点测试的，可联系Lambda官方客服
 
 ### 10. 创建Validator  
-`创建Validator需要如下信息`
+创建Validator需要如下信息: 
 * pubkey -- 通过命令`./lambda tendermint show-validator` 获取
 * moniker -- 这里的`moniker`名称是您的`Validator`名称，可以使用中文(与第2步的moniker可以不同),
              如果您已经创建，后面的FAQ中也有修改该名称的命令介绍
 * your-account-name -- 您在第7步中设置的账户名称
 
-`获取上述信息后，填充如下命令并执行（过程中会提示输入账号密码），即可创建Validator, 注意：所有参数不需要中括号`
+获取上述信息后，填充如下命令并执行（过程中会提示输入账号密码），即可创建Validator  
+注意：所有参数不需要中括号
 ```
 ./lambdacli tx staking create-validator \
   --amount 666666666utbb \
@@ -207,15 +211,16 @@ Validator 的操作地址也可通过命令获取
 1. 对块进行双签
 2. 在最近的10000个块中对少于500个块签名
 
+
 被移出的节点需要做如下操作重新加入共识网络
 
-1. 如果不满足validator的最低质押要求`666,666,666utbb`, 需要发起质押补足扣除的utbb，可进入浏览器——验证节点——节点详情——质押列表——查看当前节点账户地址质押代币数量 即为当前已质押代币数量
+1.如果不满足validator的最低质押要求`666,666,666utbb`, 需要发起质押补足扣除的utbb，可进入浏览器——验证节点——节点详情——质押列表——查看当前节点账户地址质押代币数量 即为当前已质押代币数量
 命令示例参考  
 ```
 ./lambdacli tx staking delegate [validator-address] [amount-of-utbb] --from [your-account-name]
 ```
 
-2. 发起`unjail`消息来重新加入共识网络
+2.发起`unjail`消息来重新加入共识网络
 被`jail`之后的节点需要等待10分钟的惩罚来发起`unjail`命令
 
 ```

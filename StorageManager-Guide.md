@@ -2,11 +2,17 @@
 
 相关资源
 
-矿工管理程序下载地址：[https://github.com/LambdaIM/launch/releases/tag/StorageManager0.1.12](https://github.com/LambdaIM/launch/releases/tag/StorageManager0.1.12)
+矿工管理程序下载地址：
+[https://github.com/LambdaIM/launch/releases/tag/StorageManager0.1.12](https://github.com/LambdaIM/launch/releases/tag/StorageManager0.1.12)
+[http://download.lambdastorage.com/storage-manager/0.1.12/](http://download.lambdastorage.com/storage-manager/0.1.12/)
 
-钱包下载地址：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.40](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.40)
+钱包下载地址：
+[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.40](https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.40)  
+[http://download.lambdastorage.com/wallet/0.4.40/](http://download.lambdastorage.com/wallet/0.4.40/)
 
-矿工和存储节点安装包：[https://github.com/LambdaIM/launch/releases/tag/v0.4.5](https://github.com/LambdaIM/launch/releases/tag/v0.4.5)
+矿工和存储节点安装包：
+[https://github.com/LambdaIM/launch/releases/tag/v0.4.5](https://github.com/LambdaIM/launch/releases/tag/v0.4.5)
+[http://download.lambdastorage.com/lambda-storage/0.2.3/](http://download.lambdastorage.com/lambda-storage/0.2.3/)
 
 使用矿工管理程序配合钱包即可添加配置矿工服务及存储节点服务，非常便利
 
