@@ -97,7 +97,7 @@ cd lambda-storage-0.2.3-testnet
 ```
 ./lambdacli config dht-gateway-address [kad.external_address]
 ```
-[kad.external_address] 为验证节点配置lambda.toml中的kad.external_address
+[kad.external_address] 为验证节点配置lambda.toml中的kad.external_address，可填写自己质押的验证节点dht地址
 
 可选Lambda官方dht-gateway-address如下:
 ```
@@ -495,7 +495,7 @@ MatchOrder
 # 可以是自己质押的验证节点配置的kad.external_address，这里以 47.94.129.97:13000 为例
 # 可选官方dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000/182.92.66.63:13000
 dht_gateway_addr = "39.105.148.217:13000" 
-# validator_addr为验证节点IP和端口
+# validator_addr为验证节点IP和端口，可以是自己质押的验证节点rest-server服务指定的laddr地址
 # 可选官方地址：39.105.148.217:13659/47.94.129.97:13659/47.93.196.236:13659
 validator_addr = "39.105.148.217:13659"   
 
@@ -612,5 +612,8 @@ Disk                           |Total  |Used    |Free    |Order                 
 
 Reserved为订单预留的磁盘空间，Occupied为当前订单实际占用磁盘空间
 ```
+
+## 备份存储文件
+以防配置文件丢失，请提前做好文件备份：[存储网络文件备份](StorageFile-Backup.md)
 
 

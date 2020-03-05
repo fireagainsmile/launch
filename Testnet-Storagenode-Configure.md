@@ -120,5 +120,8 @@ storagenode.pid is running, pid is 19505
 stop daemon process from storagenode.pid:19505 successfully
 ```
 
+### 备份存储文件
+以防配置文件丢失，请提前做好文件备份：[存储网络文件备份](StorageFile-Backup.md)
+
 
 

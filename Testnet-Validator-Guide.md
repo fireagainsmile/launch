@@ -195,6 +195,12 @@ Validator 的操作地址也可通过命令获取
 ./lambdacli keys show [your-account-name] --bech val
 ```
 
+### 11. 启动rest-server服务
+rest-server服务可提供给钱包和storagecli连接
+```
+nohup ./lambdacli rest-server --node tcp://0.0.0.0:26657 --laddr tcp://0.0.0.0:13659 >> /tmp/lambdacli.log 2>&1 &
+```
+
 **注意**
 
 当前已经成为validator的节点，在以下情况下会被惩罚，共识网络会扣除节点质押的utbb，并且把节点移出validator集合
@@ -217,3 +223,6 @@ Validator 的操作地址也可通过命令获取
 ```
 ./lambdacli tx slashing unjail --from [your-account-name]
 ```
+
+### 备份验证节点文件
+以防配置文件丢失，请提前做好文件备份：[验证节点文件备份](StorageFile-Backup.md#_1)

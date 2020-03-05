@@ -1,10 +1,15 @@
-
-# 矿工和存储节点文件备份
+# 存储网络文件备份
  
 以文件备份到`~/lambda_bak`目录为例  
 ## 创建目录
 ```
-mkdir -p ~/lambda_bak/{lambdacli,minernode,storagenode}
+mkdir -p ~/lambda_bak/{lambda,lambdacli,minernode,storagenode}
+```
+## 验证节点文件备份
+验证节点文件备份到`~/lambda_bak/lambda/`下
+``` 
+cp ~/.lambda/config/*  ~/lambda_bak/lambda/
+cp -r ~/.lambda/identity ~/lambda_bak/lambda/
 ```
 
 ## lambdacli文件备份
