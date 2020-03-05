@@ -26,23 +26,7 @@ kill -9 `ps aux | grep lambda |grep -v grep| awk '{print $2}'`
 ```
 备注：如果无法停止，请使用`ps aux|grep lambda`命令查看进程号，然后 `kill -9 进程号`
 
-### 3. 覆盖genesis.json文件
-```
-\cp -rf ./genesis.json ~/.lambda/config/genesis.json
-```
-### 4. 清除历史区块数据
-```
-./lambda unsafe-reset-all
-```
-
-### 5. 修改配置
-```
-./lambdacli config node tcp://0.0.0.0:26657
-./lambdacli config chain-id lambda-chain-3.0
-./lambdacli config trust-node true
-```
-
-### 6. 启动节点  
+### 3. 启动节点  
 ```
 nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:26657 >> /tmp/lambda.log 2>&1 &
 ```
