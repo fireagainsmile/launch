@@ -225,4 +225,4 @@ nohup ./lambdacli rest-server --node tcp://0.0.0.0:26657 --laddr tcp://0.0.0.0:1
 ```
 
 ### 备份验证节点文件
-以防配置文件丢失，请提前做好文件备份：[验证节点文件备份](StorageFile-Backup.md#_1)
+以防配置文件丢失，请提前做好文件备份：[验证节点文件备份](StorageFile-Backup.md)

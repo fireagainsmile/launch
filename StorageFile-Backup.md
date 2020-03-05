@@ -8,7 +8,7 @@ mkdir -p ~/lambda_bak/{lambda,lambdacli,minernode,storagenode}
 ## 验证节点文件备份
 验证节点文件备份到`~/lambda_bak/lambda/`下
 ``` 
-cp ~/.lambda/config/*  ~/lambda_bak/lambda/
+cp -r ~/.lambda/config  ~/lambda_bak/lambda/
 cp -r ~/.lambda/identity ~/lambda_bak/lambda/
 ```
 
