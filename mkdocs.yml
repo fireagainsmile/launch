@@ -11,6 +11,7 @@ nav:
         - 验证节点接入: Mainnet-Validator-Guide.md
         - 矿工接入: Mainnet-Miner-Guide.md
         - 0.3.1节点升级: Mainnet-Validator-Upgrade-Guide.md
+        - 验证节点迁移: Lambda-Validator-Migration.md
         - 主网接入帮助: FAQ.md
         - 主网稳定版本: version/MainnetStable.md
         - 主网最新版本: version/MainnetLatest.md
