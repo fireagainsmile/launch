@@ -613,7 +613,7 @@ Disk                           |Total  |Used    |Free    |Order                 
 Reserved为订单预留的磁盘空间，Occupied为当前订单实际占用磁盘空间
 ```
 
-## 备份存储文件
+## 备份和恢复存储文件
 以防配置文件丢失，请提前做好文件备份：[存储网络文件备份](StorageFile-Backup.md)
 
 

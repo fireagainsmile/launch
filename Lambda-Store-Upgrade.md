@@ -74,7 +74,7 @@ stop daemon process from minernode.pid:22937 successfully
 ```
 如果返回结果停止失败，使用以下命令停掉minernode：
 ```
-kill -9 `ps aux | grep 'minernode' |grep -v grep| awk '{print $2}'`
+kill `ps aux | grep 'minernode' |grep -v grep| awk '{print $2}'`
 ```
 2.启动minernode：
 ```
@@ -99,7 +99,7 @@ stop daemon process from storagenode.pid:22937 successfully
 ```
 如果返回结果停止失败，使用以下命令停掉storagenode：
 ```
-kill -9 `ps aux | grep 'storagenode' |grep -v grep| awk '{print $2}'`
+kill `ps aux | grep 'storagenode' |grep -v grep| awk '{print $2}'`
 ```
 
 2.启动storagenode：

@@ -27,5 +27,5 @@
 - [社区治理教程](./governance.md)
 - [质押相关操作手册](./Delegate-Operation-Guide.md)
 - [钱包API接入文档](./Wallet-API.md) 
-- [存储网络文件备份](./StorageFile-Backup.md)
+- [存储网络文件备份和恢复](./StorageFile-Backup.md)
 - [主网接入常见问题](FAQ.md)

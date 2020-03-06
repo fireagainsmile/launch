@@ -70,7 +70,7 @@ e02882af5bdafa5aec086c32b8398c268d2337f1@47.93.196.236:26656
 **注意**
 
 当前支持配置多个种子节点，通过`,`隔开  
-切换节点后需要kill掉节点服务并且重启
+切换节点后需要重启节点服务
 
 ### 6. 配置lambda.toml
 修改`~/.lambda/config/lambda.toml`文件
@@ -129,6 +129,9 @@ identity_files = "/root/.lambda/identity"
 
 返回如下结果即为停止成功：
 stop daemon process from lambda.pid:28638 successfully
+
+如停止失败，可使用以下命令停止进程：
+kill `ps aux | grep lambda |grep -v grep| awk '{print $2}'`
 ```
 
 #### 查看节点状态
@@ -224,5 +227,5 @@ nohup ./lambdacli rest-server --node tcp://0.0.0.0:26657 --laddr tcp://0.0.0.0:1
 ./lambdacli tx slashing unjail --from [your-account-name]
 ```
 
-### 备份验证节点文件
+### 备份和恢复验证节点文件
 以防配置文件丢失，请提前做好文件备份：[验证节点文件备份](StorageFile-Backup.md)

@@ -22,9 +22,9 @@ tar zxvf lambda-0.3.1-release.tar.gz && cd lambda-0.3.1-release
 ### 2. 停止节点服务
 
 ```
-kill -9 `ps aux | grep lambda |grep -v grep| awk '{print $2}'`
+kill `ps aux | grep lambda |grep -v grep| awk '{print $2}'`
 ```
-备注：如果无法停止，请使用`ps aux|grep lambda`命令查看进程号，然后 `kill -9 进程号`
+备注：如果无法停止，请使用`ps aux|grep lambda`命令查看进程号，然后 `kill 进程号`
 
 ### 3. 启动节点  
 ```
