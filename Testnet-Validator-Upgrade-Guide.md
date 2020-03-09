@@ -1,5 +1,7 @@
 # 测试网Validator 0.4.6 升级教程
 
+新节点接入参考[测试网节点0.4.6 接入教程](Testnet-Validator-Guide.md)
+
 测试网节点从0.4.5版本升级到0.4.6版本参考如下步骤
 
 ### 1. 下载安装包并解压
@@ -32,6 +34,8 @@ stop daemon process from lambda.pid:28638 successfully
 如停止失败，可使用以下命令停止进程：
 kill `ps aux | grep lambda |grep -v grep| awk '{print $2}'`
 ```
+**注意**：
+停掉节点服务后不要执行任何无关操作，直接进行后面几步操作即可
 
 ### 3. 版本检查和自动回滚
 ``` 
