@@ -35,7 +35,8 @@ stop daemon process from lambda.pid:28638 successfully
 kill `ps aux | grep lambda |grep -v grep| awk '{print $2}'`
 ```
 **注意**：
-停掉节点服务后不要执行任何无关操作，直接进行后面几步操作即可
+1. 成功停止节点服务后，禁止使用v0.4.5版本的lambda程序做任何操作。
+2. 保证文档后续执行的lambda、lambdacli程序均为v0.4.6版本。
 
 ### 3. 版本检查和自动回滚
 ``` 
