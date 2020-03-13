@@ -161,7 +161,7 @@ Validator 的操作地址也可通过命令获取
 妥善保存 密码 和 生成的备份文件（二维码private_key_file.png或文本文件private_key_file）
 
 #### 恢复节点签名文件
-丢失节点签名文件`~/.lambda/config/priv_validator_key.json`后，可使用备份的文件进行恢复  
+丢失节点签名文件`~/.lambda/config/priv_validator_key.json`后，可使用备份的文本文件、二维码文件 或`./lambda init`初始化命令执行成功后显示的seeds 进行恢复  
 命令：
 ``` 
 ./lambda key recover -m [qr|text|seeds] -k [backup_file_path]
