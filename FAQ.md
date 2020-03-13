@@ -98,3 +98,6 @@ ERROR: ABCIQuery: Post xxx connect: connection refused
 `ERROR: couldn't create db: Error initializing DB: leveldb: manifest corrupted (field 'comparer'): missing [file=MANIFEST-xxxxxx]`
 
 则执行`./lambdacli keys repair`后再执行 lambdacli keys 相关子命令看返回结果是否正常
+
+### 备份和恢复节点签名文件
+参考：[验证节点接入文档](Mainnet-Validator-Guide.md)
