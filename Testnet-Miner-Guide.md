@@ -117,16 +117,16 @@ cd lambda-storage-0.2.3-testnet
 ./lambdacli keys add [your-account-name] --generate-miner 
 ```
 
+#### 已有矿工账户时，导入和生成矿工子账户
 
-如果是钱包创建的账户导入，则通过钱包创建账户时候的助记词进行操作
+如果是钱包创建的账户导入，则通过钱包创建账户时候的助记词进行导入
 
 ```
-./lambdacli keys add [your-account-name] --recover --generate-miner 
+./lambdacli keys add [your-account-name] --recover 
 ```
-输入命令后按照提示输入密码和助记词即可
+输入命令后按照提示输入密码和助记词即导入账户成功
 
-
-#### （本地已有矿工账户时）仅生成矿工子账户
+然后生成矿工子账户：
 ```
 ./lambdacli keys create-miner [your-account-name] 
 ```
