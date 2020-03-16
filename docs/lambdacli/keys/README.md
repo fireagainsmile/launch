@@ -13,13 +13,15 @@ lambdacli keys <command>
 ## Available Commands
 
 | Name                    | Description                                                                                  |
-| ----------------------- | -------------------------------------------------------------------------------------------- |
+| ----------------------- | -------------------------------|
 | [mnemonic](mnemonic.md) | Create a bip39 mnemonic, sometimes called a seed phrase, by reading from the system entropy. |
-| [add](add.md)           |  Add an encrypted private key (either newly generated or recovered), encrypt it, and save to disk. |                      |
+| [add](add.md)           |  Add an encrypted private key (either newly generated or recovered), encrypt it, and save to disk. | 
 | [list](list.md)         | List all keys                                                                                |
 | [show](show.md)         | Show key info for the given name                                                             |
 | [delete](delete.md)     | Delete the given key                                                                         |
-| [update](update.md)     | Change the password used to protect private key                                              |                                                                        |
+| [update](update.md)     | Change the password used to protect private key                                              |
+| [create-miner](create_miner.md)     | Create an raw private key(json formatted), it used for miners to run miner-node server.|
+| [repair](repair.md)     | repair keys db                       |
 
 ## Flags
 
