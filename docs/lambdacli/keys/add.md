@@ -16,7 +16,9 @@ lambdacli keys add <name> [flags]
 | ---------------   | --------- | ----------------------------------------------------------------- | -------- |
 | --account         |           | Account number for HD derivation                         |          |
 | --dry-run         |           | Perform action, but don't add key to local keystore               |          |
+| --generate-miner  |           | generate related miner private key file(used for miner node server) |          |
 | --help, -h        |           | Help for add                                                      |          |
+| --indent          |           | Add indent to JSON response                                                      |          |
 | --index uint32    |           | Add indent to JSON response                           |          |
 | --interactive, -i |           | Interactively prompt user for BIP39 passphrase and mnemonic       |          |
 | --ledger  |           | Store a local reference to a private key on a Ledger device       |          |
@@ -70,6 +72,33 @@ Repeat the passphrase:
 > Enter your bip39 mnemonic
 ```
 
+### Create a new miner key with subaccount
+
+```shell
+lambdacli keys add peter --generate-miner
+```
+
+You'll be asked to enter a password for your key, note: password must be at least 8 characters.
+
+```txt
+Enter a passphrase to encrypt your key to disk:
+Repeat the passphrase:
+```
+
+After that, you're done with creating a new miner key with subaccount key file `peter_miner_key.json`, but remember to backup your seed phrase, it is the only way to recover your account if you ever forget your password or lose your key.
+
+```txt
+NAME:	TYPE:	ADDRESS:					PUBKEY:
+peter	local	lambda15rdqh86mnegp48ef2cjkcyshuny8haqkta3w0e	lambdapub1addwnpepq2tnd225vy238vwlxh5w2nwufd4zwp843zm0a6als7dwnenl7wnysm07n56
+
+**Important** write this mnemonic phrase in a safe place.
+It is the only way to recover your account if you ever forget your password.
+
+maid idea agree toward lazy mushroom question bamboo merge cave legal adjust tree peace question raw absorb club dial fashion limit hungry hospital thank
+
+Miner key file is generated at peter_miner_key.json
+```
+
 ### Create multisig account
 
 Create a multisig account with 3 sub-accounts，specify the minimum number of signatures，such as 2. The tx could be broadcast only when the number of signatures is greater than or equal to 2.
@@ -85,3 +114,4 @@ Offline account can be created by "lambdacli keys add --pubkey".
 :::
 
 How to use multisig account to broadcast a transaction， please refer to [multisig](../tx/multisign.md)
+

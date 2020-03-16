@@ -238,3 +238,25 @@ Print the app version
 ```bash
 ./lambda version --long
 ```
+
+## key
+
+### Description
+
+Key allows users to backup or recover local validator consensus private key
+
+### Backup
+
+```bash
+./lambda key backup --method [qr|text] --key-path [backup key path]
+```
+
+backup provides 2 ways to backup node's consensus private key, user can set `--method qr` or `--method text` and `--key-path` to a given backup path.
+
+### Recover
+
+```bash
+./lambda key recover --method [qr|text|seeds] --key-path [backup key path]
+```
+
+recover provides 3 ways to recover node's consensus private key locally. If user set `--method seeds`, you need to input the seeds displayed when init the node. Otherwise, you can recover by a given text file or qr image file.
