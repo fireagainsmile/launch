@@ -21,21 +21,19 @@ Query the miner sellorders page 1 show 10
 lambdacli query market miner-sellorders lambda1h29mncmlezu2jsrsyvsg7vmd9zq8nt75mmqffw 1 10 
 ```
 
+### Description
+
+|  Field    | Description  |
+| --------- | ------------ | 
+|  NODE     | show node status with Online or Offline   |  
+|  ID       | sell order id       | 
+|  MIN_BS   | Minimum purchase space       | 
+|  MIN_BT   | Minimum purchase time       | 
+|  MAX_BT   | Maximum purchase time       |
+|  ADDR     | Miner Address       |  
+
+result:
 ```
-SellOrder
-  OrderId:            B7B4C644235D9215813DB92C4FB743AA22227A48
-  Address:            lambdamineroper1h29mncmlezu2jsrsyvsg7vmd9zq8nt7505vwun
-  Price:              5000000
-  Rate:               1.000000000000000000
-  Amount:             1000000000ulamb
-  SellSize:           200
-  UnUseSize:          200
-  Status:             0
-  CreateTime:         2019-10-29 07:26:30.829215 +0000 UTC
-  CancelTimeDuration: 1h0m0s
-  MarketAddress:      lambdamarketoper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fn26xmc
-  MachineName:        machineOne
-  MinBuySize:         10
-  MinDuration:        1m0s
-  MaxDuration:        10m0s
+ID                                         PRICE    RATE     TOTAL    AVAIABLE STATUS   CREATE_TIME          MIN_BS   MIN_BT   MAX_BT   ADDR
+10FCA01DE9B04AC231E475930EB33E387C5F139B   5LAMB    0.50     200      100      0        2020-03-18,03:46:50  1        30DAYS   1800DAYS lambdamineroper1h29mncmlezu2jsrsyvsg7vmd9zq8nt7505vwun
 ```

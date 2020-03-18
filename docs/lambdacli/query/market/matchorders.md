@@ -36,10 +36,8 @@ MatchOrder
   WithDrawTime:          2019-10-29 08:27:22.797731 +0000 UTC
   Status:                0
   MarketAddress:         lambdamarketoper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fn26xmc
-  MachineName:           machineOne
   UserPay:               1000000000ulamb
   MinerPay:              500000000ulamb
-  PubKey:                PubKeyEd25519{23C3FA106D3A76EBBF7CFD0C97BB6D9923F733FF97E7707BE95D1371B84CC184}
   PeerId:                lambdakjinah1nczjeka
   DhtId:                 FqtQvNFpxtmUgZvGHMgUrNE5xXobEDvXBHC5Ko8cf1E7
 ```

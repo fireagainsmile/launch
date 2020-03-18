@@ -2,11 +2,11 @@
 
 ## Description
 
-Query all markets 
+Query market sell orders 
 
 ## Usage
 ```
- lambdacli query market sellorders [marketName] [orderType] [page] [limit] [flags]
+ lambdacli query market sellorders [marketName] [orderType] [statusType] [page] [limit] [flags]
 ```
 
 Print help messages:
@@ -14,30 +14,42 @@ Print help messages:
 lambdacli query market sellorders -h
 ```
 
+## arguments
+
+| Name               | type   | Required |  Description                                                         |
+| ------------------ | -----  | -------- |  ------------------------------------------------------------------- |
+| [marketName]       | string | true     |  Specify a market name in block chain, example: LambdaMarket | 
+| [orderType]        | string | true     |  Can use  `premium` or `normal` or `all`  |
+| [statusType]       | string | true     |  Can use  `active` or `unActive` or `whole`|
+
+
+## Unique Flags
+
+| Name, shorthand    | type   | Required | Default  | Description                                                         |
+| ------------------ | -----  | -------- | -------- | ------------------------------------------------------------------- |
+| --node-status      |        | true     | ""       | query with miner node status | 
+
 ## Examples
 
 Query markets sell order by orderType 
 ```
-lambdacli query market sellorders all 1 100
+lambdacli query market sellorders LambdaMarket premium whole 1 100 --node-status
 ```
 
-```
-SellOrder
-  OrderId:            B7B4C644235D9215813DB92C4FB743AA22227A48
-  Address:            lambdamineroper1h29mncmlezu2jsrsyvsg7vmd9zq8nt7505vwun
-  Price:              5000000
-  Rate:               1.000000000000000000
-  Amount:             1000000000ulamb
-  SellSize:           200
-  UnUseSize:          200
-  Status:             0
-  CreateTime:         2019-10-29 07:26:30.829215 +0000 UTC
-  CancelTimeDuration: 1h0m0s
-  MarketAddress:      lambdamarketoper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fn26xmc
-  MachineName:        SLL04
-  MinBuySize:         10
-  MinDuration:        1m0s
-  MaxDuration:        10m0s
+### Description
 
+|  Field    | Description  |
+| --------- | ------------ | 
+|  NODE     | show node status with Online or Offline   |  
+|  ID       | sell order id       | 
+|  MIN_BS   | Minimum purchase space       | 
+|  MIN_BT   | Minimum purchase time       | 
+|  MAX_BT   | Maximum purchase time       |
+|  ADDR     | Miner Address       |  
+
+result:
+```
+NODE     ID                                         PRICE    RATE     TOTAL    AVAIABLE STATUS   CREATE_TIME          MIN_BS   MIN_BT   MAX_BT   ADDR
+Offline  044F8AD3D77887261FCE2941C2F82A2BCC17DEAD   5LAMB    1.00     200      200      0        2020-03-18,02:11:16  10       30DAYS   600DAYS  lambdamineroper1h29mncmlezu2jsrsyvsg7vmd9zq8nt7505vwun
 
 ```
