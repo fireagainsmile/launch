@@ -101,3 +101,15 @@ ERROR: ABCIQuery: Post xxx connect: connection refused
 
 ### 备份和恢复节点签名文件
 参考：[验证节点接入文档](Mainnet-Validator-Guide.md)
+
+### 单位换算
+
+UINTS|  CONVERSION |
+-----|-------------|
+TBB/LAMB| 1 : 3000 
+utbb/ulamb| 1 : 3000
+TBB/utbb| 1 : 10<sup>6</sup> (100万)
+LAMB/ulamb|1 : 10<sup>6</sup> (100万)
+TBB/ulamb|  1 : 3 * 10<sup>9</sup> (30亿)
+节点最少质押666.666666TBB|  666.666666TBB = 1999999.998LAMB = 666666666utbb = 1999999998000ulamb
+矿工最少质押1TBB|  1TBB = 3000LAMB = 1000000utbb = 3000000000ulamb

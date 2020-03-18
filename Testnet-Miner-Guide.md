@@ -141,7 +141,7 @@ cd lambda-storage-0.2.3-testnet
 --from [your-account-name] --broadcast-mode block -y
 ```
 - [validator-address] 质押的节点地址，可指定 自己的验证节点地址 或 Lambda官方节点地址，节点地址可通过浏览器查找 [http://testbrowser.lambda.im/#/](http://testbrowser.lambda.im/#/) 或询问节点  
-- [amount-of-utbb] 为质押到节点的utbb数量  
+- [amount-of-utbb] 为质押到节点的utbb数量（1TBB=1000000utbb）  
 - [your-account-name] 是您在第3步创建的账户名称  
 
 ```
@@ -272,7 +272,7 @@ Miner Address: lambda1wgdcvew36nqwm2d5gj6yxraayjvnhfpf5rrfww  //矿工子账户�
 ```
 
 #### 给子账户转账
-[miningAddr] 为上面查询到的矿工子账户地址
+[miningAddr] 为上面查询到的矿工子账户地址（1LAMB=1000000ulamb）
 ```
 ./lambdacli tx send [miningAddr] 1000000000ulamb --from [your-account-name] --broadcast-mode block -y
 ```
@@ -336,7 +336,7 @@ stop daemon process from minernode.pid:19276 successfully
 
 ### 7矿工创建卖单
 
-加上--normal参数（赔付比率rate为0.5）的是普通卖单，价格只能等于5000000ulamb；
+加上--normal参数（赔付比率rate为0.5）的是普通卖单，价格只能等于5000000ulamb（1LAMB=1000000ulamb）；
 不加--normal参数（赔付比率等于1）的为优质卖单，优质卖单可指定大于等于5000000ulamb的任意价格。  
 设置需要卖出的空间大小size；   
 最小购买空间min-size不能小于1GB;  

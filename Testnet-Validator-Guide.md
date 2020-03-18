@@ -164,6 +164,7 @@ daemon have stoped
 
 ### 10. 创建Validator  
 创建Validator需要如下信息:   
+* amount -- 节点自抵押不小于666666666utbb(1TBB=1000000utbb)
 * pubkey -- 通过命令`./lambda tendermint show-validator` 获取
 * moniker -- 这里的`moniker`名称是您的`Validator`名称，可以使用中文(与第2步的moniker可以不同), 如果您已经创建，[FAQ](FAQ.md)中也有修改该名称的命令介绍
 * your-account-name -- 您在第7步中设置的账户名称
