@@ -141,7 +141,7 @@ cd lambda-storage-0.2.3-testnet
 --from [your-account-name] --broadcast-mode block -y
 ```
 - [validator-address] 质押的节点地址，可指定 自己的验证节点地址 或 Lambda官方节点地址，节点地址可通过浏览器查找 [http://testbrowser.lambda.im/#/](http://testbrowser.lambda.im/#/) 或询问节点  
-- [amount-of-utbb] 为质押到节点的utbb数量（1TBB=1000000utbb）  
+- [amount-of-utbb] 为质押到节点的utbb数量，不得少于1TBB（1TBB=1000000utbb）  
 - [your-account-name] 是您在第3步创建的账户名称  
 
 ```
