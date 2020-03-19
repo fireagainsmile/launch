@@ -2011,7 +2011,10 @@ msg对应的logs success 为true 表示 交易成功 false 表示交易失败
     "MsgStatement": "挖矿声明",
     "MsgWithdrawMinerRewards":"提取存储挖矿收益",
     "MsgMinerWithDrawCount":"批量提取订单收益",
-    "MsgEditMiner":"修改矿工信息"
+    "MsgEditMiner":"修改矿工信息",
+	"MsgMaintain": "发起维护",
+    "MsgUnMaintain": "解除维护",
+    "MsgUnLoose": "解除限制"
 ```
 交易数据举例
 
