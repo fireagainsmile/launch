@@ -100,7 +100,7 @@ ERROR: ABCIQuery: Post xxx connect: connection refused
 则执行`./lambdacli keys repair`后再执行 lambdacli keys 相关子命令看返回结果是否正常
 
 ### 备份和恢复节点签名文件
-参考：[验证节点接入文档](Mainnet-Validator-Guide.md)
+参考：[备份和恢复节点签名文件](Mainnet-Validator-Keybackup.md)
 
 ### 单位换算
 
