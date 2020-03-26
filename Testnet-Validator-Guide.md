@@ -207,9 +207,8 @@ nohup ./lambdacli rest-server --node tcp://0.0.0.0:26657 --laddr tcp://0.0.0.0:1
 当前已经成为validator的节点，在以下情况下会被惩罚，共识网络会扣除节点质押的utbb，并且把节点移出validator集合
 
 1.对块进行双签，惩罚为  
-- 扣除 5% 质押的TBB  
-- 永远不能参与出块  
-（0.4.7及以后版本更改规则：扣 1% 的质押TBB；监禁 3 天后允许 unjail并重新参与出块）
+- 扣除 1% 质押的TBB  
+- 监禁三天  
 （注意不要让节点出现双签情况！！！）  
 双签场景：不同机器使用同一`priv_validator_key.json`文件启动节点  
 
