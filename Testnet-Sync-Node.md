@@ -93,12 +93,6 @@ replacement_cache_size = 5
 
 [discov]
 discovery_interval = "3m0s"
-
-[db]
-app_db = "/root/.lambda/data"
-market_db = "/root/.lambda"
-pdp_db = "/root/.lambda"
-identity_files = "/root/.lambda/identity"
 ```
 
 ### 6. 启动节点  
