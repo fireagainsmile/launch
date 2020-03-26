@@ -42,6 +42,7 @@ lrwxr-xr-x   1 root  staff    16B  3  6 14:43 data -> /var/lambda/data
 1.对块进行双签，惩罚为  
 - 扣除 5% 质押的TBB  
 - 永远不能参与出块  
+（0.3.3及以后版本更改规则：扣 1% 的质押TBB；监禁 3 天后允许 unjail并重新参与出块）
 （注意不要让节点出现双签情况！！！）  
 双签场景：不同机器使用同一`priv_validator_key.json`文件启动节点  
 

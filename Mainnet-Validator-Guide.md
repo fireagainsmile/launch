@@ -7,15 +7,15 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 `下载安装包`
 ```
-wget https://github.com/LambdaIM/launch/releases/download/v0.3.2/lambda-0.3.2-release.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/v0.3.3/lambda-0.3.3-release.tar.gz
 
 如下载缓慢可使用下面的链接：
-wget http://download.lambdastorage.com/lambda/0.3.2/lambda-0.3.2-release.tar.gz
+wget http://download.lambdastorage.com/lambda/0.3.3/lambda-0.3.3-release.tar.gz
 ```
 
 `解压安装包`
 ```
-tar zxvf lambda-0.3.2-release.tar.gz && cd lambda-0.3.2-release
+tar zxvf lambda-0.3.3-release.tar.gz && cd lambda-0.3.3-release
 ```
 
 ### 2. 初始化节点  
@@ -150,6 +150,7 @@ Validator 的操作地址也可通过命令获取
 1.对块进行双签，惩罚为  
 - 扣除 5% 质押的TBB  
 - 永远不能参与出块  
+（0.3.3及以后版本更改规则：扣 1% 的质押TBB；监禁 3 天后允许 unjail并重新参与出块）
 （注意不要让节点出现双签情况！！！）  
 双签场景：不同机器使用同一`priv_validator_key.json`文件启动节点  
 
