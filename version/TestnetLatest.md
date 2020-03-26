@@ -3,7 +3,7 @@
 lambda testnet v0.4.7
 
 包名: lambda-0.4.7-testnet.tar.gz  
-MD5: 16f3e17f6976d86469478fc522f38ec4
+MD5: 4b29083785738c3e0c1b840579ef65b2
   
 1. 新增节点私钥备份导出功能；  
 2. 新增节点服务查询功能；
