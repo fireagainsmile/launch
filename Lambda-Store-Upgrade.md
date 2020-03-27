@@ -1,4 +1,4 @@
-# storage0.2.3升级
+# storage0.2.4升级
 
 * [下载安装包并解压](#下载安装包并解压)
 * [清除旧版数据](#清除旧版数据)
@@ -7,7 +7,7 @@
 * [minernode重启](#minernode重启)
 * [storagenode重启](#storagenode重启)
 
-以下为 旧版lambda-storage 升级到 lambda-storage-0.2.3-testnet 步骤
+以下为 旧版lambda-storage 升级到 lambda-storage-0.2.4-testnet 步骤
 
 
 
@@ -20,15 +20,15 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 下载安装包
 ```
-wget https://github.com/LambdaIM/launch/releases/download/v0.4.5/lambda-storage-0.2.3-testnet.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/Storage0.2.4/lambda-storage-0.2.4-testnet.tar.gz
 ```
 解压安装包
 ```
-tar zxvf lambda-storage-0.2.3-testnet.tar.gz
+tar zxvf lambda-storage-0.2.4-testnet.tar.gz
 ```
 进入解压后的目录
 ```
-cd lambda-storage-0.2.3-testnet
+cd lambda-storage-0.2.4-testnet
 ```
 
 ### 清除旧版数据
