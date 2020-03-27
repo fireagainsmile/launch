@@ -499,6 +499,45 @@ Total: 2
 ```
 ProviderStatus为矿工状态，Avaialable为正常状态，Maintaining矿工正在维护，Invalid 矿工失效
 
+
+## 文件分享
+
+一个账户可以通过分享命令给另一个存储账户进行分享文件。接收者可以在分享者分享的期限内下载文件.
+
+### 分享文件
+
+ [account-name]:是分享文件的账户
+ 
+ [remote path]：分享文件的文件地址，可以分享整个文件夹，不加具体文件即可
+ 
+ [duration]：分享文件的期限，默认秒为单位。（直接填写数字即可）
+```
+LAMBDA_ORDER_ID=[orderId] ./storagecli token share [account-name] [remote path] [duration] --download  [flags]
+```
+执行命令后会输出got share token secret。接受者用来接收文件。
+
+### 接收文件
+
+ACCOUNT:接收账户
+
+注意： --secret是必填的flag。
+```
+LAMBDA_ORDER_ID=[orderId] ./storagecli token restore ACCOUNT   [flags] 
+```
+
+### 接收并下载文件
+
+ACCOUNT :接收账户
+
+[srcPath] ：下载文件地址
+
+[dstPath]：下载后放文件地址
+
+注意：--secret是必填的flag。
+```
+LAMBDA_ORDER_ID=[orderId] ./storagecli cp ACCOUNT [srcPath] [dstPath] [flags]
+```
+
 ## 挖矿
 #### 矿工挖矿
 
