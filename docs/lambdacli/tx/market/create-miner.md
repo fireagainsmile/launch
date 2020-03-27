@@ -6,7 +6,7 @@ Send transaction to create a miner
 
 ## Usage
 
-``
+```
 lambdacli tx market create-miner [flags]
 ```
 
@@ -18,14 +18,15 @@ lambdacli tx market create-miner --help
 ## Unique Flags
 
 | Name, shorthand              | type   | Required | Default  | Description                                                         |
-| ---------------------------- | -----  | -------- | -------- | ------------------------------------------------------------------- | 
+| ---------------------------- | -----  | -------- | -------- | ------------------------------------------------------------------- |
+| --dht-id                     | string | true     | ""       |  miner service Identity in DHT NetWork |
+| --mining-address             | string | true     | ""       |  miner sub-account for Mining |  
 | --from                       | string | true     | ""       |  Name or address of private key with which to sign |
 
 ## Examples
 
 ```
- lambdacli tx market create-miner --from miner
-
+ ./lambdacli tx market create-miner --dht-id 8Et9kcTMpixkfggqPqWcd4XaYWgQNwF7WCNdbPF18YFZ  --mining-address lambda1urudd7phn2chstjz9sm6hk2q9hq6c2e4zguwju --from master
 ```
 
 Sample Output:

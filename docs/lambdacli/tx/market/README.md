@@ -29,4 +29,8 @@ lambdacli tx market --help
 | [create-buyorder](create-buyorder.md)                                   | create a buy order by user                                     |
 | [withdraw-miner](withdraw-miner.md)                                   | withdraw a match order reward                                     |
 | [miner-withdraw-count](miner-withdraw-count.md)                                   | withdraw miner orders                                      |
+| [maintain](maintain.md)                                   | maintain a miner                                      |
+| [unmaintain](unmaintain.md)                                   | cancel maintain miner                                      |
+| [unjail](unjail.md)                                   | free a miner                                      |
+
 

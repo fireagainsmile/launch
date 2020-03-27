@@ -23,6 +23,7 @@ unsafe-reset-all | Resets the blockchain database, removes addr_book and resets 
 tendermint | Tendermint subcommands
 export | Export state to JSON
 version | Print the app version
+service | view lambda service status
 
 ## init
 
@@ -160,11 +161,24 @@ Name, shorthand | Default | Description | Required
 --priv_validator_laddr | | Socket address to listen on for connections from external priv_validator process | 
 --proxy_app | tcp://127.0.0.1:26658 | Proxy app address | 
 --pruning | syncable | Pruning strategy: syncable, nothing, everything | 
+--replay-last-block | | Replay the last block | 
 --rpc.grpc_laddr | | GRPC listen address (BroadcastTx only). Port required | 
 --rpc.laddr | tcp://0.0.0.0:26657 | RPC listen address. Port required | 
 --rpc.unsafe | false | Enabled unsafe rpc methods | 
 --trace-store | | Enable KVStore tracing to an output file | 
 --with-tendermint | true | Run abci app embedded in-process with tendermint | 
+
+## reset 
+
+### Description
+
+Reset app state to the specified height
+
+### Usage
+
+```bash
+./lambda reset --height [height]
+```
 
 ## unsafe-reset-all
 
@@ -238,6 +252,28 @@ Print the app version
 ```bash
 ./lambda version --long
 ```
+
+## service
+
+### Description
+
+View lambda service status
+
+### List
+
+```bash
+./lambda service list
+```
+
+list all lambda service status
+
+### Show
+
+```bash
+./lambda service show [name]
+```
+
+show the designated service status
 
 ## key
 

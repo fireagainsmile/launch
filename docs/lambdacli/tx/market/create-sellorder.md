@@ -20,9 +20,10 @@ lambdacli tx market create-sellorder --help
 | Name, shorthand    | type   | Required | Default  | Description                                                         |
 | ------------------ | -----  | -------- | -------- | ------------------------------------------------------------------- |
 | --market-name      | string | true     | ""           | order below which market | 
-| --machine-name     | string | true     | ""           | use which machine for sell order |
 | --price            | string | false    | 5000000ulamb | sell order price|
+| --size             | string | true     | ""           | order sell all size  |
 | --min-size         | string | false    | 1GB          | sell order min buy size  |
+| --normal           |        | false    |              | specify this sell order with a normal level   |
 | --min-buy-duration | string | false    | 1month       |  sell order min buy duration  |
 | --max-buy-duration | string | false    | 60month      | sell order max buy duration  | 
 | --from             | string | true     | ""           |  Name or address of private key with which to sign |
@@ -32,7 +33,6 @@ lambdacli tx market create-sellorder --help
 ```
 $ lambdacli tx market create-sellorder --price 5000000ulamb \
 --size 200GB --market-name xxx-market \
---machine-name Machine01 \
 --min-size 10GB \
  --from miner
 

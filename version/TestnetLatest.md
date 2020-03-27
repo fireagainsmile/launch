@@ -24,7 +24,7 @@ MD5: 4b29083785738c3e0c1b840579ef65b2
 
 ## lambda storage v0.2.4  
 包名: lambda-storage-0.2.4-testnet.tar.gz  
-MD5: aa2d0ac3edb8e2a413349aade186b60f  
+MD5: 664e3635d62e52805a6959169f2dee1d  
 1. 修复已知bug
 2. 支持分享功能
 3. 优化minernode命令
