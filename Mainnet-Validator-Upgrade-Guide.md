@@ -31,27 +31,28 @@ kill `ps aux | grep lambda |grep -v grep| awk '{print $2}'`
 nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:26657 >> /tmp/lambda.log 2>&1 &
 ```
 
+
+
 ### 升级注意事项
-如在 `块高2433509(北京时间2020-03-28 12:10:18)`之前 未使用0.3.3版本进行升级，节点会共识出错，需要先清除历史区块数据，然后`使用官方提供的数据压缩包启动节点` 或 `使用新版安装包从第一个块重新开始同步（耗时较长）`。
+如在 `块高2433509(北京时间2020-03-28 12:10:18)`之前 未使用0.3.3版本进行升级，节点会共识出错，需要先清除历史区块数据，然后`使用官方提供的数据压缩包启动节点` 或 `使用新版安装包从第一个块重新开始同步（耗时较长）`。  
+
+注意：进行以下操作前 需要先停掉节点服务
 
 #### 清除历史数据
 ```
-./lambda unsafe-reset-all
+rm -rf ~/.lambda/data
 ```
 
-#### (二选一)使用官方提供的区块链数据包启动节点
+#### (二选一)使用社区提供的区块链数据包启动节点
 下载数据压缩包lambda_0.3.3_data.tar.gz
 ``` 
 wget http://download.lambdastorage.com/lambda/0.3.3/lambda_0.3.3_data.tar.gz
 ```
-lambda_0.3.3_data.tar.gz解压后为data目录
+解压`lambda_0.3.3_data.tar.gz`到`~/.lambda/`目录下（解压过程耗时较长，请耐心等待）
 ``` 
-tar -zxvf lambda_0.3.3_data.tar.gz
+tar -zxvf lambda_0.3.3_data.tar.gz -C ~/.lambda/
 ```
-移动`data`目录到`~/.lambda/`下
-``` 
-mv data ~/.lambda/
-```
+启动节点
 ```
 nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:26657 >> /tmp/lambda.log 2>&1 &
 ```
