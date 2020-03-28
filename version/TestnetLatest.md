@@ -14,7 +14,7 @@ MD5: 4b29083785738c3e0c1b840579ef65b2
 
 
 新节点接入参考：[http://docs.lambda.im/Testnet-Validator-Guide/](http://docs.lambda.im/Testnet-Validator-Guide/)  
-0.4.7节点升级参考：[http://docs.lambda.im/Testnet-Validator-Upgrade-Guide/](http://docs.lambda.im/Testnet-Validator-Upgrade-Guide/  )
+0.4.7节点升级参考：[http://docs.lambda.im/Testnet-Validator-Upgrade-Guide/](http://docs.lambda.im/Testnet-Validator-Upgrade-Guide/)
 
 下载地址：  
 [https://github.com/LambdaIM/launch/releases/tag/v0.4.7](https://github.com/LambdaIM/launch/releases/tag/v0.4.7)

@@ -30,3 +30,34 @@ kill `ps aux | grep lambda |grep -v grep| awk '{print $2}'`
 ```
 nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:26657 >> /tmp/lambda.log 2>&1 &
 ```
+
+### 升级注意事项
+如在 块高2433509(北京时间2020-03-28 12:10:18)之前 未使用0.3.3版本进行升级，节点会共识出错，需要先清除历史区块数据，然后使用官方提供的数据压缩包启动节点 或 使用新版安装包从第一个块重新开始同步（耗时较长）。
+
+#### 清除历史数据
+```
+./lambda unsafe-reset-all
+```
+
+#### (二选一)使用官方提供的区块链数据包启动节点
+下载数据压缩包lambda_0.3.3_data.tar.gz
+``` 
+wget http://download.lambdastorage.com/lambda/0.3.3/lambda_0.3.3_data.tar.gz
+```
+lambda_0.3.3_data.tar.gz解压后为data目录
+``` 
+tar -zxvf lambda_0.3.3_data.tar.gz
+```
+移动`data`目录到`~/.lambda/`下
+``` 
+mv data ~/.lambda/
+```
+```
+nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:26657 >> /tmp/lambda.log 2>&1 &
+```
+
+#### (二选一)使用新版安装包重新同步
+清除历史数据后，直接使用新版lambda启动节点即可
+```
+nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:26657 >> /tmp/lambda.log 2>&1 &
+```
