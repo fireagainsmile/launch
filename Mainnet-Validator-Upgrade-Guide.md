@@ -40,7 +40,7 @@ nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:2
 
 #### 清除历史数据
 ```
-rm -rf ~/.lambda/data
+./lambda unsafe-reset-all
 ```
 
 #### (二选一)使用社区提供的区块链数据包启动节点
