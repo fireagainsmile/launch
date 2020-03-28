@@ -4,6 +4,9 @@
 
 包名: lambda-0.4.7-testnet.tar.gz  
 MD5: 4b29083785738c3e0c1b840579ef65b2
+
+区块链数据压缩包名: lambda_0.4.7_data.tar.gz  
+MD5: b1972db9bf9ef8fb6526215fc68e042c 
   
 1. 新增节点私钥备份导出功能；  
 2. 新增节点服务查询功能；
