@@ -16,8 +16,9 @@
 * * [2. 上传文件](#2上传文件)
 * [文件分享](#文件分享)
 * * [分享文件](#分享文件)
-* * [接收文件](#接收文件)
-* * [接收并下载文件](#接收并下载文件)
+* * [接收分享文件](#接收分享文件)
+* * [接收并下载分享文件](#接收并下载分享文件)
+* * [下载分享文件](#下载分享文件)
 * [挖矿](#挖矿)
 ---
 * [提取订单收益](#提取订单收益)
@@ -516,20 +517,39 @@ ProviderStatus为矿工状态，Avaialable为正常状态，Maintaining矿工正
  
  [duration]：分享文件的期限，默认秒为单位。（直接填写数字即可）
 ```
+用法：
 LAMBDA_ORDER_ID=[orderId] ./storagecli token share [account-name] [remote path] [duration] --download  [flags]
-```
-执行命令后会输出got share token secret。接受者用来接收文件。
 
-### 接收文件
+示例：
+echo 12345678| LAMBDA_ORDER_ID=2E5A78E1564E7D220C327B1EC4F7087AD7CF2708  ./storagecli token share  buy lamb://test/testfiles.tar.gz_c611404bedad4b62af4c554a3a099d27   600  --download
+create share token with these properties:
+share duration: 600 seconds
+share path: lamb://test/testfiles.tar.gz_c611404bedad4b62af4c554a3a099d27
+share type: [download]
+......
+got share token secret:
+3gyjicaEhiNa8i8pighP6gbnVZLxAkqfBCQUgv9SAmQLu7453zgvyb48BzMcvouUUw
+```
+执行命令后会输出got share token secret,接受者用来接收文件。
+
+### 接收分享文件
 
 ACCOUNT:接收账户
 
 注意： --secret是必填的flag。
 ```
+用法：
 LAMBDA_ORDER_ID=[orderId] ./storagecli token restore ACCOUNT   [flags] 
+
+示例：
+echo 12345678| LAMBDA_ORDER_ID=2E5A78E1564E7D220C327B1EC4F7087AD7CF2708  ./storagecli token restore teshare --secret 3gyjicaEhiNa8i8pighP6gbnVZLxAkqfBCQUgv9SAmQLu7453zgvyb48BzMcvouUUw  --lambdacli-home  /root/LambdaIM/storage/storage-feature_macaroon-share-6a2ad35-debug-03232126/.lambdacli/ --home /root/LambdaIM/storage/storage-feature_macaroon-share-6a2ad35-debug-03232126/.lambda_storagecli/
+http://182.92.242.59:13659/market/user/matchorders/lambda1ejuhsxthm7kpjz63eczlg28prrfje9vd22ma3x
+file download keys nums 1
 ```
 
-### 接收并下载文件
+### 接收并下载分享文件
+
+接收并下载分享文件，可以省略接收文件这一步骤。
 
 ACCOUNT :接收账户
 
@@ -539,7 +559,35 @@ ACCOUNT :接收账户
 
 注意：--secret是必填的flag。
 ```
+用法：
 LAMBDA_ORDER_ID=[orderId] ./storagecli cp ACCOUNT [srcPath] [dstPath] [flags]
+
+示例：
+echo 12345678| LAMBDA_ORDER_ID=2E5A78E1564E7D220C327B1EC4F7087AD7CF2708 ./storagecli cp  teshare lamb://test/testfiles.tar.gz_414c7b9aa8154c268220d93a8b8a131f  /root/qwe/ --secret 3gyjicaEhiNa8i8pighP6gbnVZLxAkqfBCQUgv9SAmQLu7453zgvyb48BzMcvouUUw   --lambdacli-home  /root/LambdaIM/storage/storage-feature_macaroon-share-6a2ad35-debug-03232126/.lambdacli/ --home /root/LambdaIM/storage/storage-feature_macaroon-share-6a2ad35-debug-03232126/.lambda_storagecli/
+http://182.92.242.59:13659/market/user/matchorders/lambda1ejuhsxthm7kpjz63eczlg28prrfje9vd22ma3x
+file download keys nums 1
+duplicate token.
+found only one candicate
+downloading testfiles.tar.gz_414c7b9aa8154c268220d93a8b8a131f
+492347394 / 492347392 [---------------------------------------------------------------------------------------------------------------------------------------------------] 100.00% 12099253 p/s
+download done 410289495
+```
+### 下载分享文件
+下载分享文件需要先接收分享文件，再下载分享文件。
+
+ACCOUNT :接收账户
+[srcPath] ：下载文件地址
+
+```
+用法：
+LAMBDA_ORDER_ID=[orderId] ./storagecli cp ACCOUNT lamb://[bucket-name]/  [srcPath] [flags]
+
+示例：
+echo 12345678| LAMBDA_ORDER_ID=92F1918765F3654EE1E4F98BD64B96CB4DD4C0BC  ./storagecli cp  teshare lamb://test/upload.tar.gz_3484a737e325439b80ef79cb1297d3a2  /root/qwe/  --lambdacli-home  /root/LambdaIM/storage/storage-feature_macaroon-share-6a2ad35-debug-03232126/.lambdacli/ --home /root/LambdaIM/storage/storage-feature_macaroon-share-6a2ad35-debug-03232126/.lambda_storagecli/
+found only one candicate
+downloading upload.tar.gz_3484a737e325439b80ef79cb1297d3a2
+1400395776 / 1400395752 [-------------------------------------------------------------------------------------------------------------------------------------------------] 100.00% 11287511 p/s
+download done 1166996480
 ```
 
 ## 挖矿
