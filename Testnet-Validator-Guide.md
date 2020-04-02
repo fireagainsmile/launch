@@ -238,3 +238,6 @@ nohup ./lambdacli rest-server --node tcp://0.0.0.0:26657 --laddr tcp://0.0.0.0:1
 ### 备份和恢复节点签名文件
 **注意：节点签名文件一定要提前备份，防止误删造成的资产损失**  
 参考：[备份和恢复节点签名文件](Mainnet-Validator-Keybackup.md)
+
+### 节点磁盘性能测试
+为保证节点磁盘性能能够满足要求，参考： [磁盘BenchMark测试](IO-BenchMark.md)
