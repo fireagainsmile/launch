@@ -52,7 +52,7 @@ sync orders finish
 ## Examples
 
 ```
-echo 12345678|./storagecli token list teshare --order_id 2E5A78E1564E7D220C327B1EC4F7087AD7CF2708  
+./storagecli token list teshare --order_id 2E5A78E1564E7D220C327B1EC4F7087AD7CF2708  
 order : 2E5A78E1564E7D220C327B1EC4F7087AD7CF2708 ,has created 0 share token 	 type:  [share]
  |Permission |Expired                   |Bucket |Prefix
  |download   |2020-05-16T23:31:22+08:00 |test1  |go.sum_2225e463778249189a136c039479c728   |
@@ -74,7 +74,7 @@ storagecli token restore ACCOUNT  [flags]
 
 ## Examples
 ```
-echo 12345678| LAMBDA_ORDER_ID=92F1918765F3654EE1E4F98BD64B96CB4DD4C0BC  ./storagecli token restore teshare --secret 8Le3ZHpTqX1NdNg6AKtCsm6YPHcxozRcr5Drybzofh3nUwR7kZiifdSRA4KAjn6bU3  
+ LAMBDA_ORDER_ID=92F1918765F3654EE1E4F98BD64B96CB4DD4C0BC  ./storagecli token restore teshare --secret 8Le3ZHpTqX1NdNg6AKtCsm6YPHcxozRcr5Drybzofh3nUwR7kZiifdSRA4KAjn6bU3  
 http://182.92.242.59:13659/market/user/matchorders/lambda1ejuhsxthm7kpjz63eczlg28prrfje9vd22ma3x
 file download keys nums 1
 ```
