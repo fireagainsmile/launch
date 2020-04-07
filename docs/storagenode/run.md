@@ -21,6 +21,8 @@ storagenode run [flags]
 | --log.file  |  | log file path for daemon |
 | --log.level  | info | loglevel debug\|info\|warn\|error\|fatal |
 | --log.output_file  | stdout | output file of log |
+| --p-mode |  | profile mod |
+| --profile |  |  profile runtime or background |
 | --server.address  | 0.0.0.0:14000 | listen address |
 | --server.private_address  | 172.17.159.132:14001 | private listen address |
 | --status  | | get daemon status |
