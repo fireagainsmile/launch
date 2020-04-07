@@ -29,4 +29,4 @@ server.private_address: 172.17.159.132:14001 	 successful
         mining address: lambda1kwk9qv7nncusukv7zx7j7j4mlt3eyrf6ecdwpu
       Ensure-level = 0: 1/6 of disk-space would be used for data-replicating
 ```
-Show if the connection was successful。If initialized to the default directory, you do not need to add miner-home
+Show if the connection was successful.If initialized to the default directory, you do not need to add miner-home
