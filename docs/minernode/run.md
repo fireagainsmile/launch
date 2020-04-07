@@ -14,17 +14,26 @@ Run miner service
 | --------------- | ----   | -------- | --------------------- 
 | --daemonize    |  |run as daemon|
 |  --debug   |   | run in debug mode|
-| --kad.bootstrap_addr    | strings   |F  kad bootstrap address|
-|  --kad.external_address   |  strings | kad registered address(to other nodes)|
-| --keepalive-interval   |int  |run as daemon|
-| --key-file   |  string | private key file which associated to master miner account and to sign|
-| --log.file    | string |log file path for daemon|
-|  --log.level  | string  | loglevel debug\|info\|warn\|error\|fatal (default "info")|
-| --miner.ensure_level    | int | 0 : 1/6 of disk-space would be used for data-replicating	1 : 1/3 of disk-space would be used for data-replicating|
-|  --miner.root_secret_seed   | string  | root secret key for generate apikey|
-| --node    |string  |\<host\>:\<port\> to tendermint rpc interface for this chain (default "tcp://localhost:26657")|
-|  --server.address   |string| listen address (default "0.0.0.0:13000")|
-| --server.private_address    | string |private listen address (default "172.17.159.132:13001")|
+|  --fees  |   | Fees to pay along with transaction; eg: 10ulamb|
+|  --gas  |  200000 | gas limit to set per-transaction; set to "auto" to calculate required gas automatically|
+|  --gas-prices  |   |Gas prices to determine the transaction fee (e.g. 1.0ulamb)|
+|  --indent |   | Add indent to JSON response|
+|  --ledger |   | Use a connected Ledger device|
+| --kad.bootstrap_addr    | | kad bootstrap address|
+|  --kad.external_address   |   | kad registered address(to other nodes)|
+| --keepalive-interval   |  |run as daemon|
+| --key-file   |   | private key file which associated to master miner account and to sign|
+| --log.file    |  |log file path for daemon|
+|  --log.level  |   | loglevel debug\|info\|warn\|error\|fatal (default "info")|
+| --miner.ensure_level    |  | 0 : 1/6 of disk-space would be used for data-replicating	1 : 1/3 of disk-space would be used for data-replicating|
+| --query-interva |  7 |  The miner query task interval(second), minimum query interval is 5s|
+|  --restore |   false | restore true |
+|   --p-mode |   |  profile runtime or background |
+|  --profile |   false | restore true |
+|  --miner.root_secret_seed   |   | root secret key for generate apikey|
+| --node    |  |\<host\>:\<port\> to tendermint rpc interface for this chain (default "tcp://localhost:26657")|
+|  --server.address   |  | listen address (default "0.0.0.0:13000")|
+| --server.private_address    | |private listen address (default "172.17.159.132:13001")|
 |  --status  |   | get daemon status|
 |  --stop  |   | stop daemon|
 
