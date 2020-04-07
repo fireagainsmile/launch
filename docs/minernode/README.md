@@ -30,7 +30,7 @@ server.private_address: 172.17.159.132:14001
 ## Module command list
 Each module provides a set of command line interfaces. Here we sort these commands by modules.
 
-1. [info command] (./info/README.md)
+1. [info command] (info.md)
 
 2. [init command]
 
