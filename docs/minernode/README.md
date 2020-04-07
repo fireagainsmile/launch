@@ -32,16 +32,16 @@ Each module provides a set of command line interfaces. Here we sort these comman
 
 1. [info command](info.md)
 
-2. [init command]
+2. [init command](init.md)
 
-3. [run command]
+3. [run command](run.md)
 
-4. [service command]
+4. [service command](service.md)
 
-5. [show-address command]
+5. [show-address command](show-address.md)
 
-6. [storage command]
+6. [storage command](storage.md)
 
-7. [upgrade command]
+7. [upgrade command](upgrade.md)
 
-8. [version command]
+8. [version command](version.md)
