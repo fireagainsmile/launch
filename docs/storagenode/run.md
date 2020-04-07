@@ -1,0 +1,43 @@
+# storagenode run
+
+## Description
+
+Run storage service
+
+## Usage
+
+```
+storagenode run [flags]
+```
+## Flags
+
+| Name, shorthand| Default   | Description | Required                                                                  |
+| --------------- | ----   | -------- | --------------------- 
+| --daemonize  |  | run as daemon |
+| --debug  |  | run in debug mode |
+| --gateway.goroutine_count  |  | storagenode gateway goroutine count |
+| --kad.bootstrap_addr  |  | kad bootstrap address |
+| --kad.external_address  |  | kad registered address(to other nodes) |
+| --log.file  |  | log file path for daemon |
+| --log.level  | info | loglevel debug\|info\|warn\|error\|fatal |
+| --log.output_file  | stdout | output file of log |
+| --server.address  | 0.0.0.0:14000 | listen address |
+| --server.private_address  | 172.17.159.132:14001 | private listen address |
+| --status  | | get daemon status |
+| --stop  |  | stop daemon |
+| --storage.data_dir   | /root/.lambda_storage | dirs for storage and mining |
+| --storage.miner_address  |  | minernode address |
+| --storage.root_secret_seed  |  | root secret key for generate apikey |
+| --storage.storage_name  |  | storage name to represent current node |
+
+
+## Examples
+```
+.lambda_storage run --daemonize --log.level debug --log.file /root/LambdaIM/storage/storage-feature_order_list_with_provider_status-984f41e-debug-03251653/storagenode.log --kad.bootstrap_addr 182.92.242.59:13000 --server.address 172.17.159.132:15000 --server.private_address 172.17.159.132:15001 --kad.external_address 182.92.242.59:15000 --storage.root_secret_seed storagenoderootsecretseedramdon --storage.storage_name t4s5 --storage.miner_address 172.17.159.132:14001 --debug
+
+/storagenode run --status  
+storagenode.pid is running, pid is 16479
+
+./storagenode run --stop /storagenode run --stop
+stop daemon process from storagenode.pid:16479 successfully
+```
