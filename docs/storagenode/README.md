@@ -16,10 +16,10 @@ All query commands has these global flags. Their unique flags will be introduced
 Each module provides a set of command line interfaces. Here we sort these commands by modules.
 
 1.  [info command](info.md)         
-2.  [init  command]        
-3.  [local-status  command]
-4.  [run command]          
-5.  [service  command]     
-6.  [statement-info command]
-7.  [upgrade command]      
-8.  [version  command]    
+2.  [init  command](init.md)        
+3.  [local-status  command](local-status.md)
+4.  [run command](run.md)          
+5.  [service  command](service.md)     
+6.  [statement-info command](statement-info.md)
+7.  [upgrade command](upgrade.md)      
+8.  [version  command](version.md)    
