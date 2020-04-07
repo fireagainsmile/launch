@@ -15,8 +15,8 @@ minernode info [flags]
 | --------------- | ----   | -------- | --------------------- 
 | --dht-id     |   | show dht id    |                    | 
 | --test        |     | test if the configuration is correct    |                     |
-| --key-file     | string | private key file which associated to master miner account and to sign    |                       | 
-|  --node     | string | <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")    |                       | 
+| --key-file     |  | private key file which associated to master miner account and to sign    |                       | 
+|  --node     | tcp://localhost:26657 | \<host\>:\<port\> to tendermint rpc interface for this chain    |                       | 
 
 
 ## Examples
