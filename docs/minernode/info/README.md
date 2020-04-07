@@ -13,7 +13,7 @@ minernode info [flags]
 
 | Name, shorthand| Default   | Description | Required                                                                  |
 | --------------- | ----   | -------- | --------------------- 
-| --dht-id (dht.md)     |   | show dht id    |                    | 
+| --dht-id (dht.md)    |   | show dht id    |                    | 
 | --test        |     | test if the configuration is correct    |                     |
 | --help, -h      |  | help for info    |                       | 
 | --key-file     | string | private key file which associated to master miner account and to sign    |                       | 
