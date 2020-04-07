@@ -33,11 +33,14 @@ storagenode run [flags]
 
 ## Examples
 ```
-.lambda_storage run --daemonize --log.level debug --log.file /root/LambdaIM/storage/storage-feature_order_list_with_provider_status-984f41e-debug-03251653/storagenode.log --kad.bootstrap_addr 182.92.242.59:13000 --server.address 172.17.159.132:15000 --server.private_address 172.17.159.132:15001 --kad.external_address 182.92.242.59:15000 --storage.root_secret_seed storagenoderootsecretseedramdon --storage.storage_name t4s5 --storage.miner_address 172.17.159.132:14001 --debug
+ run as daemon：
+./lambda_storage run --daemonize --log.level debug --log.file /root/LambdaIM/storage/storage-feature_order_list_with_provider_status-984f41e-debug-03251653/storagenode.log --kad.bootstrap_addr 182.92.242.59:13000 --server.address 172.17.159.132:15000 --server.private_address 172.17.159.132:15001 --kad.external_address 182.92.242.59:15000 --storage.root_secret_seed storagenoderootsecretseedramdon --storage.storage_name t4s5 --storage.miner_address 172.17.159.132:14001 --debug
 
-/storagenode run --status  
+get daemon status：
+./storagenode run --status  
 storagenode.pid is running, pid is 16479
 
-./storagenode run --stop /storagenode run --stop
+ stop daemon：
+./storagenode run --stop 
 stop daemon process from storagenode.pid:16479 successfully
 ```
