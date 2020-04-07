@@ -13,8 +13,26 @@ minernode info [flags]
 
 | Name, shorthand| Default   | Description | Required                                                                  |
 | --------------- | ----   | -------- | --------------------- 
-| [dht-id] (dht-id.md)    |   | show dht id    |                    | 
+| --dht-id     |   | show dht id    |                    | 
 | --test        |     | test if the configuration is correct    |                     |
-| --help, -h      |  | help for info    |                       | 
 | --key-file     | string | private key file which associated to master miner account and to sign    |                       | 
 |  --node     | string | <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")    |                       | 
+
+
+## Examples
+
+```
+./minernode info  --miner-home /root/LambdaIM/storage/storage-feature_order_list_with_provider_status-984f41e-debug-03251653/.lambda_miner
+
+               version: 0.2.4-debug
+                dht id: 2u8PSj2PGt7TdR2ThuHMfH4k6KeEv5avgc4gbdKn3LTH
+server.private_address: 172.17.159.132:14001
+        server.address: 172.17.159.132:14000
+  kad.external_address: 182.92.242.59:14000
+    kad.bootstrap_addr: [182.92.242.59:13000]
+         miner address: lambda12fldnycgpevw4gthq9w0zcfetpa9sn4d39wzlz (lambdamineroper12fldnycgpevw4gthq9w0zcfetpa9sn4d92z92l)
+        mining address: lambda1kwk9qv7nncusukv7zx7j7j4mlt3eyrf6ecdwpu
+      Ensure-level = 0: 1/6 of disk-space would be used for data-replicating
+```
+Return miner info.
+If initialized to the default directory, you do not need to add miner-home
