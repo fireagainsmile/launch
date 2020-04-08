@@ -14,12 +14,14 @@ view service status
 | --------------- | --------------------- 
 | list  | list all service status  |
 |  show  | show service status|
+
+
 ## Examples
 
 view service status
 
-```
 
+```
  ./minernode service list 
 NAME                 LISTEN PORT                  STATUS
 serverpub            172.17.159.132:14000         RUNNING
