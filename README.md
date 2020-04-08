@@ -21,8 +21,8 @@ $ make build-markdown-http-docs
 
 ## Use Docs
 ```$xslt
-make
+$ make 
 
-mkdocs serve -a 127.0.0.1:8081
+$ mkdocs serve -a 127.0.0.1:8081
 ```
 
