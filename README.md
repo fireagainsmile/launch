@@ -19,3 +19,10 @@ Use the following command to generate the Markdown documentation for the HTTP AP
 $ make build-markdown-http-docs
 ```
 
+## Use Docs
+```$xslt
+make
+
+mkdocs serve -a 127.0.0.1:8081
+```
+
