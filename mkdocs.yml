@@ -44,13 +44,17 @@ nav:
         - 资产管理: Asset-Manage-Guide.md
         - 社区治理: governance.md
         - 命令行使用:
-            - lambdacli参数: docs/lambdacli/README.md
-            - status: docs/lambdacli/status/README.md
-            - query: docs/lambdacli/query/README.md
-            - tx: docs/lambdacli/tx/README.md
-            - keys: docs/lambdacli/keys/README.md
-            - version: docs/lambdacli/version/README.md
+            - lambdacli:
+                - lambdacli: docs/lambdacli/README.md
+                - status: docs/lambdacli/status/README.md
+                - query: docs/lambdacli/query/README.md
+                - tx: docs/lambdacli/tx/README.md
+                - keys: docs/lambdacli/keys/README.md
+                - version: docs/lambdacli/version/README.md
+            - minernode: docs/minernode/README.md
+            - storagenode: docs/storagenode/README.md
+            - storagecli: docs/storagecli/README.md
     - 浏览器:
         - 主网浏览器: http://explorer.lambda.im/#/
         - 测试网浏览器: http://testbrowser.lambda.im/#/
-theme: readthedocs
+theme: readthedocs 
