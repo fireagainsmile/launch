@@ -73,6 +73,7 @@ d3440b0b7a0ccf419f506a1242431813cf8a699c@39.104.97.255:26656
 vim ~/.lambda/config/config.toml
 
 节点列表
+9fb7c23867b63ee9e79f8bb0ff620863301ad0f2@seednodes2.oneweb.one:26656 (推荐)
 dd3360f3a4334432af394a835662a2b21bf406e2@seednodes.oneweb.one:26656
 ```
 
