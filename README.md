@@ -1,34 +1,21 @@
-# Lambda 主网教程
+# Lambda Chain Documentation
 
-## [使用必知](must-known-cn.md)
+This documentation site is automatically deployed to [https://github.com/LambdaIM/launch](https://github.com/LambdaIM/launch).
 
+The main documentation is stored in the `docs` folder and is generated with [Mkdocs](https://www.mkdocs.org/).
 
-## English
-- [Join the mainnet](./docs/join-mainnet.md) of the Lambda Chain.
-- [Lambda wallet toturial](./Lambda-Wallet-Guide-en.md)
-- [Lambdacli toturial](./docs/lambdacli/README.md)
-- [Start your own `lambda` testnet](./docs/deploy-testnet.md).
-- [The guide of Testnet0.4.7 for Miner](./Testnet-Miner-Guide-en.md)
-- [The guide of Testnet0.4.7 for Storagenode](./Testnet-Storagenode-Configure-en.md)
+## How to Change the Docs
 
-## 中文
-- [Validator 主网接入教程](./Mainnet-Validator-Guide.md)
-- [Miner 主网接入教程](./Mainnet-Miner-Guide.md)
-- [验证节点迁移](Lambda-Validator-Migration.md)
-- [主网同步节点教程](./Mainet-Sync-Node.md)
-- [Lambda 钱包使用教程](./Lambda-Wallet-Guide.md)
-- [Lambdacli 使用教程](./docs/lambdacli/README.md)
-- [测试网0.4.7节点接入教程](Testnet-Validator-Guide.md)
-- [测试网0.4.7节点升级教程](Testnet-Validator-Upgrade-Guide.md)
-- [测试网0.4.7Miner接入教程](Testnet-Miner-Guide.md)
-- [测试网0.4.7Storagenode接入教程](./Testnet-Storagenode-Configure.md)
-- [Storage0.2.4升级](Testnet-Storage-Upgrade.md)
-- [验证节点挖矿手册](./Lambda-Validator-Mining.md)
-- [存储矿工挖矿手册](./Lambda-Store-and-Mining.md)
-- [StorageManager矿工管理程序使用教程](./StorageManager-Guide.md)
-- [资产管理引导手册](./Asset-Manage-Guide.md)
-- [社区治理教程](./governance.md)
-- [质押相关操作手册](./Delegate-Operation-Guide.md)
-- [钱包API接入文档](./Wallet-API.md) 
-- [存储网络文件备份和恢复](./StorageFile-Backup.md)
-- [主网接入常见问题](FAQ.md)
+- install `mkdocs`
+- In most times, you only need to add new pages with links on existing pages, such as index.md 
+or *.md in `api-reference` fold. These files are all `markdown` format.
+- Once you finish the editing, run `mkdocs serve` in the `Lambda-Chain` directory, then you can 
+preview the site via http://127.0.0.1:8000/. 
+
+## Generating HTTP API Markdown
+
+Use the following command to generate the Markdown documentation for the HTTP API **from this repo's root directory**:
+```bash
+$ make build-markdown-http-docs
+```
+

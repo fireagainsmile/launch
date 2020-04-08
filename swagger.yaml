@@ -1,0 +1,3537 @@
+---
+swagger: "2.0"
+info:
+  version: "3.0"
+  title: cli-Lite for Lambda
+  description: A REST interface for state queries, transaction generation and broadcasting.
+tags:
+  - name: ILB0
+    description: Tendermint APIs, such as query blocks, transactions and validatorset
+  - name: ILB20
+    description: Create and broadcast transactions
+  - name: ILB21
+    description: Stake module APIs
+  - name: ILB22
+    description: Governance module APIs
+  - name: ILB23
+    description: Slashing module APIs
+  - name: ILB24
+    description: Fee distribution module APIs
+  - name: ILB25
+    description: Asset module APIs
+  - name: ILB26
+    description: Market module APIs
+  - name: version
+    description: Query app version
+schemes:
+  - https
+host:
+  - 127.0.0.1:13659
+paths:
+  /version:
+    get:
+      summary: Version of cli-lite
+      tags:
+        - version
+      description: Get the version of cli-lite running locally to compare against expected
+      responses:
+        200:
+          description: Plaintext version i.e. "v0.25.0"
+  /node_version:
+    get:
+      summary: Version of the connected node
+      tags:
+        - version
+      description: Get the version of the SDK running on the connected node to compare against expected
+      responses:
+        200:
+          description: Plaintext version i.e. "v0.25.0"
+        500:
+          description: failed to query node version
+  /node_info:
+    get:
+      description: Information about the connected node
+      summary: The properties of the connected node
+      tags:
+        - ILB0
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Node status
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+              moniker:
+                type: string
+                example: validator-name
+              protocol_version:
+                properties:
+                  p2p:
+                    type: string
+                    example: 7
+                  block:
+                    type: string
+                    example: 10
+                  app:
+                    type: string
+                    example: 0
+              network:
+                type: string
+                example: gaia-2
+              channels:
+                type: string
+              listen_addr:
+                type: string
+                example: 192.168.56.1:26656
+              version:
+                description: Tendermint version
+                type: string
+                example: 0.15.0
+              other:
+                description: more information on versions
+                type: object
+                properties:
+                  tx_index:
+                    type: string
+                    example: on
+                  rpc_address:
+                    type: string
+                    example: tcp://0.0.0.0:26657
+        500:
+          description: Failed to query node status
+  /syncing:
+    get:
+      summary: Syncing state of node
+      tags:
+        - ILB0
+      description: Get if the node is currently syning with other nodes
+      responses:
+        200:
+          description: '"true" or "false"'
+        500:
+          description: Server internal error
+  /blocks/latest:
+    get:
+      summary: Get the latest block
+      tags:
+        - ILB0
+      produces:
+        - application/json
+      responses:
+        200:
+          description: The latest block
+          schema:
+            $ref: "#/definitions/BlockQuery"
+        500:
+          description: Server internal error
+  /blocks/{height}:
+    get:
+      summary: Get a block at a certain height
+      tags:
+        - ILB0
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: height
+          description: Block height
+          required: true
+          type: number
+          x-example: 1
+      responses:
+        200:
+          description: The block at a specific height
+          schema:
+            $ref: "#/definitions/BlockQuery"
+        404:
+          description: Request block height doesn't
+        400:
+          description: Invalid height
+        500:
+          description: Server internal error
+  /validatorsets/latest:
+    get:
+      summary: Get the latest validator set
+      tags:
+        - ILB0
+      produces:
+        - application/json
+      responses:
+        200:
+          description: The validator set at the latest block height
+          schema:
+            type: object
+            properties:
+              block_height:
+                type: number
+              validators:
+                type: array
+                items:
+                  $ref: "#/definitions/TendermintValidator"
+        500:
+          description: Server internal error
+  /validatorsets/{height}:
+    get:
+      summary: Get a validator set a certain height
+      tags:
+        - ILB0
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: height
+          description: Block height
+          required: true
+          type: number
+          x-example: 1
+      responses:
+        200:
+          description: The validator set at a specific block height
+          schema:
+            type: object
+            properties:
+              block_height:
+                type: number
+              validators:
+                type: array
+                items:
+                  $ref: "#/definitions/TendermintValidator"
+        404:
+          description: Block at height not available
+        400:
+          description: Invalid height
+        500:
+          description: Server internal error
+  /txs/{hash}:
+    get:
+      summary: Get a Tx by hash
+      tags:
+        - ILB0
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: hash
+          description: Tx hash
+          required: true
+          type: string
+          x-example: 88D6B85EAB87D43CDF50F39C22FC2237A37FEDC4CE723200AD0AF48CBEDBC317
+      responses:
+        200:
+          description: Tx with the provided hash
+          schema:
+            $ref: "#/definitions/TxQuery"
+        500:
+          description: Internal Server Error
+  /txs:
+    get:
+      tags:
+        - ILB0
+      summary: Search transactions
+      description: Search transactions by tag(s).
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: tag
+          type: string
+          description: "transaction tags such as 'action=createMiner' and 'address=lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh' which results in the following endpoint: 'GET /txs?action=createMiner&address=lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh'"
+          required: true
+        - in: query
+          name: page
+          description: Page number
+          type: integer
+          x-example: 1
+        - in: query
+          name: limit
+          description: Maximum number of items per page
+          type: integer
+          x-example: 1
+      responses:
+        200:
+          description: All txs matching the provided tags
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/TxQuery"
+        400:
+          description: Invalid search tags
+        500:
+          description: Internal Server Error
+    post:
+      tags:
+        - ILB0
+      summary: Broadcast a signed tx
+      description: Broadcast a signed tx to a full node
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: txBroadcast
+          description: The tx must be a signed StdTx. The supported broadcast modes include `"block"`(return after tx commit), `"sync"`(return afer CheckTx) and `"async"`(return right away).
+          required: true
+          schema:
+            type: object
+            properties:
+              tx:
+                $ref: "#/definitions/StdTx"
+              mode:
+                type: string
+                example: block
+      responses:
+        200:
+          description: Tx broadcasting result
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        500:
+          description: Internal Server Error
+  /txs/encode:
+    post:
+      tags:
+        - ILB0
+      summary: Encode a transaction to the Amino wire format
+      description: Encode a transaction (signed or not) from JSON to base64-encoded Amino serialized bytes
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: tx
+          description: The tx to encode
+          required: true
+          schema:
+            type: object
+            properties:
+              tx:
+                $ref: "#/definitions/StdTx"
+      responses:
+        200:
+          description: The tx was successfully decoded and re-encoded
+          schema:
+            type: object
+            properties:
+              tx:
+                type: string
+                example: The base64-encoded Amino-serialized bytes for the tx
+        400:
+          description: The tx was malformated
+        500:
+          description: Server internal error
+  /bank/balances/{address}:
+    get:
+      summary: Get the account balances
+      tags:
+        - ILB20
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: address
+          description: Account address in bech32 format
+          required: true
+          type: string
+          x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+      responses:
+        200:
+          description: Account balances
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Coin"
+        204:
+          description: There is no data for the requested account
+        500:
+          description: Server internal error
+  /bank/accounts/{address}/transfers:
+    post:
+      summary: Send coins from one account to another
+      tags:
+        - ILB20
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: address
+          description: Account address in bech32 format
+          required: true
+          type: string
+          x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+        - in: body
+          name: account
+          description: The sender and tx information
+          required: true
+          schema:
+            type: object
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              amount:
+                type: array
+                items:
+                  $ref: "#/definitions/Coin"
+      responses:
+        202:
+          description: Tx was succesfully generated
+          schema:
+            $ref: "#/definitions/StdTx"
+        400:
+          description: Invalid request
+        500:
+          description: Server internal error
+  /auth/accounts/{address}:
+    get:
+      summary: Get the account information on blockchain
+      tags:
+        - ILB1
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: address
+          description: Account address
+          required: true
+          type: string
+          x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+      responses:
+        200:
+          description: Account information on the blockchain
+          schema:
+            type: object
+            properties:
+              type:
+                type: string
+              value:
+                type: object
+                properties:
+                  account_number:
+                    type: string
+                  address:
+                    type: string
+                  coins:
+                    type: array
+                    items:
+                      $ref: "#/definitions/Coin"
+                  public_key:
+                    type: string
+                  sequence:
+                    type: string
+        204:
+          description: No content about this account address
+        500:
+          description: Server internel error
+  /staking/delegators/{delegatorAddr}/delegations:
+    parameters:
+      - in: path
+        name: delegatorAddr
+        description: Bech32 AccAddress of Delegator
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+    get:
+      summary: Get all delegations from a delegator
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Delegation"
+        400:
+          description: Invalid delegator address
+        500:
+          description: Internal Server Error
+    post:
+      summary: Submit delegation
+      parameters:
+        - in: body
+          name: delegation
+          description: The password of the account to remove from the KMS
+          schema:
+            type: object
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              delegator_address:
+                $ref: "#/definitions/Address"
+              validator_address:
+                $ref: "#/definitions/ValidatorAddress"
+              amount:
+                $ref: "#/definitions/Coin"
+              validator_type:
+                type: integer
+      tags:
+        - ILB21
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        400:
+          description: Invalid delegator address or delegation request body
+        401:
+          description: Key password is wrong
+        500:
+          description: Internal Server Error
+  /staking/delegators/{delegatorAddr}/delegations/{validatorAddr}:
+    parameters:
+      - in: path
+        name: delegatorAddr
+        description: Bech32 AccAddress of Delegator
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+      - in: path
+        name: validatorAddr
+        description: Bech32 OperatorAddress of validator
+        required: true
+        type: string
+        x-example: lambdavaloper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fvjhnk3
+    get:
+      summary: Query the current delegation between a delegator and a validator
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Delegation"
+        400:
+          description: Invalid delegator address or validator address
+        500:
+          description: Internal Server Error
+  /staking/delegators/{delegatorAddr}/unbonding_delegations:
+    parameters:
+      - in: path
+        name: delegatorAddr
+        description: Bech32 AccAddress of Delegator
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+    get:
+      summary: Get all unbonding delegations from a delegator
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/UnbondingDelegation"
+        400:
+          description: Invalid delegator address
+        500:
+          description: Internal Server Error
+    post:
+      summary: Submit an unbonding delegation
+      parameters:
+        - in: body
+          name: delegation
+          description: The password of the account to remove from the KMS
+          schema:
+            type: object
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              delegator_address:
+                $ref: "#/definitions/Address"
+              validator_address:
+                $ref: "#/definitions/ValidatorAddress"
+              amount:
+                $ref: "#/definitions/Coin"
+      tags:
+        - ILB21
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        400:
+          description: Invalid delegator address or unbonding delegation request body
+        401:
+          description: Key password is wrong
+        500:
+          description: Internal Server Error
+  /staking/delegators/{delegatorAddr}/unbonding_delegations/{validatorAddr}:
+    parameters:
+      - in: path
+        name: delegatorAddr
+        description: Bech32 AccAddress of Delegator
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+      - in: path
+        name: validatorAddr
+        description: Bech32 OperatorAddress of validator
+        required: true
+        type: string
+        x-example: lambdavaloper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fvjhnk3
+    get:
+      summary: Query all unbonding delegations between a delegator and a validator
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/UnbondingDelegation"
+        400:
+          description: Invalid delegator address or validator address
+        500:
+          description: Internal Server Error
+  /staking/redelegations:
+    parameters:
+      - in: query
+        name: delegator
+        description: Bech32 AccAddress of Delegator
+        required: false
+        type: string
+      - in: query
+        name: validator_from
+        description: Bech32 ValAddress of SrcValidator
+        required: false
+        type: string
+      - in: query
+        name: validator_to
+        description: Bech32 ValAddress of DstValidator
+        required: false
+        type: string
+    get:
+      summary: Get all redelegations (filter by query params)
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Redelegation"
+        500:
+          description: Internal Server Error
+  /staking/delegators/{delegatorAddr}/redelegations:
+    parameters:
+      - in: path
+        name: delegatorAddr
+        description: Bech32 AccAddress of Delegator
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+    post:
+      summary: Submit a redelegation
+      parameters:
+        - in: body
+          name: delegation
+          description: The sender and tx information
+          schema:
+            type: object
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              delegator_address:
+                $ref: "#/definitions/Address"
+              validator_src_addressess:
+                $ref: "#/definitions/ValidatorAddress"
+              validator_dst_address:
+                $ref: "#/definitions/ValidatorAddress"
+              amount:
+                $ref: "#/definitions/Coin"
+      tags:
+        - ILB21
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Tx was succesfully generated
+          schema:
+            $ref: "#/definitions/StdTx"
+        400:
+          description: Invalid delegator address or redelegation request body
+        500:
+          description: Internal Server Error
+  /staking/delegators/{delegatorAddr}/validators:
+    parameters:
+      - in: path
+        name: delegatorAddr
+        description: Bech32 AccAddress of Delegator
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+    get:
+      summary: Query all validators that a delegator is bonded to
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Validator"
+        400:
+          description: Invalid delegator address
+        500:
+          description: Internal Server Error
+  /staking/delegators/{delegatorAddr}/validators/{validatorAddr}:
+    parameters:
+      - in: path
+        name: delegatorAddr
+        description: Bech32 AccAddress of Delegator
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+      - in: path
+        name: validatorAddr
+        description: Bech32 ValAddress of Delegator
+        required: true
+        type: string
+        x-example: lambdavaloper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fvjhnk3
+    get:
+      summary: Query a validator that a delegator is bonded to
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Validator"
+        400:
+          description: Invalid delegator address or validator address
+        500:
+          description: Internal Server Error
+  /staking/delegators/{delegatorAddr}/txs:
+    parameters:
+      - in: path
+        name: delegatorAddr
+        description: Bech32 AccAddress of Delegator
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+    get:
+      summary: Get all staking txs (i.e msgs) from a delegator
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/TxQuery"
+        204:
+          description: No staking transaction about this delegator address
+        400:
+          description: Invalid delegator address
+        500:
+          description: Internal Server Error
+  /staking/validators:
+    get:
+      summary: Get all validator candidates. By default it returns only the bonded validators.
+      parameters:
+        - in: query
+          name: status
+          type: string
+          description: The validator bond status. Must be either 'bonded', 'unbonded', or 'unbonding'.
+          x-example: bonded
+        - in: query
+          name: page
+          description: The page number.
+          type: integer
+          x-example: 1
+        - in: query
+          name: limit
+          description: The maximum number of items per page.
+          type: integer
+          x-example: 1
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Validator"
+        500:
+          description: Internal Server Error
+  /staking/validators/{validatorAddr}:
+    parameters:
+      - in: path
+        name: validatorAddr
+        description: Bech32 OperatorAddress of validator
+        required: true
+        type: string
+        x-example: lambdavaloper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fvjhnk3
+    get:
+      summary: Query the information from a single validator
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Validator"
+        400:
+          description: Invalid validator address
+        500:
+          description: Internal Server Error
+  /staking/validators/{validatorAddr}/delegations:
+    parameters:
+      - in: path
+        name: validatorAddr
+        description: Bech32 OperatorAddress of validator
+        required: true
+        type: string
+        x-example: lambdavaloper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fvjhnk3
+    get:
+      summary: Get all delegations from a validator
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Delegation"
+        400:
+          description: Invalid validator address
+        500:
+          description: Internal Server Error
+  /staking/validators/{validatorAddr}/unbonding_delegations:
+    parameters:
+      - in: path
+        name: validatorAddr
+        description: Bech32 OperatorAddress of validator
+        required: true
+        type: string
+        x-example: lambdavaloper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fvjhnk3
+    get:
+      summary: Get all unbonding delegations from a validator
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/UnbondingDelegation"
+        400:
+          description: Invalid validator address
+        500:
+          description: Internal Server Error
+  /staking/pool:
+    get:
+      summary: Get the current state of the staking pool
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              loose_tokens:
+                type: string
+              bonded_tokens:
+                type: string
+              inflation_last_time:
+                type: string
+              inflation:
+                type: string
+              date_last_commission_reset:
+                type: string
+              prev_bonded_shares:
+                type: string
+        500:
+          description: Internal Server Error
+  /staking/parameters:
+    get:
+      summary: Get the current staking parameter values
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              inflation_rate_change:
+                type: string
+              inflation_max:
+                type: string
+              inflation_min:
+                type: string
+              goal_bonded:
+                type: string
+              unbonding_time:
+                type: string
+              max_validators:
+                type: integer
+              bond_denom:
+                type: string
+        500:
+          description: Internal Server Error
+  /staking/delegators/{delegatorAddr}/partner_delegations:
+    parameters:
+      - in: path
+        name: delegatorAddr
+        description: Bech32 AccAddress of Delegator
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+    get:
+      summary: Get all partner delegations from a delegator
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Delegation"
+        400:
+          description: Invalid delegator address
+        500:
+          description: Internal Server Error
+  /staking/partner_validators:
+    get:
+      summary: Get all partner validator candidates. By default it returns only the bonded validators.
+      parameters:
+        - in: query
+          name: status
+          type: string
+          description: The validator bond status. Must be either 'bonded', 'unbonded', or 'unbonding'.
+          x-example: bonded
+        - in: query
+          name: page
+          description: The page number.
+          type: integer
+          x-example: 1
+        - in: query
+          name: limit
+          description: The maximum number of items per page.
+          type: integer
+          x-example: 1
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Validator"
+        500:
+          description: Internal Server Error
+  /staking/partner_validators/{validatorAddr}:
+    parameters:
+      - in: path
+        name: validatorAddr
+        description: Bech32 OperatorAddress of validator
+        required: true
+        type: string
+        x-example: lambdavaloper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fvjhnk3
+    get:
+      summary: Get a single partner validator info
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Validator"
+        400:
+          description: Invalid validator address
+        500:
+          description: Internal Server Error
+  /staking/partner_validators/{validatorAddr}/delegations:
+    parameters:
+      - in: path
+        name: validatorAddr
+        description: Bech32 OperatorAddress of validator
+        required: true
+        type: string
+        x-example: lambdavaloper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fvjhnk3
+    get:
+      summary: Get all delegations to a partner validator
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Delegation"
+        400:
+          description: Invalid validator address
+        500:
+          description: Internal Server Error
+  /staking/partner_validators/{validatorAddr}/unbonding_delegations:
+    parameters:
+      - in: path
+        name: validatorAddr
+        description: Bech32 OperatorAddress of validator
+        required: true
+        type: string
+        x-example: lambdavaloper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fvjhnk3
+    get:
+      summary: Get all unbonding delegations from a partner validator
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/UnbondingDelegation"
+        400:
+          description: Invalid validator address
+        500:
+          description: Internal Server Error
+  /staking/delegators/{delegatorAddr}/partner_validators:
+    parameters:
+      - in: path
+        name: delegatorAddr
+        description: Bech32 AccAddress of Delegator
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+    get:
+      summary: Query all partner validators that a delegator is bonded to
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Validator"
+        400:
+          description: Invalid delegator address
+        500:
+          description: Internal Server Error
+  /staking/delegators/{delegatorAddr}/partner_validators/{validatorAddr}:
+    parameters:
+      - in: path
+        name: delegatorAddr
+        description: Bech32 AccAddress of Delegator
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+      - in: path
+        name: validatorAddr
+        description: Bech32 ValAddress of Delegator
+        required: true
+        type: string
+        x-example: lambdavaloper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fvjhnk3
+    get:
+      summary: Query a partner validator that a delegator is bonded to
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Validator"
+        400:
+          description: Invalid delegator address or validator address
+        500:
+          description: Internal Server Error
+  /staking/delegators/{delegatorAddr}/partner_delegations/{validatorAddr}:
+    parameters:
+      - in: path
+        name: delegatorAddr
+        description: Bech32 AccAddress of Delegator
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+      - in: path
+        name: validatorAddr
+        description: Bech32 OperatorAddress of validator
+        required: true
+        type: string
+        x-example: lambdavaloper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fvjhnk3
+    get:
+      summary: Query a delegation between a delegator and a partner validator
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Delegation"
+        400:
+          description: Invalid delegator address or validator address
+        500:
+          description: Internal Server Error
+  /staking/delegators/{delegatorAddr}/unbonding_partner_delegations/{validatorAddr}:
+    parameters:
+      - in: path
+        name: delegatorAddr
+        description: Bech32 AccAddress of Delegator
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+      - in: path
+        name: validatorAddr
+        description: Bech32 OperatorAddress of validator
+        required: true
+        type: string
+        x-example: lambdavaloper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fvjhnk3
+    get:
+      summary: Query all unbonding delegations between a delegator and a partner validator
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/UnbondingDelegation"
+        400:
+          description: Invalid delegator address or validator address
+        500:
+          description: Internal Server Error
+  /staking/supply_pool:
+    get:
+      summary: Get the current state of the supply pool
+      tags:
+        - ILB21
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              not_bonded_tokens:
+                type: string
+              bonded_tokens:
+                type: string
+        500:
+          description: Internal Server Error
+  /slashing/validators/{validatorPubKey}/signing_info:
+    get:
+      summary: Get sign info of given validator
+      description: Get sign info of given validator
+      produces:
+        - application/json
+      tags:
+        - ILB23
+      parameters:
+        - type: string
+          description: Bech32 validator public key
+          name: validatorPubKey
+          required: true
+          in: path
+          x-example: lambdavalconspub1addwnpepqd0e5r39n05zdkdg7w6fajmnlpkut9x8dxw0ycwz30fpyfnmz4097td6yg0
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/SigningInfo"
+        204:
+          description: No sign info of this validator
+        400:
+          description: Invalid validator public key
+        500:
+          description: Internal Server Error
+  /slashing/signing_infos:
+    get:
+      summary: Get sign info of given all validators
+      description: Get sign info of all validators
+      produces:
+        - application/json
+      tags:
+        - ILB23
+      parameters:
+        - in: query
+          name: page
+          description: Page number
+          type: integer
+          required: true
+          x-example: 1
+        - in: query
+          name: limit
+          description: Maximum number of items per page
+          type: integer
+          required: true
+          x-example: 5
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/SigningInfo"
+        204:
+          description: No validators with sign info
+        400:
+          description: Invalid validator public key for one of the validators
+        500:
+          description: Internal Server Error
+  /slashing/validators/{validatorAddr}/unjail:
+    post:
+      summary: Unjail a jailed validator
+      description: Send transaction to unjail a jailed validator
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      tags:
+        - ILB23
+      parameters:
+        - type: string
+          description: Bech32 validator address
+          name: validatorAddr
+          required: true
+          in: path
+          x-example: lambdavaloper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fvjhnk3
+        - description: ""
+          name: UnjailBody
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              base_req:
+                $ref: "#/definitions/StdTx"
+      responses:
+        200:
+          description: Tx was succesfully generated
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        400:
+          description: Invalid validator address or base_req
+        500:
+          description: Internal Server Error
+  /slashing/parameters:
+    get:
+      summary: Get the current slashing parameters
+      tags:
+        - ILB23
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              max_evidence_age:
+                type: integer
+              signed_blocks_window:
+                type: integer
+              min_signed_per_window:
+                type: integer
+              double_sign_unbond_duration:
+                type: integer
+              downtime_unbond_duration:
+                type: integer
+              slash_fraction_double_sign:
+                type: integer
+              slash_fraction_downtime:
+                type: integer
+        500:
+          description: Internal Server Error
+  /gov/proposals:
+    post:
+      summary: Submit a proposal
+      description: Send transaction to submit a proposal
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      tags:
+        - ILB22
+      parameters:
+        - description: valid value of `"proposal_type"` can be `"text"`, `"parameter_change"`, `"software_upgrade"`
+          name: post_proposal_body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              title:
+                type: string
+              description:
+                type: string
+              proposer:
+                $ref: "#/definitions/Address"
+              deposit:
+                type: array
+                items:
+                  $ref: "#/definitions/Coin"
+      responses:
+        200:
+          description: Tx was succesfully generated
+          schema:
+            $ref: "#/definitions/StdTx"
+        400:
+          description: Invalid proposal body
+        500:
+          description: Internal Server Error
+    get:
+      summary: Query proposals
+      description: Query proposals information with parameters
+      produces:
+        - application/json
+      tags:
+        - ILB22
+      parameters:
+        - in: query
+          name: voter
+          description: voter address
+          required: false
+          type: string
+        - in: query
+          name: depositor
+          description: depositor address
+          required: false
+          type: string
+        - in: query
+          name: proposal_status
+          description: proposal status, valid values can be `"deposit_period"`, `"voting_period"`, `"passed"`, `"rejected"`
+          required: false
+          type: string
+        - in: query
+          name: limit
+          description: query result count
+          required: false
+          type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/TextProposal"
+        400:
+          description: Invalid query parameters
+        500:
+          description: Internal Server Error
+  /gov/proposals/{proposalId}:
+    get:
+      summary: Query a proposal
+      description: Query a proposal by id
+      produces:
+        - application/json
+      tags:
+        - ILB22
+      parameters:
+        - type: string
+          name: proposalId
+          required: true
+          in: path
+          x-example: 1
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/TextProposal"
+        400:
+          description: Invalid proposal id
+        500:
+          description: Internal Server Error
+  /gov/proposals/{proposalId}/proposer:
+    get:
+      summary: Query proposer
+      description: Query for the proposer for a proposal
+      produces:
+        - application/json
+      tags:
+        - ILB22
+      parameters:
+        - type: string
+          name: proposalId
+          required: true
+          in: path
+          x-example: 1
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Proposer"
+        400:
+          description: Invalid proposal ID
+        500:
+          description: Internal Server Error
+  /gov/proposals/{proposalId}/deposits:
+    get:
+      summary: Query deposits
+      description: Query deposits by proposalId
+      produces:
+        - application/json
+      tags:
+        - ILB22
+      parameters:
+        - type: string
+          name: proposalId
+          required: true
+          in: path
+          x-example: 1
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Deposit"
+        400:
+          description: Invalid proposal id
+        500:
+          description: Internal Server Error
+    post:
+      summary: Deposit tokens to a proposal
+      description: Send transaction to deposit tokens to a proposal
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      tags:
+        - ILB22
+      parameters:
+        - type: string
+          description: proposal id
+          name: proposalId
+          required: true
+          in: path
+          x-example: '1'
+        - description: ""
+          name: post_deposit_body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              depositor:
+                $ref: "#/definitions/Address"
+              amount:
+                type: array
+                items:
+                  $ref: "#/definitions/Coin"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        400:
+          description: Invalid proposal id or deposit body
+        401:
+          description: Key password is wrong
+        500:
+          description: Internal Server Error
+  /gov/proposals/{proposalId}/deposits/{depositor}:
+    get:
+      summary: Query deposit
+      description: Query deposit by proposalId and depositor address
+      produces:
+        - application/json
+      tags:
+        - ILB22
+      parameters:
+        - type: string
+          description: proposal id
+          name: proposalId
+          required: true
+          in: path
+          x-example: '1'
+        - type: string
+          description: Bech32 depositor address
+          name: depositor
+          required: true
+          in: path
+          x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Deposit"
+        400:
+          description: Invalid proposal id or depositor address
+        404:
+          description: Found no deposit
+        500:
+          description: Internal Server Error
+  /gov/proposals/{proposalId}/votes:
+    get:
+      summary: Query voters
+      description: Query voters information by proposalId
+      produces:
+        - application/json
+      tags:
+        - ILB22
+      parameters:
+        - type: string
+          description: proposal id
+          name: proposalId
+          required: true
+          in: path
+          x-example: '1'
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Vote"
+        400:
+          description: Invalid proposal id
+        500:
+          description: Internal Server Error
+    post:
+      summary: Vote a proposal
+      description: Send transaction to vote a proposal
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      tags:
+        - ILB22
+      parameters:
+        - type: string
+          description: proposal id
+          name: proposalId
+          required: true
+          in: path
+          x-example: '1'
+        - description: valid value of `"option"` field can be `"yes"`, `"no"`, `"no_with_veto"` and `"abstain"`
+          name: post_vote_body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              voter:
+                $ref: "#/definitions/Address"
+              option:
+                type: string
+                example: "yes"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        400:
+          description: Invalid proposal id or vote body
+        401:
+          description: Key password is wrong
+        500:
+          description: Internal Server Error
+  /gov/proposals/{proposalId}/votes/{voter}:
+    get:
+      summary: Query vote
+      description: Query vote information by proposal Id and voter address
+      produces:
+        - application/json
+      tags:
+        - ILB22
+      parameters:
+        - type: string
+          description: proposal id
+          name: proposalId
+          required: true
+          in: path
+          x-example: '1'
+        - type: string
+          description: Bech32 voter address
+          name: voter
+          required: true
+          in: path
+          x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Vote"
+        400:
+          description: Invalid proposal id or voter address
+        404:
+          description: Found no vote
+        500:
+          description: Internal Server Error
+  /gov/proposals/{proposalId}/tally:
+    get:
+      summary: Get a proposal's tally result at the current time
+      description: Gets a proposal's tally result at the current time. If the proposal is pending deposits (i.e status 'DepositPeriod') it returns an empty tally result.
+      produces:
+        - application/json
+      tags:
+        - ILB22
+      parameters:
+        - type: string
+          description: proposal id
+          name: proposalId
+          required: true
+          in: path
+          x-example: '1'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/TallyResult"
+        400:
+          description: Invalid proposal id
+        500:
+          description: Internal Server Error
+  /gov/parameters/deposit:
+    get:
+      summary: Query governance deposit parameters
+      description: Query governance deposit parameters. The max_deposit_period units are in nanoseconds.
+      produces:
+        - application/json
+      tags:
+        - ILB22
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              min_deposit:
+                type: array
+                items:
+                  $ref: "#/definitions/Coin"
+              max_deposit_period:
+                type: string
+                example: "86400000000000"
+        400:
+          description: <other_path> is not a valid query request path
+        404:
+          description: Found no deposit parameters
+        500:
+          description: Internal Server Error
+  /gov/parameters/tallying:
+    get:
+      summary: Query governance tally parameters
+      description: Query governance tally parameters
+      produces:
+        - application/json
+      tags:
+        - ILB22
+      responses:
+        200:
+          description: OK
+          schema:
+            properties:
+              threshold:
+                type: string
+                example: "0.5000000000"
+              veto:
+                type: string
+                example: "0.3340000000"
+              quorum:
+                type: string
+                example: "0.0100000000"
+        400:
+          description: <other_path> is not a valid query request path
+        404:
+          description: Found no tally parameters
+        500:
+          description: Internal Server Error
+  /gov/parameters/voting:
+    get:
+      summary: Query governance voting parameters
+      description: Query governance voting parameters. The voting_period units are in nanoseconds.
+      produces:
+        - application/json
+      tags:
+        - ILB22
+      responses:
+        200:
+          description: OK
+          schema:
+            properties:
+              voting_period:
+                type: string
+                example: "86400000000000"
+        400:
+          description: <other_path> is not a valid query request path
+        404:
+          description: Found no voting parameters
+        500:
+          description: Internal Server Error
+  /distribution/delegators/{delegatorAddr}/rewards:
+    parameters:
+      - in: path
+        name: delegatorAddr
+        description: Bech32 AccAddress of Delegator
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+    get:
+      summary: Get the total rewards balance from all delegations
+      description: Get the sum of all the rewards earned by delegations by a single delegator
+      produces:
+        - application/json
+      tags:
+        - ILB24
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Coin"
+        400:
+          description: Invalid delegator address
+        500:
+          description: Internal Server Error
+    post:
+      summary: Withdraw all the delegator's delegation rewards
+      description: Withdraw all the delegator's delegation rewards
+      tags:
+        - ILB24
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Withdraw request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        400:
+          description: Invalid delegator address
+        401:
+          description: Key password is wrong
+        500:
+          description: Internal Server Error
+  /distribution/delegators/{delegatorAddr}/rewards/{validatorAddr}:
+    parameters:
+      - in: path
+        name: delegatorAddr
+        description: Bech32 AccAddress of Delegator
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+      - in: path
+        name: validatorAddr
+        description: Bech32 OperatorAddress of validator
+        required: true
+        type: string
+        x-example: lambdavaloper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fvjhnk3
+    get:
+      summary: Query a delegation reward
+      description: Query a single delegation reward by a delegator
+      tags:
+        - ILB24
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Coin"
+        400:
+          description: Invalid delegator address
+        500:
+          description: Internal Server Error
+    post:
+      summary: Withdraw a delegation reward
+      description: Withdraw a delegator's delegation reward from a single validator
+      tags:
+        - ILB24
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Withdraw request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        400:
+          description: Invalid delegator address or delegation body
+        401:
+          description: Key password is wrong
+        500:
+          description: Internal Server Error
+  /distribution/delegators/{delegatorAddr}/withdraw_address:
+    parameters:
+      - in: path
+        name: delegatorAddr
+        description: Bech32 AccAddress of Delegator
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+    get:
+      summary: Get the rewards withdrawal address
+      description: Get the delegations' rewards withdrawal address. This is the address in which the user will receive the reward funds
+      tags:
+        - ILB24
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Address"
+        400:
+          description: Invalid delegator address
+        500:
+          description: Internal Server Error
+    post:
+      summary: Replace the rewards withdrawal address
+      description: Replace the delegations' rewards withdrawal address for a new one.
+      tags:
+        - ILB24
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Withdraw request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              withdraw_address:
+                $ref: "#/definitions/Address"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        400:
+          description: Invalid delegator or withdraw address
+        401:
+          description: Key password is wrong
+        500:
+          description: Internal Server Error
+  /distribution/validators/{validatorAddr}:
+    parameters:
+      - in: path
+        name: validatorAddr
+        description: Bech32 OperatorAddress of validator
+        required: true
+        type: string
+        x-example: lambdavaloper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fvjhnk3
+    get:
+      summary: Validator distribution information
+      description: Query the distribution information of a single validator
+      tags:
+        - ILB24
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/ValidatorDistInfo"
+        400:
+          description: Invalid validator address
+        500:
+          description: Internal Server Error
+  /distribution/validators/{validatorAddr}/outstanding_rewards:
+    parameters:
+      - in: path
+        name: validatorAddr
+        description: Bech32 OperatorAddress of validator
+        required: true
+        type: string
+        x-example: lambdavaloper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fvjhnk3
+    get:
+      summary: Fee distribution outstanding rewards of a single validator
+      tags:
+        - ILB24
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Coin"
+        500:
+          description: Internal Server Error
+  /distribution/validators/{validatorAddr}/rewards:
+    parameters:
+      - in: path
+        name: validatorAddr
+        description: Bech32 OperatorAddress of validator
+        required: true
+        type: string
+        x-example: lambdavaloper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fvjhnk3
+    get:
+      summary: Commission and self-delegation rewards of a single validator
+      description: Query the commission and self-delegation rewards of validator.
+      tags:
+        - ILB24
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Coin"
+        400:
+          description: Invalid validator address
+        500:
+          description: Internal Server Error
+    post:
+      summary: Withdraw the validator's rewards
+      description: Withdraw the validator's self-delegation and commissions rewards
+      tags:
+        - ILB24
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Withdraw request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        400:
+          description: Invalid validator address
+        401:
+          description: Key password is wrong
+        500:
+          description: Internal Server Error
+  /distribution/community_pool:
+    get:
+      summary: Community pool parameters
+      tags:
+        - ILB24
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Coin"
+        500:
+          description: Internal Server Error
+  /distribution/parameters:
+    get:
+      summary: Fee distribution parameters
+      tags:
+        - ILB24
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            properties:
+              base_proposer_reward:
+                type: string
+              bonus_proposer_reward:
+                type: string
+              community_tax:
+                type: string
+        500:
+          description: Internal Server Error
+  /minting/parameters:
+    get:
+      summary: Minting module parameters
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            properties:
+              mint_denom:
+                type: string
+              inflation_rate_change:
+                type: string
+              inflation_max:
+                type: string
+              inflation_min:
+                type: string
+              goal_bonded:
+                type: string
+              blocks_per_year:
+                type: integer
+        500:
+          description: Internal Server Error
+  /minting/inflation:
+    get:
+      summary: Current minting inflation value
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: string
+        500:
+          description: Internal Server Error
+  /minting/annual-provisions:
+    get:
+      summary: Current minting annual provisions value
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: string
+        500:
+          description: Internal Server Error
+  /asset/pledge/{address}:
+    parameters:
+      - in: path
+        name: address
+        description: Bech32 AccAddress
+        required: true
+        type: string
+        x-example: lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6k7cv9
+    get:
+      summary: Get the account's pledges
+      tags:
+        - ILB25
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Pledge"
+        500:
+          description: Internal Server Error
+  /asset/pool:
+    get:
+      summary: Get asset pool
+      tags:
+        - ILB25
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Pool"
+        500:
+          description: Internal Server Error
+  /asset/parameters:
+    get:
+      summary: Get asset module parameters
+      tags:
+        - ILB25
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+              $ref: "#/definitions/AssetParams"
+        500:
+          description: Internal Server Error
+  /asset/pairs/{asset}:
+    parameters:
+      - in: path
+        name: asset
+        description: asset name
+        required: true
+        type: string
+        x-example: lamb
+    get:
+      summary: Get exchange pairs by the given asset
+      tags:
+        - ILB25
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Pair"
+        500:
+          description: Internal Server Error
+  /asset/pledge:
+    post:
+      summary: Pledge token to get asset
+      description: Pledge token to get asset
+      tags:
+        - ILB25
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Pledge asset request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              address:
+                $ref: "#/definitions/Address"
+              asset:
+                $ref: "#/definitions/Coin"
+              token:
+                $ref: "#/definitions/Coin"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        400:
+          description: Invalid address or Invalid asset amount or Invalid token amount
+          401:
+            description: Must use own asset address
+        500:
+          description: Internal Server Error
+  /asset/drop:
+    post:
+      summary: Drop asset to get token
+      description: Drop asset to get token
+      tags:
+        - ILB25
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Drop asset request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              address:
+                $ref: "#/definitions/Address"
+              asset:
+                type: "#/definitions/Coin"
+              token:
+                $ref: "#/definitions/Coin"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        400:
+          description: Invalid address or Invalid asset amount or Invalid token amount
+        401:
+          description: Must use own asset address
+        500:
+          description: Internal Server Error
+  /asset/lock:
+    post:
+      summary: Lock asset
+      description: Lock asset
+      tags:
+        - ILB25
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Lock asset request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              address:
+                $ref: "#/definitions/Address"
+              asset:
+                $ref: "#/definitions/Coin"
+              duration:
+                type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        400:
+          description: Invalid address or Invalid asset amount or Invalid token amount
+        401:
+          description: Must use own asset address
+        500:
+          description: Internal Server Error
+  asset/unLock:
+    post:
+      summary: unLock asset
+      description: unLock asset
+      tags:
+        - ILB25
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: unLock asset request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              address:
+                $ref: "#/definitions/Address"
+              symbol:
+                type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        400:
+          description: Invalid address or Invalid asset amount or Invalid token amount
+        401:
+          description: Must use own asset address
+        500:
+          description: Internal Server Error
+  asset/destroy:
+    post:
+      summary: Destroy asset
+      description: Destroy asset
+      tags:
+        - ILB25
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Destroy asset request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        400:
+          description: Invalid address or Invalid asset amount or Invalid token amount
+        401:
+          description: Must use own asset address
+        500:
+          description: Internal Server Error
+  /asset/lock/{address}:
+    parameters:
+      - in: path
+        name: address
+        description: Bech32 address
+        required: true
+        type: string
+        x-example: lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6k7cv9
+    get:
+      summary: Get Address lock all asset info
+      tags:
+        - ILB25
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            properties:
+              address:
+                $ref: "#/definitions/Address"
+              lock_asset:
+                type: object
+                additionalProperties:
+                  type: array
+                  items:
+                    $ref: "#/definitions/LockAsset"
+        500:
+          description: Internal Server Error
+  /asset/symbol/{symbol}:
+    parameters:
+      - in: path
+        name: symbol
+        description: asset symbol name
+        required: true
+        type: string
+        x-example: lamb
+    get:
+      summary: Get asset info
+      tags:
+        - ILB25
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              address:
+                $ref: "#/definitions/Address"
+              asset:
+                $ref: "#/definitions/Coin"
+              Token:
+                $ref: "#/definitions/Coin"
+              name:
+                type: string
+              mintable:
+                type: boolean
+              curr_supply:
+                $ref: "#/definitions/Coin"
+              lock_supply:
+                $ref: "#/definitions/Coin"
+        500:
+          description: Internal Server Error
+  /asset/all:
+    get:
+      summary: Get all asset info
+      tags:
+        - ILB25
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                address:
+                  $ref: "#/definitions/Address"
+                asset:
+                  $ref: "#/definitions/Coin"
+                Token:
+                  $ref: "#/definitions/Coin"
+                name:
+                  type: string
+                mintable:
+                  type: boolean
+                curr_supply:
+                  $ref: "#/definitions/Coin"
+                lock_supply:
+                  $ref: "#/definitions/Coin"
+        500:
+          description: Internal Server Error
+  /market/create-sellorder:
+    post:
+      summary: Create a sell order in market
+      description: Create a sell order in market
+      tags:
+        - ILB26
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Create sell order request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              address:
+                $ref: "#/definitions/Address"
+              marketName:
+                type: string
+              price:
+                type: string
+              rate:
+                type: string
+              sellSize:
+                type: string
+              cancelTimeDuration:
+                type: string
+              minBuySize:
+                type: string
+              minBuyDuration:
+                type: string
+              maxBuyDuration:
+                type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        400:
+          description: Invalid name or Invalid order price or Invalid order rate
+        401:
+          description: Must use own asset address
+        500:
+          description: Internal Server Error
+  /market/create-buyorder:
+    post:
+      summary: Create a buy order in market
+      description: Create a buy order in market
+      tags:
+        - ILB26
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Create buy order request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              address:
+                $ref: "#/definitions/Address"
+              duration:
+                type: string
+              size:
+                type: string
+              sellOrderId:
+                type: string
+              marketName:
+                type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        400:
+          description: Invalid name or Invalid order buy duration or Invalid order buy size
+        401:
+          description: Must use own asset address
+        500:
+          description: Internal Server Error
+  /market/create-miner:
+    post:
+      summary: Create a miner actor
+      description: Create a miner actor
+      tags:
+        - ILB26
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Create miner request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              address:
+                $ref: "#/definitions/Address"
+              dhtId:
+                type: string
+              miningAddress:
+                $ref: "#/definitions/Address"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        401:
+          description: Must use own asset address
+        500:
+          description: Internal Server Error
+  /market/edit-miner:
+    post:
+      summary: Edit miner
+      description: Edit miner DhtId or MiningAddress
+      tags:
+        - ILB26
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Edit miner request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              address:
+                $ref: "#/definitions/Address"
+              dhtId:
+                type: string
+              miningAddress:
+                $ref: "#/definitions/Address"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        401:
+          description: Must use own asset address
+        500:
+          description: Internal Server Error
+  /market/markets:
+    get:
+      summary: Get all markets
+      tags:
+        - ILB26
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Market"
+        500:
+          description: Internal Server Error
+  /market/sellorders/{marketName}/{orderType}/{status}/{page}/{limit}:
+    parameters:
+      - in: path
+        name: marketName
+        description: Market Name
+        required: true
+        type: string
+        x-example: Lambda-Market
+      - in: path
+        name: orderType
+        description: Order Type
+        required: true
+        type: string
+        x-example: [premium, all, normal]
+      - in: path
+        name: status
+        description: Order Status
+        required: true
+        type: string
+        x-example: [active, unActive, whole]
+      - in: path
+        name: page
+        description: Query count start page
+        required: true
+        type: string
+      - in: path
+        name: limit
+        description: Query count limit
+        required: true
+        type: string
+    get:
+      summary: Get sell orders in market by name
+      tags:
+        - ILB26
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/SellOrder"
+        500:
+          description: Internal Server Error
+  /market/miner/sellorders/{address}/{page}/{limit}:
+    parameters:
+      - in: path
+        name: address
+        description: bech32 encoded address
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+      - in: path
+        name: page
+        description: Query count start page
+        required: true
+        type: string
+      - in: path
+        name: limit
+        description: Query count limit
+        required: true
+        type: string
+    get:
+      summary: Get sell orders under the address
+      tags:
+        - ILB26
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/SellOrder"
+        500:
+          description: Internal Server Error
+  /market/miner/minerinfo/{address}:
+    parameters:
+      - in: path
+        name: address
+        description: bech32 encoded address
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+    get:
+      summary: Get miner info by address
+      tags:
+        - ILB26
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Miner"
+        500:
+          description: Internal Server Error
+  /market/matchorders/{address}/{page}/{limit}:
+    parameters:
+      - in: path
+        name: address
+        description: bech32 encoded address
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+      - in: path
+        name: page
+        description: Query count start page
+        required: true
+        type: string
+      - in: path
+        name: limit
+        description: Query count limit
+        required: true
+        type: string
+    get:
+      summary: Get match orders under the address
+      tags:
+        - ILB26
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/MatchOrder"
+        500:
+          description: Internal Server Error
+  /market/user/matchorders/{address}:
+    parameters:
+      - in: path
+        name: address
+        description: bech32 encoded address
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+    get:
+      summary: Get match orders by address
+      tags:
+        - ILB26
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/MatchOrder"
+        500:
+          description: Internal Server Error
+  /market/matchorder/{orderId}:
+    parameters:
+      - in: path
+        name: orderId
+        description: order ID
+        required: true
+        type: string
+        x-example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+    get:
+      summary: Get match order info by ID
+      tags:
+        - ILB26
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/MatchOrder"
+        500:
+          description: Internal Server Error
+  /market/params:
+    get:
+      summary: Get market config params
+      tags:
+        - ILB26
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/Params"
+        500:
+          description: Internal Server Error
+definitions:
+  CheckTxResult:
+    type: object
+    properties:
+      code:
+        type: integer
+      data:
+        type: string
+      gas_used:
+        type: integer
+      gas_wanted:
+        type: integer
+      info:
+        type: string
+      log:
+        type: string
+      tags:
+        type: array
+        items:
+          $ref: "#/definitions/KVPair"
+    example:
+      code: 0
+      data: data
+      log: log
+      gas_used: 5000
+      gas_wanted: 10000
+      info: info
+      tags:
+        - ""
+        - ""
+  DeliverTxResult:
+    type: object
+    properties:
+      code:
+        type: integer
+      data:
+        type: string
+      gas_used:
+        type: integer
+      gas_wanted:
+        type: integer
+      info:
+        type: string
+      log:
+        type: string
+      tags:
+        type: array
+        items:
+          $ref: "#/definitions/KVPair"
+    example:
+      code: 5
+      data: data
+      log: log
+      gas_used: 5000
+      gas_wanted: 10000
+      info: info
+      tags:
+        - ""
+        - ""
+  BroadcastTxCommitResult:
+    type: object
+    properties:
+      check_tx:
+        $ref: "#/definitions/CheckTxResult"
+      deliver_tx:
+        $ref: "#/definitions/DeliverTxResult"
+      hash:
+        $ref: "#/definitions/Hash"
+      height:
+        type: integer
+  KVPair:
+    type: object
+    properties:
+      key:
+        type: string
+      value:
+        type: string
+  Msg:
+    type: string
+  Address:
+    type: string
+    description: bech32 encoded address
+    example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+  ValidatorAddress:
+    type: string
+    description: bech32 encoded address
+    example: lambdavaloper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fvjhnk3
+  MarketAddress:
+    type: string
+    description: bech32 encoded address
+    example: lambdamarketoper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fn26xmc
+  MinerAddress:
+    type: string
+    description: bech32 encoded address
+    example: lambdamineroper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fwejlec
+  Coin:
+    type: object
+    properties:
+      denom:
+        type: string
+        example: lamb
+      amount:
+        type: string
+        example: "50"
+  Hash:
+    type: string
+    example: EE5F3404034C524501629B56E0DDC38FAD651F04
+  TxQuery:
+    type: object
+    properties:
+      hash:
+        type: string
+      height:
+        type: number
+      tx:
+        $ref: "#/definitions/StdTx"
+      result:
+        type: object
+        properties:
+          log:
+            type: string
+          gas_wanted:
+            type: string
+            example: "0"
+          gas_used:
+            type: string
+            example: "0"
+          tags:
+            type: array
+            items:
+              $ref: "#/definitions/KVPair"
+  StdTx:
+    type: object
+    properties:
+      msg:
+        type: array
+        items:
+          $ref: "#/definitions/Msg"
+      fee:
+        type: object
+        properties:
+          gas:
+            type: string
+          amount:
+            type: array
+            items:
+              $ref: "#/definitions/Coin"
+      memo:
+        type: string
+      signature:
+        type: object
+        properties:
+          signature:
+            type: string
+            example: MEUCIQD02fsDPra8MtbRsyB1w7bqTM55Wu138zQbFcWx4+CFyAIge5WNPfKIuvzBZ69MyqHsqD8S1IwiEp+iUb6VSdtlpgY=
+          pub_key:
+            type: object
+            properties:
+              type:
+                type: string
+                example: "tendermint/PubKeySecp256k1"
+              value:
+                type: string
+                example: "Avz04VhtKJh8ACCVzlI8aTosGy0ikFXKIVHQ3jKMrosH"
+          account_number:
+            type: string
+            example: "0"
+          sequence:
+            type: string
+            example: "0"
+  KeyOutput:
+    type: object
+    properties:
+      name:
+        type: string
+        example: Main Account
+      address:
+        type: string
+        example: lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh
+      pub_key:
+        type: string
+        example: "lambdapub1addwnpepqd0e5r39n05zdkdg7w6fajmnlpkut9x8dxw0ycwz30fpyfnmz4097pcu7rm"
+      type:
+        type: string
+        example: local
+      seed:
+        type: string
+  BlockID:
+    type: object
+    properties:
+      hash:
+        $ref: "#/definitions/Hash"
+      parts:
+        type: object
+        properties:
+          total:
+            type: number
+            example: 0
+          hash:
+            $ref: "#/definitions/Hash"
+  BlockHeader:
+    type: object
+    properties:
+      chain_id:
+        type: string
+        example: gaia-2
+      height:
+        type: number
+        example: 1
+      time:
+        type: string
+        example: "2017-12-30T05:53:09.287+01:00"
+      num_txs:
+        type: number
+        example: 0
+      last_block_id:
+        $ref: "#/definitions/BlockID"
+      total_txs:
+        type: number
+        example: 35
+      last_commit_hash:
+        $ref: "#/definitions/Hash"
+      data_hash:
+        $ref: "#/definitions/Hash"
+      validators_hash:
+        $ref: "#/definitions/Hash"
+      next_validators_hash:
+        $ref: "#/definitions/Hash"
+      consensus_hash:
+        $ref: "#/definitions/Hash"
+      app_hash:
+        $ref: "#/definitions/Hash"
+      last_results_hash:
+        $ref: "#/definitions/Hash"
+      evidence_hash:
+        $ref: "#/definitions/Hash"
+      proposer_address:
+        $ref: "#/definitions/Address"
+      version:
+        type: object
+        properties:
+          block:
+            type: string
+            example: 10
+          app:
+            type: string
+            example: 0
+  Block:
+    type: object
+    properties:
+      header:
+        $ref: "#/definitions/BlockHeader"
+      txs:
+        type: array
+        items:
+          type: string
+      evidence:
+        type: array
+        items:
+          type: string
+      last_commit:
+        type: object
+        properties:
+          block_id:
+            $ref: "#/definitions/BlockID"
+          precommits:
+            type: array
+            items:
+              type: object
+              properties:
+                validator_address:
+                  type: string
+                validator_index:
+                  type: string
+                  example: "0"
+                height:
+                  type: string
+                  example: "0"
+                round:
+                  type: string
+                  example: "0"
+                timestamp:
+                  type: string
+                  example: "2017-12-30T05:53:09.287+01:00"
+                type:
+                  type: number
+                  example: 2
+                block_id:
+                  $ref: "#/definitions/BlockID"
+                signature:
+                  type: string
+                  example: "7uTC74QlknqYWEwg7Vn6M8Om7FuZ0EO4bjvuj6rwH1mTUJrRuMMZvAAqT9VjNgP0RA/TDp6u/92AqrZfXJSpBQ=="
+  BlockQuery:
+    type: object
+    properties:
+      block_meta:
+        type: object
+        properties:
+          header:
+            $ref: "#/definitions/BlockHeader"
+          block_id:
+            $ref: "#/definitions/BlockID"
+      block:
+        $ref: "#/definitions/Block"
+  BaseReq:
+    type: object
+    properties:
+      from:
+        type: string
+        example: "lambda10n28z3nw3n8uv6e04c5ttukq53sp2twdjsd6yh"
+        description: Sender address or Keybase name to generate a transaction
+      memo:
+        type: string
+        example: "test lambda"
+      chain_id:
+        type: string
+        example: "lambda-Hub"
+      account_number:
+        type: string
+        example: "0"
+      sequence:
+        type: string
+        example: "1"
+      gas:
+        type: string
+        example: "200000"
+      gas_adjustment:
+        type: string
+        example: "1.2"
+      fees:
+        type: array
+        items:
+          $ref: "#/definitions/Coin"
+      simulate:
+        type: boolean
+        example: false
+        description: Estimate gas for a transaction (cannot be used in conjunction with generate_only)
+  TendermintValidator:
+    type: object
+    properties:
+      address:
+        $ref: "#/definitions/ValidatorAddress"
+      pub_key:
+        type: string
+        example: lambdavalconspub1addwnpepqd0e5r39n05zdkdg7w6fajmnlpkut9x8dxw0ycwz30fpyfnmz4097td6yg0
+      voting_power:
+        type: string
+        example: "1000"
+      proposer_priority:
+        type: string
+        example: "1000"
+  TextProposal:
+    type: object
+    properties:
+      proposal_id:
+        type: integer
+      title:
+        type: string
+      description:
+        type: string
+      proposal_type:
+        type: string
+      proposal_status:
+        type: string
+      final_tally_result:
+        $ref: "#/definitions/TallyResult"
+      submit_time:
+        type: string
+      total_deposit:
+        type: array
+        items:
+          $ref: "#/definitions/Coin"
+      voting_start_time:
+        type: string
+  Proposer:
+    type: object
+    properties:
+      proposal_id:
+        type: integer
+      proposer:
+        type: string
+  Deposit:
+    type: object
+    properties:
+      amount:
+        type: array
+        items:
+          $ref: "#/definitions/Coin"
+      proposal_id:
+        type: integer
+      depositor:
+        $ref: "#/definitions/Address"
+  TallyResult:
+    type: object
+    properties:
+      yes:
+        type: string
+        example: "0.0000000000"
+      abstain:
+        type: string
+        example: "0.0000000000"
+      no:
+        type: string
+        example: "0.0000000000"
+      no_with_veto:
+        type: string
+        example: "0.0000000000"
+  Vote:
+    type: object
+    properties:
+      voter:
+        type: string
+      proposal_id:
+        type: integer
+      option:
+        type: string
+  Validator:
+    type: object
+    properties:
+      operator_address:
+        $ref: "#/definitions/ValidatorAddress"
+      consensus_pubkey:
+        type: string
+        example: lambdavalconspub1addwnpepqd0e5r39n05zdkdg7w6fajmnlpkut9x8dxw0ycwz30fpyfnmz4097td6yg0
+      jailed:
+        type: boolean
+      status:
+        type: integer
+      tokens:
+        type: string
+      delegator_shares:
+        type: string
+      description:
+        type: object
+        properties:
+          moniker:
+            type: string
+          identity:
+            type: string
+          website:
+            type: string
+          details:
+            type: string
+      bond_height:
+        type: string
+        example: "0"
+      bond_intra_tx_counter:
+        type: integer
+        example: 0
+      unbonding_height:
+        type: string
+        example: "0"
+      unbonding_time:
+        type: string
+        example: "1970-01-01T00:00:00Z"
+      commission:
+        type: object
+        properties:
+          rate:
+            type: string
+            example: "0"
+          max_rate:
+            type: string
+            example: "0"
+          max_change_rate:
+            type: string
+            example: "0"
+          update_time:
+            type: string
+            example: "1970-01-01T00:00:00Z"
+  Delegation:
+    type: object
+    properties:
+      delegator_address:
+        type: string
+      validator_address:
+        type: string
+      shares:
+        type: string
+  UnbondingDelegation:
+    type: object
+    properties:
+      delegator_address:
+        type: string
+      validator_address:
+        type: string
+      initial_balance:
+        type: string
+      balance:
+        type: string
+      creation_height:
+        type: integer
+      min_time:
+        type: integer
+  Redelegation:
+    type: object
+    properties:
+      delegator_address:
+        type: string
+      validator_src_address:
+        type: string
+      validator_dst_address:
+        type: string
+      creation_height:
+        type: integer
+      min_time:
+        type: integer
+      initial_balance:
+        type: string
+      balance:
+        type: string
+      shares_src:
+        type: string
+      shares_dst:
+        type: string
+  ValidatorDistInfo:
+    type: object
+    properties:
+      operator_address:
+        $ref: "#/definitions/ValidatorAddress"
+      self_bond_rewards:
+        type: array
+        items:
+          $ref: "#/definitions/Coin"
+      val_commission:
+        type: array
+        items:
+          $ref: "#/definitions/Coin"
+  SigningInfo:
+    type: object
+    properties:
+      start_height:
+        type: string
+      index_offset:
+        type: string
+      jailed_until:
+        type: string
+      missed_blocks_counter:
+        type: string
+  Pledge:
+    type: object
+    properties:
+      address:
+        $ref: "#/definitions/Address"
+      asset:
+        $ref: "#/definitions/Coin"
+      token:
+        $ref: "#/definitions/Coin"
+  Pool:
+    type: object
+    properties:
+      bonded_coins:
+        type: array
+        items:
+          $ref: "#/definitions/Coin"
+  LockAsset:
+    type: object
+    properties:
+      address:
+        $ref: "#/definitions/Address"
+      asset:
+        $ref: "#/definitions/Coin"
+      lock_time:
+        type: string
+  MarketInCome:
+    type: object
+    properties:
+      feeInCome:
+        type: array
+        items:
+          $ref: "#/definitions/Coin"
+      commissionInCome:
+        type: array
+        items:
+          $ref: "#/definitions/Coin"
+  Market:
+    type: object
+    properties:
+      marketAddress:
+        $ref: "#/definitions/MarketAddress"
+      name:
+        type: string
+      owner:
+        $ref: "#/definitions/Address"
+      profit:
+        $ref: "#/definitions/Address"
+      feeRate:
+        type: string
+      commissionRate:
+        type: string
+      inCome:
+        $ref: "#/definitions/MarketInCome"
+      payMent:
+        type: array
+        items:
+          $ref: "#/definitions/Coin"
+  SellOrder:
+    type: object
+    properties:
+      orderId:
+        type: string
+      address:
+        $ref: "#/definitions/MinerAddress"
+      price:
+        type: string
+      rate:
+        type: string
+      amount:
+        type: array
+        items:
+          $ref: "#/definitions/Coin"
+      sellSize:
+        type: string
+      unUseSize:
+        type: string
+      status:
+        type: string
+      createTime:
+        type: string
+      cancelTimeDuration:
+        type: string
+      marketAddress:
+        $ref: "#/definitions/MarketAddress"
+      minBuySize:
+        type: string
+      minDuration:
+        type: string
+      maxDuration:
+        type: string
+  Miner:
+    type: object
+    properties:
+      address:
+        $ref: "#/definitions/MinerAddress"
+      status:
+        type: integer
+      allSize:
+        type: string
+      useSize:
+        type: string
+      matchSize:
+        type: string
+      dhtId:
+        type: string
+      peerId:
+        type: string
+      orderPledge:
+        $ref: "#/definitions/Coin"
+      orderReward:
+        $ref: "#/definitions/Coin"
+      lastWithDrawTime:
+        type: string
+      miningAddress:
+        $ref: "#/definitions/Address"
+      missedPdpChallenge:
+        type: integer
+  MatchOrder:
+    type: object
+    properties:
+      orderId:
+        type: string
+      askAddress:
+        $ref: "#/definitions/MinerAddress"
+      buyAddress:
+        $ref: "#/definitions/Address"
+      sellOrderId:
+        type: string
+      buyOrderId:
+        type: string
+      price:
+        type: string
+      size:
+        type: string
+      createTime:
+        type: string
+      endTime:
+        type: string
+      cancelTimeDuration:
+        type: string
+      withDrawTime:
+        type: string
+      status:
+        type: integer
+      userPay:
+        $ref: "#/definitions/Coin"
+      minerPay:
+        $ref: "#/definitions/Coin"
+      peerId:
+        type: string
+      dhtId:
+        type: string
+  Params:
+    type: object
+    properties:
+      market_min_rate:
+        type: string
+      market_max_rate:
+        type: string
+      market_min_price:
+        type: string
+      order_normal_price:
+        type: string
+      order_normal_rate:
+        type: string
+      order_premium_rate:
+        type: string
+      order_cancel_time_duration:
+        type: string
+      order_min_buy_size:
+        type: string
+      order_min_buy_duration:
+        type: string
+      order_max_buy_duration:
+        type: string
+      order_with_draw_min_duration:
+        type: string
+      price_unit_set:
+        type: array
+        items:
+          type: string
+      size_unit_set:
+        type: array
+        items:
+          type: string
+      duration_unit_set:
+        type: array
+        items:
+          type: string
+      sell_order_buy_self:
+        type: boolean
+      max_current_maintainer:
+        type: integer
+      max_miner_maintain_time:
+        type: string
+      window_duration:
+        type: string
+      miner_unjail_cost:
+        type: string
+      miner_unjail_rate:
+        type: string
+  Pair:
+    asset:
+      type: string
+    token:
+      type: string
+    droppable:
+      type: boolean
+    sendable:
+      type: boolean
+    exchange_ratio:
+      type: string
+  AssetParams:
+    asset_prefix:
+      type: string
+    pledge_cost:
+      type: string
+    max_name_length:
+      type: string
+    max_supply:
+      type: string
+    issue_cost_rate:
+      type: string
+    exclude_symbols:
+      type: array
+      items:
+        type: string
+
