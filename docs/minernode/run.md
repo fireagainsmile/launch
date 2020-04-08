@@ -31,9 +31,9 @@ Run miner service
 |   --p-mode |   |  profile runtime or background |
 |  --profile |   false | restore true |
 |  --miner.root_secret_seed   |   | root secret key for generate apikey|
-| --node    |  |\<host\>:\<port\> to tendermint rpc interface for this chain (default "tcp://localhost:26657")|
-|  --server.address   |  | listen address (default "0.0.0.0:13000")|
-| --server.private_address    | |private listen address (default "172.17.159.132:13001")|
+| --node    | tcp://localhost:26657 |\<host\>:\<port\> to tendermint rpc interface for this chain |
+|  --server.address   | 0.0.0.0:13000 | listen address )|
+| --server.private_address    |172.17.159.132:13001 |private listen address |
 |  --status  |   | get daemon status|
 |  --stop  |   | stop daemon|
 

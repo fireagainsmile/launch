@@ -41,17 +41,21 @@ nav:
           - S3Gateway API文档: S3-Gateway-API.md
           - 区块链API文档: api-reference/paths.md
     - 使用文档:
-          - 质押操作手册: Delegate-Operation-Guide.md
-          - 资产管理: Asset-Manage-Guide.md
-          - 社区治理: governance.md
-          - 命令行使用:
-                - lambdacli参数: lambdacli/README.md
+        - 质押操作手册: Delegate-Operation-Guide.md
+        - 资产管理: Asset-Manage-Guide.md
+        - 社区治理: governance.md
+        - 命令行使用:
+            - lambdacli:
+                - lambdacli: lambdacli/README.md
                 - status: lambdacli/status/README.md
                 - query: lambdacli/query/README.md
                 - tx: lambdacli/tx/README.md
                 - keys: lambdacli/keys/README.md
                 - version: lambdacli/version/README.md
+            - minernode: minernode/README.md
+            - storagenode: storagenode/README.md
+            - storagecli: storagecli/README.md
     - 浏览器:
-          - 主网浏览器: http://explorer.lambda.im/#/
-          - 测试网浏览器: http://testbrowser.lambda.im/#/
+        - 主网浏览器: http://explorer.lambda.im/#/
+        - 测试网浏览器: http://testbrowser.lambda.im/#/
 theme: readthedocs

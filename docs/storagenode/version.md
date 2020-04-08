@@ -16,10 +16,10 @@ storagenode version [flags]
 | --long  |  | Print long version information |
 
 ## Examples
+
 ```
 ./storagenode version --long
  version: 0.2.4-debug
  commit: 030c696bc6829cfafb3d240d66058b16b41aa460
- go version: go1.13.5 linux/amd64
- 
- ```
+ go version: go1.13.5 linux/amd64 
+```

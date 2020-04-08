@@ -23,7 +23,7 @@ storagecli token [command]
 
 ## Examples
 ```
- ./storagecli token  clear
+./storagecli token  clear
 clear tokens /root/.lambda_storagecli/localdb/meta
 
 ./storagecli token sync buy
@@ -56,9 +56,8 @@ sync orders finish
 order : 2E5A78E1564E7D220C327B1EC4F7087AD7CF2708 ,has created 0 share token 	 type:  [share]
  |Permission |Expired                   |Bucket |Prefix
  |download   |2020-05-16T23:31:22+08:00 |test1  |go.sum_2225e463778249189a136c039479c728   |
- |download   |2020-05-17T00:08:21+08:00 |test1  |app.conf_1288cb3dec9346d6a6adb3ff0a73d16d |
- 
- ```
+ |download   |2020-05-17T00:08:21+08:00 |test1  |app.conf_1288cb3dec9346d6a6adb3ff0a73d16d | 
+```
  
 # restore tokens from a secret
 
