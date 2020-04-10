@@ -5,9 +5,9 @@
 ./lambdacli tx staking delegate [validator-address] [amount] --from [your-account-name] --broadcast-mode block
 ./lambdacli tx staking delegate-partner [validator-address] [amount] --from [your-account-name] --broadcast-mode block
 ```
-[节点质押命令](./docs/lambdacli/tx/staking/delegate.md)
+[节点质押命令](lambdacli/tx/staking/delegate.md)
 
-[合伙人质押命令](./docs/lambdacli/tx/staking/delegate-partner.md)
+[合伙人质押命令](lambdacli/tx/staking/delegate-partner.md)
 
 # 反质押
 用户可以通过反质押，解绑自己的质押币，反质押周期为21天，反质押周期内的质押币不会产生收益。
@@ -16,9 +16,9 @@
 ./lambdacli tx staking unbond [validator-address] [amount] --from [your-account-name] --broadcast-mode block
 ./lambdacli tx staking unbond-partner [validator-address] [amount] --from [your-account-name] --broadcast-mode block
 ```
-[节点反质押命令](./docs/lambdacli/tx/staking/unbond.md)
+[节点反质押命令](lambdacli/tx/staking/unbond.md)
 
-[合伙人反质押命令](./docs/lambdacli/tx/staking/unbond-partner.md)
+[合伙人反质押命令](lambdacli/tx/staking/unbond-partner.md)
 
 **注意事项**  
 - 反质押周期内，不允许从同一节点反质押超过7次。  
@@ -31,7 +31,7 @@
 ```
 ./lambdacli tx staking redelegate [src-validator-addr] [dst-validator-addr] [amount] --from [your-account-name] --broadcast-mode block
 ```
-[节点转质押命令](./docs/lambdacli/tx/staking/redelegate.md)
+[节点转质押命令](lambdacli/tx/staking/redelegate.md)
 
 **注意事项**  
 - 不允许转质押到同一节点（A -> A）。  
@@ -56,5 +56,5 @@
 ./lambdacli tx slashing unjail-partner --from [your-account-name] --broadcast-mode block
 ```
 
-[unjail命令](./docs/lambdacli/tx/slashing/unjail.md)
+[unjail命令](lambdacli/tx/slashing/unjail.md)
 

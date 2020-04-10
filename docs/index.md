@@ -5,7 +5,7 @@
 - [Miner 主网接入教程](./Mainnet-Miner-Guide.md)
 - [验证节点迁移](Lambda-Validator-Migration.md)
 - [Lambda 钱包使用教程](./Lambda-Wallet-Guide.md)
-- [Lambdacli 使用教程](./docs/lambdacli/README.md)
+- [Lambdacli 使用教程](lambdacli/README.md)
 - [测试网0.4.7节点接入教程](Testnet-Validator-Guide.md)
 - [测试网0.4.7节点升级教程](Testnet-Validator-Upgrade-Guide.md)
 - [测试网0.4.7Miner接入教程](Testnet-Miner-Guide.md)

@@ -486,7 +486,7 @@ The mining reward obtained by a single miner with a single block is 4.085 LAMB= 
 ```
 
 # Withdraw-Order‘s-Reward
-[withdraw selling order's reward by MatchOrderID](./docs/lambdacli/tx/market/withdraw-miner.md)  
-[withdraw multiple selling order's reward](./docs/lambdacli/tx/market/miner-withdraw-count.md)
+[withdraw selling order's reward by MatchOrderID](lambdacli/tx/market/withdraw-miner.md)  
+[withdraw multiple selling order's reward](lambdacli/tx/market/miner-withdraw-count.md)
 
 

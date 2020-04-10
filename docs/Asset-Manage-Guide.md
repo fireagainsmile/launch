@@ -11,16 +11,16 @@
 5. 毁灭资产会返还创建时消耗的90%的LAMB到原账户(即返还90万LAMB)  
 
 ## 命令行操作演示
-- [创建资产](./docs/lambdacli/tx/asset/create.md)
-- [资产转账](./docs/lambdacli/tx/send.md) 转账方式同ulamb/utbb转账
-- [资产增发](./docs/lambdacli/tx/asset/mint.md)
-- [锁定资产](./docs/lambdacli/tx/asset/lock.md)
-- [解锁资产](./docs/lambdacli/tx/asset/unlock.md)
-- [销毁资产](./docs/lambdacli/tx/asset/destroy.md)
-- [毁灭资产](./docs/lambdacli/tx/asset/ruin.md)
-- [查询账户余额](./docs/lambdacli/query/account.md)
-- [查询锁定资产信息](./docs/lambdacli/query/asset/lock.md)
-- [查询指定资产类型信息](./docs/lambdacli/query/asset/symbol.md)
-- [查询全网所有资产类型信息](./docs/lambdacli/query/asset/all.md)
+- [创建资产](lambdacli/tx/asset/create.md)
+- [资产转账](lambdacli/tx/send.md) 转账方式同ulamb/utbb转账
+- [资产增发](lambdacli/tx/asset/mint.md)
+- [锁定资产](lambdacli/tx/asset/lock.md)
+- [解锁资产](lambdacli/tx/asset/unlock.md)
+- [销毁资产](lambdacli/tx/asset/destroy.md)
+- [毁灭资产](lambdacli/tx/asset/ruin.md)
+- [查询账户余额](lambdacli/query/account.md)
+- [查询锁定资产信息](lambdacli/query/asset/lock.md)
+- [查询指定资产类型信息](lambdacli/query/asset/symbol.md)
+- [查询全网所有资产类型信息](lambdacli/query/asset/all.md)
 
 

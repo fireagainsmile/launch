@@ -41,10 +41,10 @@ Lambda Chain 是去中心化的网络，因此对网络的治理由社区成员�
 - 投票阶段结束的时候（投票阶段开始14天之后），大于 33.4% 的 no_with_veto 票
 
 ## 命令行操作演示
-- [提交提案](./docs/lambdacli/tx/gov/submit-proposal.md)
-- [存入押金](./docs/lambdacli/tx/gov/deposit.md)
-- [投票](./docs/lambdacli/tx/gov/vote.md)
-- [相关查询操作](./docs/lambdacli/query/gov/README.md)
+- [提交提案](lambdacli/tx/gov/submit-proposal.md)
+- [存入押金](lambdacli/tx/gov/deposit.md)
+- [投票](lambdacli/tx/gov/vote.md)
+- [相关查询操作](lambdacli/query/gov/README.md)
 
 ## 钱包众筹与投票操作演示
 

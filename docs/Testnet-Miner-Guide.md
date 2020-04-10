@@ -610,8 +610,8 @@ download done 1166996480
 ```
 
 ## 提取订单收益
-[提取单个匹配订单收益](./docs/lambdacli/tx/market/withdraw-miner.md)  
-[批量提取匹配订单收益](./docs/lambdacli/tx/market/miner-withdraw-count.md)
+[提取单个匹配订单收益](lambdacli/tx/market/withdraw-miner.md)  
+[批量提取匹配订单收益](lambdacli/tx/market/miner-withdraw-count.md)
 
 ## 测试网络连通
 
