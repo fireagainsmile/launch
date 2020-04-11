@@ -32,6 +32,11 @@ Download ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.18](https
 * [Market and trading space](#Market-and-trading-space)
 * [Open the lambdaS3 console](#Open-the-lambdaS3-console)
 * [Switch between main network and test network](#Switch-between-main-network-and-test-network)
+* [Mining sub account creation export import](#Mining-sub-account-creation-export-import)
+* [Initialize miner](#Initialize-miner)
+* [Mining Guide](#Mining-Guide)
+* [Set gas price](#Set-gas-price)
+
  
 ## Switch-Language
 
@@ -398,6 +403,111 @@ After logging in the wallet, click the network type on the left side of the foot
 Click the default main network IP and then click submit to switch to the main network.
 
 Click the default test network IP and then click submit to switch to the test network
+
+## Mining-sub-account-creation-export-import
+
+On the homepage of wallet, click mining, wizard and next until you see the module of creating sub account
+
+![avatar](img/sonaccount.png)
+
+You can see the create miner sub account and import button
+
+### Create sub account
+Click the create sub account button to open the create sub account pop-up window
+
+![avatar](img/sonaccountd1.png)
+
+To create a miner's sub account, you need to input the mnemonic words and password of the current wallet, and input the notes for easy memory
+
+You can also import the sub account exported by wallet or blockchain program
+
+### Import sub account
+If you have a sub account JSON file, you can import the sub account through the wallet. If you have done the above operation, you can skip this step.
+
+Click the import button to open the import sub account pop-up window
+
+![avatar](img/sonaccountd2.png)
+
+To import a sub account, you need to select the JSON file of the sub account and the password of the current wallet
+
+### Export sub account
+If you need to use the mining sub account in the miner management program or blockchain program, you can export the sub account
+
+![avatar](img/sonaccountd3.png)
+
+To export a sub account, you need to enter the password of the current Wallet
+
+For example, select the sub account of wallet export in the miner management program
+![avatar](img/sonaccountd5.png)
+
+## Initialize-miner
+
+Click the mining guide in the navigation menu, and click next on the mining guide page until you see the initialization miner module
+Click the miner initialization button to open the create miner pop-up window
+![avatar](img/minersetup.png)
+
+To create a miner, you need to select the sub account in the wallet and deploy the dhtid of the miner server
+A dhtid of miner service can be obtained in miner management program
+for example
+
+![avatar](img/marketd3.png)
+
+## Choose-to-use-wallet-identity-role
+
+The first time you install and use the wallet, it will pop up automatically. Then you need to switch the identity. Click the Edit button of the role on the setting page to open the pop-up window
+![avatar](img/role.png)
+
+Select different roles and use slightly different functions
+#### Wallet user
+View assets, transfer, pledge mining, proposal voting, withdraw pledge reward
+
+#### Space users
+View assets, transfer, pledge mining, proposal voting, purchase space, use lambdas3, withdraw pledge reward
+
+#### Miner
+View assets, transfer, pledge mining, proposal voting, market trading space, mining guide, withdraw pledge reward, withdraw deposit mining reward
+
+#### Verification node
+View assets, transfer, pledge mining, proposal voting, withdraw pledge reward, extract node income
+
+
+## Mining-Guide
+Select miner role to use wallet, and you can see the menu of mining guide in the navigation menu
+
+![avatar](img/MiningGuide.png)
+The mining guide shows the steps of mining,
+
+In addition, the functions of the wallet and the instructions of the miner's management program are sorted out
+
+The functions of wallet included in mining guide include
+
+1 mining by pledge
+
+2 create miner sub account
+
+3 initialize miner
+
+4 space for sale
+
+
+## Set-gas-price
+
+Click Edit gas price on the setting page and open the pop-up window to set gas price
+![avatar](img/Gasprice.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
