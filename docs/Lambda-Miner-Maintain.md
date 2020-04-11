@@ -13,6 +13,8 @@
 Status = 0, 活跃状态    
 Status = 1, 正在维护（执行矿工维护命令后，会变为此状态）  
 Status = 2, 矿工被禁（维护时长超过72小时 或 超过5000次未成功响应挑战）
+
+注意：如果`MissedPDPChallenge`增长，表明矿工未成功响应挑战的次数在增长，矿工需要检查自己的挖矿程序。该数值等于5000时，矿工会被监禁。
 ``` 
 ./lambdacli query market miner [miner_address]
 
@@ -30,7 +32,7 @@ Miner
   OrderReward:                1200000000ulamb
   LastWithDrawTime:           1970-01-01 00:00:00 +0000 UTC
   MiningAddress:              lambda14w3vuyehk5l7hf5p7p5ks0napy3wkggunt96uq
-  MissedPDPChallenge:         0
+  MissedPDPChallenge:         0 //矿工未成功响应挑战的次数
 ```
 
 ### 矿工维护
