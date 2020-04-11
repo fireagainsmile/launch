@@ -63,7 +63,7 @@ mv ~/.lambda/data/market*.db ~/LambdaIM/lambda_bak/
 ```
 #### 恢复db
 ```
-cp -r ~/LambdaIM/lambda_bak/*.db ~/.lambda/data/
+mv ~/LambdaIM/lambda_bak/*.db ~/.lambda/data/
 ```
 
 ### 6. 启动节点  
