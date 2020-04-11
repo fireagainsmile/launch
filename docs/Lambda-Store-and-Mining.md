@@ -92,7 +92,7 @@ mining_dir = [ "磁盘1", "磁盘2", "磁盘N"]
 4. 超过5000次未成功响应挑战，矿工会被监禁；
 5. 被监禁的矿工，可使用`lambdacli tx market unjail`解禁，同时会扣除矿工账户余额100LAMB。
 
-操作文档文档：[矿工维护手册](Lambda-Miner-Maintain.md)
+操作文档参考：[矿工维护手册](Lambda-Miner-Maintain.md)
 
 # 常见问题
 ## 上传文件报错
