@@ -394,6 +394,7 @@ size为需要购买的空间，不小于对应卖单指定的最小购买空间�
 例如：
 ./lambdacli keys show buyaccount --address
 返回结果：lambda1thj5fv8d0dsh3aealhpxm9mvgxjfh87s224esr
+
 ./lambdacli query market matchorders lambda1thj5fv8d0dsh3aealhpxm9mvgxjfh87s224esr 1 10
 返回结果：
 MatchOrder
@@ -404,8 +405,8 @@ MatchOrder
   BuyOrderId:            F3B5BDE351253E1D47DA7CEB24C0E4BAB5BDA808
   Price:                 5000000
   Size:                  20
-  CreateTime:            2019-11-01 13:20:58.296399278 +0000 UTC
-  EndTime:               2019-12-01 13:20:58.296399278 +0000 UTC
+  CreateTime:            2019-11-01 13:20:58.296399278 +0000 UTC //匹配订单开始时间
+  EndTime:               2019-12-01 13:20:58.296399278 +0000 UTC //匹配订单结束时间
   CancelTimeDuration:    1h0m0s
   WithDrawTime:          2019-11-01 13:20:58.296399278 +0000 UTC
   Status:                0
@@ -418,6 +419,35 @@ MatchOrder
   DhtId:                 5i6fXKQJoktPVmt9PAfZ18RN7DG6tghQN7SK7A3Bq4Rc
 ```
 
+#### 匹配订单续期
+`链0.4.8 - 存储0.2.5`版本 新增匹配订单续期功能。   
+1. 匹配订单未到期的，购买了空间的账户可使用`lambdacli tx market order-renewal`命令续期。  
+2. 匹配订单已过期的，不能再进行续期；  
+3. 同一匹配订单可多次续期；
+4. 续期后的匹配订单总时长（即结束时间减开始时间），不能超过60个月（1个月=30天）。
+
+续期成功后，可进入浏览器[http://testbrowser.lambda.im/#/](http://testbrowser.lambda.im/#/)搜索匹配订单ID，查看`匹配订单详情页`中结束时间是否延期了对应时长。  
+或使用上面查询匹配订单命令`lambdacli query market matchorders`查看返回结果中的匹配订单结束时间（即`EndTime`）是否延期了对应时长。
+
+[orderId] 需要进行续期的匹配订单ID;  
+[duration] 订单续期时长，单位为月。如设为3month，为续期3个月。
+```
+./lambdacli tx market order-renewal [orderId] [duration] --from [account]
+
+例如：
+账户buyaccount给自己购买的匹配订单0D3FAE471BFC92CED2AB7806E6AC648973357CAF 续期2个月
+./lambdacli tx market order-renewal 0D3FAE471BFC92CED2AB7806E6AC648973357CAF 2month --from buyaccount --broadcast-mode block -y
+Response:
+  Height: 63
+  TxHash: 144EE614E02E1F4C347BEC08785A74E7F01411BEB6735FC668D25C23E078FEFD
+  Raw Log: [{"msg_index":"0","success":true,"log":""}]
+  Logs: [{"msg_index":0,"success":true,"log":""}]
+  GasWanted: 200000
+  GasUsed: 42848
+  Tags:
+    - action = orderRenewal
+    - address = lambda1jlh7644ghjjt72quxhraxt7aegj79pdr7unczs
+```
 
 ## 文件上传和查看
 
