@@ -22,3 +22,13 @@ MD5: 4aaf01e9e0c4bf18789caa26c93e4886
 
 [http://download.lambdastorage.com/lambda/0.4.8/](http://download.lambdastorage.com/lambda/0.4.8/)
 
+## lambda storage v0.2.5
+包名: lambda-storage-0.2.5-testnet.tar.gz  
+MD5: 
+
+1. 修复已知bug
+
+下载地址： 
+[https://github.com/LambdaIM/launch/releases/tag/Storage0.2.5](https://github.com/LambdaIM/launch/releases/tag/Storage0.2.5)
+
+[http://download.lambdastorage.com/lambda-storage/0.2.5/](http://download.lambdastorage.com/lambda-storage/0.2.5/)

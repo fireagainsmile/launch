@@ -84,7 +84,7 @@ show storage network info
 ETj21L2dWgxPfCr5ocRDYeRXb9rREjWM5B2gox6UatYP
 
 ./storagenode info network --test
-               version: 0.2.4-debug
+               version: 0.2.5-debug
                 dht id: ETj21L2dWgxPfCr5ocRDYeRXb9rREjWM5B2gox6UatYP
   storage.storage_name: t4
  storage.miner_address: 172.17.159.132:14001 	 successful

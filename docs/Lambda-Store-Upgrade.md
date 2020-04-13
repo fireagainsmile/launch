@@ -1,13 +1,12 @@
-# storage0.2.4升级
+# storage0.2.5升级
 
 * [下载安装包并解压](#下载安装包并解压)
-* [清除旧版数据](#清除旧版数据)
 * [minernode升级配置文件](#minernode升级配置文件)
 * [storagenode升级配置文件](#storagenode升级配置文件)
 * [minernode重启](#minernode重启)
 * [storagenode重启](#storagenode重启)
 
-以下为 旧版lambda-storage 升级到 lambda-storage-0.2.4-testnet 步骤
+以下为 旧版lambda-storage 升级到 lambda-storage-0.2.5-testnet 步骤
 
 
 
@@ -20,33 +19,15 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 下载安装包
 ```
-wget https://github.com/LambdaIM/launch/releases/download/Storage0.2.4/lambda-storage-0.2.4-testnet.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/Storage0.2.5/lambda-storage-0.2.5-testnet.tar.gz
 ```
 解压安装包
 ```
-tar zxvf lambda-storage-0.2.4-testnet.tar.gz
+tar zxvf lambda-storage-0.2.5-testnet.tar.gz
 ```
 进入解压后的目录
 ```
-cd lambda-storage-0.2.4-testnet
-```
-
-### 清除旧版数据
-清除旧版miner数据
-```
-rm -rf ~/.lambda_miner/{kademlia,var}
-```
-
-清除旧版storagenode数据
-```
-rm -rf ~/.lambda_storage/{kademlia,orders.json,statementdb,storagedb}
-rm -rf ~/.lambda_storage/{store,mining} 
-```
-注： 如果~/.lambda_storage/config/config.toml的data_dir和 mining_dir配置有改动，需清除掉配置的目录下的数据
-
-清除旧版storagecli数据
-```
-rm -rf ~/.lambda_storagecli/localdb
+cd lambda-storage-0.2.5-testnet
 ```
 
 ### minernode升级
@@ -62,8 +43,6 @@ rm -rf ~/.lambda_storagecli/localdb
 ```
 
 ### 重启minernode
-[log_file_path] 指定矿工日志完整路径
-
 1.停止minernode：
 ```
 ./minernode run --stop
@@ -77,6 +56,7 @@ stop daemon process from minernode.pid:22937 successfully
 kill `ps aux | grep 'minernode' |grep -v grep| awk '{print $2}'`
 ```
 2.启动minernode：
+[log_file_path] 指定矿工日志完整路径
 ```
 ./minernode run --query-interval 5 --daemonize --log.file [log_file_path]
 ```

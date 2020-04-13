@@ -1,4 +1,4 @@
-# 矿工0.2.4接入教程
+# 矿工0.2.5接入教程
 
 1个miner对应多个storagenode   
 
@@ -24,7 +24,7 @@
 * [提取订单收益](#提取订单收益)
 * [测试网络连通](#测试网络连通)
 
-矿工和存储节点0.2.4升级参考：[Storage0.2.4升级](Testnet-Storage-Upgrade.md)
+矿工和存储节点0.2.5升级参考：[Storage0.2.5升级](Testnet-Storage-Upgrade.md)
 
 ## 配置矿工和存储节点
 
@@ -37,18 +37,18 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 下载安装包
 ```
-wget https://github.com/LambdaIM/launch/releases/download/Storage0.2.4/lambda-storage-0.2.4-testnet.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/Storage0.2.5/lambda-storage-0.2.5-testnet.tar.gz
 
 如下载缓慢可使用下面的链接：
-wget http://download.lambdastorage.com/lambda-storage/0.2.4/lambda-storage-0.2.4-testnet.tar.gz
+wget http://download.lambdastorage.com/lambda-storage/0.2.5/lambda-storage-0.2.5-testnet.tar.gz
 ```
 解压安装包
 ```
-tar zxvf lambda-storage-0.2.4-testnet.tar.gz
+tar zxvf lambda-storage-0.2.5-testnet.tar.gz
 ```
 进入解压后的目录
 ```
-cd lambda-storage-0.2.4-testnet
+cd lambda-storage-0.2.5-testnet
 ```
 
 ### 2配置lambdacli
@@ -153,7 +153,7 @@ lambdavaloper1r340rrv9fs95gqy5087e2mtz82vvwrglt6amx3
 ```
 
 [build]
-version = "0.2.4"
+version = "0.2.5"
 commit = "030c696bc6829cfafb3d240d66058b16b41aa460"
 mode = "release"
 
@@ -232,7 +232,7 @@ Mining Address: lambda10m4xmmvwat9a53rf47pjjpn3tecdk64urd5qt9 //矿工子账户�
 ```
 ./minernode info
 返回结果：
-               version: 0.2.4
+               version: 0.2.5
                 dht id: G4xW3UHMfFnTmaRMZUJ7PKcfvr9YTTFyekcsRxKDZZD9  //创建矿工时会用到此dht-id
 server.private_address: 172.17.159.130:15001
         server.address: 0.0.0.0:26654
@@ -282,7 +282,7 @@ stop daemon process from minernode.pid:19276 successfully
 ### 6storagenode配置和启动
 [storagenode配置启动参考](./Testnet-Storagenode-Configure.md)
 
-### 7矿工创建卖单
+## 创建卖单
 
 加上--normal参数（赔付比率rate为0.5）的是普通卖单，价格只能等于5000000ulamb（1LAMB=1000000ulamb）；
 不加--normal参数（赔付比率等于1）的为优质卖单，优质卖单可指定大于等于5000000ulamb的任意价格。  
@@ -358,7 +358,7 @@ SellOrder
 ```
 
 
-### 8创建买单
+## 创建买单
 矿工不能买自己的卖单，只能换其他账户来挂买单。
 
 创建优质买单需要指定对应优质卖单SellOrderID。
@@ -419,7 +419,7 @@ MatchOrder
   DhtId:                 5i6fXKQJoktPVmt9PAfZ18RN7DG6tghQN7SK7A3Bq4Rc
 ```
 
-#### 匹配订单续期
+## 匹配订单续期
 `链0.4.8 - 存储0.2.5`版本 新增匹配订单续期功能。   
 1. 匹配订单未到期的，购买了空间的账户可使用`lambdacli tx market order-renewal`命令续期。  
 2. 匹配订单已过期的，不能再进行续期；  
@@ -652,7 +652,7 @@ download done 1166996480
 ```
 ./minernode info --test
 返回结果均为successful即正常：
-               version: 0.2.4
+               version: 0.2.5
                 dht id: G4xW3UHMfFnTmaRMZUJ7PKcfvr9YTTFyekcsRxKDZZD9
 server.private_address: 172.17.159.130:15001   successful
         server.address: 0.0.0.0:26654    successful
@@ -666,7 +666,7 @@ server.private_address: 172.17.159.130:15001   successful
 ./storagenode info network --test
 
 返回结果均为successful即正常：
-               version: 0.2.4
+               version: 0.2.5
                 dht id: 3mta4YEgHB43RHYE83aWBouvFNNCtSc832siEwmcTUsZ
   storage.storage_name: sn1
  storage.miner_address: 172.17.159.130:15001   successful
@@ -680,7 +680,7 @@ server.private_address: 172.17.159.130:16001   successful
 ### 查看存储节点磁盘空间
 ```
 ./storagenode info disk
-               version:  0.2.4
+               version:  0.2.5
   storage.storage_name:  sn1
       storage.data_dir:  [/lambda/data/xvdd/store /lambda/data/xvde/store /lambda/data/xvdc/中文test/store /lambda/.1lambda_storage/store]
 
