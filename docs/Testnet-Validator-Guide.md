@@ -130,6 +130,7 @@ mkdir ~/benchmark && cd ~/benchmark
 wget http://download.lambdastorage.com/lambda/0.4.8/benchmark_io.sh
 
 执行脚本
+sudo chmod +x benchmark_io.sh
 sudo ./benchmark_io.sh
 ```
 
