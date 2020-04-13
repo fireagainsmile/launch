@@ -1,12 +1,13 @@
 # 磁盘性能测试
 
-## 安装sysbench命令（如果有此命令，请忽略安装步骤）
+## 安装sysbench、bc命令（如果有此命令，请忽略安装步骤）
 
 ### CentOS系统执行如下命令
 
 ```
 sudo yum list
 sudo yum install sysbench
+sudo yum -y install bc
 ```
 
 ### Ubuntu系统执行如下命令
@@ -14,12 +15,15 @@ sudo yum install sysbench
 ```
 sudo apt-get update -y
 sudo apt-get install -y sysbench
+sudo apt-get install bc
 ```
 
-### 验证sysbench是否安装成功
+### 验证sysbench、bc是否安装成功
 
 ```
 sysbench --version
+
+bc -v
 ```
 
 ### 执行benchmark测试脚本，需要等待10min左右
@@ -48,7 +52,7 @@ BenchMark:
 ```
 
 此问题由于系统没有`bc`程序导致，CentOS可运行`sudo yum -y install bc`安装，
-Ubuntu可运行`sudo apt-get install bc`
+Ubuntu可运行`sudo apt-get install bc`，成功安装后重新执行`sudo ./benchmark_io.sh`
 
 
 
