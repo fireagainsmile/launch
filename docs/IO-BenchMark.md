@@ -6,7 +6,7 @@
 
 ```
 sudo yum list
-sudo yum install sysbench
+sudo yum -y install sysbench
 sudo yum -y install bc
 ```
 
@@ -15,7 +15,7 @@ sudo yum -y install bc
 ```
 sudo apt-get update -y
 sudo apt-get install -y sysbench
-sudo apt-get install bc
+sudo apt-get install -y bc
 ```
 
 ### 验证sysbench、bc是否安装成功
