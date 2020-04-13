@@ -121,7 +121,25 @@ wget http://download.lambdastorage.com/lambda/0.4.8/lambda_0.4.8_data.tar.gz
 tar -zxvf lambda_0.4.8_data.tar.gz -C ~/.lambda/
 ```
 
-### 8. 启动节点  
+### 8. 测试磁盘性能
+```
+创建benchmark目录
+mkdir ~/benchmark && cd ~/benchmark
+
+下载测试脚本
+wget http://download.lambdastorage.com/lambda/0.4.8/benchmark_io.sh
+
+执行脚本
+sudo chmod +x benchmark_io.sh
+sudo ./benchmark_io.sh
+```
+
+脚本执行需要一些时间，执行遇到问题或得到结果后可参考[磁盘BenchMark测试](IO-BenchMark.md)来评估
+磁盘性能
+
+
+
+### 9. 启动节点  
 ```
 ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:26657 --daemonize --log.file /tmp/lambda.log
 ```
@@ -152,7 +170,7 @@ lambda.pid is running, pid is 28800
 daemon have stoped
 ```
 
-### 9. 添加账户  
+### 10. 添加账户  
 将[your-account-name]替换成您自定义的账户名称，需要设置您的账户密码，不用加中括号
 ```
 ./lambdacli keys add [your-account-name]
@@ -165,10 +183,10 @@ daemon have stoped
 输入命令后按照提示输入密码和助记词即可
 
 
-### 10. 节点领取测试网测试币
+### 11. 节点领取测试网测试币
 需要领取测试网TBB用以进行节点测试的，可联系Lambda官方客服
 
-### 11. 创建Validator  
+### 12. 创建Validator  
 创建Validator需要如下信息:   
 * amount -- 节点自抵押量不得小于666.666666TBB即666666666utbb (1TBB=1000000utbb)
 * pubkey -- 通过命令`./lambda tendermint show-validator` 获取
@@ -206,7 +224,7 @@ Validator 的操作地址也可通过命令获取
 ./lambdacli keys show [your-account-name] --bech val
 ```
 
-### 12. 启动rest-server服务
+### 13. 启动rest-server服务
 rest-server服务可提供给钱包和storagecli连接
 ```
 nohup ./lambdacli rest-server --node tcp://0.0.0.0:26657 --laddr tcp://0.0.0.0:13659 >> /tmp/lambdacli.log 2>&1 &
