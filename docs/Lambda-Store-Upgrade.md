@@ -43,7 +43,12 @@ cd lambda-storage-0.2.5-testnet
 ```
 
 ### 重启minernode
-1.停止minernode：
+1.修改lambdacli配置
+```
+./lambdacli config chain-id lambda-chain-test4.8
+```
+
+2.停止minernode：
 ```
 ./minernode run --stop
 ```
@@ -55,7 +60,7 @@ stop daemon process from minernode.pid:22937 successfully
 ```
 kill `ps aux | grep 'minernode' |grep -v grep| awk '{print $2}'`
 ```
-2.启动minernode：
+3.启动minernode：  
 [log_file_path] 指定矿工日志完整路径
 ```
 ./minernode run --query-interval 5 --daemonize --log.file [log_file_path]
