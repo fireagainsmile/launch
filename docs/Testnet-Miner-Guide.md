@@ -540,25 +540,25 @@ ProviderStatus为矿工状态，Avaialable为正常状态，Maintaining矿工正
 一个账户可以通过分享命令给另一个存储账户进行分享文件。接收者可以在分享者分享的期限内下载文件.
 
 ### 分享文件
-
- [account-name]:是分享文件的账户
  
  [remote path]：分享文件的文件地址，可以分享整个文件夹，不加具体文件即可
  
- [duration]：分享文件的期限，默认秒为单位。（直接填写数字即可）
+ [duration]：分享文件的期限，Y:年 M:月 d:天 h:小时 m:分 s:秒.（8M7h6m, 代表: 8个月 + 7小时 + 6分）
+ 
 ```
 用法：
-LAMBDA_ORDER_ID=[orderId] ./storagecli token share [account-name] [remote path] [duration] --download  [flags]
+storagecli token share ACCOUNT [remote path] [duration] --download  [flags]
 
 示例：
-LAMBDA_ORDER_ID=2E5A78E1564E7D220C327B1EC4F7087AD7CF2708  ./storagecli token share  buy lamb://test/testfiles.tar.gz_c611404bedad4b62af4c554a3a099d27   600  --download
+LAMBDA_ORDER_ID=5A8E65C1C04177234DC8E7B7DFBCE98CC31134AC ./storagecli token share buy lamb://test/file50_e477d42cadc445049507f215142be187  1M2h3m4s  --download
+Password to sign with 'buy':
 create share token with these properties:
-share duration: 600 seconds
-share path: lamb://test/testfiles.tar.gz_c611404bedad4b62af4c554a3a099d27
+share duration: 722h3m4s
+share path: lamb://test/file50_e477d42cadc445049507f215142be187
 share type: [download]
-......
+please wait a few seconds
 got share token secret:
-3gyjicaEhiNa8i8pighP6gbnVZLxAkqfBCQUgv9SAmQLu7453zgvyb48BzMcvouUUw
+2b7nqoMMBrKzEUrvz44yFWHUk3xRpBYtvy7seKpwjVdJz2iAnhBpJMiXghhkrXLqPD
 ```
 执行命令后会输出got share token secret,接受者用来接收文件。
 
