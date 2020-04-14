@@ -49,7 +49,7 @@ Disk                 |Total   |Used   |Free    |Order                           
 
 
 ./storagenode info  disk  --safe-cleanup 
-             blockTime:  2020-08-09 14:01:27 UTC
+             blockTime:  2020-04-11 14:01:27 UTC
                version:  0.2.5-13-gdbcabcf-debug
   storage.storage_name:  t4s5
       storage.data_dir:  [/data2/storage/store /data3/storage/store /data/storage/store /data4/storage/store]
