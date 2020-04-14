@@ -135,3 +135,39 @@ data_dir = [ "磁盘1", "磁盘2", "磁盘N"]
 
 4.检查矿工节点和存储节点程序是否正在运行，是否有错误日志信息
 
+5. 检查订单使用空间
+```
+检查订单使用空间命令：
+./storagenode info  disk  --local-mode   
+               version:  0.2.5-13-gdbcabcf-debug
+  storage.storage_name:  t4s5
+      storage.data_dir:  [/data2/storage/store /data3/storage/store /data/storage/store /data4/store]
+
+Disk                 |Total   |Used   |Free    |Order                                    |Occupied |SafeCleanup?
+/data2/storage/store |18 GiB  |14 GiB |4.6 GiB |0A0250B4143BD1F69DFBEBD98ADDDFEF99397511 |240 MiB  |false
+                     |        |       |        |82EB03450C809F3F8867C8D30BDD42D6C8802E92 |2.7 GiB  |false
+/data/storage/store  |187 GiB |23 GiB |164 GiB |82EB03450C809F3F8867C8D30BDD42D6C8802E92 |3.3 GiB  |false
+                     |        |       |        |BB549FB804062AB89A6AE3C3C8B6E1188EA9F36C |128 MiB  |false
+                     |        |       |        |F083BC34E5CC1E2E6DBD20F0A274A70252DCCBC3 |1.3 GiB  |false
+
+```
+6. 清理过期订单空间
+```
+清理过期订单空间命令：
+./storagenode info  disk  --safe-cleanup 
+             blockTime:  2020-04-12 14:01:27 UTC
+               version:  0.2.5-13-gdbcabcf-debug
+  storage.storage_name:  t4s5
+      storage.data_dir:  [/data2/storage/store /data3/storage/store /data/storage/store /data4/storage/store]
+
+Disk                 | Total   |Used   |Free    |Order                                    |Occupied |SafeCleanup?
+/data2/storage/store |18 GiB  |14 GiB |4.6 GiB |0A0250B4143BD1F69DFBEBD98ADDDFEF99397511 |240 MiB  |false
+                     |        |       |        |82EB03450C809F3F8867C8D30BDD42D6C8802E92 |2.7 GiB  |false
+/data3/storage/store |18 GiB  |18 GiB |0 B     |A60DF26061D0A98D4F9338AAC8A0683BD0927429 |18 GiB   |true
+/data/storage/store  |187 GiB |50 GiB |136 GiB |51866A6BBB6E2EE819D921D85094E76D1D54410A |116 MiB  |true
+                      |        |       |        |82EB03450C809F3F8867C8D30BDD42D6C8802E92 |3.3 GiB  |false
+                      |        |       |        |BB549FB804062AB89A6AE3C3C8B6E1188EA9F36C |128 MiB  |false
+                      |        |       |        |F083BC34E5CC1E2E6DBD20F0A274A70252DCCBC3 |1.3 GiB  |false
+/data4/storage/store  |37 GiB  |34 GiB |2.7 GiB |A60DF26061D0A98D4F9338AAC8A0683BD0927429 |7.0 GiB  |true
+```
+
