@@ -450,7 +450,9 @@ Response:
     - action = orderRenewal
     - address = lambda1jlh7644ghjjt72quxhraxt7aegj79pdr7unczs
  
+```
 订单续期后，重新storagecli token sync后存储获取订单最新日期，通过storagecli order list 可查看订单到期时间
+
 ```
 例如:
 执行storagecli token sync获取订单最新日期
