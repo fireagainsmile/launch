@@ -27,6 +27,7 @@ statement(58c7700c-7f17-42ec-8317-f66bbe6fcd05), next_expiry(2020-04-09 12:46:58
 Inactive statement: 0
 
 
+
 ./storagenode mining info 411d6463-fe1d-4374-ab42-726aa2937946  
 expired time: 2023-06-19 18:00:13 +0800 CST
 end time: 2020-08-09 13:35:43.56402227 +0000 UTC
