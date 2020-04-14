@@ -35,10 +35,10 @@ storagenode info disk [flags]
 ## Examples
 
 ```
-./storagenode info  disk  --local-mode    --home /root/LambdaIM/storage/storage-feature_order_list_with_provider_status-984f41e-debug-03251653/.lambda_storage
+./storagenode info  disk  --local-mode   
                version:  0.2.5-13-gdbcabcf-debug
   storage.storage_name:  t4s5
-      storage.data_dir:  [/data2/storage/store /data3/storage/store /data/storage/store /root/LambdaIM/storage/storage-feature_order_list_with_provider_status-984f41e-debug-03251653/.lambda_storage/storage/store]
+      storage.data_dir:  [/data2/storage/store /data3/storage/store /data/storage/store /data4/store]
 
 Disk                 |Total   |Used   |Free    |Order                                    |Occupied |SafeCleanup?
 /data2/storage/store |18 GiB  |14 GiB |4.6 GiB |0A0250B4143BD1F69DFBEBD98ADDDFEF99397511 |240 MiB  |false
@@ -48,25 +48,24 @@ Disk                 |Total   |Used   |Free    |Order                           
                      |        |       |        |F083BC34E5CC1E2E6DBD20F0A274A70252DCCBC3 |1.3 GiB  |false
 
 
-./storagenode info  disk  --safe-cleanup --home /root/LambdaIM/storage/storage-feature_order_list_with_provider_status-984f41e-debug-03251653/.lambda_storage
+./storagenode info  disk  --safe-cleanup 
              blockTime:  2020-08-09 14:01:27 UTC
                version:  0.2.5-13-gdbcabcf-debug
   storage.storage_name:  t4s5
-      storage.data_dir:  [/data2/storage/store /data3/storage/store /data/storage/store /root/LambdaIM/storage/storage-feature_order_list_with_provider_status-984f41e-debug-03251653/.lambda_storage/storage/store]
+      storage.data_dir:  [/data2/storage/store /data3/storage/store /data/storage/store /data4/storage/store]
 
-Disk                                                                                                                        |Total   |Used   |Free    |Order                                    |Occupied |SafeCleanup?
-/data2/storage/store                                                                                                        |18 GiB  |14 GiB |4.6 GiB |0A0250B4143BD1F69DFBEBD98ADDDFEF99397511 |240 MiB  |false
-                                                                                                                            |        |       |        |82EB03450C809F3F8867C8D30BDD42D6C8802E92 |2.7 GiB  |false
-/data3/storage/store                                                                                                        |18 GiB  |18 GiB |0 B     |A60DF26061D0A98D4F9338AAC8A0683BD0927429 |18 GiB   |true
-/data/storage/store                                                                                                         |187 GiB |50 GiB |136 GiB |51866A6BBB6E2EE819D921D85094E76D1D54410A |116 MiB  |true
-                                                                                                                            |        |       |        |82EB03450C809F3F8867C8D30BDD42D6C8802E92 |3.3 GiB  |false
-                                                                                                                            |        |       |        |A60DF26061D0A98D4F9338AAC8A0683BD0927429 |11 GiB   |true
-                                                                                                                            |        |       |        |A62C0765A24CB031686B06A6C1EB0F508E625F1E |9.4 GiB  |true
-                                                                                                                            |        |       |        |BB549FB804062AB89A6AE3C3C8B6E1188EA9F36C |128 MiB  |false
-                                                                                                                            |        |       |        |D7A999F935192C313913FEF25EC9F3B2EC199819 |8.3 GiB  |true
-                                                                                                                            |        |       |        |F083BC34E5CC1E2E6DBD20F0A274A70252DCCBC3 |1.3 GiB  |false
-/root/LambdaIM/storage/storage-feature_order_list_with_provider_status-984f41e-debug-03251653/.lambda_storage/storage/store |37 GiB  |34 GiB |2.7 GiB |A60DF26061D0A98D4F9338AAC8A0683BD0927429 |7.0 GiB  |true
-
+Disk                 | Total   |Used   |Free    |Order                                    |Occupied |SafeCleanup?
+/data2/storage/store |18 GiB  |14 GiB |4.6 GiB |0A0250B4143BD1F69DFBEBD98ADDDFEF99397511 |240 MiB  |false
+                     |        |       |        |82EB03450C809F3F8867C8D30BDD42D6C8802E92 |2.7 GiB  |false
+/data3/storage/store |18 GiB  |18 GiB |0 B     |A60DF26061D0A98D4F9338AAC8A0683BD0927429 |18 GiB   |true
+/data/storage/store  |187 GiB |50 GiB |136 GiB |51866A6BBB6E2EE819D921D85094E76D1D54410A |116 MiB  |true
+                      |        |       |        |82EB03450C809F3F8867C8D30BDD42D6C8802E92 |3.3 GiB  |false
+                      |        |       |        |A60DF26061D0A98D4F9338AAC8A0683BD0927429 |11 GiB   |true
+                      |        |       |        |A62C0765A24CB031686B06A6C1EB0F508E625F1E |9.4 GiB  |true
+                      |        |       |        |BB549FB804062AB89A6AE3C3C8B6E1188EA9F36C |128 MiB  |false
+                      |        |       |        |D7A999F935192C313913FEF25EC9F3B2EC199819 |8.3 GiB  |true
+                      |        |       |        |F083BC34E5CC1E2E6DBD20F0A274A70252DCCBC3 |1.3 GiB  |false
+/data4/storage/store  |37 GiB  |34 GiB |2.7 GiB |A60DF26061D0A98D4F9338AAC8A0683BD0927429 |7.0 GiB  |true
 
 
 
