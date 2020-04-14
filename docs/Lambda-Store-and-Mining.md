@@ -110,17 +110,21 @@ data_dir = [ "磁盘1", "磁盘2", "磁盘N"]
 
 ### 挖矿成功率为0%
 1.检查矿工会否被监禁  
+``` 
     检查监禁命令:  
-    `./lambdacli query market miner [miner_address]`  
+    ./lambdacli query market miner [miner_address]  
     解除监禁命令:  
-    `./lambdacli tx market unjail --from [miner_account]`  
+    ./lambdacli tx market unjail --from [miner_account]
+```  
 操作文档参考：[矿工维护手册](Lambda-Miner-Maintain.md)
 
 2.检查存储订单是否过期  
+``` 
     检查订单过期命令:
-    `./lambdacli query market matchorders [account_address] [page] [limit]`  
+    ./lambdacli query market matchorders [account_address] [page] [limit]
     订单续期命令：  
-    `./lambdacli tx market order-renewal [orderId] [duration] --from [account]`  
+    ./lambdacli tx market order-renewal [orderId] [duration] --from [account]
+``` 
 操作文档参考：[匹配订单续期](http://docs.lambda.im/Testnet-Miner-Guide/#_21)    
 
 3.检查minernode与storagenode网络是否正常  
