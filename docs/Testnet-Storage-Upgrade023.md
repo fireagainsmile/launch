@@ -1,4 +1,4 @@
-# Storage0.2.5升级
+# Storage0.2.4升级
 
 * [下载安装包并解压](#下载安装包并解压)
 * [minernode升级](#minernode升级)
@@ -14,18 +14,18 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 下载安装包
 ```
-wget https://github.com/LambdaIM/launch/releases/download/Storage0.2.5/lambda-storage-0.2.5-testnet.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/Storage0.2.4/lambda-storage-0.2.4-testnet.tar.gz
 
 如下载缓慢可使用下面的链接：
-wget http://download.lambdastorage.com/lambda-storage/0.2.5/lambda-storage-0.2.5-testnet.tar.gz
+wget http://download.lambdastorage.com/lambda-storage/0.2.4/lambda-storage-0.2.4-testnet.tar.gz
 ```
 解压安装包
 ```
-tar zxvf lambda-storage-0.2.5-testnet.tar.gz
+tar zxvf lambda-storage-0.2.4-testnet.tar.gz
 ```
 进入解压后的目录
 ```
-cd lambda-storage-0.2.5-testnet
+cd lambda-storage-0.2.4-testnet
 ```
 
 ## minernode升级
@@ -58,7 +58,7 @@ kill `ps aux | grep 'minernode' |grep -v grep| awk '{print $2}'`
 ## storagenode升级
 ### 备份旧版配置文件
 ``` 
-cp ~/.lambda_storage/config/config.toml ~/LambdaIM/lambda-storage-0.2.5-testnet/
+cp ~/.lambda_storage/config/config.toml ~/LambdaIM/lambda-storage-0.2.4-testnet/
 ```
 ### storagenode升级
 ``` 

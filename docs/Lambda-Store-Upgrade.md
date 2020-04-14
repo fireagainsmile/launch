@@ -8,6 +8,8 @@
 
 以下为 旧版0.2.4 升级到 lambda-storage-0.2.5-testnet 步骤（不支持旧版 0.2.3 直接升级到此版本）
 
+0.2.3升级到0.2.4参考：[Storage0.2.4升级](Testnet-Storage-Upgrade023.md)
+
 
 
 ### 下载安装包并解压
