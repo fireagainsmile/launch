@@ -6,7 +6,7 @@
 * [minernode重启](#minernode重启)
 * [storagenode重启](#storagenode重启)
 
-以下为 旧版lambda-storage 升级到 lambda-storage-0.2.5-testnet 步骤
+以下为 旧版0.2.4 升级到 lambda-storage-0.2.5-testnet 步骤（不支持旧版 0.2.3 直接升级到此版本）
 
 
 
