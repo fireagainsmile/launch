@@ -80,8 +80,8 @@ nohup ./lambdacli rest-server --node tcp://0.0.0.0:26657 --laddr tcp://0.0.0.0:1
 **查看/tmp/lambda.log日志正常，即节点升级成功。不需要再执行后面的操作。**
 
 ### 矿工服务重启
-测试网升级0.4.8后，矿工需要修改配置并重启minernode服务才能保证挖矿正常。 
-参考文档：[矿工服务重启](Lambda-Miner-Restart.md)
+测试网升级0.4.8后，矿工需要修改配置并重启minernode服务才能保证挖矿正常。   
+参考文档：[矿工服务重启](Lambda-Miner-Restart.md) 或升级矿工服务到0.2.5[矿工服务升级](Lambda-Store-Upgrade.md)
 
 ==============
 
