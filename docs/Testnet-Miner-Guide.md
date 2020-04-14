@@ -26,7 +26,7 @@
 * [提取订单收益](#提取订单收益)
 * [测试网络连通](#测试网络连通)
 
-矿工和存储节点0.2.5升级参考：[Storage0.2.5升级](Testnet-Storage-Upgrade.md)
+矿工和存储节点0.2.5升级参考：[Storage0.2.5升级](Lambda-Store-Upgrade.md)
 
 ## 配置矿工和存储节点
 
