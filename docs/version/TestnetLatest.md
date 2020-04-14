@@ -23,10 +23,14 @@ MD5: 4aaf01e9e0c4bf18789caa26c93e4886
 [http://download.lambdastorage.com/lambda/0.4.8/](http://download.lambdastorage.com/lambda/0.4.8/)
 
 ## lambda storage v0.2.5
-包名: lambda-storage-0.2.5-testnet.tar.gz  
-MD5: 
+包名：lambda-storage-0.2.5-testnet.tar.gz
+MD5:a72ee8c4ed3439f06968b3cda9fb0fad
 
 1. 修复已知bug
+2. s3 Gateway支持后台运行
+3. 支持订单续期
+4. 过期挖矿的优化
+5. 优化存储命令
 
 下载地址： 
 [https://github.com/LambdaIM/launch/releases/tag/Storage0.2.5](https://github.com/LambdaIM/launch/releases/tag/Storage0.2.5)
