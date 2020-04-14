@@ -115,16 +115,19 @@ data_dir = [ "磁盘1", "磁盘2", "磁盘N"]
     解除监禁命令:  
     `./lambdacli tx market unjail --from [miner_account]`  
 操作文档参考：[矿工维护手册](Lambda-Miner-Maintain.md)
+
 2.检查存储订单是否过期  
     检查订单过期命令:
     `./lambdacli query market matchorders [account_address] [page] [limit]`  
     订单续期命令：  
     `./lambdacli tx market order-renewal [orderId] [duration] --from [account]`  
 操作文档参考：[匹配订单续期](http://docs.lambda.im/Testnet-Miner-Guide/#_21)    
+
 3.检查minernode与storagenode网络是否正常  
 ``` 
     ./minernode   info --test  
     ./storagenode info network --test  
 ```
+
 4.检查矿工节点和存储节点程序是否正在运行，是否有错误日志信息
 
