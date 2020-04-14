@@ -451,7 +451,7 @@ Response:
 续期后，重新storagecli token sync后存储获取订单最新日期，通过storagecli order list 可查看订单到期时间
 ```
 例如:
-执行storagecli token sync获取订单最新日期:storagecli order list 可查看订单到期时间
+执行storagecli token sync获取订单最新日期
 
 ./storagecli token sync buy
 Password to sign with 'buy':
@@ -465,6 +465,8 @@ Order                                              Total                Used
 EC349DC8803BEE33B21E487A2481EB94CFC1F8DD           5.0 GiB              627 MiB
 sync orders finish
 
+
+storagecli order list 可查看订单到期时间
 ./storagecli order list buy
 Password to sign with 'buy':
 
