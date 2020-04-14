@@ -1,4 +1,4 @@
-# 矿工0.2.4接入教程
+# 矿工0.2.5接入教程
 
 1个miner对应多个storagenode   
 
@@ -24,7 +24,7 @@
 * [提取订单收益](#提取订单收益)
 * [测试网络连通](#测试网络连通)
 
-矿工和存储节点0.2.4升级参考：[Storage0.2.4升级](Testnet-Storage-Upgrade.md)
+矿工和存储节点0.2.5升级参考：[Storage0.2.5升级](Testnet-Storage-Upgrade.md)
 
 ## 配置矿工和存储节点
 
@@ -37,18 +37,18 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 下载安装包
 ```
-wget https://github.com/LambdaIM/launch/releases/download/Storage0.2.4/lambda-storage-0.2.4-testnet.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/Storage0.2.5/lambda-storage-0.2.5-testnet.tar.gz
 
 如下载缓慢可使用下面的链接：
-wget http://download.lambdastorage.com/lambda-storage/0.2.4/lambda-storage-0.2.4-testnet.tar.gz
+wget http://download.lambdastorage.com/lambda-storage/0.2.5/lambda-storage-0.2.5-testnet.tar.gz
 ```
 解压安装包
 ```
-tar zxvf lambda-storage-0.2.4-testnet.tar.gz
+tar zxvf lambda-storage-0.2.5-testnet.tar.gz
 ```
 进入解压后的目录
 ```
-cd lambda-storage-0.2.4-testnet
+cd lambda-storage-0.2.5-testnet
 ```
 
 ### 2配置lambdacli
@@ -153,7 +153,7 @@ lambdavaloper1r340rrv9fs95gqy5087e2mtz82vvwrglt6amx3
 ```
 
 [build]
-version = "0.2.4"
+version = "0.2.5"
 commit = "030c696bc6829cfafb3d240d66058b16b41aa460"
 mode = "release"
 
@@ -232,7 +232,7 @@ Mining Address: lambda10m4xmmvwat9a53rf47pjjpn3tecdk64urd5qt9 //矿工子账户�
 ```
 ./minernode info
 返回结果：
-               version: 0.2.4
+               version: 0.2.5
                 dht id: G4xW3UHMfFnTmaRMZUJ7PKcfvr9YTTFyekcsRxKDZZD9  //创建矿工时会用到此dht-id
 server.private_address: 172.17.159.130:15001
         server.address: 0.0.0.0:26654
@@ -282,7 +282,7 @@ stop daemon process from minernode.pid:19276 successfully
 ### 6storagenode配置和启动
 [storagenode配置启动参考](./Testnet-Storagenode-Configure.md)
 
-### 7矿工创建卖单
+## 创建卖单
 
 加上--normal参数（赔付比率rate为0.5）的是普通卖单，价格只能等于5000000ulamb（1LAMB=1000000ulamb）；
 不加--normal参数（赔付比率等于1）的为优质卖单，优质卖单可指定大于等于5000000ulamb的任意价格。  
@@ -358,7 +358,7 @@ SellOrder
 ```
 
 
-### 8创建买单
+## 创建买单
 矿工不能买自己的卖单，只能换其他账户来挂买单。
 
 创建优质买单需要指定对应优质卖单SellOrderID。
@@ -394,6 +394,7 @@ size为需要购买的空间，不小于对应卖单指定的最小购买空间�
 例如：
 ./lambdacli keys show buyaccount --address
 返回结果：lambda1thj5fv8d0dsh3aealhpxm9mvgxjfh87s224esr
+
 ./lambdacli query market matchorders lambda1thj5fv8d0dsh3aealhpxm9mvgxjfh87s224esr 1 10
 返回结果：
 MatchOrder
@@ -404,8 +405,8 @@ MatchOrder
   BuyOrderId:            F3B5BDE351253E1D47DA7CEB24C0E4BAB5BDA808
   Price:                 5000000
   Size:                  20
-  CreateTime:            2019-11-01 13:20:58.296399278 +0000 UTC
-  EndTime:               2019-12-01 13:20:58.296399278 +0000 UTC
+  CreateTime:            2019-11-01 13:20:58.296399278 +0000 UTC //匹配订单开始时间
+  EndTime:               2019-12-01 13:20:58.296399278 +0000 UTC //匹配订单结束时间
   CancelTimeDuration:    1h0m0s
   WithDrawTime:          2019-11-01 13:20:58.296399278 +0000 UTC
   Status:                0
@@ -418,6 +419,35 @@ MatchOrder
   DhtId:                 5i6fXKQJoktPVmt9PAfZ18RN7DG6tghQN7SK7A3Bq4Rc
 ```
 
+## 匹配订单续期
+`链0.4.8 - 存储0.2.5`版本 新增匹配订单续期功能。   
+1. 匹配订单未到期的，购买了空间的账户可使用`lambdacli tx market order-renewal`命令续期。  
+2. 匹配订单已过期的，不能再进行续期；  
+3. 同一匹配订单可多次续期；
+4. 续期后的匹配订单总时长（即结束时间减开始时间），不能超过60个月（1个月=30天）。
+
+续期成功后，可进入浏览器[http://testbrowser.lambda.im/#/](http://testbrowser.lambda.im/#/)搜索匹配订单ID，查看`匹配订单详情页`中结束时间是否延期了对应时长。  
+或使用上面查询匹配订单命令`lambdacli query market matchorders`查看返回结果中的匹配订单结束时间（即`EndTime`）是否延期了对应时长。
+
+[orderId] 需要进行续期的匹配订单ID;  
+[duration] 订单续期时长，单位为月。如设为3month，为续期3个月。
+```
+./lambdacli tx market order-renewal [orderId] [duration] --from [account]
+
+例如：
+账户buyaccount给自己购买的匹配订单0D3FAE471BFC92CED2AB7806E6AC648973357CAF 续期2个月
+./lambdacli tx market order-renewal 0D3FAE471BFC92CED2AB7806E6AC648973357CAF 2month --from buyaccount --broadcast-mode block -y
+Response:
+  Height: 63
+  TxHash: 144EE614E02E1F4C347BEC08785A74E7F01411BEB6735FC668D25C23E078FEFD
+  Raw Log: [{"msg_index":"0","success":true,"log":""}]
+  Logs: [{"msg_index":0,"success":true,"log":""}]
+  GasWanted: 200000
+  GasUsed: 42848
+  Tags:
+    - action = orderRenewal
+    - address = lambda1jlh7644ghjjt72quxhraxt7aegj79pdr7unczs
+```
 
 ## 文件上传和查看
 
@@ -510,25 +540,25 @@ ProviderStatus为矿工状态，Avaialable为正常状态，Maintaining矿工正
 一个账户可以通过分享命令给另一个存储账户进行分享文件。接收者可以在分享者分享的期限内下载文件.
 
 ### 分享文件
-
- [account-name]:是分享文件的账户
  
  [remote path]：分享文件的文件地址，可以分享整个文件夹，不加具体文件即可
  
- [duration]：分享文件的期限，默认秒为单位。（直接填写数字即可）
+ [duration]：分享文件的期限，Y:年 M:月 d:天 h:小时 m:分 s:秒.（8M7h6m, 代表: 8个月 + 7小时 + 6分）
+ 
 ```
 用法：
-LAMBDA_ORDER_ID=[orderId] ./storagecli token share [account-name] [remote path] [duration] --download  [flags]
+storagecli token share ACCOUNT [remote path] [duration] --download  [flags]
 
 示例：
-LAMBDA_ORDER_ID=2E5A78E1564E7D220C327B1EC4F7087AD7CF2708  ./storagecli token share  buy lamb://test/testfiles.tar.gz_c611404bedad4b62af4c554a3a099d27   600  --download
+LAMBDA_ORDER_ID=5A8E65C1C04177234DC8E7B7DFBCE98CC31134AC ./storagecli token share buy lamb://test/file50_e477d42cadc445049507f215142be187  1M2h3m4s  --download
+Password to sign with 'buy':
 create share token with these properties:
-share duration: 600 seconds
-share path: lamb://test/testfiles.tar.gz_c611404bedad4b62af4c554a3a099d27
+share duration: 722h3m4s
+share path: lamb://test/file50_e477d42cadc445049507f215142be187
 share type: [download]
-......
+please wait a few seconds
 got share token secret:
-3gyjicaEhiNa8i8pighP6gbnVZLxAkqfBCQUgv9SAmQLu7453zgvyb48BzMcvouUUw
+2b7nqoMMBrKzEUrvz44yFWHUk3xRpBYtvy7seKpwjVdJz2iAnhBpJMiXghhkrXLqPD
 ```
 执行命令后会输出got share token secret,接受者用来接收文件。
 
@@ -622,7 +652,7 @@ download done 1166996480
 ```
 ./minernode info --test
 返回结果均为successful即正常：
-               version: 0.2.4
+               version: 0.2.5
                 dht id: G4xW3UHMfFnTmaRMZUJ7PKcfvr9YTTFyekcsRxKDZZD9
 server.private_address: 172.17.159.130:15001   successful
         server.address: 0.0.0.0:26654    successful
@@ -636,7 +666,7 @@ server.private_address: 172.17.159.130:15001   successful
 ./storagenode info network --test
 
 返回结果均为successful即正常：
-               version: 0.2.4
+               version: 0.2.5
                 dht id: 3mta4YEgHB43RHYE83aWBouvFNNCtSc832siEwmcTUsZ
   storage.storage_name: sn1
  storage.miner_address: 172.17.159.130:15001   successful
@@ -650,7 +680,7 @@ server.private_address: 172.17.159.130:16001   successful
 ### 查看存储节点磁盘空间
 ```
 ./storagenode info disk
-               version:  0.2.4
+               version:  0.2.5
   storage.storage_name:  sn1
       storage.data_dir:  [/lambda/data/xvdd/store /lambda/data/xvde/store /lambda/data/xvdc/中文test/store /lambda/.1lambda_storage/store]
 

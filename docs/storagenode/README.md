@@ -17,9 +17,8 @@ Each module provides a set of command line interfaces. Here we sort these comman
 
 1.  [info command](info.md)         
 2.  [init  command](init.md)        
-3.  [local-status  command](local-status.md)
+3.  [mining  command](mining.md)
 4.  [run command](run.md)          
 5.  [service  command](service.md)     
-6.  [statement-info command](statement-info.md)
 7.  [upgrade command](upgrade.md)      
 8.  [version  command](version.md)    

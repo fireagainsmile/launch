@@ -1,4 +1,4 @@
-# storagenode0.2.4 配置 
+# storagenode0.2.5 配置 
 * [storagenode初始化](#storagenode初始化)
 * [修改配置文件](#修改配置文件)
 * [启动storagenode](#启动storagenode)
@@ -20,7 +20,7 @@
 
 ```
 [build]
-version = "0.2.4"
+version = "0.2.5"
 commit = "030c696bc6829cfafb3d240d66058b16b41aa460"
 mode = "release"
 
