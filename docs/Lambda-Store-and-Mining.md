@@ -135,7 +135,8 @@ data_dir = [ "磁盘1", "磁盘2", "磁盘N"]
 
 4.检查矿工节点和存储节点程序是否正在运行，是否有错误日志信息
 
-5. 检查订单使用空间
+5.检查订单使用空间
+
 ```
 检查订单使用空间命令：
 ./storagenode info  disk  --local-mode   
@@ -151,7 +152,8 @@ Disk                 |Total   |Used   |Free    |Order                           
                      |        |       |        |F083BC34E5CC1E2E6DBD20F0A274A70252DCCBC3 |1.3 GiB  |false
 
 ```
-6. 清理过期订单空间
+
+6.清理过期订单空间
 ```
 清理过期订单空间命令：
 —safe-clean会把SafeCleanup的值为true的订单删除并且不影响挖矿/算力
