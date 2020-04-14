@@ -92,15 +92,13 @@ storagecli token share ACCOUNT [remote path] [duration] --download  [flags]
 
 ## Examples
 ```
- LAMBDA_ORDER_ID=F083BC34E5CC1E2E6DBD20F0A274A70252DCCBC3  ./storagecli token share testu lamb://test/upload.tar.gz_dae1085725a046cbaf80cdfe3028d7ea  2h3m4s --download
-Password to sign with 'testu':
+LAMBDA_ORDER_ID=5A8E65C1C04177234DC8E7B7DFBCE98CC31134AC  ./storagecli token share buy lamb://test/file50_e477d42cadc445049507f215142be187  1M2h3m4s  --download
+Password to sign with 'buy':
 create share token with these properties:
-share duration: 2h3m4s
-share path: lamb://test/upload.tar.gz_dae1085725a046cbaf80cdfe3028d7ea
+share duration: 722h3m4s
+share path: lamb://test/file50_e477d42cadc445049507f215142be187
 share type: [download]
-
-continue? [Y/n]y
 please wait a few seconds
 got share token secret:
-5gxGAZjNAvJAPcWn7Y1MvbtbYnsjDd9vKNUi5tVZusTNf4xaqfdrwvertbu6r4dMa7
+2b7nqoMMBrKzEUrvz44yFWHUk3xRpBYtvy7seKpwjVdJz2iAnhBpJMiXghhkrXLqPD
 ```
