@@ -154,6 +154,8 @@ Disk                 |Total   |Used   |Free    |Order                           
 6. 清理过期订单空间
 ```
 清理过期订单空间命令：
+—safe-clean会把SafeCleanup的值为true的订单删除并且不影响挖矿/算力
+
 ./storagenode info  disk  --safe-cleanup 
              blockTime:  2020-04-12 14:01:27 UTC
                version:  0.2.5-13-gdbcabcf-debug
