@@ -6,6 +6,8 @@
 * [minernode重启](#minernode重启)
 * [storagenode重启](#storagenode重启)
 
+新矿工和存储节点接入参考：[配置矿工和存储节点](Testnet-Miner-Guide.md)  
+
 以下为 旧版0.2.4 升级到 lambda-storage-0.2.5-testnet 步骤（不支持旧版 0.2.3 直接升级到此版本）
 
 0.2.3升级到0.2.4参考：[Storage0.2.4升级](Testnet-Storage-Upgrade023.md)
