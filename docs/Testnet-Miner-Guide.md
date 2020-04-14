@@ -449,6 +449,38 @@ Response:
   Tags:
     - action = orderRenewal
     - address = lambda1jlh7644ghjjt72quxhraxt7aegj79pdr7unczs
+ 
+订单续期后，重新storagecli token sync后存储获取订单最新日期，通过storagecli order list 可查看订单到期时间
+```
+例如:
+执行storagecli token sync获取订单最新日期
+
+./storagecli token sync buy
+Password to sign with 'buy':
+sync orders begin, This may take some time...
+http://182.92.242.59:13659/market/user/matchorders/lambda1ejuhsxthm7kpjz63eczlg28prrfje9vd22ma3x
+Order                                              Total                Used
+19FF9732F7E9069C689216173D3842612EDF02CC           6.0 GiB              101 MiB
+293B8613B1E26A79F6554472645FACB809F4BAE8           30 GiB               7.9 GiB
+29E301D07BDF6D22CE5813760F8F857326842C20           7.0 GiB              200 MiB
+5A8E65C1C04177234DC8E7B7DFBCE98CC31134AC           1.0 GiB              677 MiB
+EC349DC8803BEE33B21E487A2481EB94CFC1F8DD           5.0 GiB              627 MiB
+sync orders finish
+
+
+storagecli order list 可查看订单到期时间
+./storagecli order list buy
+Password to sign with 'buy':
+
+OrderId                                  |Expire                  |Used/Total      |ProviderStatus
+19FF9732F7E9069C689216173D3842612EDF02CC |2020-09-10 17:36:26 CST |100 MiB/6.0 GiB |Avaialable
+293B8613B1E26A79F6554472645FACB809F4BAE8 |2020-09-24 18:23:49 CST |7.9 GiB/30 GiB  |Avaialable
+29E301D07BDF6D22CE5813760F8F857326842C20 |2020-07-12 17:37:06 CST |200 MiB/7.0 GiB |Avaialable
+5A8E65C1C04177234DC8E7B7DFBCE98CC31134AC |2020-09-29 09:48:16 CST |50 MiB/1.0 GiB  |Avaialable
+EC349DC8803BEE33B21E487A2481EB94CFC1F8DD |2020-08-11 17:35:00 CST |150 MiB/5.0 GiB |Avaialable
+Total: 5
+Current time: 2020-04-14 17:58:49 CST
+
 ```
 
 ## 文件上传和查看
