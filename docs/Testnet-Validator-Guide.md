@@ -1,6 +1,7 @@
 # 测试网节点0.4.8 接入教程
 
-节点升级参考[测试网Validator 0.4.8 升级教程](Testnet-Validator-Upgrade-Guide.md)
+节点机器配置及系统设置参考：[验证节点挖矿手册](Lambda-Validator-Mining.md)（节点务必阅读此文档，尤其是**系统设置**部分）  
+节点升级参考：[测试网Validator 0.4.8 升级教程](Testnet-Validator-Upgrade-Guide.md)
 
 ### 1. 下载安装包并解压
 创建目录并进入
