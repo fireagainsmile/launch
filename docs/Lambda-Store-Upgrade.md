@@ -1,6 +1,7 @@
 # storage0.2.5升级
 
 * [下载安装包并解压](#下载安装包并解压)
+* [停止minernode和storagenode](#停止minernode和storagenode)
 * [minernode升级配置文件](#minernode升级配置文件)
 * [storagenode升级配置文件](#storagenode升级配置文件)
 * [minernode重启](#minernode重启)
@@ -34,6 +35,33 @@ tar zxvf lambda-storage-0.2.5-testnet.tar.gz
 cd lambda-storage-0.2.5-testnet
 ```
 
+### 停止minernode和storagenode
+1.停止minernode：
+```
+./minernode run --stop
+```
+返回结果如下即停止成功：
+```
+stop daemon process from minernode.pid:22937 successfully
+```
+如果返回结果停止失败，使用以下命令停掉minernode：
+```
+kill `ps aux | grep 'minernode' |grep -v grep| awk '{print $2}'`
+```
+
+2.停止storagenode：
+```
+./storagenode run --stop
+```
+返回结果如下即停止成功：
+```
+stop daemon process from storagenode.pid:22937 successfully
+```
+如果返回结果停止失败，使用以下命令停掉storagenode：
+```
+kill `ps aux | grep 'storagenode' |grep -v grep| awk '{print $2}'`
+```
+
 ### minernode升级
 
 ```
@@ -52,19 +80,7 @@ cd lambda-storage-0.2.5-testnet
 ./lambdacli config chain-id lambda-chain-test4.8
 ```
 
-2.停止minernode：
-```
-./minernode run --stop
-```
-返回结果如下即停止成功：
-```
-stop daemon process from minernode.pid:22937 successfully
-```
-如果返回结果停止失败，使用以下命令停掉minernode：
-```
-kill `ps aux | grep 'minernode' |grep -v grep| awk '{print $2}'`
-```
-3.启动minernode：  
+2.启动minernode：  
 [log_file_path] 指定矿工日志完整路径
 ```
 ./minernode run --query-interval 5 --daemonize --log.file [log_file_path]
@@ -76,22 +92,8 @@ kill `ps aux | grep 'minernode' |grep -v grep| awk '{print $2}'`
 ```
 
 ### 重启storagenode
+启动storagenode：
 [log_file_path] 指定storagenode运行日志路径
-
-1.停止storagenode：
-```
-./storagenode run --stop
-```
-返回结果如下即停止成功：
-```
-stop daemon process from storagenode.pid:22937 successfully
-```
-如果返回结果停止失败，使用以下命令停掉storagenode：
-```
-kill `ps aux | grep 'storagenode' |grep -v grep| awk '{print $2}'`
-```
-
-2.启动storagenode：
 ```
 ./storagenode run --daemonize --log.file [log_file_path]
 ```
