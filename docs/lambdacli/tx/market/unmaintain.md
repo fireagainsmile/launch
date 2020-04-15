@@ -6,7 +6,7 @@ Send transaction to cancel maintain a miner
 
 ## Usage
 
-``
+```
 lambdacli tx market unmaintain [flags]
 ```
 
@@ -30,7 +30,7 @@ lambdacli tx market unmaintain --help
 
 Sample Output:
 ```txt
-{"chain_id":"songtest","account_number":"2","sequence":"5","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgUnMaintain","value":{"address":"lambda1h29mncmlezu2jsrsyvsg7vmd9zq8nt75mmqffw"}}],"memo":""}
+{"chain_id":"lambda-chain-test","account_number":"2","sequence":"5","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgUnMaintain","value":{"address":"lambda1h29mncmlezu2jsrsyvsg7vmd9zq8nt75mmqffw"}}],"memo":""}
 
 confirm transaction before signing and broadcasting [Y/n]: y
 Password to sign with 'miner':

@@ -6,7 +6,7 @@ Send transaction to renewal a match order
 
 ## Usage
 
-``
+```
  lambdacli tx market order-renewal [orderId] [duration] [flags]
 ```
 
@@ -30,10 +30,10 @@ lambdacli tx market order-renewal 6064A8751DE890DFC87A61F089A6911810B33AC2 1mont
 
 Sample Output:
 ```txt
-{"chain_id":"songtest","account_number":"3","sequence":"1","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgOrderRenewal","value":{"Address":"lambda16f32afm7zgayje7fzj477hqmcdkcwep6dwdlx7","OrderId":"6064A8751DE890DFC87A61F089A6911810B33AC2","duration":"2592000000000000"}}],"memo":""}
+{"chain_id":"lambda-chain-test","account_number":"3","sequence":"1","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgOrderRenewal","value":{"Address":"lambda16f32afm7zgayje7fzj477hqmcdkcwep6dwdlx7","OrderId":"6064A8751DE890DFC87A61F089A6911810B33AC2","duration":"2592000000000000"}}],"memo":""}
 
 confirm transaction before signing and broadcasting [Y/n]: y
-Password to sign with 'zcTest':
+Password to sign with 'user':
 Response:
   Height: 124
   TxHash: 055C73FDC9C7063724C02EC311B12306078244BB58EEA84D7A3A580BE3E81409

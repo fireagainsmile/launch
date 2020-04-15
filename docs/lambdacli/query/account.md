@@ -32,8 +32,9 @@ This command is used for querying balance information of certain address.
 
 ```
 
-After that, you will get the detail info for the account.
+After that, use `./lambdacli query account` you will get the detail info for the account.
 ```
+./lambdacli query account lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6k7cv9
 Account:
   Address:       lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6k7cv9
   Pubkey:        lambdapub1addwnpepq0xqh3fs7lfw88gum0qx5h6ezh2n8pqk8xkw36lvkx7675dyztwdww453lm
@@ -46,7 +47,7 @@ Account:
 
 If you query an wrong account, you will get the follow information.
 ```
-lambdacli query account lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6x7cv9 
+./lambdacli query account lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6x7cv9 
 ERROR: decoding bech32 failed: checksum failed. Expected 6k7cv9, got 6x7cv9.
 ```
 

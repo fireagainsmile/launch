@@ -12,7 +12,7 @@ lambdacli query asset all [flag]
 
 ## Examples
 
-```$xslt
+```
 ./lambdacli query asset all
 AssetInfo:
   Address: lambda17am6rkcsm6sguy57rwr5fpkuezp620wfxsgkzn

@@ -8,7 +8,7 @@ For more detailed information, please refer to [Join Mainnet](../../join-mainnet
 
 ## Usage
 
-``
+```
 lambdacli tx staking create-validator [flags]
 ```
 

@@ -20,7 +20,7 @@ lambdacli tx asset drop [asset amount] [token amount] [flags]
 ## Examples
 
 ### drop
-```$xslt
+```
 ./lambdacli tx asset drop 1utbb 1000ulamb --from master 
 {"chain_id":"lambda-test","account_number":"0","sequence":"15","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgAssetDrop","value":{"address":"lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6k7cv9","asset":{"denom":"utbb","amount":"1"},"token":{"denom":"ulamb","amount":"1000"}}}],"memo":""}
 

@@ -10,7 +10,7 @@ Find a transaction by hash in a committed block.
 lambdacli query tx <hash> <flags>
 ```
 
-Print query block flags:
+Print query tx flags:
 ```
 lambdacli query tx --help
 ```
@@ -22,7 +22,7 @@ lambdacli query tx --help
 | -h, --help       |        | false     |                       |  Help for txs                                        |
 
 ## Examples
-```$xslt
+```
 lambdacli query tx 7EBE2CEB4102CA0D0183EE3511D484FCC717D90437990A716DEBA546C8506932 -o=output
 ```
 

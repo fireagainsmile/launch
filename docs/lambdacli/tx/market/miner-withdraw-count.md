@@ -31,10 +31,10 @@ lambdacli tx market miner-withdraw-count --help
 
 Sample Output:
 ```txt
-{"chain_id":"songtest","account_number":"2","sequence":"11","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgMinerWithDrawCount","value":{"address":"lambda1h29mncmlezu2jsrsyvsg7vmd9zq8nt75mmqffw","page":"1","limit":"1"}}],"memo":""}
+{"chain_id":"lambda-chain-test","account_number":"2","sequence":"11","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgMinerWithDrawCount","value":{"address":"lambda1h29mncmlezu2jsrsyvsg7vmd9zq8nt75mmqffw","page":"1","limit":"1"}}],"memo":""}
 
 confirm transaction before signing and broadcasting [Y/n]: y
-Password to sign with 'song':
+Password to sign with 'miner':
 Response:
   Height: 1521
   TxHash: AAED2CAC7FE886BBD4DEE7FDFB0414E525C0C3F216EDDB0C01D6B42E48914744

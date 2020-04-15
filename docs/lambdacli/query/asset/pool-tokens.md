@@ -13,7 +13,7 @@ lambdacli query asset pool-tokens [flags]
 ## Examples
 
 ### Query the asset pool tokens amount
-```$xslt
+```
 lambdacli query asset pool-tokens
                                          
 Pool:

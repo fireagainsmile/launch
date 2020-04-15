@@ -17,13 +17,13 @@ lambdacli version --help
 
 ##Examples
 
-```$xslt
-lambdacli version --long
+```
+./lambdacli version --long
 
-cosmos-sdk: 524b33e
-git commit: 524b33eab300caa23e4047fdfe497349d5aa9fd4
-vendor hash: 
-build tags: 
-go version go1.12.6 darwin/amd64
+lambda_version: 0.4.8-goleveldb
+git commit: 5e0578efde04866b1086326d3e9533db02db54b3
+vendor hash:
+build tags:
+go version go1.13.6 linux/amd64
 ```
 

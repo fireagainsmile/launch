@@ -16,7 +16,7 @@ lambdacli query block --help
 ```
 
 ## Examples
-```$xslt
+```
 lambdacli query block 8888
 ```
 

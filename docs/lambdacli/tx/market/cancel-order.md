@@ -6,7 +6,7 @@ Send transaction to cancel a sell order
 
 ## Usage
 
-``
+```
 lambdacli tx market cancel-order [order-id] [flags]
 ```
 

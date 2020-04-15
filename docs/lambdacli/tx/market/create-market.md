@@ -6,7 +6,7 @@ Send transaction to create a market
 
 ## Usage
 
-``
+```
 lambdacli tx market create-market [flags]
 ```
 

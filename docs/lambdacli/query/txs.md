@@ -9,12 +9,12 @@ Search for transactions that match the exact given tags where results are pagina
 ## Usage
 
 ```
-lambdacli query txs <flags>
+lambdacli query txs [flags]
 ```
 
-Print query block flags:
+Print query txs flags:
 ```
-lambdacli query block --help
+lambdacli query txs --help
 ```
 
 ## flags
@@ -27,7 +27,7 @@ lambdacli query block --help
 | --tags       |    string    | true     |                       |  tag:value list of tags that must match                                       |
 
 ## Examples
-```$xslt
+```
 lambdacli query txs --tags action:send --limit 1
 ```
 

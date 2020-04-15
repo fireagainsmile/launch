@@ -19,10 +19,12 @@ lambdacli query --help
 
 | Name                            | Description                                                   |
 | --------------------------------| --------------------------------------------------------------|
+| [tendermint-validator-set](tendermint-validator-set.md)     | Get the full tendermint validator set at given height                                     |
 | [block](block.md)     | Get verified data for a the block at given height                                     |
 | [txs](txs.md)     | Search for paginated transactions that match a set of tags     |
 | [tx](tx.md)   | Find a transaction by hash in a committed block                 |
 | [account](account.md)   | Query account balance                 |
+| [info](info.md)   | query the information of upgrade module                 |
 | [distr](./distr/README.md)   |  Querying commands for the distribution module                |
 | [staking](./staking/README.md)   |  Querying commands for the staking module                                          |
 | [minting](./minting/README.md)   |  Querying commands for the minting module                                         |

@@ -6,7 +6,7 @@ Send transaction to create a sell order
 
 ## Usage
 
-``
+```
 lambdacli tx market create-sellorder [flags]
 ```
 

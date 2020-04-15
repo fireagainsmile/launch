@@ -23,9 +23,9 @@ lambdacli tx asset lock [flags]
 
 ### lock
 
-```$xslt
+```
 ./lambdacli tx asset lock --amount 100ulamb --duration 1h --from master                                  
-{"chain_id":"songtest","account_number":"0","sequence":"6","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgLockAsset","value":{"address":"lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6k7cv9","asset":{"denom":"ulamb","amount":"100"},"lock_duration":"3600000000000"}}],"memo":""}
+{"chain_id":"lambda-chain-test","account_number":"0","sequence":"6","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgLockAsset","value":{"address":"lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6k7cv9","asset":{"denom":"ulamb","amount":"100"},"lock_duration":"3600000000000"}}],"memo":""}
 
 confirm transaction before signing and broadcasting [Y/n]: y
 Password to sign with 'master':

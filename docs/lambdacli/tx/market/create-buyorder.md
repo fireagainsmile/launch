@@ -6,7 +6,7 @@ Send transaction to create a buy order
 
 ## Usage
 
-``
+```
 lambdacli tx market create-buyorder [flags]
 ```
 

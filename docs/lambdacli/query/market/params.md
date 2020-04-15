@@ -39,4 +39,9 @@ Params:
   size_unit_set:                [GB]
   duration_unit_set:            [month]
   sell_order_buy_self:          true
+  max_current_maintainer:       50
+  max_miner_maintain_time:      72h0m0s
+  window_duration:              720h0m0s
+  miner_unjail_cost:           100000000ulamb
+  miner_unjail_rate:           0.050000000000000000
 ```

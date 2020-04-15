@@ -19,7 +19,7 @@ lambdacli tx asset mint [amount+symbol] [flag]
 
 ## Examples
 
-```$xslt
+```
 ./lambdacli tx asset mint 1000uxxb --from lambda17am6rkcsm6sguy57rwr5fpkuezp620wfxsgkzn --broadcast-mode block
 {"chain_id":"lambda-test-3.0","account_number":"0","sequence":"4","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgMintAsset","value":{"address":"lambda17am6rkcsm6sguy57rwr5fpkuezp620wfxsgkzn","asset":{"denom":"uxxb","amount":"1000"}}}],"memo":""}
 

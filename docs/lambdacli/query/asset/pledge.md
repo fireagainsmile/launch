@@ -14,7 +14,7 @@ lambdacli query asset pledge [address] [flags]
 
 ### Query asset pledge from address
 
-```$xslt
+```
 lambdacli query asset pledge lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6k7cv9
 
 Pledge:

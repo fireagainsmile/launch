@@ -21,9 +21,9 @@ lambdacli tx asset unlock [flags]
 ## Examples
 
 ### unlock
-```$xslt
+```
 ./lambdacli tx asset unlock --symbol ulamb --from master                                      
-{"chain_id":"song_test1","account_number":"0","sequence":"23","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgUnLockAsset","value":{"address":"lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6k7cv9","symbol":"ulamb"}}],"memo":""}
+{"chain_id":"lambda-chain-test1","account_number":"0","sequence":"23","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgUnLockAsset","value":{"address":"lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6k7cv9","symbol":"ulamb"}}],"memo":""}
 
 confirm transaction before signing and broadcasting [Y/n]: y
 Password to sign with 'master':

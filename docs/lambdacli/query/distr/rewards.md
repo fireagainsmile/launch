@@ -23,7 +23,7 @@ Query all rewards earned by a delegator, optionally restrict to rewards from a s
 
 ## Examples
 
-```$xslt
+```
 lambdacli query distr rewards lambda12ege5pja3mrzaz6dcwueqw737a8lnyke2ypec7 lambdavaloper1h7pnxzejqtzlfcad89hkn0ersjqmfsj8n8s6vy
 
 output

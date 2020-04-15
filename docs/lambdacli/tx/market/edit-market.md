@@ -6,7 +6,7 @@ Send transaction to edit a market
 
 ## Usage
 
-``
+```
 lambdacli tx market edit-market [flags]
 ```
 

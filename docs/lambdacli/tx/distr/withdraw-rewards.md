@@ -25,7 +25,7 @@ lambdacli tx distr withdraw-rewards <validator-addr> -h
 Keep in mind, don't specify the above options both.
 
 ## Examples
-```$xslt
+```
 ./lambdacli tx distr withdraw-rewards lambdavaloper1h7pnxzejqtzlfcad89hkn0ersjqmfsj8n8s6vy --from peter
 {"chain_id":"lambda-test","account_number":"2","sequence":"12","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"cosmos-sdk/MsgWithdrawDelegationReward","value":{"delegator_address":"lambda12ege5pja3mrzaz6dcwueqw737a8lnyke2ypec7","validator_address":"lambdavaloper1h7pnxzejqtzlfcad89hkn0ersjqmfsj8n8s6vy"}}],"memo":""}
 

@@ -15,7 +15,7 @@ lambdacli keys show <name> <flags>
 | Name, shorthand      | Default           | Description                                                    | Required |
 | -------------------- | ----------------- | -------------------------------------------------------------- | -------- |
 | --address            |                   | output the address only (overrides --output)                   |          |
-| --bech               | acc               | The Bech32 prefix encoding for a key (acc/val/cons)   |          |
+| --bech               | acc               | The Bech32 prefix encoding for a key (acc/val/cons/miner/market)   |          |
 | --help, -h           |                   | help for show                                                  |          |
 | --multisig-threshold | 1                 | K out of N required signatures                          |          |
 | --pubkey             |                   | output the public key only (overrides --output)                |          |
@@ -26,7 +26,7 @@ lambdacli keys show <name> <flags>
 ### Show a given key
 
 ```shell
-lambdacli keys show master
+./lambdacli keys show master
 ```
 
 You'll get the local public keys with 'address' and 'pubkey' element of a given key.
@@ -40,14 +40,29 @@ master  local   lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6k7cv9   lambdapub1addwnp
 
 If an address has bonded to be a validator operator, then you could use `--bech val` to get the operator's address:
 
-```$xslt
+```
 lambdacli keys show master --bech val
 ```
 
 Then you could see the following:
-```$xslt
+```
 NAME:   TYPE:   ADDRESS:                                        PUBKEY:
 master  local   lambdavaloper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fvjhnk3    lambdavaloperpub1addwnpepq0xqh3fs7lfw88gum0qx5h6ezh2n8pqk8xkw36lvkx7675dyztwdwz0xms6
 ```
 
 The result could be use for `--address-validator` in [create a delegation](../tx/staking/delegate.md)
+
+### Show Miner Operator Address
+
+If an address has bonded to be a miner, then you could use `--bech miner` to get the operator's address:
+
+```
+lambdacli keys show master --bech miner
+```
+
+Then you could see the following:
+```
+NAME:	TYPE:	ADDRESS:					PUBKEY:
+master	local	lambdamineroper1k6rxrmly7hz0ewh7gth2dj48mv3xs9yznx96fn	lambdamineroperpub1addwnpepqtndvy6l2x2ctdasje5fvfep94c6aaznljl56fjhwluleap2v8ygu09zjvl
+
+```

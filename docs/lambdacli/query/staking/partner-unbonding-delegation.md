@@ -12,7 +12,7 @@ lambdacli query staking partner-unbonding-delegation <delegator-address> <valida
 
 Print help messages:
 ```
-lambdacli query staking artner-unbonding-delegation -h
+lambdacli query staking partner-unbonding-delegation -h
 ```
 
 ## Examples

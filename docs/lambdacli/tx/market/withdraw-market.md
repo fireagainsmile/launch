@@ -6,7 +6,7 @@ Send transaction to withdraw a market income
 
 ## Usage
 
-``
+```
 lambdacli tx market withdraw-market [flags]
 ```
 

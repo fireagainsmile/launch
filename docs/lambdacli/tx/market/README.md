@@ -19,7 +19,6 @@ lambdacli tx market --help
 
 | Name                            | Description                                                   |
 | --------------------------------| --------------------------------------------------------------|
-| [create-market](create-market.md)                       | Create new market actor                                |
 | [edit-market](edit-market.md)                       | edit market actor                                |
 | [withdraw-market](withdraw-market.md)                           | withdraw market income                                                           |
 | [create-miner](create-miner.md)                           | create miner actor                                                         |

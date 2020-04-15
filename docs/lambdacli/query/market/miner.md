@@ -21,6 +21,13 @@ Query miner info by address
 lambdacli query market miner lambda1h29mncmlezu2jsrsyvsg7vmd9zq8nt75mmqffw
 ```
 
+### Description
+
+|  Field    | Description  |
+| --------- | ------------ | 
+|  Status     | 0 Available, 1 Maintaining, 2 Jailed   |  
+
+
 ```
 Miner
   Operator Address:           lambdamineroper1h29mncmlezu2jsrsyvsg7vmd9zq8nt7505vwun

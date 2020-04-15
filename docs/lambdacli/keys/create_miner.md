@@ -7,7 +7,7 @@ Create an raw private key(json formatted), it used for miners to run miner-node 
 ## Usage
 
 ```
-lambdacli keys create-miner <storage-name> [flags]
+lambdacli keys create-miner <name> [flags]
 ```
 
 ## Flags

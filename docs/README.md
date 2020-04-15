@@ -25,13 +25,6 @@
 
 - [Lambda Light Client](./light-client.md) List all restful APIs
 
-## Lambda Miner Server
-
-- [Lambda Miner Server](./miner-server.md) The document shows show to run miner rest server and lists all restful APIs
-
-## Software Upgrade
-
-- [Software Upgrade](./software-upgrade.md) The document explains how to proceed software upgrade
 
 ## Languages
 

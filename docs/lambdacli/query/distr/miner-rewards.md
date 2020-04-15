@@ -1,13 +1,13 @@
-# lambdacli query distr slashes
+# lambdacli query distr miner-rewards
 
 ## Description
 
-Query all slashes of a validator for a given block range
+Query miner rewards
 
 ## Usage:
 
 ```
- lambdacli query distr slashes <validator-address> <start-height> <end-height> [flags]
+ lambdacli query distr miner-rewards [miner] [flags]
 ```
 
 ## Flags
@@ -22,13 +22,16 @@ Query all slashes of a validator for a given block range
 
 
 ## Examples
+First, use `lambdacli keys show m1 --bech miner` to get miner operator address
 ```
-./lambdacli query distr slashes lambdavaloper1uhz9p4kcej80znwqcvr4v6rheg96ls0qg3m5q9 1 48800 -o json --indent
-[
-  {
-    "validator_period": "6",
-    "fraction": "0.000099953372134050"
-  }
-]
+./lambdacli keys show m1 --bech miner
+NAME:	TYPE:	ADDRESS:					PUBKEY:
+m1	local	lambdamineroper14chzwvsh5y4yt489ea3vqelq3rpf6t8335k9jf	lambdamineroperpub1addwnpepqfel98pplh7zflh5937z52hfacy0zade9g2ch0ckyhhhfj0zvzl5wdw3kse
 ```
+Use miner operator address to query:
+```
+./lambdacli query distr miner-rewards lambdamineroper14chzwvsh5y4yt489ea3vqelq3rpf6t8335k9jf
+43783707.987450000000000000ulamb
+```
+
 ​           

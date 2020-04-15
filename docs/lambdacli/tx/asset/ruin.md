@@ -19,7 +19,7 @@ lambdacli tx asset ruin [symbol] [flag]
 
 ## Examples
 
-```$xslt
+```
 ./lambdacli tx asset ruin uxxb --from lambda17am6rkcsm6sguy57rwr5fpkuezp620wfxsgkzn --broadcast-mode block
 {"chain_id":"lambda-test-3.0","account_number":"0","sequence":"9","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgRuinAsset","value":{"address":"lambda17am6rkcsm6sguy57rwr5fpkuezp620wfxsgkzn","symbol":"uxxb"}}],"memo":""}
 

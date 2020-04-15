@@ -20,7 +20,7 @@ lambdacli tx asset create [amount+symbol] [amount+token] [flag]
 | --from          | string  |  true     |          |  Name or address of private key with which to sign      |
 
 ## Examples
-```$xslt
+```
 ./lambdacli tx asset create 1000uxxb 1000000000000ulamb --asset-name "XBB Coin" --mintable --from lambda17am6rkcsm6sguy57rwr5fpkuezp620wfxsgkzn --broadcast-mode block
 {"chain_id":"lambda-test-3.0","account_number":"0","sequence":"3","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgCreateAsset","value":{"address":"lambda17am6rkcsm6sguy57rwr5fpkuezp620wfxsgkzn","asset":{"denom":"uxxb","amount":"1000"},"token":{"denom":"ulamb","amount":"1000000000000"},"name":"XBB Coin","mintable":true}}],"memo":""}
 

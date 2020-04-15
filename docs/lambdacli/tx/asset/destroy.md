@@ -19,7 +19,7 @@ lambdacli tx destroy mint [amount+symbol] [flag]
 
 ## Examples
 
-```$xslt
+```
 ./lambdacli tx asset destroy 100uxxb --from lambda17am6rkcsm6sguy57rwr5fpkuezp620wfxsgkzn --broadcast-mode block
 {"chain_id":"lambda-test-3.0","account_number":"0","sequence":"5","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgDestroyAsset","value":{"address":"lambda17am6rkcsm6sguy57rwr5fpkuezp620wfxsgkzn","asset":{"denom":"uxxb","amount":"100"}}}],"memo":""}
 

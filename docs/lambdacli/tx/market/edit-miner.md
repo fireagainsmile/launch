@@ -6,7 +6,7 @@ Send transaction to edit a miner
 
 ## Usage
 
-``
+```
 lambdacli tx market edit-miner [flags]
 ```
 
@@ -26,16 +26,16 @@ lambdacli tx market edit-miner -h
 ## Examples
 
 ```
-./lambdacli tx market edit-miner --mining-address lambda16f32afm7zgayje7fzj477hqmcdkcwep6dwdlx7 --from song --broadcast-mode block
+./lambdacli tx market edit-miner --mining-address lambda16f32afm7zgayje7fzj477hqmcdkcwep6dwdlx7 --from m1 --broadcast-mode block
 
 ```
 
 Sample Output:
 ```txt
-{"chain_id":"songtest","account_number":"2","sequence":"9","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgEditMiner","value":{"address":"lambda1h29mncmlezu2jsrsyvsg7vmd9zq8nt75mmqffw","dhtId":"[do-not-modify]","miningAddress":"lambda16f32afm7zgayje7fzj477hqmcdkcwep6dwdlx7"}}],"memo":""}
+{"chain_id":"lambda-chain-test","account_number":"2","sequence":"9","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgEditMiner","value":{"address":"lambda1h29mncmlezu2jsrsyvsg7vmd9zq8nt75mmqffw","dhtId":"[do-not-modify]","miningAddress":"lambda16f32afm7zgayje7fzj477hqmcdkcwep6dwdlx7"}}],"memo":""}
 
 confirm transaction before signing and broadcasting [Y/n]: y
-Password to sign with 'song':
+Password to sign with 'm1':
 Response:
   Height: 1402
   TxHash: AEEB0530DB838025B1A6A7508DD0CA5F97B8DF9B0D2BC8585123FE5641E01A71

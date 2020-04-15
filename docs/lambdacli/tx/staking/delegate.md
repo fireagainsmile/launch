@@ -7,8 +7,7 @@ Delegate tokens to a validator
 ## Usage
 
 ```
-lambdacli tx staking delegate <validator-address> 1000000utbb --from peter
-lambdacli tx staking delegate <validator-address> 1000000utbb --from peter [flags]
+lambdacli tx staking delegate [validator-addr] [amount] [flags]
 ```
 
 Print help messages:
@@ -39,7 +38,7 @@ Response:
 
 ```
 
-```$xslt
+```
 lambdacli query tx 34101A05B91113C3FFA76B80E88E4C960D77E91B63EB2D3A80637579A017841E --output=json
 ```
 

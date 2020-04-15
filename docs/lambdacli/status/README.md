@@ -35,31 +35,31 @@ After that, you can get remote node status as follows:
       "block": "10",
       "app": "0"
     },
-    "id": "025c888f12096fbb66cd28c1f3a6a9b07f20490a",
-    "listen_addr": "tcp://0.0.0.0:26656",
-    "network": "lambda-test",
-    "version": "0.31.5",
+    "id": "e02882af5bdafa5aec086c32b8398c268d2337f1",
+    "listen_addr": "47.93.196.236:26656",
+    "network": "lambda-chain-test4.8",
+    "version": "0.4.8-goleveldb",
     "channels": "4020212223303800",
-    "moniker": "mtest",
+    "moniker": "cv-moniker-1",
     "other": {
       "tx_index": "on",
       "rpc_address": "tcp://0.0.0.0:26657"
     }
   },
   "sync_info": {
-    "latest_block_hash": "F84C86DF2E4CAD962C210ECBA9562B28C9E5A8E7EF6ACD2948E97ECE0A5D6E8D",
-    "latest_app_hash": "D4D1B283A25164FE7A5118A81E39879CE60527E3F3E6C97E2F199EF87D6B2F2D",
-    "latest_block_height": "4700",
-    "latest_block_time": "2019-08-21T02:45:19.07398Z",
+    "latest_block_hash": "9F42CA967AC4E245A4481B514F3EBB972E94A29E2BF948949096874DB4BB16E4",
+    "latest_app_hash": "8F06E082FF105161346098F4EAA6863A433A3763B1CC28EF55211FC57A212B05",
+    "latest_block_height": "49871",
+    "latest_block_time": "2020-04-15T06:57:20.032158835Z",
     "catching_up": false
   },
   "validator_info": {
-    "address": "723152C0423B2DB995E822AA59D00139AB4A2D68",
+    "address": "3B4F49BD7E16BE11EFC841ED672FCE3643B1F688",
     "pub_key": {
       "type": "tendermint/PubKeyEd25519",
-      "value": "Iy8aRcLzAoo+koPZGuT0bQshdWnnFY1Ef1jFqpVGc70="
+      "value": "a6X7p6CBEnzN76j0UXGSQ++bgNN59yyzE/X3LDgrssU="
     },
-    "voting_power": "1000"
+    "voting_power": "1749"
   }
 }
 ```

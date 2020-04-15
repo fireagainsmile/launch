@@ -24,7 +24,7 @@ lambdacli query distr community-pool [flags]
 ## Examples
 
 ```
-lambdacli query distr community-pool 
+./lambdacli query distr community-pool 
 
 output
 7263141.324163332705670495ulamb

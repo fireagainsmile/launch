@@ -24,7 +24,7 @@ query chain distribution params
 ## Examples
 
 ```
-lambdacli query distr params
+./lambdacli query distr params
  Distribution Params:
    Community Tax:          "0.020000000000000000"
    Base Proposer Reward:   "0.010000000000000000"

@@ -14,7 +14,7 @@ lambdacli query asset lock [address] [flags]
 
 ### Query asset lock from address
 
-```$xslt
+```
 ./lambdacli query asset lock lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6k7cv9           
 address: lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6k7cv9 
   asset: 100ulamb
