@@ -59,4 +59,37 @@ nav:
     - 浏览器:
         - 主网浏览器: http://explorer.lambda.im/#/
         - 测试网浏览器: http://testbrowser.lambda.im/#/
-theme: readthedocs
+theme:
+  name: material
+  language: zh
+  palette:
+    primary: blue
+    accent: red
+  favicon: assets/images/favicon.png
+  logo: assets/images/logo.svg
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+      linenums: false
+  - toc:
+      permalink: true
+  - footnotes
+  - meta
+  - def_list
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_png
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist
+  - pymdownx.tilde
+  - pymdownx.tabbed
