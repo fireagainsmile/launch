@@ -25,8 +25,10 @@ tags:
     description: Query app version
 schemes:
   - https
-host:
-  - 127.0.0.1:13659
+host: 127.0.0.1:13659
+securityDefinitions:
+  kms:
+    type: basic
 paths:
   /version:
     get:
@@ -2130,7 +2132,7 @@ paths:
         200:
           description: OK
           schema:
-              $ref: "#/definitions/AssetParams"
+            $ref: "#/definitions/AssetParams"
         500:
           description: Internal Server Error
   /asset/pairs/{asset}:
@@ -2414,7 +2416,105 @@ paths:
                   $ref: "#/definitions/Coin"
         500:
           description: Internal Server Error
-  /market/create-sellorder:
+  /market/create:
+    post:
+      summary: create Market in block chain
+      description: Create Market in Block Chain
+      tags:
+        - ILB26
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Create Market request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              address:
+                $ref: "#/definitions/Address"
+              profit:
+                $ref: "#/definitions/Address"
+              name:
+                type: string
+              feeRate:
+                type: string
+              commissionRate:
+                type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        401:
+          description: Must use own asset address
+        500:
+          description: Internal Server Error
+  /market/edit:
+    post:
+      summary: edit Market in block chain
+      description: Edit Market in Block Chain
+      tags:
+        - ILB26
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Edit Market request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              address:
+                $ref: "#/definitions/Address"
+              profit:
+                $ref: "#/definitions/Address"
+              feeRate:
+                type: string
+              commissionRate:
+                type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        401:
+          description: Must use own asset address
+        500:
+          description: Internal Server Error
+  /market/withdraw:
+    post:
+      summary: withdraw market in block chain
+      description: WithDraw Market in Block Chain
+      tags:
+        - ILB26
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: WithDraw Market request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              address:
+                $ref: "#/definitions/Address"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        401:
+          description: Must use own asset address
+        500:
+          description: Internal Server Error
+  /market/sellorder/create:
     post:
       summary: Create a sell order in market
       description: Create a sell order in market
@@ -2460,7 +2560,37 @@ paths:
           description: Must use own asset address
         500:
           description: Internal Server Error
-  /market/create-buyorder:
+  /market/sellorder/cancel:
+    post:
+      summary: cancel a sell order in market
+      description: Cancel a sell order in market
+      tags:
+        - ILB26
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Cancel sell order request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              address:
+                $ref: "#/definitions/Address"
+              orderId:
+                type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        401:
+          description: Must use own asset address
+        500:
+          description: Internal Server Error
+  /market/buyorder/create:
     post:
       summary: Create a buy order in market
       description: Create a buy order in market
@@ -2498,7 +2628,39 @@ paths:
           description: Must use own asset address
         500:
           description: Internal Server Error
-  /market/create-miner:
+  /market/buyorder/renewal:
+    post:
+      summary: renewal a match order in market
+      description: Renewal a match order in market
+      tags:
+        - ILB26
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: Renewal match order request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              address:
+                $ref: "#/definitions/Address"
+              orderId:
+                type: string
+              duration:
+                type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        401:
+          description: Must use own asset address
+        500:
+          description: Internal Server Error
+  /market/miner/create:
     post:
       summary: Create a miner actor
       description: Create a miner actor
@@ -2530,7 +2692,7 @@ paths:
           description: Must use own asset address
         500:
           description: Internal Server Error
-  /market/edit-miner:
+  /market/miner/edit:
     post:
       summary: Edit miner
       description: Edit miner DhtId or MiningAddress
@@ -2552,6 +2714,152 @@ paths:
               dhtId:
                 type: string
               miningAddress:
+                $ref: "#/definitions/Address"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        401:
+          description: Must use own asset address
+        500:
+          description: Internal Server Error
+  /market/miner/withdraw:
+    post:
+      summary: withdraw matchorder
+      description: WithDraw MatchOrder UserPay and MinerPay
+      tags:
+        - ILB26
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: WithDraw matchOrder request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              address:
+                $ref: "#/definitions/Address"
+              matchOrderId:
+                type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        401:
+          description: Must use own asset address
+        500:
+          description: Internal Server Error
+  /market/miner/withdrawCount:
+    post:
+      summary: withdraw matchorders
+      description: WithDraw MatchOrders UserPay and MinerPay
+      tags:
+        - ILB26
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: WithDraw matchOrders request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              address:
+                $ref: "#/definitions/Address"
+              page:
+                type: integer
+              limit:
+                type: integer
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        401:
+          description: Must use own asset address
+        500:
+          description: Internal Server Error
+  /market/miner/maintain:
+    post:
+      summary: maintain miner
+      description: Maintain Miner To Stop Storage Service Some Time
+      tags:
+        - ILB26
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: maintain miners request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              address:
+                $ref: "#/definitions/Address"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        401:
+          description: Must use own asset address
+        500:
+          description: Internal Server Error
+  /market/miner/unmaintain:
+    post:
+      summary: unmaintain miner
+      description: UnMaintain Miner To Start Storage Service
+      tags:
+        - ILB26
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: unmaintain miners request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              address:
+                $ref: "#/definitions/Address"
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        401:
+          description: Must use own asset address
+        500:
+          description: Internal Server Error
+  /market/miner/unjail:
+    post:
+      summary: unjail miner
+      description: Unjail Miner On Free Status
+      tags:
+        - ILB26
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: unjail miner request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              address:
                 $ref: "#/definitions/Address"
       responses:
         200:
@@ -3534,4 +3842,3 @@ definitions:
       type: array
       items:
         type: string
-
