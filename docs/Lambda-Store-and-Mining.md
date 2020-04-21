@@ -175,3 +175,18 @@ Disk                 | Total   |Used   |Free    |Order                          
 /data4/storage/store  |37 GiB  |34 GiB |2.7 GiB |A60DF26061D0A98D4F9338AAC8A0683BD0927429 |7.0 GiB  |true
 ```
 
+7.矿工成交订单处理
+
+挖矿过程中，矿工需要定期对成交的订单发起提现操作，以保证矿工账户中有足够的lamb。
+如果发现匹配的订单已经过期，此时需要对成单发起提现操作，否则可能会
+影响矿工整体的可用空间，影响创建卖单。
+
+使用`./lambdacli query market matchorders [acc] [page] [limit]`查询成单，观察`EndTime`字段，
+如果有`EndTime`小于当前时间的订单，需要对该成单进行提现，或者使用批量提现功能。
+
+单笔提现：`lambdacli tx market withdraw-miner [matchOrder-id] --from master --broadcast-mode block -y`
+
+批量提现：`./lambdacli tx market miner-withdraw-count [page] [limit] --from acc --broadcast-mode block -y`
+
+*注：如果批量提现返回gas错误，需要指定gas数量，使用`--gas [count]`, count最大可设置为4000000，可保证提现成功。*
+
