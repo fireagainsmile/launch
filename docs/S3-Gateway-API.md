@@ -24,11 +24,15 @@ secret_key = "secretkey"
 
 若`user.toml`配置正常，可以在命令行调用 `./storagecli gateway run  --account env --broker.extra_order_id XXX --debug` 来启动，这就启动了针对某个订单的s3网关服务
 
-如需在后台一直启动s3 gateway服务，可进行如下操作步骤：  
-1. 输入`./storagecli gateway run  --account env --broker.extra_order_id XXX --debug >> /tmp/s3.log 2>&1`并回车  
-2. 输入密码并回车后按Ctrl+Z  
-3. 紧接着输入bg（如按Ctrl+Z以后方括号中不是1，可输入bg %对应数值，例如：显示 [3]+  已停止  ，可输入bg %3）  
-4. 输入tail -f /tmp/s3.log查看日志正常 即表示s3 gateway在后台正常运行  
+如需在后台一直启动s3 gateway服务，可通过如下操作：
+```
+启动s3 gateway:
+./storagecli gateway run --account env --broker.extra_order_id XXX  --debug --daemonize
+
+查看s3 gateway状态：
+./storagecli gateway run --account env --broker.extra_order_id XXX --status
+
+```
 
 启动的更多参数可以通过`./storagecli gateway run -h`查看
 
