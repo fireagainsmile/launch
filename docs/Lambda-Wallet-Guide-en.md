@@ -36,6 +36,10 @@ Download ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.18](https
 * [Initialize miner](#Initialize-miner)
 * [Mining Guide](#Mining-Guide)
 * [Set gas price](#Set-gas-price)
+* [Withdraw order Commission](#Withdraw_order_Commission)
+* [Order renewal](#Order_renewal)
+
+
 
  
 ## Switch-Language
@@ -494,6 +498,36 @@ The functions of wallet included in mining guide include
 
 Click Edit gas price on the setting page and open the pop-up window to set gas price
 ![avatar](img/engaseprise.png)
+
+
+## Withdraw_order_Commission
+
+Click transaction on the homepage of wallet, click to withdraw order Commission
+![avatar](img/txen.png)
+
+Open the pop-up window to extract order revenue
+![avatar](img/Orderrevenueen.png)
+Withdrawal order revenue is the revenue in batch withdrawal order
+Revenue from 100 orders per withdrawal
+If there are many orders, you can try paging areas, such as extracting the first page, extracting the second page,
+The extraction rules are as follows
+Every 100 orders are 1 page, with a large number of orders. The page number can be filled in as 1, 2, 3, 4, 5, 6, etc
+Only 100 orders can be withdrawn at a time
+Extraction operation time limit 1 hour
+The revenue in the order is calculated once every 24 hours. If the withdrawal is initiated within 24 hours, the amount withdrawn is 0
+
+## Order_renewal
+
+The usage time of the order needs to be increased, which can be realized by order renewal. On the order details page, click the order demand button to open the dialog box
+![avatar](img/Ordertimeen.png)
+The renewal price is the same as the purchase space,
+Order cannot be renewed after expiration
+
+
+
+
+
+
 
 
 
