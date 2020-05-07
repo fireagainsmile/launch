@@ -3782,9 +3782,7 @@ definitions:
         type: string
       market_min_price:
         type: string
-      order_normal_price:
-        type: string
-      order_normal_rate:
+      market_order_price:
         type: string
       order_premium_rate:
         type: string
@@ -3821,6 +3819,16 @@ definitions:
       miner_unjail_cost:
         type: string
       miner_unjail_rate:
+        type: string
+      create_market_cost:
+        type: string
+      original_market_names:
+        type: array
+          items:
+            type: string
+      market_delegate_min_cost:
+        type: string
+      modify_order_price_amount:
         type: string
   Pair:
     asset:
