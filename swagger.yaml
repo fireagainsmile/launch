@@ -2505,6 +2505,40 @@ paths:
                 $ref: "#/definitions/BaseReq"
               address:
                 $ref: "#/definitions/Address"
+              marketName:
+                type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        401:
+          description: Must use own asset address
+        500:
+          description: Internal Server Error
+  /market/delegate:
+    post:
+      summary: delegate market in block chain
+      description: Delegate Market in Block Chain
+      tags:
+        - ILB26
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: Delegate
+          name: Delegate Market request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              address:
+                $ref: "#/definitions/Address"
+              marketName:
+                type: string
+              amount:
+                $ref: "#/definitions/Coin"
       responses:
         200:
           description: OK
@@ -2884,6 +2918,22 @@ paths:
             type: array
             items:
               $ref: "#/definitions/Market"
+        500:
+          description: Internal Server Error
+  /market/delegation/{marketName}/{address}:
+    get:
+      summary: Get delegation in a market
+      tags:
+        - ILB26
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/MarketDelegation"
         500:
           description: Internal Server Error
   /market/sellorders/{marketName}/{orderType}/{status}/{page}/{limit}:
@@ -3773,6 +3823,17 @@ definitions:
         type: string
       dhtId:
         type: string
+  MarketDelegation:
+    type: object
+    properties:
+      delegatorAddress:
+        $ref: "#/definitions/Address"
+      marketAddress:
+        $ref: "#/definitions/MarketAddress"
+      delegateAmount:
+        type: string
+      inCome:
+        $ref: "#/definitions/MarketInCome"
   Params:
     type: object
     properties:
