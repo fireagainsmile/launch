@@ -38,6 +38,8 @@ Download ：[https://github.com/LambdaIM/launch/releases/tag/Wallet0.4.18](https
 * [Set gas price](#Set-gas-price)
 * [Withdraw order Commission](#Withdraw_order_Commission)
 * [Order renewal](#Order_renewal)
+* [Market pledge](#Market_pledge)
+* [Withdrawal of market pledge income](#Withdrawal_of_market_pledge_income)
 
 
 
@@ -522,6 +524,60 @@ The usage time of the order needs to be increased, which can be realized by orde
 ![avatar](img/Ordertimeen.png)
 The renewal price is the same as the purchase space,
 Order cannot be renewed after expiration
+
+
+## Market_pledge
+Click the market pledge button on the home page to open the market pledge description page
+
+![avatar](img/mp1.png)
+
+Only the market created by users can be pledged. 
+
+The default lambdamarket cannot be pledged
+
+Minimum amount of market pledge 1000 lamb
+
+Allow to pledge in multiple markets
+Users can participate in the operation of the market created by users through pledge.
+
+Market revenue is composed of Commission for registration, commission for completion and Commission for renewal.
+
+Each income in the market will be distributed according to the market pledge proportion.
+
+Income distribution rules:
+
+Market creator receives 10% of market revenue
+
+The market pledgor allocates the remaining 90% according to the pledge proportion (the market creator is also in the distribution set)
+
+Click the market pledge button to open the market pledge dialog box to pledge
+
+![avatar](img/mp2.png)
+
+## Withdrawal_of_market_pledge_income
+
+![avatar](img/mp3.png)
+
+Click extract market revenue in the drop-down list of home 
+
+transaction to open the dialog box for extracting market revenue
+
+Select the pledge market, and then click next to extract the market pledge income
+
+![avatar](img/mp4.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
