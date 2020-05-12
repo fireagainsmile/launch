@@ -1,11 +1,11 @@
 # 矿工重启
 
-测试网升级0.4.8后，矿工需要修改配置并重启minernode服务才能保证挖矿正常。  
+测试网升级0.4.9后，矿工需要修改配置并重启minernode服务才能保证挖矿正常。  
 
 ### minernode重启
 1.修改lambdacli配置
 ```
-./lambdacli config chain-id lambda-chain-test4.8
+./lambdacli config chain-id lambda-chain-test4.9
 ```
 
 2.停止minernode：

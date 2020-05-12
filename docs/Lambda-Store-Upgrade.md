@@ -1,4 +1,4 @@
-# storage0.2.5升级
+# storage0.2.4升级
 
 * [下载安装包并解压](#下载安装包并解压)
 * [停止minernode和storagenode](#停止minernode和storagenode)
@@ -24,15 +24,15 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 下载安装包
 ```
-wget https://github.com/LambdaIM/launch/releases/download/Storage0.2.5/lambda-storage-0.2.5-testnet.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/Storage0.2.6/lambda-storage-0.2.6-testnet.tar.gz
 ```
 解压安装包
 ```
-tar zxvf lambda-storage-0.2.5-testnet.tar.gz
+tar zxvf lambda-storage-0.2.6-testnet.tar.gz
 ```
 进入解压后的目录
 ```
-cd lambda-storage-0.2.5-testnet
+cd lambda-storage-0.2.6-testnet
 ```
 
 ### 停止minernode和storagenode
@@ -77,7 +77,7 @@ kill `ps aux | grep 'storagenode' |grep -v grep| awk '{print $2}'`
 ### 重启minernode
 1.修改lambdacli配置
 ```
-./lambdacli config chain-id lambda-chain-test4.8
+./lambdacli config chain-id lambda-chain-test4.9
 ```
 
 2.启动minernode：  

@@ -1,7 +1,41 @@
-# 矿工0.2.5接入教程
+# 矿工0.2.6接入教程
 
-1个miner下可注册多个storagenode   
-矿工和存储节点0.2.5升级参考: [Storage0.2.5升级](Lambda-Store-Upgrade.md)
+1个miner下可注册多个storagenode
+
+本次发布清除了历史数据，测试币需要重新申领，矿工接入需要按以下流程完整执行。   
+
+## 旧版配置文件备份
+以文件备份到`~/lambda_bak`目录为例  
+### 创建目录
+```
+mkdir -p ~/lambda_bak/{minernode,storagenode,storagecli}
+```
+
+### minernode配置文件备份
+minernode文件备份到`~/lambda_bak/minernode/`下
+```
+cp ~/.lambda_miner/config/config.toml ~/lambda_bak/minernode/
+cp ~/.lambda_miner/config/default_miner_key.json ~/lambda_bak/minernode/
+```
+注意：如果您的子矿工账户json文件不是`~/.lambda_miner/config/default_miner_key.json`，需要替换为对应json文件完整路径
+
+### storagenode配置文件备份
+storagenode文件备份到`~/lambda_bak/storagenode/`下
+```
+cp ~/.lambda_storage/config/config.toml ~/lambda_bak/storagenode/
+```
+
+### storagecli配置文件备份
+storagenode文件备份到`~/lambda_bak/storagecli/`下
+```
+cp ~/.lambda_storagecli/config/user.toml ~/lambda_bak/storagecli/
+```
+
+## 清除旧版数据
+``` 
+rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
+```
+如果以前的存储数据存放在其他目录（即`~/.lambda_storage/config/config.toml`中`db_dir`配置的目录），需要删除对应目录
 
 ## 一、配置矿工和存储节点
 
@@ -14,19 +48,19 @@
     ```
     2. 下载安装包
     ```
-    wget https://github.com/LambdaIM/launch/releases/download/Storage0.2.5/lambda-storage-0.2.5-testnet.tar.gz
+    wget https://github.com/LambdaIM/launch/releases/download/Storage0.2.6/lambda-storage-0.2.6-testnet.tar.gz
     ```
     如下载缓慢可使用下面的链接：
     ```
-    wget http://download.lambdastorage.com/lambda-storage/0.2.5/lambda-storage-0.2.5-testnet.tar.gz
+    wget http://download.lambdastorage.com/lambda-storage/0.2.6/lambda-storage-0.2.6-testnet.tar.gz
     ```
     3. 解压安装包
     ```
-    tar zxvf lambda-storage-0.2.5-testnet.tar.gz
+    tar zxvf lambda-storage-0.2.6-testnet.tar.gz
     ```
     4. 进入解压后的目录
     ```
-    cd lambda-storage-0.2.5-testnet
+    cd lambda-storage-0.2.6-testnet
     ```
 
 ### 2. 配置lambdacli
@@ -60,7 +94,7 @@
               
     !!! abstract ""
         ```
-        ./lambdacli config chain-id lambda-chain-test4.8
+        ./lambdacli config chain-id lambda-chain-test4.9
         ./lambdacli config trust-node true
         ```
     
@@ -174,7 +208,7 @@
     ??? note "展开查看配置示例"
         ```
         [build]
-        version = "0.2.5"
+        version = "0.2.6"
         commit = "030c696bc6829cfafb3d240d66058b16b41aa460"
         mode = "release"
         
@@ -268,7 +302,7 @@
     
     !!! success "返回如下结果"
         ```text hl_lines="2"
-                       version: 0.2.5
+                       version: 0.2.6
                         dht id: G4xW3UHMfFnTmaRMZUJ7PKcfvr9YTTFyekcsRxKDZZD9 #创建矿工时会用到此dht-id
         server.private_address: 172.17.159.130:15001
                 server.address: 0.0.0.0:26654
@@ -433,7 +467,7 @@
 
 
 ### 2. 创建买单
-测试网链`0.4.8`中矿工可以随机匹配到自己的卖单，也可能匹配到其他矿工的卖单。为了测试挖矿，建议创建优质买单。
+测试网链`0.4.9`中矿工可以随机匹配到自己的卖单，也可能匹配到其他矿工的卖单。为了测试挖矿，建议创建优质买单。
 
 - `[account-name]` 为当前账户的名称；
 - `[duration]` 为购买时长；
@@ -507,7 +541,7 @@
   
   
 ### 3. 匹配订单续期
-`链0.4.8 - 存储0.2.5`版本 新增匹配订单续期功能。   
+`链0.4.9 - 存储0.2.6`版本 新增匹配订单续期功能。   
 1. 匹配订单未到期的，购买了空间的账户可使用`lambdacli tx market order-renewal`命令续期。  
 2. 匹配订单已过期的，不能再进行续期；  
 3. 同一匹配订单可多次续期；  
@@ -834,7 +868,7 @@
 !!! success "返回如下结果"
     ```
     
-                   version: 0.2.5
+                   version: 0.2.6
                     dht id: G4xW3UHMfFnTmaRMZUJ7PKcfvr9YTTFyekcsRxKDZZD9
     server.private_address: 172.17.159.130:15001   successful
             server.address: 0.0.0.0:26654    successful
@@ -849,7 +883,7 @@
 
 !!! success "返回如下结果"
     ```
-                   version: 0.2.5
+                   version: 0.2.6
                     dht id: 3mta4YEgHB43RHYE83aWBouvFNNCtSc832siEwmcTUsZ
       storage.storage_name: sn1
      storage.miner_address: 172.17.159.130:15001   successful
@@ -866,7 +900,7 @@
 
 !!! success "返回如下结果"
     ```
-                   version:  0.2.5
+                   version:  0.2.6
       storage.storage_name:  sn1
           storage.data_dir:  [/lambda/data/xvdd/store /lambda/data/xvde/store /lambda/data/xvdc/中文test/store /lambda/.1lambda_storage/store]
 
