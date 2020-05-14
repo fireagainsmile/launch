@@ -41,7 +41,7 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 Download the package 
 ```
-wget https://github.com/LambdaIM/launch/releases/download/Storage0.2.6/lambda-storage-0.2.6-testnet.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/v0.4.9/lambda-storage-0.2.6-testnet.tar.gz
 ```
 Extract the installation package 
 ```

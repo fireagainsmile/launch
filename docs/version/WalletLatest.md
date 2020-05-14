@@ -8,9 +8,9 @@
 
 包名：
 windows安装包：Wallet-Setup-0.5.52.exe
-MD5:aa14b2827c70b5121438aa5b271845f9
+MD5:173993235d807c195cdf956dd3ebc704
 mac 安装包：Wallet-0.5.52.dmg
-MD5:d68f54d24cc4b5f2229a7421f6bddf58
+MD5:3bc39118ace2bbdfac5c08277dc39bc6
 
 1. 优化gas设置  
 2. 新增订单续期功能  

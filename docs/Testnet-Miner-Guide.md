@@ -2,7 +2,7 @@
 
 1个miner下可注册多个storagenode
 
-本次发布清除了历史数据，测试币需要重新申领，矿工接入需要按以下流程完整执行。   
+本次发布清除了测试网所有历史数据，测试币需要重新申领，矿工接入需要按以下流程完整执行。   
 
 ## 旧版配置文件备份(老用户执行)
 以文件备份到`~/lambda_bak`目录为例  
@@ -48,7 +48,7 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
     ```
     2. 下载安装包
     ```
-    wget https://github.com/LambdaIM/launch/releases/download/Storage0.2.6/lambda-storage-0.2.6-testnet.tar.gz
+    wget https://github.com/LambdaIM/launch/releases/download/v0.4.9/lambda-storage-0.2.6-testnet.tar.gz
     ```
     如下载缓慢可使用下面的链接：
     ```
