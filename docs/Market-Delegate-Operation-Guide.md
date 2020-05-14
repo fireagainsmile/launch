@@ -32,6 +32,7 @@ lambdacli tx market dismiss --from acc
 ```
 
 **注意事项**
+
 - 解散市场只能由市场创建人发起
 - 解散市场条件需要满足
     - 市场中没有有效的卖单 
