@@ -2036,6 +2036,28 @@ paths:
                 type: string
         500:
           description: Internal Server Error
+  /distribution/miners/{minerAddr}:
+    parameters:
+      - in: path
+        name: minerAddr
+        description: Bech32 OperatorAddress of miner
+        required: true
+        type: string
+        x-example: lambdamineroper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fwejlec
+    get:
+      summary: miner's rewards
+      description: query rewards information of a single miner
+      tags:
+        - ILB24
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/MinerDistInfo"
+        500:
+          description: Internal Server Error
   /minting/parameters:
     get:
       summary: Minting module parameters
@@ -3651,6 +3673,15 @@ definitions:
         items:
           $ref: "#/definitions/Coin"
       val_commission:
+        type: array
+        items:
+          $ref: "#/definitions/Coin"
+  MinerDistInfo:
+    type: object
+    properties:
+      operator_address:
+        $ref: "#/definitions/Address"
+      miner_rewards:
         type: array
         items:
           $ref: "#/definitions/Coin"
