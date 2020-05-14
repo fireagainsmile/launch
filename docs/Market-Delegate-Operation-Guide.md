@@ -24,3 +24,18 @@ lambdacli tx market withdraw-market [marketName] --from acc
 
 - 提取收益为全部提取
 - 质押金不可随意反质押，需要市场满足解散条件后，由市场创建人解散市场后，该市场的质押金会自动返还到账户中
+
+# 解散市场
+
+```
+lambdacli tx market dismiss --from acc
+```
+
+[解散市场](lambdacli/tx/market/dismiss.md)
+
+**注意事项**
+
+- 解散市场只能由市场创建人发起
+- 解散市场条件需要满足
+    - 市场中没有有效的卖单 
+    - 市场中没有有效的成单
