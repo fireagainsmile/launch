@@ -43,6 +43,7 @@ nav:
 #          - 浏览器API文档: http://59.110.68.178:8081/swagger/
     - 使用文档:
         - 质押操作手册: Delegate-Operation-Guide.md
+        - 市场质押操作手册: Market-Delegate-Operation-Guide.md
         - 资产管理: Asset-Manage-Guide.md
         - 社区治理: governance.md
         - 命令行使用:
