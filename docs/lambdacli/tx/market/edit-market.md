@@ -22,6 +22,7 @@ lambdacli tx market edit-market --help
 | --profit          | string | false    | ""       | get market income address |
 | --fee-rate        | string | false    | ""       | sell order fee rate by market |
 | --commission-rate | string | false    | ""       | match order commission rate by market |
+| --order-price | string | false    | ""       | market min order price can be modify (default "[do-not-input-value]") |
 | --from            | string | true     | ""       | Name or address of private key with which to sign |
 
 ## Examples

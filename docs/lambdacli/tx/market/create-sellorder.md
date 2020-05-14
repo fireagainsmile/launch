@@ -23,7 +23,6 @@ lambdacli tx market create-sellorder --help
 | --price            | string | false    | 5000000ulamb | sell order price|
 | --size             | string | true     | ""           | order sell all size  |
 | --min-size         | string | false    | 1GB          | sell order min buy size  |
-| --normal           |        | false    |              | specify this sell order with a normal level   |
 | --min-buy-duration | string | false    | 1month       |  sell order min buy duration  |
 | --max-buy-duration | string | false    | 60month      | sell order max buy duration  | 
 | --from             | string | true     | ""           |  Name or address of private key with which to sign |
