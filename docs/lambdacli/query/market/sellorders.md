@@ -18,7 +18,7 @@ lambdacli query market sellorders -h
 
 | Name               | type   | Required |  Description                                                         |
 | ------------------ | -----  | -------- |  ------------------------------------------------------------------- |
-| [marketName]       | string | true     |  Specify a market name in block chain, example: LambdaMarket | 
+| [marketName]       | string | true     |  Specify a market name in block chain, example: lambdamarket | 
 | [orderType]        | string | true     |  Can use  `premium` or `normal` or `all`  |
 | [statusType]       | string | true     |  Can use  `active` or `unActive` or `whole`|
 
@@ -33,7 +33,7 @@ lambdacli query market sellorders -h
 
 Query markets sell order by orderType 
 ```
-lambdacli query market sellorders LambdaMarket premium whole 1 100 --node-status
+lambdacli query market sellorders lambdamarket premium whole 1 100 --node-status
 ```
 
 ### Description

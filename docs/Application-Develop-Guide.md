@@ -537,11 +537,11 @@ C516EF2E4778E6078D87949E582C245B4D2CBBF5   5LAMB    1.00     1024     
 从矿工出售空间订单中购买5G空间时间为1个月：
 
 ```   plain
-./lambdacli tx market create-buyorder --duration 1month --market-name LambdaMarket --size 5GB --from user1 --broadcast-mode block --sellorder-id 761E89B5CA7D2988D72F3F2FC5AC4CDD10DDDCC1
+./lambdacli tx market create-buyorder --duration 1month --market-name lambdamarket --size 5GB --from user1 --broadcast-mode block --sellorder-id 761E89B5CA7D2988D72F3F2FC5AC4CDD10DDDCC1
 ```
 输出结果：
 ```   plain
-{"chain_id":"lambda-chain-test4.9","account_number":"485","sequence":"6","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgCreateBuyOrder","value":{"address":"lambda1jdev3l38xwxxfq5fdpx6cva2agfxrkugrflur6","duration":"2592000000000000","size":"5","sellOrderId":"761E89B5CA7D2988D72F3F2FC5AC4CDD10DDDCC1","marketName":"LambdaMarket"}}],"memo":""}
+{"chain_id":"lambda-chain-test4.9","account_number":"485","sequence":"6","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgCreateBuyOrder","value":{"address":"lambda1jdev3l38xwxxfq5fdpx6cva2agfxrkugrflur6","duration":"2592000000000000","size":"5","sellOrderId":"761E89B5CA7D2988D72F3F2FC5AC4CDD10DDDCC1","marketName":"lambdamarket"}}],"memo":""}
 confirm transaction before signing and broadcasting [Y/n]: y
 Password to sign with 'user1':
 Response:

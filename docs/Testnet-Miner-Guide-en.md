@@ -282,7 +282,7 @@ A storagenode only accept a selling order with available space.
 ./lambdacli tx market create-sellorder --price 5000000ulamb  \
 --normal \
 --size [size]GB \
---market-name LambdaMarket \
+--market-name lambdamarket \
 --min-size [min-size]GB \
 --min-buy-duration [min-buy-duration]month \
 --max-buy-duration [max-buy-duration]month \
@@ -296,7 +296,7 @@ A storagenode only accept a selling order with available space.
 ```
 ./lambdacli tx market create-sellorder --price 5000000ulamb  \
 --size [size]GB \
---market-name LambdaMarket \
+--market-name lambdamarket \
 --min-size [min-size]GB \
 --min-buy-duration [min-buy-duration]month \
 --max-buy-duration [max-buy-duration]month \
@@ -355,7 +355,7 @@ size is requiring buying space,can not less than minimum purchase space specifie
 
 ```
  ./lambdacli tx market create-buyorder --from [account-name] \
- --duration [buy-duration]month --market-name LambdaMarket \
+ --duration [buy-duration]month --market-name lambdamarket \
  --size [size]GB --broadcast-mode block -y
 ```
 
@@ -364,7 +364,7 @@ size is requiring buying space,can not less than minimum purchase space specifie
 ```
 ./lambdacli tx market create-buyorder --sellorder-id [orderId] \
 --from [your-account-name] --duration [buy-duration]month \
---market-name LambdaMarket --size [size]GB --broadcast-mode block -y
+--market-name lambdamarket --size [size]GB --broadcast-mode block -y
 ```
 ### Searching the match order 
 

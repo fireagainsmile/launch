@@ -15,9 +15,7 @@ mkdir -p ~/lambda_bak/{minernode,storagenode,storagecli}
 minernode文件备份到`~/lambda_bak/minernode/`下
 ```
 cp ~/.lambda_miner/config/config.toml ~/lambda_bak/minernode/
-cp ~/.lambda_miner/config/default_miner_key.json ~/lambda_bak/minernode/
 ```
-注意：如果您的子矿工账户json文件不是`~/.lambda_miner/config/default_miner_key.json`，需要替换为对应json文件完整路径
 
 ### 3.storagenode配置文件备份
 storagenode文件备份到`~/lambda_bak/storagenode/`下
@@ -26,7 +24,7 @@ cp ~/.lambda_storage/config/config.toml ~/lambda_bak/storagenode/
 ```
 
 ### 4.storagecli配置文件备份
-storagenode文件备份到`~/lambda_bak/storagecli/`下
+storagecli文件备份到`~/lambda_bak/storagecli/`下
 ```
 cp ~/.lambda_storagecli/config/user.toml ~/lambda_bak/storagecli/
 ```
@@ -393,46 +391,30 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
 ## 二、买卖单创建
 ### 1. 创建卖单
 
-* 加上`--normal`参数（赔付比率`rate`为 0.5）的是普通卖单，价格只能等于`5000000ulamb`（`1LAMB=1000000ulamb`）；
-不加`--normal`参数（赔付比率等于1）的为优质卖单，优质卖单可指定大于等于`5000000ulamb`的任意价格。  
+* 只能有优质卖单（赔付比率`rate`为 1），可设置大于等于指定市场的最低价格（lambdamarket市场最低价格为`5000000ulamb`）；
 * 设置需要卖出的空间大小`size`；   
 * 最小购买空间`min-size`不能小于1GB;  
 * 最小购买时长`min-buy-duration`不能小于`1month`;  
 * 最大购买时长`max-buy-duration`不能大于`60month`。
 
-!!! tip
-    注意：测试网中建议尽量挂优质卖单（不加`--normal`参数），这样创建优质买单时才能指定卖单ID匹配到自己矿工的卖单。
+市场操作手册参考：[市场操作手册](./Market-Delegate-Operation-Guide.md)
 
-#### 1.1 创建普通卖单
+#### 1.1 创建卖单
 
 !!! example ""
     一个矿工可创建多笔卖单，卖单总空间不能大于质押TBB数量，例如：一个矿工质押了`1000000utbb`（即`1TBB`），创建卖单总空间不能超过`1TB`（即`1000GB`）
-    
-    ```
-    ./lambdacli tx market create-sellorder --price 5000000ulamb  \
-    --normal \
-    --size [size]GB \
-    --market-name LambdaMarket \
-    --min-size [min-size]GB \
-    --min-buy-duration [min-buy-duration]month \
-    --max-buy-duration [max-buy-duration]month \
-    --from [miner-name] --broadcast-mode block -y
-    ```
 
-#### 1.2 创建优质卖单
-
-!!! example ""
     ```
     ./lambdacli tx market create-sellorder --price [sellorder-price]  \
     --size [size]GB \
-    --market-name LambdaMarket \
+    --market-name lambdamarket \
     --min-size [min-size]GB \
     --min-buy-duration [min-buy-duration]month \
     --max-buy-duration [max-buy-duration]month \
     --from [miner-name] --broadcast-mode block -y
     ```
     
-#### 1.3 查询卖单
+#### 1.2 查询卖单
 
 !!! example ""
     查询账户地址：
@@ -454,12 +436,12 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
         ./lambdacli query market miner-sellorders lambda1k6rxrmly7hz0ewh7gth2dj48mv3xs9yz8ffauw 1 10
         ```
         返回结果：
-        ```shell hl_lines="2 5"
+        ```shell hl_lines="2"
         SellOrder
           OrderId:            54F82FBD979BE150C8B3246D82DDF60F043129EE #卖单ID，取消卖单或创建优质买单时需要用到此ID
           Address:            lambdamineroper1k6rxrmly7hz0ewh7gth2dj48mv3xs9yznx96fn
           Price:              5000000
-          Rate:               1.000000000000000000 #rate等于1，则该卖单为优质卖单
+          Rate:               1.000000000000000000 
           Amount:
           SellSize:           400
           UnUseSize:          0
@@ -473,7 +455,7 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
           MaxDuration:        43200h0m0s
         ```
 
-#### 1.4 取消卖单
+#### 1.3 取消卖单
 
 !!! example ""
     根据SellOrderID取消卖单
@@ -483,35 +465,24 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
 
 
 ### 2. 创建买单
-测试网链`0.4.9`中矿工可以随机匹配到自己的卖单，也可能匹配到其他矿工的卖单。为了测试挖矿，建议创建优质买单。
 
 - `[account-name]` 为当前账户的名称；
 - `[duration]` 为购买时长；
+- `[market-name]` 为市场名称，lambda社区市场为`lambdamarket`，也可指定其他用户创建的market
 - `[size]` 为需要购买的空间，不小于对应卖单指定的最小购买空间。
 - `[orderId]` 创建优质买单需要才需要指定该参数，可指定1个或多个优质卖单ID，指定多个卖单ID时以逗号分隔，例如：`58941CFFEEA859AED51172F0F9DF3E77293D2E12,54F82FBD979BE150C8B3246D82DDF60F043129EE`
 
-#### 2.1 创建普通买单
-
-!!! example ""
-    ```
-     ./lambdacli tx market create-buyorder \
-     --from [account-name] \
-     --duration [buy-duration]month \
-     --market-name LambdaMarket \
-     --size [size]GB --broadcast-mode block -y
-    ```
-
-#### 2.2 创建优质买单
+#### 2.1 创建买单
 
 !!! example ""
     
     ```
     ./lambdacli tx market create-buyorder --sellorder-id [orderId] \
     --from [your-account-name] --duration [buy-duration]month \
-    --market-name LambdaMarket --size [size]GB --broadcast-mode block -y
+    --market-name lambdamarket --size [size]GB --broadcast-mode block -y
     ```
 
-#### 2.3查询匹配订单  
+#### 2.2 查询匹配订单  
 
 !!! example ""  
     查询账户地址：
@@ -556,8 +527,7 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
         ```
   
   
-### 3. 匹配订单续期
-`链0.4.9 - 存储0.2.6`版本 新增匹配订单续期功能。   
+### 3. 匹配订单续期 
 1. 匹配订单未到期的，购买了空间的账户可使用`lambdacli tx market order-renewal`命令续期。  
 2. 匹配订单已过期的，不能再进行续期；  
 3. 同一匹配订单可多次续期；  
@@ -738,7 +708,7 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
         EF667304E33C6AAB9D56F04DF878FD93A5153B6D |2020-04-24 09:00 |100 GiB/100 GiB |Invalid
         Total: 2
         
-        ProviderStatus为矿工状态，Avaialable为正常状态，Maintaining矿工正在维护，Invalid 矿工失效
+        ProviderStatus一列为矿工状态，Avaialable为正常状态，Maintaining矿工正在维护，Invalid 矿工失效
         ```
   
   
