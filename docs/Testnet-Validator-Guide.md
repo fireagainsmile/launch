@@ -10,8 +10,9 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 下载安装包
 ```
 wget https://github.com/LambdaIM/launch/releases/download/v0.4.9/lambda-0.4.9-testnet.tar.gz
-
+```
 如下载缓慢可使用下面的链接：
+```
 wget http://download.lambdastorage.com/lambda/0.4.9/lambda-0.4.9-testnet.tar.gz
 ```
 
@@ -29,6 +30,8 @@ tar zxvf lambda-0.4.9-testnet.tar.gz && cd lambda-0.4.9-testnet
 如果初始化报错，可能是由于有老版本的测试网配置数据导致，可以通过下面的命令清除错误数据
 ```
 rm -rf ~/.lambda/config/config.toml ~/.lambda/config/genesis.json ~/.lambda/identity
+```
+```
 ./lambda unsafe-reset-all
 ```
 
@@ -58,6 +61,8 @@ rm -rf ~/.lambda/config/config.toml ~/.lambda/config/genesis.json ~/.lambda/iden
 修改`~/.lambda/config/config.toml`文件，将文件中的seeds字段的值替换如下
 ```
 vim ~/.lambda/config/config.toml
+```
+```
 seeds = "3da3b249f4f1afd0efdd6f4676972fdc7af0ea6b@47.94.129.97:26656"
 ```
 
@@ -112,15 +117,19 @@ discovery_interval = "3m0s"
 ```
 
 ### 7. 测试磁盘性能
-```
 创建benchmark目录
+```
 mkdir ~/benchmark && cd ~/benchmark
-
+```
 下载测试脚本
+```
 wget http://download.lambdastorage.com/lambda/0.4.8/benchmark_io.sh
-
+```
 执行脚本
+```
 sudo chmod +x benchmark_io.sh
+```
+```
 sudo ./benchmark_io.sh
 ```
 
@@ -141,22 +150,27 @@ sudo ./benchmark_io.sh
 如需停掉节点，执行以下命令
 ```
 ./lambda stop
-
+```
 返回如下结果即为停止成功：
+```
 stop daemon process from lambda.pid:28638 successfully
-
+```
 如停止失败，可使用以下命令停止进程：
+```
 kill `ps aux | grep lambda |grep -v grep| awk '{print $2}'`
 ```
 
 #### 查看节点状态
 ``` 
 ./lambda status
+```
 
 返回结果如下，即节点正在运行：
+```
 lambda.pid is running, pid is 28800
-
+```
 返回结果如下，即节点未运行：
+```
 daemon have stoped
 ```
 

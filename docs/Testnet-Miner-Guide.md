@@ -4,14 +4,14 @@
 
 本次发布清除了历史数据，测试币需要重新申领，矿工接入需要按以下流程完整执行。   
 
-## 旧版配置文件备份
+## 旧版配置文件备份(老用户执行)
 以文件备份到`~/lambda_bak`目录为例  
-### 创建目录
+### 1.创建目录
 ```
 mkdir -p ~/lambda_bak/{minernode,storagenode,storagecli}
 ```
 
-### minernode配置文件备份
+### 2.minernode配置文件备份
 minernode文件备份到`~/lambda_bak/minernode/`下
 ```
 cp ~/.lambda_miner/config/config.toml ~/lambda_bak/minernode/
@@ -19,19 +19,19 @@ cp ~/.lambda_miner/config/default_miner_key.json ~/lambda_bak/minernode/
 ```
 注意：如果您的子矿工账户json文件不是`~/.lambda_miner/config/default_miner_key.json`，需要替换为对应json文件完整路径
 
-### storagenode配置文件备份
+### 3.storagenode配置文件备份
 storagenode文件备份到`~/lambda_bak/storagenode/`下
 ```
 cp ~/.lambda_storage/config/config.toml ~/lambda_bak/storagenode/
 ```
 
-### storagecli配置文件备份
+### 4.storagecli配置文件备份
 storagenode文件备份到`~/lambda_bak/storagecli/`下
 ```
 cp ~/.lambda_storagecli/config/user.toml ~/lambda_bak/storagecli/
 ```
 
-## 清除旧版数据
+## 清除旧版数据(老用户执行)
 ``` 
 rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
 ```
@@ -200,65 +200,81 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
     ```
     会生成矿工配置文件`~/.lambda_miner/config/config.toml`  
     2. 修改配置文件
-    ```
-    vi ~/.lambda_miner/config/config.toml
-    ```
-    参考配置示例手动修改配置文件 
     
-    ??? note "展开查看配置示例"
-        ```
-        [build]
-        version = "0.2.6"
-        commit = "030c696bc6829cfafb3d240d66058b16b41aa460"
-        mode = "release"
+    !!! abstract ""
+        以下`使用旧配置文件覆盖（老用户）`和`修改配置文件（新用户）`只需选一个执行  
         
-        # 服务需要监听的地址
-        # 以本机内网IP为 192.168.10.10，端口映射的外网IP为 200.200.200.100 为例
-        [server]
-        # 对外提供服务的地址，推荐配置为内网地址做端口映射到外网IP
-        address = "192.168.10.10:13000"
-        # 对内提供服务的地址，主要是给StorageNode使用，推荐配置为内网地址
-        private_address = "192.168.10.10:13001"
-        
-        [kad]
-        # DHT接入节点地址，存储网络提供，可填写多个，以 47.94.129.97:13000 为例
-        # 可填写自己质押的验证节点配置lambda.toml中的 kad.external_address
-        # 可选官方dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000/182.92.66.63:13000
-        bootstrap_addr = ["47.94.129.97:13000"]
-        # this should listen at Public IP
-        ## 对外暴露的提供服务的地址
-        external_address = "200.200.200.100:13000"
-        
-        [log]
-        level = "info"
-        output_file = "stdout"
-        
-        [miner]
-        # ensure_level=0会多占用磁盘1/6空间，ensure_level=1会多占用1/3空间
-        ensure_level = "0"
-        #root access key，不能为空
-        root_secret_seed = "aaa"
-        
-        [db]
-        # db config
-        lru_cache = "0"
-        keep_log_file_num = "16"
-        write_buffer_size = "268435456"
-        recycle_log_file_num = "0"
-        target_file_size_base = "268435456"
-        max_write_buffer_number = "25"
-        max_bytes_for_level_base = "4294967296"
-        level_0_stop_writes_trigger = "24"
-        target_file_size_multiplier = "1"
-        max_background_compactions = "2"
-        max_bytes_for_level_multiplier = "2"
-        level_0_slowdown_writes_trigger = "17"
-        level_0_file_num_compaction_trigger = "8"
-        level_compaction_dynamic_level_bytes = "0"
-        compaction_algorithm = "0"
-        rate_bytes_per_sec = "67108864"
-        data_backup_path = ""
-        ```
+        === "使用旧配置文件覆盖（老用户）" 
+            ```
+            \cp -rf ~/lambda_bak/minernode/config.toml ~/.lambda_miner/config/config.toml
+            ```
+            ```
+            vi ~/.lambda_miner/config/config.toml
+            ```
+            将`version`改为如下版本：
+            ```
+            version = "0.2.6"
+            ```
+        === "修改配置文件（新用户）"
+            ```
+            vi ~/.lambda_miner/config/config.toml
+            ```
+            参考配置示例手动修改配置文件 
+            
+            ??? note "展开查看配置示例"
+                ```
+                [build]
+                version = "0.2.6"
+                commit = "030c696bc6829cfafb3d240d66058b16b41aa460"
+                mode = "release"
+                
+                # 服务需要监听的地址
+                # 以本机内网IP为 192.168.10.10，端口映射的外网IP为 200.200.200.100 为例
+                [server]
+                # 对外提供服务的地址，推荐配置为内网地址做端口映射到外网IP
+                address = "192.168.10.10:13000"
+                # 对内提供服务的地址，主要是给StorageNode使用，推荐配置为内网地址
+                private_address = "192.168.10.10:13001"
+                
+                [kad]
+                # DHT接入节点地址，存储网络提供，可填写多个，以 47.94.129.97:13000 为例
+                # 可填写自己质押的验证节点配置lambda.toml中的 kad.external_address
+                # 可选官方dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000/182.92.66.63:13000
+                bootstrap_addr = ["47.94.129.97:13000"]
+                # this should listen at Public IP
+                ## 对外暴露的提供服务的地址
+                external_address = "200.200.200.100:13000"
+                
+                [log]
+                level = "info"
+                output_file = "stdout"
+                
+                [miner]
+                # ensure_level=0会多占用磁盘1/6空间，ensure_level=1会多占用1/3空间
+                ensure_level = "0"
+                #root access key，不能为空
+                root_secret_seed = "aaa"
+                
+                [db]
+                # db config
+                lru_cache = "0"
+                keep_log_file_num = "16"
+                write_buffer_size = "268435456"
+                recycle_log_file_num = "0"
+                target_file_size_base = "268435456"
+                max_write_buffer_number = "25"
+                max_bytes_for_level_base = "4294967296"
+                level_0_stop_writes_trigger = "24"
+                target_file_size_multiplier = "1"
+                max_background_compactions = "2"
+                max_bytes_for_level_multiplier = "2"
+                level_0_slowdown_writes_trigger = "17"
+                level_0_file_num_compaction_trigger = "8"
+                level_compaction_dynamic_level_bytes = "0"
+                compaction_algorithm = "0"
+                rate_bytes_per_sec = "67108864"
+                data_backup_path = ""
+                ```
 
 #### 4.3 查看矿工子账户地址
 
@@ -631,29 +647,37 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
     ```
     初始化`storagecli` 后会默认生成配置文件`~/.lambda_storagecli/config/user.toml`
 
-    参考如下说明手动修改配置文件  
-    ```
-    vi ~/.lambda_storagecli/config/user.toml
-    ```
-
-    ??? note "展开查看配置示例"
-        ```
-        [broker]
-        # dht_gateway_addr为验证节点的dht服务 IP和端口；
-        # 可以是自己质押的验证节点配置的kad.external_address，这里以 47.94.129.97:13000 为例
-        # 可选官方dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000/182.92.66.63:13000
-        dht_gateway_addr = "39.105.148.217:13000" 
-        # validator_addr为验证节点IP和端口，可以是自己质押的验证节点rest-server服务指定的laddr地址
-        # 可选官方地址：39.105.148.217:13659/47.94.129.97:13659/47.93.196.236:13659
-        validator_addr = "39.105.148.217:13659"   
+    !!! abstract ""
+        以下`使用旧配置文件覆盖（老用户）`和`修改配置文件（新用户）`只需选一个执行  
         
-        [gateway]
-        # local listen address
-        address = "0.0.0.0:9002"
-        # for login web UI
-        access_key = "accesskey"
-        secret_key = "secretkey"
-        ```
+        === "使用旧配置文件覆盖（老用户）" 
+            ```
+            \cp -rf ~/lambda_bak/storagecli/user.toml ~/.lambda_storagecli/config/user.toml
+            ```
+        === "修改配置文件（新用户）"  
+            参考如下说明手动修改配置文件  
+            ```
+            vi ~/.lambda_storagecli/config/user.toml
+            ```
+        
+            ??? note "展开查看配置示例"
+                ```
+                [broker]
+                # dht_gateway_addr为验证节点的dht服务 IP和端口；
+                # 可以是自己质押的验证节点配置的kad.external_address，这里以 47.94.129.97:13000 为例
+                # 可选官方dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000/182.92.66.63:13000
+                dht_gateway_addr = "39.105.148.217:13000" 
+                # validator_addr为验证节点IP和端口，可以是自己质押的验证节点rest-server服务指定的laddr地址
+                # 可选官方地址：39.105.148.217:13659/47.94.129.97:13659/47.93.196.236:13659
+                validator_addr = "39.105.148.217:13659"   
+                
+                [gateway]
+                # local listen address
+                address = "0.0.0.0:9002"
+                # for login web UI
+                access_key = "accesskey"
+                secret_key = "secretkey"
+                ```
 
 
 !!! example ""
