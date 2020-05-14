@@ -19,7 +19,7 @@ MD5: 4cf1a23320af628ef1b1158cb3118e7e
 
 ## lambda storage v0.2.6
 包名：lambda-storage-0.2.6-testnet.tar.gz
-MD5:f50f956dc106ee5aa3a5e4c7b93053c0
+MD5:f3a5584ba939d8e7dc1deb9d2d28f740
 
 1. 新增声明重试机制；
 2. 新增订单刷新功能；
