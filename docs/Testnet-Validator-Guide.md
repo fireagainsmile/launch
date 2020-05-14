@@ -29,7 +29,7 @@ tar zxvf lambda-0.4.9-testnet.tar.gz && cd lambda-0.4.9-testnet
 ```
 ./lambda init [your-moniker] --chain-id lambda-chain-test4.9
 ```
-如果初始化报错，可能是由于有老版本的测试网配置数据导致，可以通过下面的命令清除错误数据
+如果初始化报错，可能是由于有老版本的测试网配置数据导致，可以通过下面的命令清除错误数据再重新执行上面的`lambda init`
 ```
 rm -rf ~/.lambda/config/config.toml ~/.lambda/config/genesis.json ~/.lambda/identity
 ```

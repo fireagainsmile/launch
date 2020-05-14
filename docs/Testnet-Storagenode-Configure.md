@@ -98,12 +98,13 @@
 - `--storage.setup_pending_retry_threshold`   pending状态的setup重试最大次数  （默认值为40，每3分钟重试一次，若这个声明一直被选中重试提交，可以持续2个小时）
 - `--storage.setup_resolve_batch`   resolving状态的setup 更新的单次数量 （默认值为9，每3分钟更新一次，平均一分钟更新3个。）
 
-例如：
-用户买了2400G订单，每个声明8G，假如上传文件占满全部购买空间 storagenode中会产生300个声明（=2400G/8G）。
-按每分钟提交3个声明计算，300个声明至少需要100分钟才能提交完成。
+例如：  
+用户买了2880G订单，每个声明8G，假如上传文件占满全部购买空间 storagenode中会产生360个声明（=2880G/8G）。
+按每分钟提交3个声明计算，360个声明至少需要120分钟才能提交完成。如果想更快的提交声明，可调整参数运行`storagenode`如下：
 ``` 
-storagenode run --daemonize --log.file /tmp/storagenode.log  --storage.setup_expire_check_batch 20 --storage.setup_pending_retry_batch 30 --storage.setup_pending_retry_threshold 50 --storage.setup_resolve_batch 20
+./storagenode run --daemonize --log.file /tmp/storagenode.log  --storage.setup_expire_check_batch 20 --storage.setup_pending_retry_batch 30 --storage.setup_pending_retry_threshold 50 --storage.setup_resolve_batch 20
 ```
+说明：`setup_pending_retry_batch`调到30后，360个声明提交只需要36分钟。
 
 #### 查询声明状态
 使用`storagenode mining status`查询当前声明数量及提交状态，加上`--with-resolved`参数查询结果包含已提交成功的声明。

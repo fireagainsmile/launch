@@ -95,17 +95,7 @@ replacement_cache_size = 5
 discovery_interval = "3m0s"
 ```
 
-### 6. 下载和解压社区提供的区块链数据包
-下载数据压缩包lambda_0.4.9_data.tar.gz
-``` 
-wget http://download.lambdastorage.com/lambda/0.4.9/lambda_0.4.9_data.tar.gz
-```
-解压`lambda_0.4.9_data.tar.gz`到`~/.lambda/`目录下（解压过程耗时较长，请耐心等待）
-``` 
-tar -zxvf lambda_0.4.9_data.tar.gz -C ~/.lambda/
-```
-
-### 7. 启动节点  
+### 6. 启动节点  
 ```
 ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:26657 --daemonize --log.file /tmp/lambda.log
 ```
