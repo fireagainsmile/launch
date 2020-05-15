@@ -45,3 +45,5 @@ Each module provides a set of command line interfaces. Here we sort these comman
 7. [upgrade command](upgrade.md)
 
 8. [version command](version.md)
+
+9. [order command](order.md)

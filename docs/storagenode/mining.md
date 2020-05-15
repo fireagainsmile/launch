@@ -13,32 +13,46 @@ storagenode mining [command]
 
 | Name| Description |                           
 | --------------- | --------------------- |
-| info  | Show statement info by [statement id]|
+| info  | Show statement info by [setupID]|
+|  prune | Prune unused local statements&setups or provided [setupID]|
+|  reset | Reset provided [setupID] retry count to 0|
 |  status | Show all local statement status|
 
 ## Examples
 ```
-./storagenode mining status
-Current block time: 2020-08-09 12:44:35.890907005 +0000 UTC
-Active statements: 2
-statement(411d6463-fe1d-4374-ab42-726aa2937946), next_expiry(2020-04-09 12:46:58 UTC), final_expiry(2023-06-19 18:00:13 UTC)
-statement(58c7700c-7f17-42ec-8317-f66bbe6fcd05), next_expiry(2020-04-09 12:46:58 UTC), final_expiry(2023-06-19 18:00:13 UTC)
+./storagenode mining status --with-resolved
+Page size: 100
+Current block time: 2020-05-15 10:15:19 UTC
 
-Inactive statement: 0
+Pending setups
+
+# |Setup |Retry |LastRetry
 
 
+Resolving setups
 
-./storagenode mining info 411d6463-fe1d-4374-ab42-726aa2937946  
-expired time: 2023-06-19 18:00:13 +0800 CST
-end time: 2020-08-09 13:35:43.56402227 +0000 UTC
-piece path[0]: 82EB03450C809F3F8867C8D30BDD42D6C8802E92/new2/file100_df8087fde4e6492d828f8fc715867fe2.blob/0
-piece path[1]: 82EB03450C809F3F8867C8D30BDD42D6C8802E92/new2/file100_df8087fde4e6492d828f8fc715867fe2.blob/1
-piece path[2]: 82EB03450C809F3F8867C8D30BDD42D6C8802E92/new2/file100_df8087fde4e6492d828f8fc715867fe2.blob/2
-piece path[3]: 82EB03450C809F3F8867C8D30BDD42D6C8802E92/new2/file100_df8087fde4e6492d828f8fc715867fe2.blob/3
-piece path[4]: 82EB03450C809F3F8867C8D30BDD42D6C8802E92/new2/file100_df8087fde4e6492d828f8fc715867fe2.blob/4
-piece path[5]: 82EB03450C809F3F8867C8D30BDD42D6C8802E92/new2/file100_df8087fde4e6492d828f8fc715867fe2.blob/5
-piece path[6]: 82EB03450C809F3F8867C8D30BDD42D6C8802E92/new2/file100_df8087fde4e6492d828f8fc715867fe2.blob/6
-piece path[7]: 82EB03450C809F3F8867C8D30BDD42D6C8802E92/new2/file100_df8087fde4e6492d828f8fc715867fe2.blob/7
-piece path[8]: 82EB03450C809F3F8867C8D30BDD42D6C8802E92/new2/file100_df8087fde4e6492d828f8fc715867fe2.blob/8
+# |Setup |Retry |LastRetry
 
+
+Resolved setups
+
+#    |Setup                                |Expiry                  |Expired |FinalExpiry             |X
+0001 |cc249a7f-c1e1-48fb-9935-2f5d5cf23317 |2020-05-25 08:51:38 UTC |        |2020-06-14 03:27:16 UTC |0
+```
+
+```
+./storagenode mining info cc249a7f-c1e1-48fb-9935-2f5d5cf23317
+ next expiry: 2020-05-25 08:51:38 UTC
+final expiry: 2020-06-14 03:27:16 UTC
+       stage: resolved
+       retry: 1
+   lastRetry: 2020-05-15 08:53:30 UTC
+           x: cc249a7f-c1e1-48fb-9935-2f5d5cf23317
+```
+
+``` 
+./storagenode mining prune 80462807-2a92-4047-9bb3-ea14288a1822
+
+Current block time: 2020-05-15 10:42:41 UTC
+Pruned : 80462807-2a92-4047-9bb3-ea14288a1822
 ```

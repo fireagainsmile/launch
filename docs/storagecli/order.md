@@ -17,12 +17,12 @@ provide user order operation
 
 ## Examples
 ```
-./storagecli order list mj
-Password to sign with 'mj':
+./storagecli order list testbuy2
+Password to sign with 'testbuy2':
 
-OrderId                                  |Expire           |Used/Total  |ProviderStatus
-A60DF26061D0A98D4F9338AAC8A0683BD0927429 |2020-06-16 19:42 |0 B/30 GiB  |Avaialable
-B624A15E95CC9FBE47F9BC17DB6FF8FFAEF87117 |2020-06-21 10:50 |0 B/1.0 GiB |Avaialable
-D7A999F935192C313913FEF25EC9F3B2EC199819 |2020-06-18 14:38 |0 B/25 GiB  |Avaialable
-Total: 3
+OrderId                                  |Expire                  |Used/Total      |ProviderStatus
+407FF27E580D9FD7D111F03289ECD0226ED95DCB |2020-06-14 03:27:16 UTC |117 GiB/200 GiB |Available
+
+Total: 1
+Current time: 2020-05-15 10:23:23 UTC
 ```
