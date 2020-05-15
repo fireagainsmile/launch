@@ -1,4 +1,5 @@
-# 市场说明
+# 市场操作手册
+## 市场说明
 1. 任意用户可创建市场；
 2. 用户可以通过质押的方式参与用户创建的市场的运营。   
 3. 市场收益由挂单手续费、成单手续费、续期手续费组成。  
@@ -8,7 +9,7 @@
 市场创建人收取总市场收益的10%。  
 市场质押人按照质押比例分配剩余的90%（市场创建人也在分配集合中）。
 
-# 创建市场
+## 创建市场
 1. 创建市场需要消耗账户1000000LAMB(1LAMB=1000000ulamb) 。
 2. 解散市场后，创建市场消耗的1000000LAMB和市场创建人分配到的市场收益，会退回到市场受益人账户中。
 
@@ -35,7 +36,7 @@
 
 [创建市场命令](lambdacli/tx/market/create-market.md)
 
-# 修改市场
+## 修改市场
 ```
  lambdacli tx market edit-market --commission-rate 0.01 --from master
 ```
@@ -49,7 +50,7 @@
 
 [修改市场命令](lambdacli/tx/market/edit-market.md)
 
-# 市场质押
+## 市场质押
 用户可通过质押市场，获得市场的手续费收益和佣金收益。
 单次质押到市场的金额不得小于1000LAMB(1LAMB=1000000ulamb) 。 
 ```
@@ -57,14 +58,14 @@
 ```
 [市场质押命令](lambdacli/tx/market/delegate.md)
 
-# 查询市场质押收益
+## 查询市场质押收益
 
 ```
 ./lambdacli query market delegation [marketName] [address]
 ```
 [查询质押市场收益](lambdacli/query/market/delegate.md)
 
-# 提取市场收益
+## 提取市场收益
 
 ```
 lambdacli tx market withdraw-market [marketName] --from acc
@@ -76,7 +77,7 @@ lambdacli tx market withdraw-market [marketName] --from acc
 - 提取收益为全部提取
 - 质押金不可随意反质押，需要市场满足解散条件后，由市场创建人解散市场后，该市场的质押金会自动返还到账户中
 
-# 解散市场
+## 解散市场
 
 ```
 lambdacli tx market dismiss --from acc

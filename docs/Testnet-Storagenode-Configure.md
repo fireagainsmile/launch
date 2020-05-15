@@ -77,42 +77,16 @@
 
 启动storagenode
 ```
-./storagenode run --daemonize --log.file [log_file_path]
+./storagenode run --daemonize --log.file [log_file_path] --storage.space_to_setup [mining-space]
 ```
 说明：  
 ```
+--storage.space_to_setup 设置为预计挖矿的空间大小，默认单位为GB。如预计使用400GB空间挖矿，则设置为400。如预计使用1TB空间挖矿，则设置为1024。
 --daemonize以后台方式启动   
 --log.file [log_file_path] 指定storagenode运行日志路径，不添加参数则无日志输出  
 可添加--log.level debug参数，日志开启debug可查看更详细日志输出，不添加此参数则默认输出INFO级别日志 
 ```
 
-### 声明重试机制
-由于storagenode节点算力差异巨大，因此提供若干参数来供矿工结合自己storagenode节点的算力来调整（目标是保证2个小时内，算力稳定）
-
-一个声明8G
-每隔3分钟，检查声明重新提交
-每隔10分钟，检查过期声明（测试网的 声明有效期为10天）
-
-0.2.6版本新增以下4个可配置参数，可自行根据自己的声明数量进行调整：
-* --storage.setup_expire_check_batch statement过期检查单次数量（默认值为20，每10分钟检查一次，即平均一分钟检查2个）
-* --storage.setup_pending_retry_threshold 声明重新提交 重试最大次数 （默认值为40，每3分钟重试一次，若这个声明一直被选中重试提交，可以持续2个小时）
-* --storage.setup_pending_retry_batch pending状态的setup重试单次数量 （默认值为9，每3分钟重试一次，即平均一分钟检查3个。注意此值要设置的比上面的setup_expire_check_batch要大一点）
-* --storage.setup_resolve_batch resolving状态的setup 更新的单次数量 （默认值为9，每3分钟更新一次，平均一分钟更新3个。一般就跟--storage.setup_pending_retry_batch配置一样即可）
-
-例如： 用户买了2400G订单，每个声明8G，假如上传文件占满全部购买空间 storagenode中会产生300个声明（=2400G/8G）。 按每分钟提交3个声明计算，300个声明至少需要100分钟才能提交完成。 
-
-
-例如：矿工有3台storagenode：
-sn1，提供800G空间，若要保证2小时算力稳定，则需要配置平均一个小时能检查过期400G(50个声明），平均一个小时能重试提交声明400G(50个声明），一分钟平均至少1个
-sn2，提供1600G空间，需要配置平均一小时检查过期800G(100个声明），一小时重提声明800G(100个声明)，一分钟平均至少2个
-sn3，提供6400G空间，需要配置平均一小时检查过期3200G(400个声明)，一小时重提声明3200G(400个声明)，一分钟平均至少7个
-
-sn1和sn2使用默认的配置足够  
-sn3 则启动需要配置参数  `--storage.setup_expire_check_batch 70 --storage.setup_pending_retry_batch 21 --storage.setup_resolve_batch 21`  
-即sn3启动命令：
-```
-./storagenode run --daemonize --log.file [log_file_path] --storage.setup_expire_check_batch 70 --storage.setup_pending_retry_batch 21 --storage.setup_resolve_batch 21 
-```
 
 #### 查询声明状态
 使用`storagenode mining status`查询当前声明数量及提交状态，加上`--with-resolved`参数查询结果包含已提交成功的声明。
@@ -124,17 +98,18 @@ sn3 则启动需要配置参数  `--storage.setup_expire_check_batch 70 --storag
 Page size: 100
 Current block time: 2020-05-14 05:52:56 UTC
 
-Pending setups  # storagenode新生成的还未提交的声明列表，Retry为该声明重复提交的次数
+Pending setups  # 等待提交的声明，Retry为该声明重复提交的次数
 
 # |Setup |Retry |LastRetry
 
 
-Resolving setups  # 提交到了minernode，尚未提交到链上的声明列表
+Resolving setups  # 已经提交的声明
+
 
 # |Setup |Retry |LastRetry
 
 
-Resolved setups  # 成功提交到链上了的声明列表
+Resolved setups  # 提交成功的声明
 
 #    |Setup                                |Expiry                  |Expired |FinalExpiry             |X
 0001 |b3aef44e-2a99-4fb7-b313-ad2b5b0f473d |2020-05-24 04:30:47 UTC |        |2020-06-13 04:12:37 UTC |0
