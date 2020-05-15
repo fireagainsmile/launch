@@ -87,24 +87,32 @@
 ```
 
 ### 声明重试机制
-每隔3分钟，进行声明重试提交 或 更新resolving。
-每隔10分钟，检查过期声明。
-每隔10天，声明会过期。如果检测到当前订单有效天数大于等于2天，则会生成一个新的声明重新提交。
+由于storagenode节点算力差异巨大，因此提供若干参数来供矿工结合自己storagenode节点的算力来调整（目标是保证2个小时内，算力稳定）
+
+一个声明8G
+每隔3分钟，检查声明重新提交
+每隔10分钟，检查过期声明（测试网的 声明有效期为10天）
 
 0.2.6版本新增以下4个可配置参数，可自行根据自己的声明数量进行调整：
+* --storage.setup_expire_check_batch statement过期检查单次数量（默认值为20，每10分钟检查一次，即平均一分钟检查2个）
+* --storage.setup_pending_retry_threshold 声明重新提交 重试最大次数 （默认值为40，每3分钟重试一次，若这个声明一直被选中重试提交，可以持续2个小时）
+* --storage.setup_pending_retry_batch pending状态的setup重试单次数量 （默认值为9，每3分钟重试一次，即平均一分钟检查3个。注意此值要设置的比上面的setup_expire_check_batch要大一点）
+* --storage.setup_resolve_batch resolving状态的setup 更新的单次数量 （默认值为9，每3分钟更新一次，平均一分钟更新3个。一般就跟--storage.setup_pending_retry_batch配置一样即可）
 
-- `--storage.setup_expire_check_batch`    statement过期检查单次数量（默认值为20，每10分钟检查一次，即平均一分钟检查2个）
-- `--storage.setup_pending_retry_batch`    pending状态的setup重试单次数量 （默认值为9，每3分钟重试一次，即平均一分钟检查3个。注意此值一定要设置的比上面的`setup_expire_check_batch`要大。声明数量较多时，可将此值适量调大）
-- `--storage.setup_pending_retry_threshold`   pending状态的setup重试最大次数  （默认值为40，每3分钟重试一次，若这个声明一直被选中重试提交，可以持续2个小时）
-- `--storage.setup_resolve_batch`   resolving状态的setup 更新的单次数量 （默认值为9，每3分钟更新一次，平均一分钟更新3个。）
+例如： 用户买了2400G订单，每个声明8G，假如上传文件占满全部购买空间 storagenode中会产生300个声明（=2400G/8G）。 按每分钟提交3个声明计算，300个声明至少需要100分钟才能提交完成。 
 
-例如：  
-用户买了2880G订单，每个声明8G，假如上传文件占满全部购买空间 storagenode中会产生360个声明（=2880G/8G）。
-按每分钟提交3个声明计算，360个声明至少需要120分钟才能提交完成。如果想更快的提交声明，可调整参数运行`storagenode`如下：
-``` 
-./storagenode run --daemonize --log.file /tmp/storagenode.log  --storage.setup_expire_check_batch 20 --storage.setup_pending_retry_batch 30 --storage.setup_pending_retry_threshold 50 --storage.setup_resolve_batch 20
+
+例如：矿工有3台storagenode：
+sn1，提供800G空间，若要保证2小时算力稳定，则需要配置平均一个小时能检查过期400G(50个声明），平均一个小时能重试提交声明400G(50个声明），一分钟平均至少1个
+sn2，提供1600G空间，需要配置平均一小时检查过期800G(100个声明），一小时重提声明800G(100个声明)，一分钟平均至少2个
+sn3，提供6400G空间，需要配置平均一小时检查过期3200G(400个声明)，一小时重提声明3200G(400个声明)，一分钟平均至少7个
+
+sn1和sn2使用默认的配置足够  
+sn3 则启动需要配置参数  `--storage.setup_expire_check_batch 70 --storage.setup_pending_retry_batch 21 --storage.setup_resolve_batch 21`  
+即sn3启动命令：
 ```
-说明：`setup_pending_retry_batch`调到30后，360个声明提交只需要36分钟。
+./storagenode run --daemonize --log.file [log_file_path] --storage.setup_expire_check_batch 70 --storage.setup_pending_retry_batch 21 --storage.setup_resolve_batch 21 
+```
 
 #### 查询声明状态
 使用`storagenode mining status`查询当前声明数量及提交状态，加上`--with-resolved`参数查询结果包含已提交成功的声明。
