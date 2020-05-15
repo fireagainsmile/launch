@@ -29,7 +29,6 @@ lambdacli tx market edit-market --help
 
 ```
  lambdacli tx market edit-market --commission-rate 0.01 --from master
-
 ```
 
 Sample Output:
