@@ -41,15 +41,15 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 Download the package 
 ```
-wget https://github.com/LambdaIM/launch/releases/download/Storage0.2.5/lambda-storage-0.2.5-testnet.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/v0.4.9/lambda-storage-0.2.6-testnet.tar.gz
 ```
 Extract the installation package 
 ```
-tar zxvf lambda-storage-0.2.5-testnet.tar.gz
+tar zxvf lambda-storage-0.2.6-testnet.tar.gz
 ```
 Enter the content after extracting
 ```
-cd lambda-storage-0.2.5-testnet
+cd lambda-storage-0.2.6-testnet
 ```
 
 ## 2Lambdacli-Deployment
@@ -65,7 +65,7 @@ Select validator IP as below：
 ```
 
 ```
-./lambdacli config chain-id lambda-chain-test4.8
+./lambdacli config chain-id lambda-chain-test4.9
 ./lambdacli config trust-node true
 ```
 ```
@@ -124,7 +124,7 @@ lambdavaloper1r340rrv9fs95gqy5087e2mtz82vvwrglt6amx3
 After initializing "minernode", a default configuration file `~/.lambda_miner/config/config.toml` is generated, and then modified: config.toml
 
 ```
-version = "0.2.5"
+version = "0.2.6"
 commit = "34453f30e9aa2f281c827d9b4883b0b677eb170f"
 mode = "release"
 
@@ -213,7 +213,7 @@ Miner Address: lambda1wgdcvew36nqwm2d5gj6yxraayjvnhfpf5rrfww  //矿工子账户�
 ```
 ./minernode info
 Return Value：
-                version: 0.2.5
+                version: 0.2.6
                 dht id: CdZsGtfsXVjMgt51EnaGAqr78YmgFxYsCAn4ubR1Dpgo //dht-id will be used when create-miner
         server.address: 0.0.0.0:14000
   kad.external_address: 182.92.242.59:14000
@@ -282,7 +282,7 @@ A storagenode only accept a selling order with available space.
 ./lambdacli tx market create-sellorder --price 5000000ulamb  \
 --normal \
 --size [size]GB \
---market-name LambdaMarket \
+--market-name lambdamarket \
 --min-size [min-size]GB \
 --min-buy-duration [min-buy-duration]month \
 --max-buy-duration [max-buy-duration]month \
@@ -296,7 +296,7 @@ A storagenode only accept a selling order with available space.
 ```
 ./lambdacli tx market create-sellorder --price 5000000ulamb  \
 --size [size]GB \
---market-name LambdaMarket \
+--market-name lambdamarket \
 --min-size [min-size]GB \
 --min-buy-duration [min-buy-duration]month \
 --max-buy-duration [max-buy-duration]month \
@@ -355,7 +355,7 @@ size is requiring buying space,can not less than minimum purchase space specifie
 
 ```
  ./lambdacli tx market create-buyorder --from [account-name] \
- --duration [buy-duration]month --market-name LambdaMarket \
+ --duration [buy-duration]month --market-name lambdamarket \
  --size [size]GB --broadcast-mode block -y
 ```
 
@@ -364,7 +364,7 @@ size is requiring buying space,can not less than minimum purchase space specifie
 ```
 ./lambdacli tx market create-buyorder --sellorder-id [orderId] \
 --from [your-account-name] --duration [buy-duration]month \
---market-name LambdaMarket --size [size]GB --broadcast-mode block -y
+--market-name lambdamarket --size [size]GB --broadcast-mode block -y
 ```
 ### Searching the match order 
 

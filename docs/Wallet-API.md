@@ -1,5 +1,5 @@
 # 钱包API接入文档说明
-参考钱包版本： [Wallet0.5.50](https://github.com/LambdaIM/launch/releases/tag/Wallet0.5.50)
+参考钱包版本： [Wallet0.5.52](https://github.com/LambdaIM/launch/releases/tag/Wallet0.5.52)
 
 钱包账户信息文档文档： [钱包账户信息、签名、配置文件说明](Wallet-Hdkey.md) 
 
@@ -1469,9 +1469,9 @@ version：'1'
 ### 3 获取市场的优质卖单
 `/market/sellorders/${marketName}/${orderType}/${statusType}/${page}/${limit}`
 
-例如 [http://47.93.196.236:13659/market/sellorders/LambdaMarket/premium/active/1/10](http://47.93.196.236:13659/market/sellorders/LambdaMarket/premium/active/1/10)
+例如 [http://47.93.196.236:13659/market/sellorders/lambdamarket/premium/active/1/10](http://47.93.196.236:13659/market/sellorders/lambdamarket/premium/active/1/10)
 
-orderType 值为[premium](http://47.93.196.236:13659/market/sellorders/LambdaMarket/premium/1/10) 表示读取优质的卖单，all 为全部卖单
+orderType 值为[premium](http://47.93.196.236:13659/market/sellorders/lambdamarket/premium/1/10) 表示读取优质的卖单，all 为全部卖单
 
 statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 
@@ -1513,7 +1513,7 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 [
   {
     "marketAddress": "lambdamarketoper1thj5fv8d0dsh3aealhpxm9mvgxjfh87srk3887",//市场地址
-    "name": "LambdaMarket",//市场名称
+    "name": "lambdamarket",//市场名称
     "owner": "lambda1thj5fv8d0dsh3aealhpxm9mvgxjfh87s224esr",//创建市场的人
     "profit": "lambda1thj5fv8d0dsh3aealhpxm9mvgxjfh87s224esr",//市场的收益地址
     "feeRate": "0.020000000000000000", 挂单手续费
@@ -1604,7 +1604,7 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 		"value": {
 			"address": "lambda1k6rxrmly7hz0ewh7gth2dj48mv3xs9yz8ffauw",   购买人的地址
 			"duration": "2592000000000000",  购买时长
-			"marketName": "LambdaMarket",  市场名称
+			"marketName": "lambdamarket",  市场名称
 			"sellOrderId": "[do-not-input-value]", 自动购买时候就填这个值
 			"size": "1" 购买的大小 
 		}
@@ -1622,7 +1622,7 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 			"value": {
 				"address": "lambda1k6rxrmly7hz0ewh7gth2dj48mv3xs9yz8ffauw",
 				"duration": "2592000000000000",
-				"marketName": "LambdaMarket",
+				"marketName": "lambdamarket",
 				"sellOrderId": "[do-not-input-value]",
 				"size": "1"
 			}
@@ -1674,7 +1674,7 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 		"value": {
 			"address": "lambda1k6rxrmly7hz0ewh7gth2dj48mv3xs9yz8ffauw", 购买人的地址
 			"duration": "2592000000000000", 购买的时长
-			"marketName": "LambdaMarket",市场名称
+			"marketName": "lambdamarket",市场名称
 			"sellOrderId": "00A482D80ACAAA0BEDABB0AA6BE25598967E69DF",买单id
 			"size": "1"   购买空间大小
 		}
@@ -1692,7 +1692,7 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 			"value": {
 				"address": "lambda1k6rxrmly7hz0ewh7gth2dj48mv3xs9yz8ffauw",
 				"duration": "2592000000000000",
-				"marketName": "LambdaMarket",
+				"marketName": "lambdamarket",
 				"sellOrderId": "00A482D80ACAAA0BEDABB0AA6BE25598967E69DF",
 				"size": "1"
 			}
@@ -1846,7 +1846,7 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 		"value": {
 			"address": "lambda12fldnycgpevw4gthq9w0zcfetpa9sn4d39wzlz",//账户地址
 			"cancelTimeDuration": "1",
-			"marketName": "LambdaMarket",//市场名称
+			"marketName": "lambdamarket",//市场名称
 			"maxBuyDuration": "25920000000000000",//最大购买时间
 			"minBuyDuration": "2592000000000000",//最小购买时间
 			"minBuySize": "1",//最小购买空间
@@ -1867,7 +1867,7 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 			"value": {
 				"address": "lambda12fldnycgpevw4gthq9w0zcfetpa9sn4d39wzlz",
 				"cancelTimeDuration": "1",
-				"marketName": "LambdaMarket",
+				"marketName": "lambdamarket",
 				"maxBuyDuration": "25920000000000000",
 				"minBuyDuration": "2592000000000000",
 				"minBuySize": "1",

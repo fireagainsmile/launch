@@ -4,6 +4,13 @@ A REST interface for state queries, transaction generation and broadcasting.
 
 **Version:** 3.0
 
+### Security
+---
+**kms**  
+
+|basic|*Basic*|
+|---|---|
+
 ### /version
 ---
 ##### ***GET***
@@ -1613,7 +1620,91 @@ A REST interface for state queries, transaction generation and broadcasting.
 | 200 | OK | [ object ] |
 | 500 | Internal Server Error |  |
 
-### /market/create-sellorder
+### /market/create
+---
+##### ***POST***
+**Summary:** create Market in block chain
+
+**Description:** Create Market in Block Chain
+
+**Parameters**
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| Create Market request body | body |  | No |  |
+
+**Responses**
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | [BroadcastTxCommitResult](#broadcasttxcommitresult) |
+| 401 | Must use own asset address |  |
+| 500 | Internal Server Error |  |
+
+### /market/edit
+---
+##### ***POST***
+**Summary:** edit Market in block chain
+
+**Description:** Edit Market in Block Chain
+
+**Parameters**
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| Edit Market request body | body |  | No |  |
+
+**Responses**
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | [BroadcastTxCommitResult](#broadcasttxcommitresult) |
+| 401 | Must use own asset address |  |
+| 500 | Internal Server Error |  |
+
+### /market/withdraw
+---
+##### ***POST***
+**Summary:** withdraw market in block chain
+
+**Description:** WithDraw Market in Block Chain
+
+**Parameters**
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| WithDraw Market request body | body |  | No |  |
+
+**Responses**
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | [BroadcastTxCommitResult](#broadcasttxcommitresult) |
+| 401 | Must use own asset address |  |
+| 500 | Internal Server Error |  |
+
+### /market/delegate
+---
+##### ***POST***
+**Summary:** delegate market in block chain
+
+**Description:** Delegate Market in Block Chain
+
+**Parameters**
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| Delegate Market request body | Delegate |  | No |  |
+
+**Responses**
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | [BroadcastTxCommitResult](#broadcasttxcommitresult) |
+| 401 | Must use own asset address |  |
+| 500 | Internal Server Error |  |
+
+### /market/sellorder/create
 ---
 ##### ***POST***
 **Summary:** Create a sell order in market
@@ -1635,7 +1726,28 @@ A REST interface for state queries, transaction generation and broadcasting.
 | 401 | Must use own asset address |  |
 | 500 | Internal Server Error |  |
 
-### /market/create-buyorder
+### /market/sellorder/cancel
+---
+##### ***POST***
+**Summary:** cancel a sell order in market
+
+**Description:** Cancel a sell order in market
+
+**Parameters**
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| Cancel sell order request body | body |  | No |  |
+
+**Responses**
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | [BroadcastTxCommitResult](#broadcasttxcommitresult) |
+| 401 | Must use own asset address |  |
+| 500 | Internal Server Error |  |
+
+### /market/buyorder/create
 ---
 ##### ***POST***
 **Summary:** Create a buy order in market
@@ -1657,7 +1769,28 @@ A REST interface for state queries, transaction generation and broadcasting.
 | 401 | Must use own asset address |  |
 | 500 | Internal Server Error |  |
 
-### /market/create-miner
+### /market/buyorder/renewal
+---
+##### ***POST***
+**Summary:** renewal a match order in market
+
+**Description:** Renewal a match order in market
+
+**Parameters**
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| Renewal match order request body | body |  | No |  |
+
+**Responses**
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | [BroadcastTxCommitResult](#broadcasttxcommitresult) |
+| 401 | Must use own asset address |  |
+| 500 | Internal Server Error |  |
+
+### /market/miner/create
 ---
 ##### ***POST***
 **Summary:** Create a miner actor
@@ -1678,7 +1811,7 @@ A REST interface for state queries, transaction generation and broadcasting.
 | 401 | Must use own asset address |  |
 | 500 | Internal Server Error |  |
 
-### /market/edit-miner
+### /market/miner/edit
 ---
 ##### ***POST***
 **Summary:** Edit miner
@@ -1699,6 +1832,111 @@ A REST interface for state queries, transaction generation and broadcasting.
 | 401 | Must use own asset address |  |
 | 500 | Internal Server Error |  |
 
+### /market/miner/withdraw
+---
+##### ***POST***
+**Summary:** withdraw matchorder
+
+**Description:** WithDraw MatchOrder UserPay and MinerPay
+
+**Parameters**
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| WithDraw matchOrder request body | body |  | No |  |
+
+**Responses**
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | [BroadcastTxCommitResult](#broadcasttxcommitresult) |
+| 401 | Must use own asset address |  |
+| 500 | Internal Server Error |  |
+
+### /market/miner/withdrawCount
+---
+##### ***POST***
+**Summary:** withdraw matchorders
+
+**Description:** WithDraw MatchOrders UserPay and MinerPay
+
+**Parameters**
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| WithDraw matchOrders request body | body |  | No |  |
+
+**Responses**
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | [BroadcastTxCommitResult](#broadcasttxcommitresult) |
+| 401 | Must use own asset address |  |
+| 500 | Internal Server Error |  |
+
+### /market/miner/maintain
+---
+##### ***POST***
+**Summary:** maintain miner
+
+**Description:** Maintain Miner To Stop Storage Service Some Time
+
+**Parameters**
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| maintain miners request body | body |  | No |  |
+
+**Responses**
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | [BroadcastTxCommitResult](#broadcasttxcommitresult) |
+| 401 | Must use own asset address |  |
+| 500 | Internal Server Error |  |
+
+### /market/miner/unmaintain
+---
+##### ***POST***
+**Summary:** unmaintain miner
+
+**Description:** UnMaintain Miner To Start Storage Service
+
+**Parameters**
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| unmaintain miners request body | body |  | No |  |
+
+**Responses**
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | [BroadcastTxCommitResult](#broadcasttxcommitresult) |
+| 401 | Must use own asset address |  |
+| 500 | Internal Server Error |  |
+
+### /market/miner/unjail
+---
+##### ***POST***
+**Summary:** unjail miner
+
+**Description:** Unjail Miner On Free Status
+
+**Parameters**
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| unjail miner request body | body |  | No |  |
+
+**Responses**
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | [BroadcastTxCommitResult](#broadcasttxcommitresult) |
+| 401 | Must use own asset address |  |
+| 500 | Internal Server Error |  |
+
 ### /market/markets
 ---
 ##### ***GET***
@@ -1709,6 +1947,18 @@ A REST interface for state queries, transaction generation and broadcasting.
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK | [ [Market](#market) ] |
+| 500 | Internal Server Error |  |
+
+### /market/delegation/{marketName}/{address}
+---
+##### ***GET***
+**Summary:** Get delegation in a market
+
+**Responses**
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | [ [MarketDelegation](#marketdelegation) ] |
 | 500 | Internal Server Error |  |
 
 ### /market/sellorders/{marketName}/{orderType}/{status}/{page}/{limit}
@@ -2182,6 +2432,7 @@ bech32 encoded address
 | commissionRate | string |  |  |
 | inCome | [MarketInCome](#marketincome) |  |  |
 | payMent | [ [Coin](#coin) ] |  |  |
+| orderPrice | string |  |  |
 
 ### SellOrder  
 
@@ -2201,6 +2452,7 @@ bech32 encoded address
 | minBuySize | string |  |  |
 | minDuration | string |  |  |
 | maxDuration | string |  |  |
+| reserve1 | string |  |  |
 
 ### Miner  
 
@@ -2235,10 +2487,20 @@ bech32 encoded address
 | cancelTimeDuration | string |  |  |
 | withDrawTime | string |  |  |
 | status | integer |  |  |
+| marketAddress | [MarketAddress](#marketaddress) |  |  |
 | userPay | [Coin](#coin) |  |  |
 | minerPay | [Coin](#coin) |  |  |
 | peerId | string |  |  |
 | dhtId | string |  |  |
+
+### MarketDelegation  
+
+| Name | Type | Description | Example |
+| ---- | ---- | ----------- | ------- |
+| delegatorAddress | [Address](#address) |  |  |
+| marketAddress | [MarketAddress](#marketaddress) |  |  |
+| delegateAmount | string |  |  |
+| inCome | [MarketInCome](#marketincome) |  |  |
 
 ### Params  
 
@@ -2247,8 +2509,7 @@ bech32 encoded address
 | market_min_rate | string |  |  |
 | market_max_rate | string |  |  |
 | market_min_price | string |  |  |
-| order_normal_price | string |  |  |
-| order_normal_rate | string |  |  |
+| market_order_price | string |  |  |
 | order_premium_rate | string |  |  |
 | order_cancel_time_duration | string |  |  |
 | order_min_buy_size | string |  |  |
@@ -2264,6 +2525,10 @@ bech32 encoded address
 | window_duration | string |  |  |
 | miner_unjail_cost | string |  |  |
 | miner_unjail_rate | string |  |  |
+| create_market_cost | string |  |  |
+| original_market_names | [ string ] |  |  |
+| market_delegate_min_cost | string |  |  |
+| modify_order_price_amount | string |  |  |
 
 ### Pair  
 

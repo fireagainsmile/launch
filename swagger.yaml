@@ -2036,6 +2036,28 @@ paths:
                 type: string
         500:
           description: Internal Server Error
+  /distribution/miners/{minerAddr}:
+    parameters:
+      - in: path
+        name: minerAddr
+        description: Bech32 OperatorAddress of miner
+        required: true
+        type: string
+        x-example: lambdamineroper1v7rq4afpf47wfq4qymyaa9mvvvq69f7fwejlec
+    get:
+      summary: miner's rewards
+      description: query rewards information of a single miner
+      tags:
+        - ILB24
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/MinerDistInfo"
+        500:
+          description: Internal Server Error
   /minting/parameters:
     get:
       summary: Minting module parameters
@@ -2505,6 +2527,40 @@ paths:
                 $ref: "#/definitions/BaseReq"
               address:
                 $ref: "#/definitions/Address"
+              marketName:
+                type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/BroadcastTxCommitResult"
+        401:
+          description: Must use own asset address
+        500:
+          description: Internal Server Error
+  /market/delegate:
+    post:
+      summary: delegate market in block chain
+      description: Delegate Market in Block Chain
+      tags:
+        - ILB26
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: Delegate
+          name: Delegate Market request body
+          schema:
+            properties:
+              base_req:
+                $ref: "#/definitions/BaseReq"
+              address:
+                $ref: "#/definitions/Address"
+              marketName:
+                type: string
+              amount:
+                $ref: "#/definitions/Coin"
       responses:
         200:
           description: OK
@@ -2884,6 +2940,22 @@ paths:
             type: array
             items:
               $ref: "#/definitions/Market"
+        500:
+          description: Internal Server Error
+  /market/delegation/{marketName}/{address}:
+    get:
+      summary: Get delegation in a market
+      tags:
+        - ILB26
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/MarketDelegation"
         500:
           description: Internal Server Error
   /market/sellorders/{marketName}/{orderType}/{status}/{page}/{limit}:
@@ -3604,6 +3676,15 @@ definitions:
         type: array
         items:
           $ref: "#/definitions/Coin"
+  MinerDistInfo:
+    type: object
+    properties:
+      operator_address:
+        $ref: "#/definitions/Address"
+      miner_rewards:
+        type: array
+        items:
+          $ref: "#/definitions/Coin"
   SigningInfo:
     type: object
     properties:
@@ -3672,6 +3753,8 @@ definitions:
         type: array
         items:
           $ref: "#/definitions/Coin"
+      orderPrice:
+        type: string
   SellOrder:
     type: object
     properties:
@@ -3704,6 +3787,8 @@ definitions:
       minDuration:
         type: string
       maxDuration:
+        type: string
+      reserve1:
         type: string
   Miner:
     type: object
@@ -3759,6 +3844,8 @@ definitions:
         type: string
       status:
         type: integer
+      marketAddress:
+        $ref: "#/definitions/MarketAddress"
       userPay:
         $ref: "#/definitions/Coin"
       minerPay:
@@ -3767,6 +3854,17 @@ definitions:
         type: string
       dhtId:
         type: string
+  MarketDelegation:
+    type: object
+    properties:
+      delegatorAddress:
+        $ref: "#/definitions/Address"
+      marketAddress:
+        $ref: "#/definitions/MarketAddress"
+      delegateAmount:
+        type: string
+      inCome:
+        $ref: "#/definitions/MarketInCome"
   Params:
     type: object
     properties:
@@ -3776,9 +3874,7 @@ definitions:
         type: string
       market_min_price:
         type: string
-      order_normal_price:
-        type: string
-      order_normal_rate:
+      market_order_price:
         type: string
       order_premium_rate:
         type: string
@@ -3815,6 +3911,16 @@ definitions:
       miner_unjail_cost:
         type: string
       miner_unjail_rate:
+        type: string
+      create_market_cost:
+        type: string
+      original_market_names:
+        type: array
+        items:
+          type: string
+      market_delegate_min_cost:
+        type: string
+      modify_order_price_amount:
         type: string
   Pair:
     asset:

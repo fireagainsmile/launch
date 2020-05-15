@@ -7,7 +7,7 @@ Send transaction to withdraw a market income
 ## Usage
 
 ```
-lambdacli tx market withdraw-market [flags]
+lambdacli tx market withdraw-market [marketName] [flags]
 ```
 
 Print help messages:
@@ -24,36 +24,33 @@ lambdacli tx market withdraw-market --help
 ## Examples
 
 ```
- lambdacli tx market withdraw-market --from master
-
+ lambdacli tx market withdraw-market market1 --from master
 ```
 
 Sample Output:
 ```txt
-{"chain_id":"lambdatest","account_number":"0","sequence":"7","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgWithDrawMarket","value":{"address":"lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6k7cv9"}}],"memo":""}
+$ ./lambdacli tx market withdraw-market market1 --from zcTest --broadcast-mode block
+{"chain_id":"songtest","account_number":"4","sequence":"1","fee":{"amount":null,"gas":"200000"},"msgs":[{"type":"lambda/MsgWithDrawMarket","value":{"address":"lambda16f32afm7zgayje7fzj477hqmcdkcwep6dwdlx7","marketName":"market1"}}],"memo":""}
 
 confirm transaction before signing and broadcasting [Y/n]: y
-Password to sign with 'master':
+Password to sign with 'zcTest':
 Response:
-  Height: 1987
-    TxHash: DEB6272BBB7378999051ADA0F74835C6D3D3855EECEDCAB8F8B1FF35F2CDE917
-    Raw Log: [{"msg_index":"0","success":true,"log":""}]
-    Logs: [{"msg_index":0,"success":true,"log":""}]
-    GasWanted: 200000
-    GasUsed: 24993
-    Tags: 
-      - action = withdrawMarket
-      - address = lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6k7cv9
-      - inCome = 50000000ulamb
-  
-    Timestamp: 2019-10-29T06:48:41Z
-    
+  Height: 66
+  TxHash: B2D5A1B119E463F521E533C9CC5E76B6655C88CCC121B60E5D374A353678873F
+  Raw Log: [{"msg_index":"0","success":true,"log":""}]
+  Logs: [{"msg_index":0,"success":true,"log":""}]
+  GasWanted: 200000
+  GasUsed: 31286
+  Tags: 
+    - action = withdrawMarket
+    - address = lambda16f32afm7zgayje7fzj477hqmcdkcwep6dwdlx7
+    - inCome = 6333333ulamb 
 ```
 
 ```json
  {
- 	"height": "1987",
- 	"txhash": "DEB6272BBB7378999051ADA0F74835C6D3D3855EECEDCAB8F8B1FF35F2CDE917",
+ 	"height": "66",
+ 	"txhash": "B2D5A1B119E463F521E533C9CC5E76B6655C88CCC121B60E5D374A353678873F",
  	"raw_log": "[{\"msg_index\":\"0\",\"success\":true,\"log\":\"\"}]",
  	"logs": [{
  		"msg_index": "0",
@@ -61,16 +58,16 @@ Response:
  		"log": ""
  	}],
  	"gas_wanted": "200000",
- 	"gas_used": "24993",
+ 	"gas_used": "31286",
  	"tags": [{
  		"key": "action",
  		"value": "withdrawMarket"
  	}, {
  		"key": "address",
- 		"value": "lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6k7cv9"
+ 		"value": "lambda16f32afm7zgayje7fzj477hqmcdkcwep6dwdlx7"
  	}, {
  		"key": "inCome",
- 		"value": "50000000ulamb"
+ 		"value": "6333333ulamb"
  	}],
  	"tx": {
  		"type": "auth/StdTx",
@@ -78,7 +75,8 @@ Response:
  			"msg": [{
  				"type": "lambda/MsgWithDrawMarket",
  				"value": {
- 					"address": "lambda1v7rq4afpf47wfq4qymyaa9mvvvq69f7f6k7cv9"
+ 					"address": "lambda16f32afm7zgayje7fzj477hqmcdkcwep6dwdlx7",
+ 					"marketName": "taobao"
  				}
  			}],
  			"fee": {
@@ -88,13 +86,13 @@ Response:
  			"signatures": [{
  				"pub_key": {
  					"type": "tendermint/PubKeySecp256k1",
- 					"value": "A8wLxTD30uOdHNvAal9ZFdUzhBY5rOjr7LG9r1GkEtzX"
+ 					"value": "AuIkUOBCfH//rPNoT+pDZ5YtULrKwX2a0P39GDEqJzkC"
  				},
- 				"signature": "4wOufWgJf9DrpYmMUZEIiM+al/00KepxQXqBJue53IEGVnaFQvFud51UfVB6h4fhwurJP2c4pwj1PxT88I60yA=="
+ 				"signature": "ovbLmpngEy6MncOkBrvVPzpxI6kglFF5aw8H+AOgHvpYIW9JCQQMNGS4MZVnwQGbArdG4jYIkekDv4SrTYBvqQ=="
  			}],
  			"memo": ""
  		}
  	},
- 	"timestamp": "2019-10-29T06:48:41Z"
+ 	"timestamp": "2020-05-14T09:52:51Z"
  }
 ```

@@ -5,7 +5,7 @@
 
 
 下载地址 ：  
-
+[https://github.com/LambdaIM/launch/releases/tag/Wallet0.5.52](https://github.com/LambdaIM/launch/releases/tag/Wallet0.5.52)  
 [http://download.lambdastorage.com/wallet/0.5.52/](http://download.lambdastorage.com/wallet/0.5.52/)
 
 
