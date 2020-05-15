@@ -1,6 +1,7 @@
-# 配置环境
+# 应用开发指导
+## 配置环境
 
-## 配置客户端
+### 配置客户端
 
 ```   plain
 wget http://download.lambdastorage.com/lambda/0.4.9/lambda-0.4.9-testnet.tar.gz
@@ -10,14 +11,14 @@ tar zxvf lambda-0.4.9-testnet.tar.gz && cd lambda-0.4.9-testnet
 ./lambdacli config chain-id lambda-chain-test4.9
 ./lambdacli config trust-node true
 ```
-*测试网可选节点：
+* 测试网可选节点：
 ```   plain
 ./lambdacli config node tcp://47.93.196.236:26657
 ./lambdacli config node tcp://47.94.129.97:26657
 ./lambdacli config node tcp://39.105.148.217:26657
 ./lambdacli config node tcp://182.92.66.63:26657
 ```
-## 创建用户并保存助记词
+### 创建用户并保存助记词
 
 *助记词是用来恢复帐户信息的需谨慎保存
 
@@ -32,7 +33,7 @@ NAME:	TYPE:	ADDRESS:					PUBKEY:
 user1	local	lambda1jdev3l38xwxxfq5fdpx6cva2agfxrkugrflur6	lambdapub1addwnpepqdjpeayr7xf7cn74n3t7hcnt6567qlwune7g5uf008qsak4yd60qczc9ulg
 **Important** write this mnemonic phrase in a safe place.
 It is the only way to recover your account if you ever forget your password.
-#保存助记词
+##保存助记词
 year bag cupboard tiny whip street want lake rabbit gesture father obvious index xx xxxx scrap convince xxx elegant hood rent luggage forward trade
 ```
 1. 获得lamb测试币
@@ -55,13 +56,13 @@ Account:
   AccountNumber: 486
   Sequence:      0
 ```
-*lambda 区块链中的最小单位为u, 1lamb = 1000000ulamb
+* lambda 区块链中的最小单位为u, 1lamb = 1000000ulamb
 
-# 发行资产(可选)
+## 发行资产(可选)
 
 创建一个pig币用作存储的支付, 资产最小单位也是u，创建资产需要抵押1000000lamb币。
 
-## 创建资产
+### 创建资产
 
 ```   plain
 ./lambdacli tx asset create 100000000000000upig 1000000000000ulamb --asset-name "pig Coin" --mintable --from lambda1jdev3l38xwxxfq5fdpx6cva2agfxrkugrflur6  --broadcast-mode block
@@ -86,7 +87,7 @@ Response:
     - amount = 100000000000000
     - mintable = true
 ```
-## 查看资产
+### 查看资产
 
 ```   plain
 ./lambdacli query account 
@@ -101,7 +102,7 @@ Account:
   AccountNumber: 485
   Sequence:      1
 ```
-## 转帐
+### 转帐
 
 ```   plain
 ./lambdacli tx send  lambda1lxsnz2udquwhs7vm622m3rm552ghssvhqrefp8 100000000upig --from user1
@@ -114,7 +115,7 @@ Password to sign with 'master':
 Response:
   TxHash: 680CC553CD23CC6951865C97635691F1FA1D35A669E5A12BF83DFF025C5D2F0E
 ```
-## 查询交易
+### 查询交易
 
 ```   plain
 ./lambdacli query tx 680CC553CD23CC6951865C97635691F1FA1D35A669E5A12BF83DFF025C5D2F0E -o json
@@ -193,7 +194,7 @@ Response:
   "timestamp": "2020-05-12T05:29:32Z"
 }
 ```
-## 资产API
+### 资产API
 
 测试网节点列表：
 
@@ -203,7 +204,7 @@ Response:
 39.105.148.217:13659
 182.92.66.63:13659
 ```
-### 查询资产
+#### 查询资产
 
 /auth/accounts/{address}
 
@@ -232,7 +233,7 @@ http://47.93.196.236:13659/auth/accounts/lambda1v664znyhztfx3m0v0uua497r5cptg3rd
     }
 }
 ```
-### 查询交易
+#### 查询交易
 
 txs/{txhash}
 
@@ -316,9 +317,9 @@ http://47.93.196.236:13659/txs/680CC553CD23CC6951865C97635691F1FA1D35A669E5A12BF
 }
 ```
 
-### 转帐
+#### 转帐
 
-#### 获取chain-id
+##### 获取chain-id
 
 ```   plain
 /node_info
@@ -347,7 +348,7 @@ http://47.93.196.236:13659/node_info
   }
 }
 ```
-#### 获得用户sequence
+##### 获得用户sequence
 
 ```   plain
 /auth/accounts/{address}
@@ -381,7 +382,7 @@ http://47.93.196.236:13659/auth/accounts/lambda16cheh6j34ncyunwgfkq2940cs8222jka
   }
 }
 ```
-#### 获取交易手续费(gas)
+##### 获取交易手续费(gas)
 
 接口
 
@@ -418,7 +419,7 @@ http://47.93.196.236:13659/bank/accounts/lambda1jdev3l38xwxxfq5fdpx6cva2agfxrkug
 ```   plain
   {"gas_estimate":"28077"}
 ```
-#### 对交易数据签名
+##### 对交易数据签名
 
 ```   json
 {
@@ -446,7 +447,7 @@ http://47.93.196.236:13659/bank/accounts/lambda1jdev3l38xwxxfq5fdpx6cva2agfxrkug
     "sequence": "7"  //通过获取用户信息接口获取
 }
 ```
-#### 发送交易
+##### 发送交易
 
 接口
 
@@ -497,17 +498,17 @@ http://47.93.196.236:13659/txs
     "mode": "block"    发送交易的方式async 为异步，block 为同步
 }
 ```
-## 全部区块链API
+### 全部区块链API
 
 [http://docs.lambda.im/api-reference/paths/](http://docs.lambda.im/api-reference/paths/)
 
-# 存储矿工接入(自建存储空间卖方)
+## 存储矿工接入(自建存储空间卖方)
 
 [http://docs.lambda.im/Testnet-Miner-Guide/](http://docs.lambda.im/Testnet-Miner-Guide/)
 
-# 购买空间
+## 购买空间
 
-## 查询矿工出售的空间
+### 查询矿工出售的空间
 
 ```   plain
 ./lambdacli query market miner-sellorders  lambda1r3my74gqyt8zfgqu358nv86nqncxu34cs0ek44 1 100
@@ -532,7 +533,7 @@ C516EF2E4778E6078D87949E582C245B4D2CBBF5   5LAMB    1.00     1024     
 | MAX_BT   | Maximum purchase time   | 
 | ADDR   | Miner Address   | 
 
-## 购买空间
+### 购买空间
 
 从矿工出售空间订单中购买5G空间时间为1个月：
 
@@ -558,7 +559,7 @@ Response:
     - buyOrder = 0a283630453030334537343134444545463941374335463839393937393830434537363636454632323012149372c8fe27338c648289684dac33aaea1261db881a013520808088ba90adcd042a110a05756c616d62120834303030303030303228373631453839423543413744323938384437324633463246433541433443444431304444444343313a283432304346414645413538424545413439313843433834454233393933383141463745343445453642145de544b0ed7b6178f73dfdc26d976c41a49b9fd04a0c08a197e9f50510e2d1d8f202
     - matchOrder = 0a28343230434641464541353842454541343931384343383445423339393338314146374534344545361214d6ec7497354fa3d5640f9d15ce1bc1b031fc73301a149372c8fe27338c648289684dac33aaea1261db882228373631453839423543413744323938384437324633463246433541433443444431304444444343312a28363045303033453734313444454546394137433546383939393739383043453736363645463232303207383030303030303a0135420c08a197e9f50510e2d1d8f2024a0c08a1b187f70510e2d1d8f2025080c0e285e3685a0c08a197e9f50510e2d1d8f2026a145de544b0ed7b6178f73dfdc26d976c41a49b9fd072110a05756c616d62120834303030303030307a110a05756c616d6212083430303030303030
 ```
-## 查询订单
+### 查询订单
 
 ```   plain
 ./lambdacli query market  matchorders lambda1jdev3l38xwxxfq5fdpx6cva2agfxrkugrflur6 1 100
@@ -584,9 +585,9 @@ MatchOrder
   PeerId:
   DhtId:                 5CS8tUKpcjkEtB3VbJgCwoEL3G4W39G4yC2LYF15ft3q
 ```
-# 存储业务
+## 存储业务
 
-## 配置lambda s3 gateway
+### 配置lambda s3 gateway
 
 初始化：
 
@@ -607,7 +608,7 @@ address = "127.0.0.1:9002"
 access_key = "accesskey"
 secret_key = "secretkey"
 ```
-## 运行lambda s3 gateway
+### 运行lambda s3 gateway
 
 ```   plain
 ./storagecli gateway run --account user1 --broker.extra_order_id 420CFAFEA58BEEA4918CC84EB399381AF7E44EE6 --debug --daemonize --log.file /tmp/gateway.log
@@ -616,7 +617,7 @@ secret_key = "secretkey"
 
 --broker.extra_order_id 为用户的空间订单的ID
 
-## 使用aws cli接入lambda s3
+### 使用aws cli接入lambda s3
 
 安装[awscli](https://docs.aws.amazon.com/cli/latest/userguide/installing.html).
 
@@ -634,28 +635,28 @@ Default output format [None]:
 ```   shell
 aws configure set default.s3.multipart_threshold 512MB
 ```
-#### 创建bucket
+##### 创建bucket
 
 ```   shell
 aws s3 --endpoint=http://localhost:9002/ mb s3://awstest
 ```
-#### 上传文件
+##### 上传文件
 
 ```   plain
 aws s3 --endpoint=http://localhost:9002/ cp /path/to/your/file s3://awstest
 ```
-#### 列出bucket内容
+##### 列出bucket内容
 
 ```   plain
 aws s3 --endpoint=http://localhost:9002/ ls s3://awstest
 ```
-#### 下载文件
+##### 下载文件
 
 ```   plain
 aws s3 --endpoint=http://localhost:9002/ cp s3://awstest/your-file /tmp/new-file
 ```
-## 
-## 使用python sdk 接入lambda s3
+
+### 使用python sdk 接入lambda s3
 
 安装boto3
 
