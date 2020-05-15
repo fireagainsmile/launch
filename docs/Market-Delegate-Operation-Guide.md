@@ -18,19 +18,26 @@
     --fee-rate [fee-rate] \
     --commission-rate [commission-rate] --from [account]
 ```
-- `[market-name]` 为创建的市场名称，长度3到16位，只能以小写英文字母开头，只能包含小写英文字母和数字。市场名称不能重复。
-- `[profit_addr]` 为市场受益人地址，提取市场收益后，市场创建人获得的总市场收益会发放到该地址。
-- `[fee-rate]`  为挂单手续费率。
-- `[commission-rate]`  为成单手续费率和续期手续费率。
+- `[market-name]` 为创建的市场名称，长度3到16位，只能以小写英文字母开头，只能包含小写英文字母和数字。市场名称不能重复。  
+- `[profit_addr]` 为市场受益人地址，提取市场收益后，市场创建人获得的总市场收益会发放到该地址。  
+- `[fee-rate]`  为挂单手续费率。  
+- `[commission-rate]`  为成单手续费率和续期手续费率。  
 
 例如：
 ```
 市场设置挂单手续费率=0.02，成单/续期手续费率=0.02  
 矿工挂一个单价为5LAMB的200GB卖单，需要支付20LAMB（=5LAMB/GB * 200GB * 0.02）的挂单手续费。
 用户购买一个单价为5LAMB的200GB卖单2个月，需要支付40LAMB（=5LAMB/GB/Month * 200GB * 2Month * 0.02）的成单手续费。
-用户再续期这个成单1个月，需要支付20LAMB（=5LAMB/GB/Month * 200GB * 1Month * 0.02）的续期手续费。
+用户再续期上面这个成单1个月，需要支付20LAMB（=5LAMB/GB/Month * 200GB * 1Month * 0.02）的续期手续费。
 
 以上可得出市场总计获得收益80LAMB。
+用户A创建了该市场且质押了100wLAMB（即创建加质押总计200wLAMB），用户B质押了200wLAMB，用户C质押了100wLAMB。
+则该市场总计质押了500wLAMB。
+
+则市场收益分配：
+用户A：36.8LAMB = 80LAMB * 10% + 80LAMB * 90% * (200w/500w) 
+用户B：28.8LAMB = 80LAMB * 90% * (200w/500w) 
+用户C：14.4LAMB = 80LAMB * 90% * (100w/500w) 
 ```
 
 [创建市场命令](lambdacli/tx/market/create-market.md)
