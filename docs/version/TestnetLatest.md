@@ -3,7 +3,7 @@
 ## lambda testnet v0.4.9-rc1
 
 包名: lambda-0.4.9-testnet.tar.gz  
-MD5: 4cf1a23320af628ef1b1158cb3118e7e
+MD5: 4aa83e2848671821c00348f2a2ac3dd5
   
 1. 新增创建市场和市场质押功能；  
 2. 优化挑战存储数据；
@@ -19,7 +19,7 @@ MD5: 4cf1a23320af628ef1b1158cb3118e7e
 
 ## lambda storage v0.2.6
 包名：lambda-storage-0.2.6-testnet.tar.gz
-MD5:13017e657291cad164eb7f42e071abe5
+MD5:d2ff9ccf52f1fcd880fdfa71233db313
 
 1. 新增声明重试机制；
 2. 新增订单刷新功能；
