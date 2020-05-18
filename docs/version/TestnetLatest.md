@@ -1,4 +1,4 @@
-# 测试网lambda testnet v0.4.9-rc1
+# 测试网lambda v0.4.9-rc1 - lambda storage v0.2.6
 
 ## lambda testnet v0.4.9-rc1
 
