@@ -16,19 +16,8 @@
 初始化`storagenode`后，默认生成配置文件`~/.lambda_storage/config/config.toml`
 
 !!! abstract ""
-    以下`使用旧配置文件覆盖（老用户）`和`修改配置文件（新用户）`只需选一个执行  
-    === "使用旧配置文件覆盖（老用户）" 
-        ```
-        \cp -rf ~/lambda_bak/storagenode/config.toml ~/.lambda_storage/config/config.toml
-        ```
-        ```
-        vi ~/.lambda_storage/config/config.toml
-        ```
-        将`version`改为如下版本：
-        ```
-        version = "0.2.6"
-        ```
-    === "修改配置文件（新用户）"  
+    
+    === "修改配置文件"  
         ```
         vi ~/.lambda_storage/config/config.toml
         ```

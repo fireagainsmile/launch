@@ -4,31 +4,6 @@
 
 本次发布清除了测试网所有历史数据，测试币需要重新申领，矿工接入需要按以下流程完整执行。   
 
-## 旧版配置文件备份(老用户执行)
-以文件备份到`~/lambda_bak`目录为例  
-### 1.创建目录
-```
-mkdir -p ~/lambda_bak/{minernode,storagenode,storagecli}
-```
-
-### 2.minernode配置文件备份
-minernode文件备份到`~/lambda_bak/minernode/`下
-```
-cp ~/.lambda_miner/config/config.toml ~/lambda_bak/minernode/
-```
-
-### 3.storagenode配置文件备份
-storagenode文件备份到`~/lambda_bak/storagenode/`下
-```
-cp ~/.lambda_storage/config/config.toml ~/lambda_bak/storagenode/
-```
-
-### 4.storagecli配置文件备份
-storagecli文件备份到`~/lambda_bak/storagecli/`下
-```
-cp ~/.lambda_storagecli/config/user.toml ~/lambda_bak/storagecli/
-```
-
 ## 清除旧版数据(老用户执行)
 ``` 
 rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
@@ -200,20 +175,8 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
     2. 修改配置文件
     
     !!! abstract ""
-        以下`使用旧配置文件覆盖（老用户）`和`修改配置文件（新用户）`只需选一个执行  
         
-        === "使用旧配置文件覆盖（老用户）" 
-            ```
-            \cp -rf ~/lambda_bak/minernode/config.toml ~/.lambda_miner/config/config.toml
-            ```
-            ```
-            vi ~/.lambda_miner/config/config.toml
-            ```
-            将`version`改为如下版本：
-            ```
-            version = "0.2.6"
-            ```
-        === "修改配置文件（新用户）"
+        === "修改配置文件"
             ```
             vi ~/.lambda_miner/config/config.toml
             ```
@@ -636,13 +599,8 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
     初始化`storagecli` 后会默认生成配置文件`~/.lambda_storagecli/config/user.toml`
 
     !!! abstract ""
-        以下`使用旧配置文件覆盖（老用户）`和`修改配置文件（新用户）`只需选一个执行  
         
-        === "使用旧配置文件覆盖（老用户）" 
-            ```
-            \cp -rf ~/lambda_bak/storagecli/user.toml ~/.lambda_storagecli/config/user.toml
-            ```
-        === "修改配置文件（新用户）"  
+        === "修改配置文件"  
             参考如下说明手动修改配置文件  
             ```
             vi ~/.lambda_storagecli/config/user.toml
