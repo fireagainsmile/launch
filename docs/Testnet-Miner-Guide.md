@@ -581,7 +581,7 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
     ```  
 
 #### 3.3 存储更新订单数据               
-   订单续期后，重新执行`storagecli token sync [account]`后存储可获取订单最新日期，通过`storagecli order list [account]` 可查看订单到期时间
+   订单续期后，需要重新执行`storagecli token sync [account]`使存储获取订单最新日期，通过`storagecli order list [account]` 可查看订单到期时间
     
 !!! example "" 
         
