@@ -127,7 +127,7 @@ data_dir = [ "磁盘1", "磁盘2", "磁盘N"]
 订单续期命令：  
 ./lambdacli tx market order-renewal [orderId] [duration] --from [account]
 ``` 
-操作文档参考：[匹配订单续期](http://docs.lambda.im/Testnet-Miner-Guide/#_21)    
+操作文档参考：[匹配订单续期](http://docs.lambda.im/Testnet-Miner-Guide/#3_1)    
 
 3.检查minernode与storagenode网络是否正常  
 ``` 
