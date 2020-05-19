@@ -354,7 +354,7 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
 ## 二、买卖单创建
 ### 1. 创建卖单
 
-* 只能有优质卖单（赔付比率`rate`为 1），可设置大于等于指定市场的最低价格（lambdamarket市场最低价格为`5000000ulamb`）；
+* 只能有赔付比率`rate`为 1的卖单，可设置大于等于指定市场的最低价格（lambdamarket市场最低价格为`5000000ulamb`）；
 * 设置需要卖出的空间大小`size`；   
 * 最小购买空间`min-size`不能小于1GB;  
 * 最小购买时长`min-buy-duration`不能小于`1month`;  
@@ -401,7 +401,7 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
         返回结果：
         ```shell hl_lines="2"
         SellOrder
-          OrderId:            54F82FBD979BE150C8B3246D82DDF60F043129EE #卖单ID，取消卖单或创建优质买单时需要用到此ID
+          OrderId:            54F82FBD979BE150C8B3246D82DDF60F043129EE #卖单ID，取消卖单或创建买单时需要用到此ID
           Address:            lambdamineroper1k6rxrmly7hz0ewh7gth2dj48mv3xs9yznx96fn
           Price:              5000000
           Rate:               1.000000000000000000 
@@ -433,7 +433,7 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
 - `[duration]` 为购买时长；
 - `[market-name]` 为市场名称，lambda社区市场为`lambdamarket`，也可指定其他用户创建的market
 - `[size]` 为需要购买的空间，不小于对应卖单指定的最小购买空间。
-- `[orderId]` 创建优质买单需要才需要指定该参数，可指定1个或多个优质卖单ID，指定多个卖单ID时以逗号分隔，例如：`58941CFFEEA859AED51172F0F9DF3E77293D2E12,54F82FBD979BE150C8B3246D82DDF60F043129EE`
+- `[orderId]` 必须要指定该参数，可指定1个或多个卖单ID，指定多个卖单ID时以逗号分隔，例如：`58941CFFEEA859AED51172F0F9DF3E77293D2E12,54F82FBD979BE150C8B3246D82DDF60F043129EE`
 
 #### 2.1 创建买单
 
