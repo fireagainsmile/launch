@@ -530,8 +530,10 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
 ### 3. 匹配订单续期 
 1. 匹配订单未到期的，购买了空间的账户可使用`lambdacli tx market order-renewal`命令续期。  
 2. 匹配订单已过期的，不能再进行续期；  
-3. 同一匹配订单可多次续期；  
-4. 续期后的匹配订单总时长（即结束时间减开始时间），不能超过60个月（1个月=30天）。
+3. 同一匹配订单可多次续期；   
+4. 续期后的匹配订单总时长（即结束时间减开始时间），不能超过60个月（1个月=30天)；  
+5. 订单续期后，需要执行`minernode order refresh`使矿工获取匹配订单最新结束日期；  
+6. 订单续期后，需要重新执行`storagecli token sync [account]`使存储获取订单最新日期   
 
 续期成功后，可进入浏览器[http://testbrowser.lambda.im/#/](http://testbrowser.lambda.im/#/)搜索匹配订单ID，查看`匹配订单详情页`中结束时间是否延期了对应时长。  
 或使用上面查询匹配订单命令`lambdacli query market matchorders`查看返回结果中的匹配订单结束时间（即`EndTime`）是否延期了对应时长。
