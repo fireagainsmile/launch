@@ -563,7 +563,19 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
             - address = lambda1jlh7644ghjjt72quxhraxt7aegj79pdr7unczs
          
         ```
-      
+        
+    订单续期后，需要执行`minernode order refresh`使矿工获取匹配订单最新结束日期
+    
+    !!! 示例
+        
+        ```
+        ./minernode order refresh
+        ```
+        返回结果：
+        ```
+        Below orders have been refreshed:  1
+        7A15D9D8D35B2E4BE8DAFA4DCE0F4E2B04A2F126
+        ```  
                
     订单续期后，重新`storagecli token sync`后存储获取订单最新日期，通过`storagecli order list` 可查看订单到期时间
     
