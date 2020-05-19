@@ -536,7 +536,7 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
 续期成功后，可进入浏览器[http://testbrowser.lambda.im/#/](http://testbrowser.lambda.im/#/)搜索匹配订单ID，查看`匹配订单详情页`中结束时间是否延期了对应时长。  
 或使用上面查询匹配订单命令`lambdacli query market matchorders`查看返回结果中的匹配订单结束时间（即`EndTime`）是否延期了对应时长。
 
-1. 订单续期
+#### 3.1 订单续期
 
 !!! example "" 
     ```
@@ -566,7 +566,7 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
          
         ```
 
-2. 矿工更新订单数据        
+#### 3.2 矿工更新订单数据        
    订单续期后，需要执行`minernode order refresh`使矿工获取匹配订单最新结束日期
     
 !!! example "" 
@@ -580,8 +580,8 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
     7A15D9D8D35B2E4BE8DAFA4DCE0F4E2B04A2F126
     ```  
 
-3. 存储更新订单数据               
-   订单续期后，重新执行`storagecli token sync`后存储获取订单最新日期，通过`storagecli order list` 可查看订单到期时间
+#### 3.3 存储更新订单数据               
+   订单续期后，重新执行`storagecli token sync`后存储可获取订单最新日期，通过`storagecli order list` 可查看订单到期时间
     
 !!! example "" 
         
