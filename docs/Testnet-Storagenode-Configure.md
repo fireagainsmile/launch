@@ -1,10 +1,6 @@
 # storagenode0.2.6 配置 
-* [storagenode初始化](#storagenode初始化)
-* [修改配置文件](#修改配置文件)
-* [启动storagenode](#启动storagenode)
 
-
-### storagenode初始化
+### 1. storagenode初始化
 
 如果存储节点已初始化，请忽略此步骤
 
@@ -12,7 +8,7 @@
 ./storagenode init 
 ```
 
-### 修改配置文件
+### 2. 修改配置文件
 初始化`storagenode`后，默认生成配置文件`~/.lambda_storage/config/config.toml`
 
 !!! abstract ""
@@ -62,7 +58,7 @@
         
         ```
 
-### 启动storagenode
+### 3. 启动storagenode
 
 启动storagenode
 ```
@@ -76,13 +72,13 @@
 可添加--log.level debug参数，日志开启debug可查看更详细日志输出，不添加此参数则默认输出INFO级别日志 
 ```
 
-例如预计使用1500GB空间挖矿，日志输出到`/tmp/storagenode.log`，命令如下：
+例如预计使用2TB空间挖矿，日志输出到`/tmp/storagenode.log`，命令如下：
 ``` 
-./storagenode run --daemonize --daemonize --log.file /tmp/storagenode.log --storage.space_to_setup 1500
+./storagenode run --daemonize --daemonize --log.file /tmp/storagenode.log --storage.space_to_setup 2048
 ```
 
 
-#### 查询声明状态
+#### 3.1 查询声明状态
 使用`storagenode mining status`查询当前声明数量及提交状态，加上`--with-resolved`参数查询结果包含已提交成功的声明。
 ``` 
 ./storagenode mining status --with-resolved
@@ -109,7 +105,7 @@ Resolved setups  # 提交成功的声明
 0001 |b3aef44e-2a99-4fb7-b313-ad2b5b0f473d |2020-05-24 04:30:47 UTC |        |2020-06-13 04:12:37 UTC |0
 ```
 
-### 查看storagenode进程
+#### 3.2 查看storagenode进程
 ```
 ./storagenode run --status
 ```
