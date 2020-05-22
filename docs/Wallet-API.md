@@ -1464,7 +1464,7 @@ version：'1'
 
 
 
-![图片](img/walletapi8.png)
+![图片](img/market1.png)
 
 ### 3 获取市场的优质卖单
 `/market/sellorders/${marketName}/${orderType}/${statusType}/${page}/${limit}`
@@ -1576,77 +1576,8 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
   ]
 }
 ```
-### 6 购买空间 （自动匹配）
-发送交易数据的接口同交易接口
 
-获取gas的接口同交易接口
-
-自动购买空间是在普通卖单的池子里面进行匹配，填写空间大小和时长
-
-![图片](img/walletapi9.png)
-
-签名前的数据结构
-
-```
-{
-	"account_number": "535",
-	"chain_id": "lambda-chain-test4.0",
-	"fee": {
-		"amount": [{
-			"amount": "395465",
-			"denom": "ulamb"
-		}],
-		"gas": "158186"
-	},
-	"memo": "",
-	"msgs": [{
-		"type": "lambda/MsgCreateBuyOrder",
-		"value": {
-			"address": "lambda1k6rxrmly7hz0ewh7gth2dj48mv3xs9yz8ffauw",   购买人的地址
-			"duration": "2592000000000000",  购买时长
-			"marketName": "lambdamarket",  市场名称
-			"sellOrderId": "[do-not-input-value]", 自动购买时候就填这个值
-			"size": "1" 购买的大小 
-		}
-	}],
-	"sequence": "56080"
-}
-```
-发送的数据结构
-
-```
-{
-	"tx": {
-		"msg": [{
-			"type": "lambda/MsgCreateBuyOrder",
-			"value": {
-				"address": "lambda1k6rxrmly7hz0ewh7gth2dj48mv3xs9yz8ffauw",
-				"duration": "2592000000000000",
-				"marketName": "lambdamarket",
-				"sellOrderId": "[do-not-input-value]",
-				"size": "1"
-			}
-		}],
-		"fee": {
-			"amount": [{
-				"amount": "395465",
-				"denom": "ulamb"
-			}],
-			"gas": "158186"
-		},
-		"signatures": [{
-			"signature": "BJXJOe7YJiHCcnEKBwzRRqb6xrByIHs+IA4gGwlTPWFttVg0+/5/HYT6lNuLxk/ZSXRQxX14yWsXCRiNRjeoZg==",
-			"pub_key": {
-				"type": "tendermint/PubKeySecp256k1",
-				"value": "AubWE19RlYW3sJZolichLXGu9FP8v00mV3f5/PQqYciO"
-			}
-		}],
-		"memo": ""
-	},
-	"mode": "block"
-}
-```
-### 7 购买优质空间（购买一个卖单中的空间）
+### 6 购买优质空间（购买一个卖单中的空间）
 ![图片](img/walletapi10.png)
 
 发送交易数据的接口同交易接口
@@ -1716,7 +1647,7 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 	"mode": "block"
 }
 ```
-### 8 出售空间列表
+### 7 出售空间列表
 接口
 
 ```
@@ -1828,7 +1759,7 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 
 赔率1为优质卖单，优质卖单可以设置价格，优质卖单只能用户选择订单然后购买                           
 
-![图片](img/walletapi13.png)
+![图片](img/market2.png)
 
 签名前的数据
 
