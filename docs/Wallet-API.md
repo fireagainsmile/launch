@@ -1556,15 +1556,15 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 {
   "market_min_rate": "0.000000000000000000",
   "market_max_rate": "1.000000000000000000",
-  "market_min_price": "5000000",最低单价
-  "order_normal_price": "5000000",
-  "order_normal_rate": "1.000000000000000000", 普通订单的赔率
+  "market_min_price": "1000000",最低单价
+  "market_order_price": "5000000",
   "order_premium_rate": "3.000000000000000000",优质订单的赔率
   "order_cancel_time_duration": "3600000000000",
   "order_min_buy_size": "1", 最小购买空间
   "order_min_buy_duration": "2592000000000000", 最小购买时长
   "order_max_buy_duration": "155520000000000000",最大购买时长
   "order_with_draw_min_duration": "86400000000000",
+  "miner_with_draw_duration": "60000000000",
   "price_unit_set": [ 支持购买代币的类型
     "ulamb"
   ],
@@ -1573,7 +1573,20 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
   ],
   "duration_unit_set": [ 时长的单位
     "month"
-  ]
+  ],
+  "sell_order_buy_self": true,
+  "max_current_maintainer": "50",
+  "max_miner_maintain_time": "259200000000000",
+  "window_duration": "2592000000000000",
+  "miner_unjail_cost": "100000000ulamb", 解禁矿工需要花费100LAMB
+  "miner_unjail_rate": "0.050000000000000000",
+  "create_market_cost": "1000000000000", 创建市场需要花费100wLAMB
+  "original_market_names": [
+    "lambdamarket"
+  ],
+  "market_delegate_min_cost": "1000000000", 最少质押1000LAMB到市场
+  "modify_order_price_amount": "5000000000000",
+  "market_fixed_commission_rate": "0.100000000000000000"
 }
 ```
 
@@ -1755,7 +1768,7 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 }
 ```
 ### 3 出售空间
-赔率0.5 为普通卖单，普通卖单的价格是固定的，普通卖单只能自动购买时候匹配到在成交
+~~赔率0.5 为普通卖单，普通卖单的价格是固定的，普通卖单只能自动购买时候匹配到在成交~~(已去掉普通卖单类型)
 
 赔率1为优质卖单，优质卖单可以设置价格，优质卖单只能用户选择订单然后购买                           
 
