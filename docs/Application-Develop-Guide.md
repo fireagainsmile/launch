@@ -629,7 +629,7 @@ lambda storage目前提供了两个版本的 兼容部分s3接口的 gateway：
 部署方式：
 
 * 公网暴露应用的api
-* 内网 与 lambgw 通信
+* 内网 与 lambgw 通信，只用一份accesskey(配置文件配置)
 * 用户只调用应用api
 
 
@@ -651,7 +651,7 @@ lambda storage目前提供了两个版本的 兼容部分s3接口的 gateway：
 
 * 公网 暴露 应用 api
 * 公网 暴露 lambgw
-* 用户需要调用 两套 api
+* 用户需要调用 两套 api， 每个应用的用户使用自己的的accesskey
 
 
 
@@ -685,11 +685,17 @@ secret_key = "secretkey"
 
 
 
-#### 查看gateway 的api调用日志
+#### 查看lambgw 的api调用日志
 
 因为使用minio提供s3 api，受限于minio目前的日志查看方式，查看api调用日志可以使用：
 
 `./storagecli lambgw admin trace --verbose`
+
+
+
+#### lambgw运行中刷新订单
+
+使用root accesskey（也就是配置文件中配置的accesskey）调用 `ListBucket`就会触发更新订单的操作，类似之前的`token sync`
 
 
 
