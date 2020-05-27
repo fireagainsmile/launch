@@ -524,14 +524,14 @@ ID                                         PRICE    RATE�
 C516EF2E4778E6078D87949E582C245B4D2CBBF5   5LAMB    1.00     1024     0        1        2020-03-11,08:46:12  1        90DAYS   360DAYS  lambdamineroper1r3my74gqyt8zfgqu358nv86nqncxu34cyq43qg
 ```
 卖单列描述：
-| Field   | Description   | 
+| Field   | Description   |
 |:----|:----|
-| NODE   | show node status with Online or Offline   | 
-| ID   | sell order id   | 
-| MIN_BS   | Minimum purchase space   | 
-| MIN_BT   | Minimum purchase time   | 
-| MAX_BT   | Maximum purchase time   | 
-| ADDR   | Miner Address   | 
+| NODE   | show node status with Online or Offline   |
+| ID   | sell order id   |
+| MIN_BS   | Minimum purchase space   |
+| MIN_BT   | Minimum purchase time   |
+| MAX_BT   | Maximum purchase time   |
+| ADDR   | Miner Address   |
 
 ### 购买空间
 
@@ -587,7 +587,75 @@ MatchOrder
 ```
 ## 存储业务
 
-### 配置lambda s3 gateway
+lambda storage目前提供了两个版本的 兼容部分s3接口的 gateway：
+
+* s3gateway  针对于单个订单的gateway，主要是方便用户迁移数据
+* lambgw       针对多个订单的gateway，适用于有更多业务需要的应用开发者
+
+
+
+本文档仅对lambgw进行说明。
+
+### 使用lambgw开发应用须知
+
+目前lambgw支持：
+
+* lambda存储网络的多订单(体现为多个bucket)
+* 常驻服务
+* 接口更新订单信息
+* 身份管理
+
+
+
+不支持：
+
+* S3  multipart api, 可以通过客户端参数调整multipart_threshold来避免使用
+
+
+
+#### 使用方式 1（推荐）
+
+开发者使用自己的文件上传下载api 中转文件到 lambgw。
+
+开发者需要：
+
+* 使用自己的文件上传下载api接收文件，然后中转到lambgw
+* 管理文件映射
+* 控制应用订单相关的业务
+* 管理应用的用户
+
+
+
+部署方式：
+
+* 公网暴露应用的api
+* 内网 与 lambgw 通信
+* 用户只调用应用api
+
+
+
+#### 使用方式 2（待确定）
+
+开发者只开发订单、用户相关的业务， 但是直接使用s3api通过lambgw来传输文件。
+
+这种情况下：
+
+* lambgw支持可以分配带权限的accesskey
+* 开发者需要将自己的用户绑定对应的lambgw accesskey(购买订单时需要更新权限)
+* 开发者控制用户存储使用量(因为没有数据中转，这部分控制只能做到应用的客户端)
+* 开发者控制订单映射(我们认为 订单映射 是应用的业务数据，lambgw应该只负责验证权限和存储)
+
+
+
+部署方式：
+
+* 公网 暴露 应用 api
+* 公网 暴露 lambgw
+* 用户需要调用 两套 api
+
+
+
+### 配置lambgw
 
 初始化：
 
@@ -608,16 +676,24 @@ address = "127.0.0.1:9002"
 access_key = "accesskey"
 secret_key = "secretkey"
 ```
-### 运行lambda s3 gateway
+### 运行lambgw
 
-```   plain
-./storagecli gateway run --account user1 --broker.extra_order_id 420CFAFEA58BEEA4918CC84EB399381AF7E44EE6 --debug --daemonize --log.file /tmp/gateway.log
+```   shell
+./storagecli lambgw run --account user1 --daemonize --log.file /tmp/gateway.log
 ```
 --account 为购买空间的用户
 
---broker.extra_order_id 为用户的空间订单的ID
 
-### 使用aws cli接入lambda s3
+
+#### 查看gateway 的api调用日志
+
+因为使用minio提供s3 api，受限于minio目前的日志查看方式，查看api调用日志可以使用：
+
+`./storagecli lambgw admin trace --verbose`
+
+
+
+### aws cli示例
 
 安装[awscli](https://docs.aws.amazon.com/cli/latest/userguide/installing.html).
 
@@ -635,59 +711,21 @@ Default output format [None]:
 ```   shell
 aws configure set default.s3.multipart_threshold 512MB
 ```
-##### 创建bucket
 
-```   shell
-aws s3 --endpoint=http://localhost:9002/ mb s3://awstest
-```
+
+
 ##### 上传文件
 
 ```   plain
-aws s3 --endpoint=http://localhost:9002/ cp /path/to/your/file s3://awstest
+aws s3 --endpoint=http://localhost:9002/ cp /path/to/your/file s3://ORDERID
 ```
 ##### 列出bucket内容
 
 ```   plain
-aws s3 --endpoint=http://localhost:9002/ ls s3://awstest
+aws s3 --endpoint=http://localhost:9002/ ls s3://ORDERID
 ```
 ##### 下载文件
 
 ```   plain
-aws s3 --endpoint=http://localhost:9002/ cp s3://awstest/your-file /tmp/new-file
-```
-
-### 使用python sdk 接入lambda s3
-
-安装boto3
-
-```   plain
-pip install boto3
-```
-```   python
-#!/usr/bin/env python
-# coding: utf-8
-"""
-refer https://docs.min.io/docs/how-to-use-aws-sdk-for-python-with-minio-server.html
-"""
-import boto3
-from botocore.client import Config
-from boto3.s3.transfer import TransferConfig
-s3 = boto3.resource('s3',
-                    endpoint_url='http://localhost:9002',
-                    aws_access_key_id='accesskey',
-                    aws_secret_access_key='secretkey',
-                    config=Config(signature_version='s3v4'),
-                    region_name='')
-# create bucket
-s3.Bucket('awstest').create()
-# list bucket
-print("buckets:", [bucket.name for bucket in s3.buckets.all()])
-# upload file# https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3.html#multipart-transfers
-MB = 2 ** 20
-cfg = TransferConfig(multipart_threshold=512*MB)
-s3.Bucket('awstest').upload_file('/path/to/your/file','images/your-file', Config=cfg)
-# list file
-print("objects in bucket: awstest", [obj.key for obj in s3.Bucket('awstest2').objects.filter(Prefix='images/')])
-# download file
-s3.Bucket('awstest').download_file('images/your-file', '/tmp/newfile')
+aws s3 --endpoint=http://localhost:9002/ cp s3://ORDERID/your-file /tmp/new-file
 ```
