@@ -48,9 +48,9 @@ nohup ./lambda start --p2p.laddr tcp://0.0.0.0:26656 --rpc.laddr tcp://0.0.0.0:2
 ``` 
 wget http://download.lambdastorage.com/lambda/0.3.3/lambda_0.3.3_data.tar.gz
 ```
-解压`lambda_0.3.3_data.tar.gz`到`~/.lambda/`目录下（解压过程耗时较长，请耐心等待）
+解压`lambda_0.3.3_data.tar.gz`到`~/.lambda/data/`目录下（解压过程耗时较长，请耐心等待）
 ``` 
-tar -zxvf lambda_0.3.3_data.tar.gz -C ~/.lambda/
+tar -zxvf lambda_0.3.3_data.tar.gz -C ~/.lambda/data/
 ```
 启动节点
 ```

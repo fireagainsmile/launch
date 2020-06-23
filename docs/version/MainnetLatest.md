@@ -7,7 +7,7 @@ lambda chain v0.3.3
 MD5: 9583b0bf0f84f0707b4698ac93287ae1 
 
 区块链数据压缩包名: lambda_0.3.3_data.tar.gz  
-MD5: 94ab372eb67ca71689f36c71c21f247b  
+MD5: d379705c012208d2622968271b317429  
 
 1. 修改节点双签惩罚规则
 
