@@ -1,28 +1,29 @@
-# 钱包API接入文档说明
-参考钱包版本： [Wallet0.5.53](https://github.com/LambdaIM/launch/releases/tag/Wallet0.5.53)
+# Wallet API description
+Reference wallet version： [Wallet0.5.53](https://github.com/LambdaIM/launch/releases/tag/Wallet0.5.53)
 
-钱包账户信息文档： [钱包账户信息、签名、配置文件说明](Wallet-Hdkey.md) 
+Wallet account description： [Lambda wallet account info, signature, configuration description](Wallet-Hdkey-en.md) 
 
-主网的钱包服务地址： 39.107.247.86:13659
+The ip address of mainnet wallet server： 39.107.247.86:13659
 
-测试网的钱包服务地址： 47.93.196.236:13659
+The ip address of testnet wallet server： 47.93.196.236:13659
 
-业务发送说明：发送交易数据可以采用同步或异步方式，同步方式可以获取因为格式等造成的错误信息；异步为async，同步为 block
-所有交易类型最终发送数据 ，post方式发送到接口/txs 中
-
-#### 说明：在拼接签名用的数据时，msg.value 中字段的排序是按照 英文字母的顺序排序的
+How to send a transaction: The transaction data can be sent either synchronously or asynchronously, error messages caused by format or others are returned instantly. Use `async` to send transaction asynchronously and use `block` to send transaction synchronously.    
+Use `post` to send all the transaction types to api path /txs
 
 
+#### Note：fields in `msg.value` are sort in alphabetical order when packing the data to be signed
 
-## 一 首页模块
-![图片](img/walletapi1.png)
 
-### 1 lamb余额的数量
+
+## 1. Homepage
+![image](img/walletapi1.png)
+
+### 1 lamb balance
 ```
-  账户信息接口 /auth/accounts/${address}
+  account information interface /auth/accounts/${address}
 ```
-例如 [http://47.93.196.236:13659/auth/accounts/lambda1v664znyhztfx3m0v0uua497r5cptg3rd2ytnm8](http://47.93.196.236:13659/auth/accounts/lambda1v664znyhztfx3m0v0uua497r5cptg3rd2ytnm8)
-查找coins 中denom 为 ulamb  即可
+for example [http://47.93.196.236:13659/auth/accounts/lambda1v664znyhztfx3m0v0uua497r5cptg3rd2ytnm8](http://47.93.196.236:13659/auth/accounts/lambda1v664znyhztfx3m0v0uua497r5cptg3rd2ytnm8)
+Filter denom with value ulamb in coins
 
 ```
 {
@@ -43,11 +44,11 @@
 }
 ```
   
-### 2 质押tbb的数量
+### 2 The amount of staking tbb
 ```
-查询个人质押信息的接口 `/staking/delegators/${addr}/delegations`
+Interface for querying personal staking information `/staking/delegators/${addr}/delegations`
 ```
-例如 [http://47.93.196.236:13659/staking/delegators/lambda1thj5fv8d0dsh3aealhpxm9mvgxjfh87s224esr/delegations](http://47.93.196.236:13659/staking/delegators/lambda1thj5fv8d0dsh3aealhpxm9mvgxjfh87s224esr/delegations)
+for example [http://47.93.196.236:13659/staking/delegators/lambda1thj5fv8d0dsh3aealhpxm9mvgxjfh87s224esr/delegations](http://47.93.196.236:13659/staking/delegators/lambda1thj5fv8d0dsh3aealhpxm9mvgxjfh87s224esr/delegations)
 ```
 [
   {
@@ -57,24 +58,24 @@
   }
 ]
 ```
-这里需要注意shares 表示质押量占的份数，如果要换算为质押量TBB,需要进行计算
+Note that shares means the shares of staking amount, you should convert the unit to TBB when you need to calculate the shares.    
 ```
 shares*(tokens/delegator_shares)
-节点的信息中包含delegator_shares 和 tokens
+'delegator_shares' and 'tokens' are included in node information.
 ```
-通过节点列表接口可以获取到这两个值
-这里在计算的时候建议使用bignumber,
+Both values can be obtained through the node list interface.
+It is recommended to use bignumber data structure when calculating.     
 
 
 
-读取节点列表
+Get the node list
 
 ```
-/staking/validators?status=unbonding   //禁闭中
-/staking/validators?status=bonded      //质押中
-/staking/validators?status=unbonded     //未解禁
+/staking/validators?status=unbonding   //unbonding
+/staking/validators?status=bonded      //bonded
+/staking/validators?status=unbonded     //unbonded
 ```
-unbonding是反质押中，或被禁闭中    unbonded是反质押完成 或 被禁的节点过了21天还没解禁
+unbonding is in reverse staking,    unbonded is reverse pledge completed or  jailed node is not un-jailing after 21 days in jail.
 ```
 [
 {
@@ -103,15 +104,15 @@ unbonding是反质押中，或被禁闭中    unbonded是反质押完成 或 �
 ]
 ```
 
-### 3 质押tbb获得奖励的数量
+### 3 The rewards amount by staking TBB
 ```
-1 获取用户的质押列表接口
+1 Interface to get the user staking list 
   `/staking/delegators/${addr}/delegations`
-2 一个节点下质押获取的奖励的数量接口
+2 The interface to get the reward amount of staking to one node    
 `/distribution/delegators/${delegatorAddr}/rewards/${validatorAddr}`
   
 ```
-例如  [http://47.93.196.236:13659/distribution/delegators/lambda163q4m634nq8les4nuvdvz49tk6aeh926t0ccsc/rewards/lambdavaloper1prrcl9674j4aqrgrzmys5e28lkcxmntxuvjpcl](http://47.93.196.236:13659/distribution/delegators/lambda163q4m634nq8les4nuvdvz49tk6aeh926t0ccsc/rewards/lambdavaloper1prrcl9674j4aqrgrzmys5e28lkcxmntxuvjpcl)
+For example  [http://47.93.196.236:13659/distribution/delegators/lambda163q4m634nq8les4nuvdvz49tk6aeh926t0ccsc/rewards/lambdavaloper1prrcl9674j4aqrgrzmys5e28lkcxmntxuvjpcl](http://47.93.196.236:13659/distribution/delegators/lambda163q4m634nq8les4nuvdvz49tk6aeh926t0ccsc/rewards/lambdavaloper1prrcl9674j4aqrgrzmys5e28lkcxmntxuvjpcl)
 ```
 [
   {
@@ -120,63 +121,63 @@ unbonding是反质押中，或被禁闭中    unbonded是反质押完成 或 �
   }
 ]
 ```
-这里需要注意传入地址的格式
-${delegatorAddr}  为用户的lamb地址
+Note the input format of address 
+${delegatorAddr}  the user lambda address
 
-${validatorAddr} 为验证节点的操作地址 操作地址的前缀为 lambdavaloper
+${validatorAddr} validator operator address with `lambdavaloper` prefixed.
 
-地址之间转换 见[钱包账户信息、签名、配置文件说明](Wallet-Hdkey.md)
+conversion between address refer to [Wallet account, signature, configuration description](Wallet-Hdkey-en.md)
 
 
 
-### 4 节点收益的数量
-获取节点收益的接口
+### 4 Running a node rewards
+Interface to get the reward amount of running a node
 
 ```
 `/distribution/validators/${validatorAddr}`
 ```
-例如 [http://47.93.196.236:13659/distribution/validators/lambdavaloper1prrcl9674j4aqrgrzmys5e28lkcxmntxuvjpcl](http://47.93.196.236:13659/distribution/validators/lambdavaloper1prrcl9674j4aqrgrzmys5e28lkcxmntxuvjpcl)
-返回结果
+For example [http://47.93.196.236:13659/distribution/validators/lambdavaloper1prrcl9674j4aqrgrzmys5e28lkcxmntxuvjpcl](http://47.93.196.236:13659/distribution/validators/lambdavaloper1prrcl9674j4aqrgrzmys5e28lkcxmntxuvjpcl)
+the returned result
 
 ```
 {
 	"operator_address": "lambda1prrcl9674j4aqrgrzmys5e28lkcxmntx2gm2zt",
-	"self_bond_rewards": [{  //自己质押的收益
+	"self_bond_rewards": [{  //self bond rewards
 		"denom": "ulamb",
 		"amount": "1318824629026.957070122504282575"
 	}],
-	"val_commission": [{    //收取矿工的佣金
+	"val_commission": [{    //miner commission
 		"denom": "ulamb",
 		"amount": "827774754064.482428092893265856"
 	}]
 }
 ```
- 目前钱包里节点收益 的取值为val_commission 的属性
+Current wallet reward amount is get from `val_commission`    
 
-### 5 存储挖矿收益的数量
-获取存储挖矿的收益 接口
+### 5 Storage mining rewards
+Interface to get the storage mining rewards    
 
 ```
 `/distribution/miners/${MinerAddress}`
 ```
-这里的${MinerAddress} 为矿工操作格式的地址
-地址之间转换 见[钱包账户信息、签名、配置文件说明](Wallet-Hdkey.md)
+${MinerAddress} mining operator address
+conversion between address refer to [Wallet account, signature, configuration description](Wallet-Hdkey-en.md)
 
-![图片](img/walletapi2.png)
+![image](img/walletapi2.png)
 
-### 6 获取最新交易列表、交易详情
+### 6 Get the latest transaction list, transaction details
 ```
-/txs?sender=${addr}&page=1000000            获取最新发送的交易
-/txs?recipient=${addr}&page=1000000         获取最新接受的交易
+/txs?sender=${addr}&page=1000000            get the latest sent transaction
+/txs?recipient=${addr}&page=1000000         get the latest received transaction
 ```
-根据交易哈希获取交易详情
+Get transaction details by transaction id
 ```
 `/txs/${hash}`
 ```
 
 
-### 7 获取用户资产列表
-  1 获取用户有哪些资产
+### 7 Get user property list
+  1 list all the properties
 ```
 /auth/accounts/${address}
 ```
@@ -198,7 +199,7 @@ ${validatorAddr} 为验证节点的操作地址 操作地址的前缀为 lambdav
 	}
 }
 ```
-2 获取区块链上资产的列表
+2 list all the properties on the blockchain
 ```
  /asset/all
 ```
@@ -207,7 +208,7 @@ ${validatorAddr} 为验证节点的操作地址 操作地址的前缀为 lambdav
   {
     "address": "lambda1a83p8s9gs5hua09xn5ktmahepst3vzg92wkp4e",
     "asset": {
-      "denom": "ubtc",   //资产名称
+      "denom": "ubtc",   //property name
       "amount": "90000000000000000"
     },
     "Token": {
@@ -248,22 +249,22 @@ ${validatorAddr} 为验证节点的操作地址 操作地址的前缀为 lambdav
   }
 ]
 ```
-![图片](img/walletapi3.png)
+![image](img/walletapi3.png)
 
-### 8 发起交易lamb和获取gas
-   ① 模拟交易获取gas
+### 8 Transfer lambda and get the gas fee
+   ① get gas fee in transaction simulation
 
-      模拟接口获取gas
+      Interface for querying the gas
 
 ```
 /bank/accounts/${senderAddress}/transfers
-类型 post
-发送数据类型 json
+type post
+data format json
 ```
-钱包里面默认的gas的价格为 2.5e-6
-交易的费用为 gas*gas的价格
+wallet gas fee price is 2.5e-6 as default
+transaction fee equals gas * gas-price
 
-【转账交易的例子 post 的内容】
+【Example of sending a transaction】
 
 ```
 {
@@ -283,21 +284,21 @@ ${validatorAddr} 为验证节点的操作地址 操作地址的前缀为 lambdav
 	"to_address": "lambda16cheh6j34ncyunwgfkq2940cs8222jka0fsp4k"
 }
 ```
-返回结果 
+returns
 ```
   {"gas_estimate":"28077"}
 ```
 
 
-   ② 数据签名
+   ② data signature
 
-用于进行签名的数据结构
+data structure to be signed
 
 ```
 {
-	"account_number": "1",  //通过用户信息获取
-	"chain_id": "lambda-chain-test2.5", //链的版本号 通过最新的区块信息获取 
-	"fee": {//手续费
+	"account_number": "1",  //get from user info
+	"chain_id": "lambda-chain-test2.5", //Chain id returned via querying the latest block
+	"fee": {//transaction fee
 		"amount": [{
 			"amount": "101745",
 			"denom": "ulamb" 
@@ -306,26 +307,26 @@ ${validatorAddr} 为验证节点的操作地址 操作地址的前缀为 lambdav
 	},
 	"memo": "", //备注
 	"msgs": [{
-		"type": "cosmos-sdk/MsgSend", //交易类型
+		"type": "cosmos-sdk/MsgSend", //transaction type
 		"value": {
 			"amount": [{
-				"amount": "1000000",   //交易的数量
-				"denom": "ulamb"    //交易的代币类型
+				"amount": "1000000",   //transaction amount
+				"denom": "ulamb"    //coin type
 			}],
-			"from_address": "lambda1prrcl9674j4aqrgrzmys5e28lkcxmntx2gm2zt",  //发送地址
-			"to_address": "lambda1hynqrp2f80jqs86gu8nd5wwcnek2wwd3esszg0"   //接受地址
+			"from_address": "lambda1prrcl9674j4aqrgrzmys5e28lkcxmntx2gm2zt", 
+			"to_address": "lambda1hynqrp2f80jqs86gu8nd5wwcnek2wwd3esszg0"  
 		}
 	}],
-	"sequence": "125"  //通过获取用户信息接口获取
+	"sequence": "125"  //returned from user info interface 
 }
 ```
-每次发起交易前，均要通过账户信息接口获取最新的sequence
+Query account sequence via account info before sending a transaction     
 
-chain_id 可以通过 节点信息接口  `/node_info` 获取
+Query chain_id via api path `/node_info`
 
 
 
-   ③ 发送数据
+   ③ send data
 
 ```
 {
@@ -349,16 +350,16 @@ chain_id 可以通过 节点信息接口  `/node_info` 获取
 			"gas": "40698"
 		},
 		"signatures": [{  
-			"signature": //签名的结果
+			"signature": 
 "fa9bUlNRA3qa9PEYR2py6CgpQbbqVsuKhJRowMdlf90byj7M/2B1YQsu6EPAk1V/tLkKiNwEadkAKNFUxZngGA==",
 			"pub_key": {
 				"type": "tendermint/PubKeySecp256k1",
-				"value": "AjmQ01Z+IoHuKLdPaFzV6IJQB88ahW2qv2rEw2H4B5dq"  //公钥
+				"value": "AjmQ01Z+IoHuKLdPaFzV6IJQB88ahW2qv2rEw2H4B5dq"  //public key
 			}
 		}],
 		"memo": ""
 	},
-	"mode": "async"    发送交易的方式async 为异步，block 为同步
+	"mode": "async"    set 'async' to send transaction 发送交易的方式async 为异步，block 为同步
 }
 ```
 
@@ -447,7 +448,7 @@ chain_id 可以通过 节点信息接口  `/node_info` 获取
 	"mode": "async"
 }
 ```
-### 10 提取节点收益
+### 10 Withdraw node rewards
 签名数据格式
 
 ```
@@ -698,7 +699,7 @@ tbb转lamb
 	"mode": "block"
 ```
 ### 13 其他资产的交易 tbb 等
-  其他资产交易只需要将交易ulamb改为资产的代码 例如utbb
+  其他资产交易只需要将交易ulamb改为资产的代码 such asutbb
 
 ![图片](img/walletapi4.png)
 
@@ -1384,7 +1385,7 @@ version：'1'
 ### 1  订单列表
 接口   `/market/matchorders/${address}/${page}/${limit}`
 
-例如 [http://47.93.196.236:13659/market/matchorders/lambda1k6rxrmly7hz0ewh7gth2dj48mv3xs9yz8ffauw/1/10](http://47.93.196.236:13659/market/matchorders/lambda1k6rxrmly7hz0ewh7gth2dj48mv3xs9yz8ffauw/1/10)
+such as [http://47.93.196.236:13659/market/matchorders/lambda1k6rxrmly7hz0ewh7gth2dj48mv3xs9yz8ffauw/1/10](http://47.93.196.236:13659/market/matchorders/lambda1k6rxrmly7hz0ewh7gth2dj48mv3xs9yz8ffauw/1/10)
 
 返回结果
 
@@ -1469,7 +1470,7 @@ version：'1'
 ### 3 获取市场的优质卖单
 `/market/sellorders/${marketName}/${orderType}/${statusType}/${page}/${limit}`
 
-例如 [http://47.93.196.236:13659/market/sellorders/lambdamarket/premium/active/1/10](http://47.93.196.236:13659/market/sellorders/lambdamarket/premium/active/1/10)
+such as [http://47.93.196.236:13659/market/sellorders/lambdamarket/premium/active/1/10](http://47.93.196.236:13659/market/sellorders/lambdamarket/premium/active/1/10)
 
 orderType 值为[premium](http://47.93.196.236:13659/market/sellorders/lambdamarket/premium/1/10) 表示读取优质的卖单，all 为全部卖单
 
@@ -1915,7 +1916,7 @@ statusType 值active 表示活跃的卖单  unActive 表示卖光了的卖单
 
 msg对应的logs success 为true 表示 交易成功 false 表示交易失败
 
-对于不少交易类型  交易的关键信息 例如金额 是不在msg 中的 而是在 tags 中
+对于不少交易类型  交易的关键信息 such as金额 是不在msg 中的 而是在 tags 中
 
 判断交易中一个动作是否成功，是根据对应的logs来判断的
 
@@ -2257,7 +2258,7 @@ msg 中的value 数据 和base_req  合并到一起 就可以了
 
 ```
 /abci_query?path="minGasPrice"
-例如 http://47.94.197.75:26657/abci_query?path="minGasPrice"
+such as http://47.94.197.75:26657/abci_query?path="minGasPrice"
 ```
 需要注意的是，这个接口的端口号为26657 
 有两种情况 1 节点没有设置价格
@@ -2298,7 +2299,7 @@ msg 中的value 数据 和base_req  合并到一起 就可以了
 
 2  同一个json 对象，字段先后顺序不一致，生成的字符串不一样，导致签名的结果也不一样，所以在拼接 用户签名的对象时候，json字段的顺序要参考文档中的顺序
 
-例如
+such as
 
 签名数据的结构
 
