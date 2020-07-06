@@ -510,7 +510,7 @@ transaction details
 
 ## Buy storage space
 
-### query storage miner selling space list查询矿工出售的空间
+### query storage miner selling space list
 
 ```   plain
 ./lambdacli query market miner-sellorders  lambda1r3my74gqyt8zfgqu358nv86nqncxu34cs0ek44 1 100
@@ -566,7 +566,7 @@ Response:
 ```   plain
 ./lambdacli query market  matchorders lambda1jdev3l38xwxxfq5fdpx6cva2agfxrkugrflur6 1 100
 ```
-输出结果：
+outputs：
 ```   plain
 MatchOrder
   OrderId:               420CFAFEA58BEEA4918CC84EB399381AF7E44EE6
@@ -676,7 +676,7 @@ address = "127.0.0.1:9002"
 access_key = "accesskey"
 secret_key = "secretkey"
 ```
-### 运行lambgw
+### running lambgw
 
 ```   shell
 ./storagecli lambgw run --account user1 --daemonize --log.file /tmp/gateway.log
@@ -695,7 +695,7 @@ view the api call history log:
 
 #### lambgw refresh order list
 
-使用root accesskey（也就是配置文件中配置的accesskey）调用 `ListBucket`就会触发更新订单的操作，类似之前的`token sync`
+cll `ListBucket` with 'root accesskey'(accesskey in configuration file) will update the order book, it is very the same with `token sync`    
 
 
 
