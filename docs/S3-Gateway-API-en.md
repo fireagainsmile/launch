@@ -36,7 +36,7 @@ secret_key = "secretkey"
 
 启动的更多参数可以通过`./storagecli gateway run -h`查看
 
-## aws cli 示例
+## aws cli example
 
 Install [awscli](https://docs.aws.amazon.com/cli/latest/userguide/installing.html).
 
