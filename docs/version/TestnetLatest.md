@@ -5,9 +5,10 @@
 包名: lambda-0.5.0-testnet.tar.gz  
 MD5: 4aa83e2848671821c00348f2a2ac3dd5
   
-1. 新增创建市场和市场质押功能；  
-2. 优化挑战存储数据；
-3. 修复已知bug；
+1. 新增数字资产，支持创建、转账、销毁等操作；  
+2. 新增数字资产市场创建和空间购买等功能；
+3. 新增数字资产挖矿；
+4. 修复已知bug；
 
 新节点接入参考：[http://docs.lambda.im/Testnet-Validator-Guide/](http://docs.lambda.im/Testnet-Validator-Guide/)  
 

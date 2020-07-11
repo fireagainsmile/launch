@@ -1,19 +1,19 @@
-# lambdacli query asset all
+# lambdacli query asset all-minted
 
 ## Introduction
 
-Querying commands for the asset module all asset info
+Querying commands for the asset module all minted asset info
 
 ## Usage
 
 ```
-lambdacli query asset all [flag]
+lambdacli query asset all-minted [flag]
 ```
 
 ## Examples
 
 ```
-./lambdacli query asset all
+./lambdacli query asset all-minted
 AssetInfo:
     Address: lambda17am6rkcsm6sguy57rwr5fpkuezp620wfxsgkzn
     Asset: 1000ubbc

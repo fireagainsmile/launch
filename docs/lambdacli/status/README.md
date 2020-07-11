@@ -37,8 +37,8 @@ After that, you can get remote node status as follows:
     },
     "id": "e02882af5bdafa5aec086c32b8398c268d2337f1",
     "listen_addr": "47.93.196.236:26656",
-    "network": "lambda-chain-test4.9",
-    "version": "0.5.0-goleveldb",
+    "network": "lambda-chain-test4.8",
+    "version": "0.4.8-goleveldb",
     "channels": "4020212223303800",
     "moniker": "cv-moniker-1",
     "other": {
