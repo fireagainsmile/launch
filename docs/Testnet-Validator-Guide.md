@@ -1,4 +1,4 @@
-# 测试网节点0.4.9 接入教程
+# 测试网节点0.5.0 接入教程
 
 节点机器配置及系统设置参考：[验证节点挖矿手册](Lambda-Validator-Mining.md)（节点务必阅读此文档，尤其是**系统设置**部分）  
 
@@ -11,16 +11,16 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 下载安装包
 ```
-wget https://github.com/LambdaIM/launch/releases/download/v0.4.9/lambda-0.4.9-testnet.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/v0.5.0/lambda-0.5.0-testnet.tar.gz
 ```
 如下载缓慢可使用下面的链接：
 ```
-wget http://download.lambdastorage.com/lambda/0.4.9/lambda-0.4.9-testnet.tar.gz
+wget http://download.lambdastorage.com/lambda/0.5.0/lambda-0.5.0-testnet.tar.gz
 ```
 
 解压安装包
 ```
-tar zxvf lambda-0.4.9-testnet.tar.gz && cd lambda-0.4.9-testnet
+tar zxvf lambda-0.5.0-testnet.tar.gz && cd lambda-0.5.0-testnet
 ```
 
 ### 2. 初始化节点  

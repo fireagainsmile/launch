@@ -11,8 +11,8 @@
 [http://download.lambdastorage.com/wallet/0.5.53/](http://download.lambdastorage.com/wallet/0.5.53/)
 
 矿工和存储节点安装包：  
-[https://github.com/LambdaIM/launch/releases/tag/v0.4.9](https://github.com/LambdaIM/launch/releases/tag/v0.4.9)
-[http://download.lambdastorage.com/lambda-storage/0.2.6/](http://download.lambdastorage.com/lambda-storage/0.2.6/)
+[https://github.com/LambdaIM/launch/releases/tag/v0.5.0](https://github.com/LambdaIM/launch/releases/tag/v0.5.0)
+[http://download.lambdastorage.com/lambda-storage/0.2.7_rc1/](http://download.lambdastorage.com/lambda-storage/0.2.7_rc1/)
 
 使用矿工管理程序配合钱包即可添加配置矿工服务及存储节点服务，非常便利
 
@@ -160,7 +160,7 @@ miner.root_secret_seed
 
 ```
 [build]
-version = "0.2.6"
+version = "0.2.7_rc1"
 commit = "030c696bc6829cfafb3d240d66058b16b41aa460"
 mode = "release"
 
@@ -258,7 +258,7 @@ storage.root_secret_seed
 
 ```
 [build]
-version = "0.2.6"
+version = "0.2.7_rc1"
 commit = "030c696bc6829cfafb3d240d66058b16b41aa460"
 mode = "release"
 

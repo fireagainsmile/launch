@@ -1,4 +1,4 @@
-# storagenode0.2.6 配置 
+# storagenode0.2.7_rc1 配置 
 
 ### 1. storagenode初始化
 
@@ -20,7 +20,7 @@
         
         ```
         [build]
-        version = "0.2.6"
+        version = "0.2.7_rc1"
         commit = "030c696bc6829cfafb3d240d66058b16b41aa460"
         mode = "release"
         
