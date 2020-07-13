@@ -67,7 +67,7 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
               
     !!! abstract ""
         ```
-        ./lambdacli config chain-id lambda-chain-test4.9
+        ./lambdacli config chain-id lambda-chain-test5.0
         ./lambdacli config trust-node true
         ```
     
