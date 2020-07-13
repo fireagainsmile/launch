@@ -89,7 +89,7 @@
 
 ### 创建资产市场
 1. 数字资产的创建人，才可以创建资产市场。
-2. 创建资产市场，不需要消耗LAMB 。
+2. 创建资产市场，需要消耗100w LAMB 。
 
 ```
  ./lambdacli tx dam market create [market-name] [asset] [exchange-ratio] --from [account]
