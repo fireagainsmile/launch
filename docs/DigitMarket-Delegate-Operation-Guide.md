@@ -153,7 +153,6 @@
 
 ```
 
-## 提取收益
 ### 提取单个资产订单收益
 ``` 
 ./lambdacli tx dam miner withdraw [matchOrder-id] --from [account]
@@ -218,7 +217,7 @@ lambdamineroper1g74gwkeq2py5zypv4l223p2s82gqlc28rsp826
 [提取挖矿收益](lambdacli/tx/distr/withdraw-miner-rewards.md)
 
 
-## 资产赎回
+### 资产赎回
 1. 只能一次性赎回全部资产。
 2. 矿工没有资产匹配订单，或订单已到期且订单收益全部提取完才可赎回；
 3. 赎回后七天，资产返还到原账户；
