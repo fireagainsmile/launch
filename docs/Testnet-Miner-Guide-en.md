@@ -415,9 +415,9 @@ After storagecli Initialization and generate the default configuration file `~/.
 ```
 [broker]
 # dht_gateway_addr as validator dht service ip and port;
-dht_gateway_addr = "39.105.148.217:13000"  ## dht address options:39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000
+dht_gateway_addr = "bj4.testnet.lambdastorage.com:12000"  ## dht address options:bj1/bj2/bj3/bj4
 # validator_addr as validator IP and port
-validator_addr = "39.105.148.217:13659"   ## address options：39.105.148.217:13659/47.94.129.97:13659/47.93.196.236:13659
+validator_addr = "bj4.testnet.lambdastorage.com:13659"   ## address options：bj1/bj2/bj3/bj4
 
 [gateway]
 # local listen address

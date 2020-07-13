@@ -34,9 +34,11 @@
         
         [kad]
         # address you want kad to connect with
-        # DHT接入节点地址，可以是自己质押的验证节点或minernode配置的kad.external_address，这里以 47.94.129.97:13000 为例
-        # 可选官方dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000/182.92.66.63:13000
-        bootstrap_addr = ["47.94.129.97:13000"]
+        # DHT接入节点地址，可以是自己质押的验证节点或minernode配置的kad.external_address
+        bootstrap_addr = ["bj1.testnet.lambdastorage.com:12000",
+                  "bj2.testnet.lambdastorage.com:12000",
+                  "bj3.testnet.lambdastorage.com:12000",
+                  "bj4.testnet.lambdastorage.com:12000",]
         # time you would wait to connect dht seed node
         db_path = "/root/.lambda_storage/kademlia"
         # this should listen at Public IP

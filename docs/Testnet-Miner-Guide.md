@@ -82,19 +82,19 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
         
         === "dht1"
             ```shell
-            ./lambdacli config dht-gateway-address 47.93.196.236:13000
+            ./lambdacli config dht-gateway-address bj1.testnet.lambdastorage.com:12000
             ```
         === "dht2"
             ```shell
-            ./lambdacli config dht-gateway-address 47.94.129.97:13000
+            ./lambdacli config dht-gateway-address bj2.testnet.lambdastorage.com:12000
             ```
         === "dht3"
             ```shell
-            ./lambdacli config dht-gateway-address 39.105.148.217
+            ./lambdacli config dht-gateway-address bj3.testnet.lambdastorage.com:12000
             ```
         === "dht4"
             ```shell
-            ./lambdacli config dht-gateway-address 182.92.66.63:13000
+            ./lambdacli config dht-gateway-address bj4.testnet.lambdastorage.com:12000
             ```      
 
 ### 3. 添加矿工账户
@@ -198,10 +198,12 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
                 private_address = "192.168.10.10:13001"
                 
                 [kad]
-                # DHT接入节点地址，存储网络提供，可填写多个，以 47.94.129.97:13000 为例
+                # DHT接入节点地址，存储网络提供，可填写多个
                 # 可填写自己质押的验证节点配置lambda.toml中的 kad.external_address
-                # 可选官方dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000/182.92.66.63:13000
-                bootstrap_addr = ["47.94.129.97:13000"]
+                bootstrap_addr = ["bj1.testnet.lambdastorage.com:12000",
+                  "bj2.testnet.lambdastorage.com:12000",
+                  "bj3.testnet.lambdastorage.com:12000",
+                  "bj4.testnet.lambdastorage.com:12000",]
                 # this should listen at Public IP
                 ## 对外暴露的提供服务的地址
                 external_address = "200.200.200.100:13000"
@@ -610,12 +612,12 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
                 ```
                 [broker]
                 # dht_gateway_addr为验证节点的dht服务 IP和端口；
-                # 可以是自己质押的验证节点配置的kad.external_address，这里以 47.94.129.97:13000 为例
-                # 可选官方dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000/182.92.66.63:13000
-                dht_gateway_addr = "39.105.148.217:13000" 
+                # 可以是自己质押的验证节点配置的kad.external_address
+                # 可选官方dht地址：bj1.testnet.lambdastorage.com:12000/bj2.testnet.lambdastorage.com:12000/bj3.testnet.lambdastorage.com:12000/bj4.testnet.lambdastorage.com:12000
+                dht_gateway_addr = "bj4.testnet.lambdastorage.com:12000" 
                 # validator_addr为验证节点IP和端口，可以是自己质押的验证节点rest-server服务指定的laddr地址
-                # 可选官方地址：39.105.148.217:13659/47.94.129.97:13659/47.93.196.236:13659
-                validator_addr = "39.105.148.217:13659"   
+                # 可选官方地址：bj1.testnet.lambdastorage.com:13659/bj2.testnet.lambdastorage.com:13659/bj3.testnet.lambdastorage.com:13659/bj4.testnet.lambdastorage.com:13659
+                validator_addr = "bj4.testnet.lambdastorage.com:13659"   
                 
                 [gateway]
                 # local listen address
