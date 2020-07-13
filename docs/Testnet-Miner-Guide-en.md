@@ -216,8 +216,8 @@ Return Value：
                 version: 0.2.7_rc1
                 dht id: CdZsGtfsXVjMgt51EnaGAqr78YmgFxYsCAn4ubR1Dpgo //dht-id will be used when create-miner
         server.address: 0.0.0.0:14000
-  kad.external_address: 182.92.242.59:14000
-    kad.bootstrap_addr: [182.92.242.59:13000]
+  kad.external_address: 182.91.242.11:14000
+    kad.bootstrap_addr: [182.91.242.11:13000]
 server.private_address: 127.0.0.1:14001
 
 Create Miner：

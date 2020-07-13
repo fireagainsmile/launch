@@ -283,10 +283,10 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
         ```text hl_lines="2"
                        version: 0.2.7_rc1
                         dht id: G4xW3UHMfFnTmaRMZUJ7PKcfvr9YTTFyekcsRxKDZZD9 #创建矿工时会用到此dht-id
-        server.private_address: 172.17.159.130:15001
+        server.private_address: 172.11.159.11:15001
                 server.address: 0.0.0.0:26654
-          kad.external_address: 39.106.153.62:26654
-            kad.bootstrap_addr: [39.106.153.62:26650 172.17.159.130:26652]
+          kad.external_address: 39.106.153.11:26654
+            kad.bootstrap_addr: [39.106.153.11:26650 172.11.159.11:26652]
               Ensure-level = 0: 1/6 of disk-space would be used for data-replicating
         ```
         
@@ -560,7 +560,7 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
     ```
     Password to sign with 'buy':
     sync orders begin, This may take some time...
-    http://182.92.242.59:13659/market/user/matchorders/lambda1ejuhsxthm7kpjz63eczlg28prrfje9vd22ma3x
+    http://182.91.242.11:13659/market/user/matchorders/lambda1ejuhsxthm7kpjz63eczlg28prrfje9vd22ma3x
     Order                                              Total                Used
     19FF9732F7E9069C689216173D3842612EDF02CC           6.0 GiB              101 MiB
     293B8613B1E26A79F6554472645FACB809F4BAE8           30 GiB               7.9 GiB
@@ -744,7 +744,7 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
         ```
         返回结果：
         ```
-        http://182.92.242.59:13659/market/user/matchorders/lambda1ejuhsxthm7kpjz63eczlg28prrfje9vd22ma3x
+        http://182.91.242.11:13659/market/user/matchorders/lambda1ejuhsxthm7kpjz63eczlg28prrfje9vd22ma3x
         file download keys nums 1
         ```
   
@@ -771,7 +771,7 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
         ```
         返回结果：
         ```  
-        http://182.92.242.59:13659/market/user/matchorders/lambda1ejuhsxthm7kpjz63eczlg28prrfje9vd22ma3x
+        http://182.91.242.11:13659/market/user/matchorders/lambda1ejuhsxthm7kpjz63eczlg28prrfje9vd22ma3x
         file download keys nums 1
         duplicate token.
         found only one candicate
@@ -842,10 +842,10 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
     
                    version: 0.2.7_rc1
                     dht id: G4xW3UHMfFnTmaRMZUJ7PKcfvr9YTTFyekcsRxKDZZD9
-    server.private_address: 172.17.159.130:15001   successful
+    server.private_address: 172.11.159.11:15001   successful
             server.address: 0.0.0.0:26654    successful
-      kad.external_address: 39.106.153.62:26654    successful
-        kad.bootstrap_addr: [39.106.153.62:26650 172.17.159.130:26652]    successful successful
+      kad.external_address: 39.106.153.11:26654    successful
+        kad.bootstrap_addr: [39.106.153.11:26650 172.11.159.11:26652]    successful successful
           Ensure-level = 0: 1/6 of disk-space would be used for data-replicating
     ```
 ### 2. 测试storagenode服务
@@ -858,11 +858,11 @@ rm -rf ~/.lambda_miner ~/.lambda_storage ~/.lambda_storagecli
                    version: 0.2.7_rc1
                     dht id: 3mta4YEgHB43RHYE83aWBouvFNNCtSc832siEwmcTUsZ
       storage.storage_name: sn1
-     storage.miner_address: 172.17.159.130:15001   successful
-    server.private_address: 172.17.159.130:16001   successful
+     storage.miner_address: 172.11.159.11:15001   successful
+    server.private_address: 172.11.159.11:16001   successful
             server.address: 0.0.0.0:26660    successful
-      kad.external_address: 39.106.153.62:26660    successful
-        kad.bootstrap_addr: [172.17.159.130:26650 172.17.159.130:26652]     successful successful 
+      kad.external_address: 39.106.153.11:26660    successful
+        kad.bootstrap_addr: [172.11.159.11:26650 172.11.159.11:26652]     successful successful 
     ```
 
 ### 3. 查看存储节点磁盘空间

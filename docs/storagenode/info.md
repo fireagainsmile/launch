@@ -122,9 +122,9 @@ ETj21L2dWgxPfCr5ocRDYeRXb9rREjWM5B2gox6UatYP
                version: 0.2.7_rc1-debug
                 dht id: ETj21L2dWgxPfCr5ocRDYeRXb9rREjWM5B2gox6UatYP
   storage.storage_name: t4
- storage.miner_address: 172.17.159.132:14001 	 successful
-server.private_address: 172.17.159.132:15001 	 successful
-        server.address: 172.17.159.132:15000 	 successful
-  kad.external_address: 182.92.242.59:15000 	 successful
-    kad.bootstrap_addr: [182.92.242.59:13000] 	  successful
+ storage.miner_address: 172.11.159.11:14001 	 successful
+server.private_address: 172.11.159.11:15001 	 successful
+        server.address: 172.11.159.11:15000 	 successful
+  kad.external_address: 182.91.242.11:15000 	 successful
+    kad.bootstrap_addr: [182.91.242.11:13000] 	  successful
 ```
