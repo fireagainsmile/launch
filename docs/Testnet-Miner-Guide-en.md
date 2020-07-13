@@ -41,15 +41,15 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 Download the package 
 ```
-wget https://github.com/LambdaIM/launch/releases/download/v0.4.9/lambda-storage-0.2.6-testnet.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/v0.5.0/lambda-storage-0.2.7_rc1-testnet.tar.gz
 ```
 Extract the installation package 
 ```
-tar zxvf lambda-storage-0.2.6-testnet.tar.gz
+tar zxvf lambda-storage-0.2.7_rc1-testnet.tar.gz
 ```
 Enter the content after extracting
 ```
-cd lambda-storage-0.2.6-testnet
+cd lambda-storage-0.2.7_rc1-testnet
 ```
 
 ## 2Lambdacli-Deployment
@@ -124,7 +124,7 @@ lambdavaloper1r340rrv9fs95gqy5087e2mtz82vvwrglt6amx3
 After initializing "minernode", a default configuration file `~/.lambda_miner/config/config.toml` is generated, and then modified: config.toml
 
 ```
-version = "0.2.6"
+version = "0.2.7_rc1"
 commit = "34453f30e9aa2f281c827d9b4883b0b677eb170f"
 mode = "release"
 
@@ -213,11 +213,11 @@ Miner Address: lambda1wgdcvew36nqwm2d5gj6yxraayjvnhfpf5rrfww  //矿工子账户�
 ```
 ./minernode info
 Return Value：
-                version: 0.2.6
+                version: 0.2.7_rc1
                 dht id: CdZsGtfsXVjMgt51EnaGAqr78YmgFxYsCAn4ubR1Dpgo //dht-id will be used when create-miner
         server.address: 0.0.0.0:14000
-  kad.external_address: 182.92.242.59:14000
-    kad.bootstrap_addr: [182.92.242.59:13000]
+  kad.external_address: 182.91.242.11:14000
+    kad.bootstrap_addr: [182.91.242.11:13000]
 server.private_address: 127.0.0.1:14001
 
 Create Miner：
@@ -415,9 +415,9 @@ After storagecli Initialization and generate the default configuration file `~/.
 ```
 [broker]
 # dht_gateway_addr as validator dht service ip and port;
-dht_gateway_addr = "39.105.148.217:13000"  ## dht address options:39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000
+dht_gateway_addr = "bj4.testnet.lambdastorage.com:12000"  ## dht address options:bj1/bj2/bj3/bj4
 # validator_addr as validator IP and port
-validator_addr = "39.105.148.217:13659"   ## address options：39.105.148.217:13659/47.94.129.97:13659/47.93.196.236:13659
+validator_addr = "bj4.testnet.lambdastorage.com:13659"   ## address options：bj1/bj2/bj3/bj4
 
 [gateway]
 # local listen address

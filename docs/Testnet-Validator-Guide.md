@@ -1,4 +1,4 @@
-# 测试网节点0.4.9 接入教程
+# 测试网节点0.5.0 接入教程
 
 节点机器配置及系统设置参考：[验证节点挖矿手册](Lambda-Validator-Mining.md)（节点务必阅读此文档，尤其是**系统设置**部分）  
 
@@ -11,16 +11,16 @@ mkdir -p ~/LambdaIM && cd ~/LambdaIM
 ```
 下载安装包
 ```
-wget https://github.com/LambdaIM/launch/releases/download/v0.4.9/lambda-0.4.9-testnet.tar.gz
+wget https://github.com/LambdaIM/launch/releases/download/v0.5.0/lambda-0.5.0-testnet.tar.gz
 ```
 如下载缓慢可使用下面的链接：
 ```
-wget http://download.lambdastorage.com/lambda/0.4.9/lambda-0.4.9-testnet.tar.gz
+wget http://download.lambdastorage.com/lambda/0.5.0/lambda-0.5.0-testnet.tar.gz
 ```
 
 解压安装包
 ```
-tar zxvf lambda-0.4.9-testnet.tar.gz && cd lambda-0.4.9-testnet
+tar zxvf lambda-0.5.0-testnet.tar.gz && cd lambda-0.5.0-testnet
 ```
 
 ### 2. 初始化节点  
@@ -100,9 +100,11 @@ private_address = "127.0.0.1:12001"
 debug_log_traffic = "false"
 
 [kad]
-# DHT接入节点地址，存储网络提供，可填写多个，以 47.94.129.97:13000 为例
-# 可选dht地址：39.105.148.217:13000/47.94.129.97:13000/47.93.196.236:13000/182.92.66.63:13000
-bootstrap_addr = "47.94.129.97:13000"
+# DHT接入节点地址，存储网络提供，可填写多个
+bootstrap_addr = ["bj1.testnet.lambdastorage.com:12000",
+                  "bj2.testnet.lambdastorage.com:12000",
+                  "bj3.testnet.lambdastorage.com:12000",
+                  "bj4.testnet.lambdastorage.com:12000",]
 bootstrap_backoff_max = "30s"
 bootstrap_backoff_base = "1s"
 db_path = "/root/.lambda/kademlia"
