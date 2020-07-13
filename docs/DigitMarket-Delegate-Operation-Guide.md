@@ -157,6 +157,26 @@
 ### 提取单个资产订单收益
 ``` 
 ./lambdacli tx dam miner withdraw [matchOrder-id] --from [account]
+
+如：
+先用矿工地址查询匹配订单：
+./lambdacli query --home /lambda/tmp_behave/cli dam all-match-orders lambda14chzwvsh5y4yt489ea3vqelq3rpf6t839m6z85 1 100
+返回结果：
+Dam MatchOrder
+  OrderID:               F03EFA6FB9181A960EED6D425CB9FBB6791F7B84 //匹配订单ID
+  Asset:                 unnb1
+  BuyAddress:            lambda1ymms062l3v55tyfkeqp605psvdh4za78k6ufcw
+  AskAddress:            lambdamineroper14chzwvsh5y4yt489ea3vqelq3rpf6t8335k9jf
+  DhtID:                 FF7Gqry6MvN7TcYNAtwsMvcTpCwkG4GRMFYPpuK8ur8w
+  Price:                 1000000
+  Size:                  100
+  CreateTime:            2020-07-13 02:05:02.033907459 +0000 UTC
+  EndTime:               2020-08-12 02:05:02.033907459 +0000 UTC
+  WithDrawTime:          2020-07-13 02:05:02.033907459 +0000 UTC
+  UserPay:               100000000unnb1
+
+根据匹配订单ID提取订单收益：
+./lambdacli tx dam miner withdraw F03EFA6FB9181A960EED6D425CB9FBB6791F7B84 --from myminer --broadcast-mode block -y
 ```
 [资产矿工操作命令](lambdacli/tx/dam/miner.md)
 
@@ -164,6 +184,9 @@
 ### 批量提取资产订单收益
 ``` 
 ./lambdacli tx dam miner withdraw-count [asset] [page] [limit] --from [account]
+
+如：
+./lambdacli tx dam miner withdraw-count uxxb 1 100 --from myminer --broadcast-mode block -y
 ```
 [资产矿工操作命令](lambdacli/tx/dam/miner.md)
 
@@ -171,6 +194,15 @@
 
 ```
 ./lambdacli query distr miner-rewards [miner-opraddr]
+
+如：
+先查询矿工操作地址：
+./lambdacli keys show myminer --address --bech miner
+返回结果：
+lambdamineroper1g74gwkeq2py5zypv4l223p2s82gqlc28rsp826 
+
+使用操作地址查询奖励：
+./lambdacli query distr miner-rewards lambdamineroper1g74gwkeq2py5zypv4l223p2s82gqlc28rsp826
 ```
 
 [查询矿工挖矿收益](lambdacli/query/distr/miner-rewards.md)
@@ -179,6 +211,9 @@
 矿工提取全部挖矿收益：
 ```
 ./lambdacli tx distr withdraw-miner-rewards --from [account]
+
+如：
+./lambdacli tx distr withdraw-miner-rewards --from myminer --broadcast-mode block -y
 ```
 [提取挖矿收益](lambdacli/tx/distr/withdraw-miner-rewards.md)
 
@@ -190,6 +225,10 @@
 4. 赎回十四天内，矿工不可以重新质押资产参与挖矿。
 ```
 ./lambdacli tx dam miner refund [asset] --from [account]
+
+如：
+./lambdacli tx dam miner refund uxxb --from myminer --broadcast-mode block -y
 ```
+
 [资产赎回](lambdacli/tx/dam/miner.md)
 
