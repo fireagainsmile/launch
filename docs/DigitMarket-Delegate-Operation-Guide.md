@@ -1,125 +1,200 @@
 # 数字资产和市场操作手册
 
-## 数字资产
-### 数字资产说明
-参考[配置矿工和存储节点](Asset-Manage-Guide.md)  
+任意账户可创建数字资产和资产市场；  
+矿工可质押数字资产参与挖矿，瓜分资产市场每块增发币数量。  
+
+## 资产挖矿
+### 资产矿工
+1. 按所有矿工单个资产下算力排序，算力前10的矿工会进入对应资产大矿工列表，其余矿工为小矿工
+2. 每个区块在大矿工列表中选择5名矿工提交挖矿证明，存储算力越大被选中概率越高
+3. 小矿工每10000块至少提交一次证明，每10000块最多提交100次提交证明
+4. 超过5000次未成功响应挑战，大矿工会被监禁；
+5. 小矿工每10000块内未提交自挑战证明，扣除该周期内5%的收益；累计到100000块未提交，累计扣除该矿工50%的收益
+6. 小矿工累计100000块未提交自挑战证明，节点可使用`./lambdacli tx dam deactivate`命令移除资产矿工，节点可获得扣除收益的5%，其余扣除收益烧毁。
+7. 矿工被移除后不能再提交资产声明和证明，也无法获得挖矿奖励。可使用`./lambdacli tx dam miner activate`命令激活，重新参与挖矿获得奖励。
+
+操作文档参考：
+[资产矿工操作命令](lambdacli/tx/dam/miner.md)
+
+### 资产挖矿过程
+1. 提交资产挖矿声明  
+   矿工每存储32GB数据会封装1个资产挖矿声明  
+   1挖矿声明 = 8存储算力  
+  
+2. 资产挖矿声明有效期  
+   挖矿声明有效期默认为1个月，过期后会自动重新提交  
+   挖矿声明有效期 < 存储订单有效期  
+   矿机存储A订单，A订单有效期为1个月，挖矿声明有效期为1个月  
+   矿机存储A、B订单，A有效期1个月、B有效期6个月，挖矿声明有效期1个月  
+   矿机存储A、B订单，A有效期3个月、B有效期6个月，挖矿声明有效期3个月  
+   当A订单数据过期后可释放A订单占用空间，B订单数据会重新封装声明  
+   用户的存储订单可在有效期时间内进行续期  
+  
+3. 提交资产挖矿证明  
+   按所有矿工资产算力排序，算力前50的矿工会进入资产大矿工列表
+   每个区块在大矿工列表中选择5名矿工提交挖矿证明，存储算力越大被选中概率越高  
+   资产挖矿证明需要在5个区块周期内提交  
+  
+4. 获得出块奖励  
+   出块奖励的60% 给提交资产挖矿证明的5名矿工平分，40%给剩余小矿工平分    
+   大矿工未提交挖矿证明则该笔奖励打入销毁池  
+
 
 ### 创建数字资产
-创建数字资产需要消耗账户1000000LAMB(1LAMB=1000000ulamb) 。
+1. 创建数字资产需要消耗账户1000000LAMB(1LAMB=1000000ulamb) 。
+2. 创建资产成功后，预留数量资产会直接进入创建者账户。
+3. 资产发行总量需要小于等于900亿  
 
 ```
- ./lambdacli tx asset create 1000000000000000unnb5 1000000000000ulamb --from genesis --broadcast-mode block -y --asset-name "UNNB5 Coin" --mint-type inflated_mint --total-supply 90000000000000000 --inflation 10000 --adjust-rate 0.5 --adjust-period 100 --max-adjust-count 5 --genesis-height 50
+ ./lambdacli tx asset create [amount+symbol] 1000000000000ulamb \
+--asset-name [asset-full-name] \
+--mint-type inflated_mint \
+--total-supply [total-supply] \
+--inflation [inflation] \
+--adjust-rate [adjust-rate] \
+--adjust-period [adjust-period] \
+--max-adjust-count [max-adjust-count] \
+--genesis-height [genesis-height] \
+--from [account]
 ```
-- `[market-name]` 为创建的市场名称，长度3到16位，只能以小写英文字母开头，只能包含小写英文字母和数字。市场名称不能重复。  
-- `[profit_addr]` 为市场受益人地址，提取市场收益后，市场创建人获得的总市场收益会发放到该地址。  
-- `[fee-rate]`  为挂单手续费率。  
-- `[commission-rate]`  为成单手续费率和续期手续费率。  
-
-例如：
-```
- lambdacli tx asset create 1000000000000000unnb5 1000000000000ulamb --from genesis --broadcast-mode block -y --asset-name "UNNB5 Coin" --mint-type inflated_mint --total-supply 90000000000000000 --inflation 10000 --adjust-rate 0.5 --adjust-period 100 --max-adjust-count 5 --genesis-height 50
-```
-
-
-## 数字资产市场
-### 数字资产市场说明
-1. 
-2. 任意用户可创建数字资产市场，创建市场需要消耗账户1000000LAMB(1LAMB=1000000ulamb)；。   
-3. 市场收益由挂单手续费、成单手续费、续期手续费组成。  
-4. 市场中的每笔收入会按照市场质押比例来进行分配。 
-5. 解散市场后，创建市场消耗的1000000LAMB和市场创建人分配到的市场收益，会退回到市场受益人账户中。 
-6. 市场收益分配规则：  
-   市场创建人收取总市场收益的10%。  
-   市场质押人按照质押比例分配剩余的90%（市场创建人也在分配集合中）。
-## 创建数字资产
-
-## 创建数字资产市场
-创建市场需要消耗账户1000000LAMB(1LAMB=1000000ulamb) 。
-
-```
- ./lambdacli tx market create-market --name [market-name] \
-    --profit [profit_addr] \
-    --fee-rate [fee-rate] \
-    --commission-rate [commission-rate] --from [account]
-```
-- `[market-name]` 为创建的市场名称，长度3到16位，只能以小写英文字母开头，只能包含小写英文字母和数字。市场名称不能重复。  
-- `[profit_addr]` 为市场受益人地址，提取市场收益后，市场创建人获得的总市场收益会发放到该地址。  
-- `[fee-rate]`  为挂单手续费率。  
-- `[commission-rate]`  为成单手续费率和续期手续费率。  
+- `[amount+symbol]` 为创建数字资产的预留数量和资产名称；预留数量不能超过发行总量，资产名称必须以字母`u`开头；创建资产成功预留数量资产会直接进入创建者账户
+- `[asset-full-name]` 为资产全称，支持中英文及其他任意字符。
+- `[mint-type]`  增发类型，可设置为`not_mint`（不可增发）、`one_time_mint`（一次性增发）、`inflated_mint`（块增发）。其中`inflated_mint`用于挖矿增发。  
+- `[total-supply]`  指定发行的资产总量。  
+- `[inflation]`  为初始每块增发资产数量。
+- `[adjust-rate]`  为资产增发数量变化系数。  
+- `[adjust-period]`  为每个出块周期块数量。  
+- `[max-adjust-count]`  为最大周期次数。  
+- `[genesis-height]`  为初始挖矿块高。区块链到指定块高后，有资产矿工提交声明和证明，资产才会增发，否则不增发。     
 
 例如：
 ```
-某个市场设置挂单手续费率=0.02，成单/续期手续费率=0.02 
+需要创建uxxb资产（账户余额要保证有100w LAMB，用于创建资产），
+预留1亿 XXB（=100000000000000uxxb, 1XXB=1000000uxxb）资产，
+指定从第50000块高（genesis-height）开始挖矿增发，50000块高以前不增发，
+每块增发1000000uxxb（inflation），增发10000块（adjust-period）后，
+根据变化系数（adjust-rate）调整每块增发数量为500000uxxb（=1000000uxxb * 0.5），按此数量再增发10000块，
+以此类推，第二次调整增发数量为250000uxxb，第三次调整增发数量为125000uxxb，第四次调整增发数量为62500uxxb，
+到第五次调整增发数量为31250uxxb后，不再调整增发数量，每块按31250uxxb增发直到总资产数量达到发行资产总量（total-supply）
+
+./lambdacli tx asset create 100000000000000uxxb 1000000000000ulamb \
+--asset-name "XBB Coin" \
+--mint-type inflated_mint \
+--total-supply 100000000000000 \
+--inflation 1000000 \
+--adjust-rate 0.5 \
+--adjust-period 10000 \
+--max-adjust-count 5 \
+--genesis-height 50000 \
+--from mykey
+```
+[创建数字资产](lambdacli/tx/asset/create.md)
+
+## 资产市场
+
+### 创建资产市场
+1. 数字资产的创建人，才可以创建资产市场。
+2. 创建资产市场，不需要消耗LAMB 。
+
+```
+ ./lambdacli tx dam market create [market-name] [asset] [exchange-ratio] --from [account]
+```
+- `[market-name]` 为资产市场名称，支持中英文及其他任意字符。  
+- `[asset]` 为资产名称。  
+- `[exchange-ratio]`  为新资产兑换utbb比率，矿工质押资产空间时需要根据此值质押对应数量资产。   
+
+例如：
+```
+资产uxxb的创建人，创建一个名字为market-uxxb的资产市场，兑换比率（exchange-ratio）为10，即10uxxb=1utbb。
+
+./lambdacli tx dam market create market-uxxb uxxb 10 --from mykey --broadcast-mode block -y 
+
+说明：
+在lambda市场，1TB（=1000GB）空间需要质押1TBB（=1000000utbb），即1GB空间对应质押1000utbb。
+在资产市场，矿工质押1GB资产空间，也需要质押等价于1000utbb的数字资产，即10000uxxb（=1000 * exchange-ratio）。
+
+```
+[创建数字资产市场](lambdacli/tx/dam/market.md)
+
+### 矿工质押资产空间
+1. 矿工可质押数字资产参与挖矿，瓜分资产市场每块增发币数量。
+2. 质押的资产数量根据空间和市场兑换比率计算，质押成功后从矿工账户扣除对应资产数量
  
-矿工挂一个单价为5LAMB的200GB卖单，需要支付20LAMB（=5LAMB/GB * 200GB * 0.02）的挂单手续费。
-用户购买一个单价为5LAMB的200GB卖单2个月，需要支付40LAMB（=5LAMB/GB/Month * 200GB * 2Month * 0.02）的成单手续费。
-用户再续期上面这个成单1个月，需要支付20LAMB（=5LAMB/GB/Month * 200GB * 1Month * 0.02）的续期手续费。
+```
+./lambdacli tx dam miner pledge [asset] [size] --order-price [order-price] --from [acount]
+```
+- `[asset]` 为资产名称。  
+- `[size]`  为资产挖矿空间大小，单位为GB。
+- `[order-price]`  为资产空间单价，单位为资产名称；空间价格不能低于`1000000[asset]`；仅第一次质押时设置的价格有效。
 
-以上可得出该市场总计获得收益80LAMB。
+例如：
+```
+矿工对uxxb类型资产进行挖矿，挖矿空间2T(=2000GB)，设置空间价格为1XXB（=1000000uxxb）
 
-假如用户A创建了该市场且质押了100wLAMB（即创建加质押总计200wLAMB），用户B质押了200wLAMB，用户C质押了100wLAMB。
-则该市场总计质押了500wLAMB。
+./lambdacli tx dam miner pledge uxxb 2000GB --order-price 1000000uxxb --from myminer --broadcast-mode block -y 
 
-则市场收益分配：
-用户A：36.8LAMB = 80LAMB * 10% + 80LAMB * 90% * (200w/500w) 
-用户B：28.8LAMB = 80LAMB * 90% * (200w/500w) 
-用户C：14.4LAMB = 80LAMB * 90% * (100w/500w) 
+说明：
+在资产市场，矿工质押1GB资产空间，需要质押等价于1000utbb的数字资产。
+假设资产市场兑换比率为10，则10uxxb=1utbb，矿工每质押1GB空间需要
+10000uxxb。
+所以挖矿2T空间，需要质押20XXB(= 20000000uxxb =2000 * 1000 * 10）
+
 ```
 
-[创建市场命令](lambdacli/tx/market/create-market.md)
+[矿工质押](lambdacli/tx/dam/miner.md)
 
-## 修改市场
+### 购买资产空间
+用户购买矿工的资产空间：
 ```
- lambdacli tx market edit-market --commission-rate 0.01 --from master
-```
-可修改的市场参数：`--profit`、`--fee-rate`、`commission-rate`、`--order-price`
-
-市场质押金额（包括创建市场的1000000LAMB）达到5000000LAMB后，可修改市场卖单的最低价格（`--order-price`），参数设置的最低价格不得小于1LAMB。
-
-例如：  
-一个市场修改市场最低价格为2LAMB后，则该市场中新挂的卖单价格不得小于2LAMB。
-
-
-[修改市场命令](lambdacli/tx/market/edit-market.md)
-
-## 市场质押
-用户可通过质押市场，获得市场的手续费收益和佣金收益。
-单次质押到市场的金额不得小于1000LAMB(1LAMB=1000000ulamb) 。 
-```
-./lambdacli tx market delegate [marketName] [amount] --from [your-account-name] --broadcast-mode block
-```
-[市场质押命令](lambdacli/tx/market/delegate.md)
-
-## 查询市场质押收益
-
-```
-./lambdacli query market delegation [marketName] [address]
-```
-[查询质押市场收益](lambdacli/query/market/delegate.md)
-
-## 提取市场收益
-
-```
-lambdacli tx market withdraw-market [marketName] --from acc
-```
-[提取质押市场收益](lambdacli/tx/market/withdraw-market.md)
-
-**注意事项**
-
-- 提取收益为全部提取
-- 质押金不可随意反质押，需要市场满足解散条件后，由市场创建人解散市场后，该市场的质押金会自动返还到账户中
-
-## 解散市场
-
-```
-lambdacli tx market dismiss --from acc
+./lambdacli tx dam user buy --duration [duration] --size [size] --ask-address [miner-opraddr] --asset [asset] --from [account]
 ```
 
-[解散市场](lambdacli/tx/market/dismiss.md)
+例如：
+```
+用户购买矿工lambdamineroper10gat77jd5ucz7gw0m3xac8jfj5l83r6c0mswdj的300GB资产空间，时长2个月
+假设矿工设置资产空间单价为1XXB/GB/month(=1000000uxxb/GB/month)，用户需要花费600XXB（=600000000uxxb = 1000000uxxb/GB/month * 300GB * 2month)
 
-**注意事项**
+./lambdacli tx dam user buy --duration 1month --size 100GB --ask-address lambdamineroper10gat77jd5ucz7gw0m3xac8jfj5l83r6c0mswdj --asset uxxb --from buyaccount
 
-- 解散市场只能由市场创建人发起
-- 解散市场条件需要满足
-    - 市场中没有有效的卖单 
-    - 市场中没有有效的成单
+```
+
+## 提取收益
+### 提取单个资产订单收益
+``` 
+./lambdacli tx dam miner withdraw [matchOrder-id] --from [account]
+```
+[资产矿工操作命令](lambdacli/tx/dam/miner.md)
+
+
+### 批量提取资产订单收益
+``` 
+./lambdacli tx dam miner withdraw-count [asset] [page] [limit] --from [account]
+```
+[资产矿工操作命令](lambdacli/tx/dam/miner.md)
+
+### 查询矿工挖矿收益
+
+```
+./lambdacli query distr miner-rewards [miner-opraddr]
+```
+
+[查询矿工挖矿收益](lambdacli/query/distr/miner-rewards.md)
+
+### 提取挖矿收益
+矿工提取全部挖矿收益：
+```
+./lambdacli tx distr withdraw-miner-rewards --from [account]
+```
+[提取挖矿收益](lambdacli/tx/distr/withdraw-miner-rewards.md)
+
+
+## 资产赎回
+1. 只能赎回全部资产。
+2. 矿工没有资产匹配订单，或订单已到期且订单收益全部提取完才可赎回；
+3. 赎回后七天，资产返还到原账户；
+4. 赎回十四天内，矿工不可以重新质押资产参与挖矿。
+```
+./lambdacli tx dam miner refund [asset] --from [account]
+```
+[资产赎回](lambdacli/tx/dam/miner.md)
+
